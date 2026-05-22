@@ -3,249 +3,694 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CodeStudio</title>
+  <title>Code Studio</title>
+  <link rel="stylesheet" href="css/brand.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="css/footer.css">
   <style>
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    /* index.html uses its own header style (split center / right nav)
+       so we keep the existing styles inline. Other pages use css/nav.css. */
 
-    html, body {
+    html, body{
       width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: #000;
+      min-height: 100%;
+      background: var(--bg);
       color: #fff;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* ── HEADER (logo) ────────────────────────────────── */
-    header {
+    /* ── LOGO INTRO ── */
+    .logo-intro{
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 50;
-      padding: 22px 28px 0;
+      inset: 0;
+      z-index: 9999;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                  visibility 0s linear 0.7s;
+    }
+    .logo-intro.done{
+      opacity: 0;
+      transform: scale(1.06);
+      visibility: hidden;
     }
 
-    .logo img {
-      height: clamp(48px, 8vw, 110px);
+    .logo-intro .intro-stack{
+      position: relative;
+      display: inline-block;
+    }
+    .logo-intro .intro-logo{
+      display: block;
+      height: clamp(70px, 8vw, 130px);
+      width: auto;
+      filter: brightness(0) invert(1);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Wipe — sub-wrapper con overflow:hidden para no clippear el twinkle. */
+    .logo-intro .intro-wipe-clip{
+      position: absolute;
+      top: -12%; bottom: -12%;
+      left: -4px; right: -4px;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 5;
+    }
+    .logo-intro .intro-wipe{
+      position: absolute;
+      inset: 0;
+      background: #000;
+      transform: translate3d(0, 0, 0);
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+    }
+
+    /* Línea naranja en el borde de avance del wipe. Está en left:-2px del
+       wipe; cuando el wipe traslada, la línea viaja con él. */
+    .logo-intro .intro-wipe::before{
+      content: '';
+      position: absolute;
+      top: -4%; bottom: -4%;
+      left: -2px;
+      width: 2px;
+      background: linear-gradient(to bottom,
+        transparent 0%,
+        #FD7628 20%,
+        #fff 50%,
+        #FD7628 80%,
+        transparent 100%);
+      box-shadow:
+        2px 0 12px #FD7628,
+        2px 0 26px rgba(253,118,40, 0.6),
+        2px 0 60px rgba(236,27,7, 0.35);
+    }
+
+    .logo-intro.reveal .intro-wipe{
+      animation: introWipe 1.0s cubic-bezier(0.36, 0, 0.4, 1) forwards;
+    }
+    @keyframes introWipe{
+      0%   { transform: translate3d(0%, 0, 0); opacity: 1; }
+      88%  { transform: translate3d(96%, 0, 0); opacity: 1; }
+      100% { transform: translate3d(105%, 0, 0); opacity: 0; }
+    }
+
+    /* Radial flash on the logo when the wipe completes — the orange edge
+       "absorbs" into the logo as a brief burst. */
+    .logo-intro .intro-burst{
+      position: absolute;
+      top: 50%; left: 50%;
+      width: clamp(180px, 18vw, 320px);
+      height: clamp(180px, 18vw, 320px);
+      transform: translate(-50%, -50%) scale(0.4);
+      border-radius: 50%;
+      background: radial-gradient(circle,
+        rgba(253,117,43, 0.55) 0%,
+        rgba(236,27,7, 0.2) 40%,
+        transparent 70%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+      opacity: 0;
+      z-index: 3;
+      filter: blur(8px);
+    }
+    .logo-intro.reveal .intro-burst{
+      animation: introBurst 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.9s forwards;
+    }
+    @keyframes introBurst{
+      0%   { opacity: 0;    transform: translate(-50%, -50%) scale(0.4); }
+      35%  { opacity: 0.95; transform: translate(-50%, -50%) scale(1); }
+      100% { opacity: 0;    transform: translate(-50%, -50%) scale(1.6); }
+    }
+
+    /* Twinkle (idle pulse). Also runs during the intro so the logo never
+       looks "static" while the wipe travels. */
+    .logo-intro .intro-logo.twinkle{
+      animation: logoTwinkle 3s ease-in-out infinite;
+    }
+    @keyframes logoTwinkle{
+      0%, 100% { filter: brightness(0) invert(1)
+                   drop-shadow(0 0 4px rgba(253,118,40,0.4)); }
+      50%      { filter: brightness(0) invert(1)
+                   drop-shadow(0 0 13px rgba(253,118,40,0.75)); }
+    }
+
+    /* Hero starts hidden + slightly scaled so it crossfades in when the
+       intro fades out. Avoids the harsh "intro disappears → hero appears" cut. */
+    .hero{
+      opacity: 0;
+      transform: scale(1.04);
+      transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .hero.ready{
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    body.intro-active{ overflow: hidden; }
+
+    /* ── HEADER ────────────────────────────────────────── */
+    header.home-header{
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      padding: 14px 5vw;                /* compact + same horizontal as .nav */
+      transition: background 0.4s ease, backdrop-filter 0.4s ease;
+    }
+    header.home-header.scrolled{
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .header-left { flex: 1; }
+    .logo img{
+      height: clamp(32px, 4.5vw, 64px);
       width: auto;
       display: block;
     }
-
-    /* ── NAV ──────────────────────────────────────────── */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 50;
+    .header-center{
+      flex: 1;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: calc(22px + clamp(48px, 8vw, 110px) + 8px) 28px 0;
+      justify-content: center;
+      gap: 32px;
     }
-
-    nav a {
+    .header-right{
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      gap: 24px;
+    }
+    .header-center a, .header-right a{
+      font-family: var(--ff-body);
       font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
+      font-weight: 400;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.75);
-      transition: color 0.2s;
+      color: rgba(235, 235, 235, 0.55);
+      transition: color 0.3s;
+      position: relative;
     }
-
-    nav a:hover {
-      color: #fff;
+    .header-center a::after, .header-right a::after{
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--light);
+      transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
     }
+    .header-center a:hover, .header-right a:hover { color: #fff; }
+    .header-center a:hover::after, .header-right a:hover::after { width: 100%; }
 
-    /* ── SLIDESHOW ─────────────────────────────────────── */
-    .slideshow {
-      position: fixed;
-      inset: 0;
-      z-index: 1;
+    /* ── HERO ──────────────────────────────────────────── */
+    .hero{
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
     }
-
-    .slide {
+    .slideshow { position: absolute; inset: 0; z-index: 1; }
+    .slide{
       position: absolute;
       inset: 0;
       opacity: 0;
       transition: opacity 0.9s ease;
     }
-
-    .slide.active {
-      opacity: 1;
-    }
-
-    .slide video,
-    .slide img {
-      width: 100%;
-      height: 100%;
+    .slide.active { opacity: 1; }
+    .slide video, .slide img{
+      width: 100%; height: 100%;
       object-fit: cover;
       display: block;
     }
+    .slideshow::after{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
 
-    /* ── BOTTOM INFO ──────────────────────────────────── */
-    .bottom {
-      position: fixed;
-      bottom: 46px;
-      left: 0;
-      right: 0;
-      z-index: 50;
+    /* ── BOTTOM INFO (inside hero) ───────────────────── */
+    .bottom{
+      position: absolute;
+      bottom: 28px;
+      left: 0; right: 0;
+      z-index: 5;
       padding: 0 28px;
     }
-
-    .director-name {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.15em;
+    .work-title{
+      font-size: clamp(40px, 7vw, 92px);
+      line-height: 0.92;
+      margin-bottom: 22px;
+      max-width: 92%;
+    }
+    .work-title .type, .work-title .client { display: block; }
+    .work-title .type{
+      font-family: var(--ff-body);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(10px, 1vw, 13px);
+      letter-spacing: 0.32em;
       text-transform: uppercase;
-      margin-bottom: 12px;
+      opacity: 0.7;
+      color: var(--light);
+      margin-bottom: 1.5em;
+    }
+    .work-title .client{
+      font-family: var(--ff-display);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      opacity: 1;
+      padding-left: 0.5em;
+    }
+    .work-title .char{
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(46px);
+      filter: blur(12px);
+      animation: charIn 0.85s cubic-bezier(0.2, 0.85, 0.2, 1) forwards;
+    }
+    @keyframes charIn{
+      0% { opacity: 0; transform: translateY(46px); filter: blur(12px); }
+      60% { filter: blur(0); }
+      100% { opacity: 1; transform: translateY(0); filter: blur(0); }
     }
 
-    .slide-nav {
+    .progress-bar{
+      width: 100%;
+      max-width: 460px;
+      height: 1px;
+      background: rgba(255,255,255,0.18);
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+    .progress-fill{
+      height: 100%; width: 0%;
+      background: var(--light);
+      will-change: width;
+    }
+
+    .bottom-row{
       display: flex;
       justify-content: space-between;
-      max-width: 340px;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
     }
-
-    .slide-nav button {
+    .slide-nav{
+      display: flex;
+      gap: 32px;
+    }
+    .slide-nav button{
       background: none;
       border: none;
       font-family: inherit;
-      font-size: 12px;
+      font-size: 16px;
       font-weight: 400;
       letter-spacing: 0.05em;
-      color: rgba(255, 255, 255, 0.4);
+      color: rgba(255,255,255,0.4);
       cursor: pointer;
       padding: 0;
       transition: color 0.2s, font-weight 0.2s;
     }
+    .slide-nav button.active{ color: #fff; font-weight: 700; }
+    .slide-nav button:hover { color: rgba(255,255,255,0.85); }
 
-    .slide-nav button.active {
-      color: #fff;
-      font-weight: 700;
-    }
-
-    .slide-nav button:hover {
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    /* ── FOOTER ────────────────────────────────────────── */
-    footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 50;
-      display: flex;
-      justify-content: space-between;
+    .hero-cta{
+      display: inline-flex;
       align-items: center;
-      padding: 11px 28px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    footer a {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
+      gap: 10px;
+      font-size: 11px;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.6);
-      transition: color 0.2s;
+      color: var(--milk);
+      padding: 12px 22px;
+      border: 1px solid rgba(253,117,43,0.4);
+      border-radius: 999px;
+      background: rgba(253,117,43,0.06);
+      transition: background 0.3s, border-color 0.3s, gap 0.3s, transform 0.3s;
+    }
+    .hero-cta:hover{
+      background: rgba(253,117,43,0.18);
+      border-color: var(--light);
+      gap: 14px;
     }
 
-    footer a:hover {
-      color: #fff;
+    /* ── HOME GALLERY ──────────────────────────────── */
+    .home-gallery-wrap{
+      position: relative;
+      z-index: 2;
+      background: var(--bg);
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .home-gallery-head{
+      text-align: center;
+      padding: 60px 5vw 28px;             /* compact: 100 → 60 */
+    }
+    .home-gallery-head .section-kicker{ color: var(--light); }
+    .home-gallery-head .section-title{
+      font-family: var(--ff-display);
+      font-size: clamp(44px, 6.4vw, 92px); /* slightly bigger */
+      line-height: 0.92;
+      letter-spacing: 0.01em;
+    }
+    .home-gallery-head .section-sub{
+      max-width: 560px;
+      margin: 14px auto 0;                /* tighter */
+      font-size: clamp(14px, 1.15vw, 17px);
+      color: rgba(235,235,235,0.55);
+      line-height: 1.5;
+    }
+
+    /* hamburger hidden on desktop */
+    header.home-header .ham{ display: none; }
+
+    /* ── MOBILE: unified layout — logo centered + hamburger right ── */
+    @media (max-width: 820px) {
+      header.home-header{
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        padding: 14px 5vw;
+        gap: 0;
+      }
+      .header-left{
+        flex: none;
+        grid-column: 2;
+        justify-self: center;
+      }
+      .logo img { height: clamp(36px, 12vw, 56px); }
+      .header-center,
+      .header-right{ display: none !important; }
+      header.home-header .ham{
+        display: flex;
+        grid-column: 3;
+        justify-self: end;
+      }
+
+      .bottom { bottom: 28px; padding: 0 20px; }
+      .work-title { font-size: clamp(38px, 11vw, 64px); margin-bottom: 16px; }
+      .work-title .type{ font-size: clamp(10px, 2.6vw, 12px); letter-spacing: 0.28em; margin-bottom: 1.2em; }
+      .work-title .client { padding-left: 0.3em; }
+      .progress-bar { margin-bottom: 14px; }
+      .bottom-row { flex-direction: column; align-items: flex-start; gap: 14px; }
+      .slide-nav{
+        gap: 22px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        width: 100%;
+      }
+      .slide-nav::-webkit-scrollbar { display: none; }
+      .slide-nav button { font-size: 22px; flex: 0 0 auto; }
     }
   </style>
 </head>
-<body>
+<body class="intro-active">
 
-  <!-- Logo -->
-  <header>
-    <a href="#" class="logo">
-      <img src="logo.png" alt="CodeStudio">
-    </a>
+  <!-- Logo intro: translate3d wipe + scanner edge + final burst -->
+  <div class="logo-intro" id="logoIntro">
+    <div class="intro-stack">
+      <img class="intro-logo" id="introLogo" src="assets/img/logo.png" alt="Code Studio"/>
+      <div class="intro-wipe-clip"><div class="intro-wipe"></div></div>
+      <div class="intro-burst"></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="home-header" id="homeHeader">
+    <div class="header-left">
+      <a href="index.html" class="logo">
+        <img src="assets/img/logo.png" alt="Code Studio">
+      </a>
+    </div>
+    <nav class="header-center">
+      <a href="shows.html">Shows & Fiestas</a>
+      <a href="marcas.html">Marcas</a>
+      <a href="eventos.html">Eventos</a>
+    </nav>
+    <nav class="header-right">
+      <a href="nosotros.html">Sobre nosotros</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <button class="ham" id="homeHam" aria-label="Menú"><span></span><span></span><span></span></button>
   </header>
-
-  <!-- Navigation -->
-  <nav>
-    <a href="#">Directors</a>
-    <a href="#">Film + TV</a>
-    <a href="#">Photographers</a>
-    <a href="#">Music</a>
-  </nav>
-
-  <!-- Slideshow -->
-  <div class="slideshow" id="slideshow">
-    <div class="slide active" data-director="Director 1">
-      <video autoplay muted loop playsinline>
-        <source src="logoanimation.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="slide" data-director="Director 2">
-      <img src="camara.jpeg" alt="Director 2">
-    </div>
-    <div class="slide" data-director="Director 3"></div>
-    <div class="slide" data-director="Director 4"></div>
-    <div class="slide" data-director="Director 5"></div>
-    <div class="slide" data-director="Director 6"></div>
-    <div class="slide" data-director="Director 7"></div>
-    <div class="slide" data-director="Director 8"></div>
-    <div class="slide" data-director="Director 9"></div>
+  <div class="mob-menu" id="homeMobMenu">
+    <a href="index.html">Inicio</a>
+    <a href="shows.html">Shows & Fiestas</a>
+    <a href="marcas.html">Marcas</a>
+    <a href="eventos.html">Eventos</a>
+    <a href="nosotros.html">Sobre nosotros</a>
+    <a href="contacto.html">Contacto</a>
   </div>
 
-  <!-- Bottom: director name + slide numbers -->
-  <div class="bottom">
-    <div class="director-name" id="directorName">Director 1</div>
-    <div class="slide-nav" id="slideNav">
-      <button class="active" data-index="0">1</button>
-      <button data-index="1">2</button>
-      <button data-index="2">3</button>
-      <button data-index="3">4</button>
-      <button data-index="4">5</button>
-      <button data-index="5">6</button>
-      <button data-index="6">7</button>
-      <button data-index="7">8</button>
-      <button data-index="8">9</button>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="slideshow" id="slideshow">
+      <div class="slide active" data-id="fiesta-cerveza-26">
+        <video muted loop playsinline preload="auto"><source src="assets/video/logoanimation.mp4" type="video/mp4"></video>
+      </div>
+      <div class="slide" data-id="antel-fibra">
+        <video muted loop playsinline preload="none"><source src="assets/video/trabajos/2026-05-15_23h11_32.mp4" type="video/mp4"></video>
+      </div>
+      <div class="slide" data-id="ntvg">
+        <video muted loop playsinline preload="none"><source src="assets/video/trabajos/2026-05-15_23h12_29.mp4" type="video/mp4"></video>
+      </div>
+      <div class="slide" data-id="punta-del-este">
+        <video muted loop playsinline preload="none"><source src="assets/video/trabajos/2026-05-15_23h13_02.mp4" type="video/mp4"></video>
+      </div>
+      <div class="slide" data-id="vans-harlem">
+        <video muted loop playsinline preload="none"><source src="assets/video/logoanimation.mp4" type="video/mp4"></video>
+      </div>
+      <div class="slide" data-id="fito-paez">
+        <video muted loop playsinline preload="none"><source src="assets/video/trabajos/2026-05-15_23h11_32.mp4" type="video/mp4"></video>
+      </div>
+      <div class="slide" data-id="cro">
+        <video muted loop playsinline preload="none"><source src="assets/video/trabajos/2026-05-15_23h12_29.mp4" type="video/mp4"></video>
+      </div>
+      <div class="slide" data-id="no-sleep-club">
+        <video muted loop playsinline preload="none"><source src="assets/video/trabajos/2026-05-15_23h13_02.mp4" type="video/mp4"></video>
+      </div>
     </div>
-  </div>
 
-  <!-- Footer -->
-  <footer>
-    <a href="#">Uruguay</a>
-    <a href="#">Contact</a>
-    <a href="#">Legals</a>
+    <div class="bottom">
+      <a class="work-title" id="workTitleLink" href="#">
+        <span class="type" id="workType"></span>
+        <span class="client" id="workClient"></span>
+      </a>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="bottom-row">
+        <div class="slide-nav" id="slideNav">
+          <button class="active" data-index="0">1</button>
+          <button data-index="1">2</button>
+          <button data-index="2">3</button>
+          <button data-index="3">4</button>
+          <button data-index="4">5</button>
+          <button data-index="5">6</button>
+          <button data-index="6">7</button>
+          <button data-index="7">8</button>
+        </div>
+        <a class="hero-cta" id="heroCta" href="#">Ver detalle <span>→</span></a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- HOME GALLERY -->
+  <section class="home-gallery-wrap">
+    <header class="home-gallery-head">
+      <span class="section-kicker">Nuestros trabajos</span>
+      <h2 class="section-title">Lo último de Code</h2>
+      <p class="section-sub">Una selección de los proyectos más recientes — aftermovies, comerciales, videoclips y documentales producidos en Uruguay y la región.</p>
+    </header>
+    <div class="card-grid" data-gallery="all"></div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="fg"></div>
+    <div class="fgr">
+      <div class="fl">Code<i>.</i>Studio</div>
+      <div class="fc">
+        <img src="assets/img/logo.png" alt=""/>
+        <span>For those who create endlessly</span>
+      </div>
+    </div>
   </footer>
 
+  <script src="js/works.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/nav.js"></script>
   <script>
-    const slides = Array.from(document.querySelectorAll('.slide'));
-    const btns   = Array.from(document.querySelectorAll('#slideNav button'));
-    const label  = document.getElementById('directorName');
-    let current  = 0;
+    (function(){
+      'use strict';
 
-    function goTo(idx) {
-      slides[current].classList.remove('active');
-      btns[current].classList.remove('active');
-      current = idx;
-      slides[current].classList.add('active');
-      btns[current].classList.add('active');
-      label.textContent = slides[current].dataset.director;
-    }
+      const slides         = Array.from(document.querySelectorAll('.slide'));
+      const btns           = Array.from(document.querySelectorAll('#slideNav button'));
+      const titleType      = document.getElementById('workType');
+      const titleClient    = document.getElementById('workClient');
+      const titleLink      = document.getElementById('workTitleLink');
+      const heroCta        = document.getElementById('heroCta');
+      const progressFill   = document.getElementById('progressFill');
+      const homeHeader     = document.getElementById('homeHeader');
+      const SLIDE_DURATION = 7000;
+      let current = 0;
+      let advanceTimer = null;
+      let progressRAF  = null;
 
-    btns.forEach(btn => btn.addEventListener('click', () => goTo(+btn.dataset.index)));
+      function setSpans(el, text) {
+        el.innerHTML = '';
+        let i = 0;
+        for (const ch of text) {
+          const s = document.createElement('span');
+          s.className = 'char';
+          s.innerHTML = ch === ' ' ? '&nbsp;' : ch;
+          s.style.animationDelay = (i * 28) + 'ms';
+          el.appendChild(s);
+          i++;
+        }
+      }
 
-    // Auto-advance every 6s
-    setInterval(() => goTo((current + 1) % slides.length), 6000);
+      function renderTitle(work, id) {
+        setSpans(titleType, work.type);
+        // small delay for client
+        titleClient.innerHTML = '';
+        let i = 0;
+        const offset = (work.type || '').length + 2;
+        for (const ch of (work.client || '')) {
+          const s = document.createElement('span');
+          s.className = 'char';
+          s.innerHTML = ch === ' ' ? '&nbsp;' : ch;
+          s.style.animationDelay = ((i + offset) * 28) + 'ms';
+          titleClient.appendChild(s);
+          i++;
+        }
+        // Always use the explicit id from the slide's data-id (or work.id as fallback).
+        // Avoids a fallback object that would produce work.html?id= (empty).
+        const realId = id || work.id || '';
+        const href = realId ? ('work.html?id=' + realId) : '#';
+        titleLink.href = href;
+        heroCta.href  = href;
+      }
+
+      function animateProgress() {
+        cancelAnimationFrame(progressRAF);
+        const start = performance.now();
+        const step = (now) => {
+          const elapsed = now - start;
+          const pct = Math.min(100, (elapsed / SLIDE_DURATION) * 100);
+          progressFill.style.width = pct + '%';
+          if (pct < 100) progressRAF = requestAnimationFrame(step);
+        };
+        progressRAF = requestAnimationFrame(step);
+      }
+
+      function ensureVideoLoaded(v){
+        if (!v) return;
+        if (v.preload !== 'auto') {
+          v.preload = 'auto';
+          try { v.load(); } catch(e){}
+        }
+      }
+
+      function goTo(idx) {
+        slides[current].classList.remove('active');
+        btns[current].classList.remove('active');
+        const prev = slides[current].querySelector('video');
+        if (prev) prev.pause();
+
+        current = idx;
+        const slide = slides[current];
+        slide.classList.add('active');
+        btns[current].classList.add('active');
+
+        const id = slide.dataset.id;
+        const work = (window.getWork && window.getWork(id)) || { type: '', client: '', id: id };
+        renderTitle(work, id);
+
+        const v = slide.querySelector('video');
+        if (v) {
+          ensureVideoLoaded(v);
+          try { v.currentTime = 0; } catch (e) {}
+          const p = v.play();
+          if (p && p.catch) p.catch(() => {});
+        }
+
+        progressFill.style.width = '0%';
+        animateProgress();
+
+        clearTimeout(advanceTimer);
+        advanceTimer = setTimeout(() => goTo((current + 1) % slides.length), SLIDE_DURATION);
+      }
+
+      btns.forEach(b => b.addEventListener('click', () => goTo(+b.dataset.index)));
+
+      function startSlideshow(){
+        const id = slides[0].dataset.id;
+        const firstWork = (window.getWork && window.getWork(id)) || { type: '', client: '', id: id };
+        renderTitle(firstWork, id);
+        const fv = slides[0].querySelector('video');
+        if (fv) {
+          ensureVideoLoaded(fv);
+          const p = fv.play();
+          if (p && p.catch) p.catch(() => {});
+        }
+        animateProgress();
+        advanceTimer = setTimeout(() => goTo((current + 1) % slides.length), SLIDE_DURATION);
+      }
+
+      // header bg on scroll
+      window.addEventListener('scroll', () => {
+        homeHeader.classList.toggle('scrolled', window.scrollY > 50);
+      }, { passive: true });
+
+      // ── LOGO INTRO (translate3d wipe + scanner edge + burst) ──
+      const intro = document.getElementById('logoIntro');
+      const introLogo = document.getElementById('introLogo');
+      const hero = document.querySelector('.hero');
+      let introDone = false;
+
+      const finishIntro = () => {
+        if (introDone) return;
+        introDone = true;
+        // Hero starts crossfading IN at the same moment the intro starts fading OUT.
+        // Both transitions are 0.7-0.85s → no harsh cut between them.
+        if (hero) hero.classList.add('ready');
+        if (intro) intro.classList.add('done');
+        document.body.classList.remove('intro-active');
+        startSlideshow();
+        setTimeout(() => { if (intro && intro.parentNode) intro.parentNode.removeChild(intro); }, 900);
+      };
+
+      const triggerReveal = () => {
+        if (intro) intro.classList.add('reveal');
+        // Wipe ends at ~1.0s, burst at ~1.6s. Hold briefly then fade out.
+        if (introLogo) setTimeout(() => introLogo.classList.add('twinkle'), 1050);
+        setTimeout(finishIntro, 2000);
+      };
+
+      // Pre-warm the first slide's video so it has frames ready when the
+      // intro fades away — avoids a moment of black/blank during the crossfade.
+      const fv0 = slides[0] && slides[0].querySelector('video');
+      if (fv0) {
+        try { fv0.load(); } catch (e) {}
+        // Try to play muted — most browsers allow it without user gesture.
+        const p = fv0.play(); if (p && p.catch) p.catch(() => {});
+      }
+
+      const bootIntro = async () => {
+        if (introLogo && introLogo.decode) {
+          try { await introLogo.decode(); } catch (e) {}
+        }
+        requestAnimationFrame(() => requestAnimationFrame(triggerReveal));
+      };
+      bootIntro();
+    })();
   </script>
 
 </body>

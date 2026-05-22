@@ -1,0 +1,14 @@
+{
+  "public": ".",
+  "cleanUrls": false,
+  "trailingSlash": false,
+  "directoryListing": false,
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" }
+  ],
+  "unlisted": [
+    ".claude",
+    ".git",
+    "serve.json"
+  ]
+}
