@@ -155,6 +155,126 @@
       font-size:clamp(11px,1vw,14px);letter-spacing:.08em;font-weight:600;color:var(--black)}
     .tc-role{display:block;font-size:.78em;color:var(--light);margin-top:3px;font-weight:500;letter-spacing:.12em;text-transform:uppercase}
 
+    /* ── MANIFESTO ─────────────────────────────────── */
+    .manifesto{position:relative;z-index:1;max-width:880px;margin:0 auto;
+      padding:clamp(80px,12vh,140px) 5vw clamp(40px,6vh,80px);text-align:center}
+    .manifesto-tag{display:inline-flex;align-items:center;gap:14px;font-size:11px;
+      letter-spacing:.32em;text-transform:uppercase;color:var(--light);font-weight:500;
+      margin-bottom:32px;
+      opacity:0;transform:translateY(16px);transition:opacity .8s,transform .8s}
+    .manifesto-tag::before{content:'';display:inline-block;width:28px;height:1px;background:currentColor}
+    .manifesto.vis .manifesto-tag{opacity:1;transform:none}
+    .manifesto-lead{font-family:var(--ff-display);font-size:clamp(26px,3.6vw,46px);
+      line-height:1.18;letter-spacing:-0.01em;color:var(--black);margin-bottom:42px;font-weight:500;
+      opacity:0;transform:translateY(24px);transition:opacity .9s ease .15s,transform .9s ease .15s}
+    .manifesto.vis .manifesto-lead{opacity:1;transform:none}
+    .manifesto-lead .accent{color:var(--light)}
+    .manifesto p{font-size:clamp(15px,1.2vw,18px);line-height:1.7;color:var(--black);opacity:.72;
+      margin:0 auto 22px;max-width:640px;
+      opacity:0;transform:translateY(16px);transition:opacity .8s ease .3s,transform .8s ease .3s}
+    .manifesto.vis p{opacity:.72;transform:none}
+    .manifesto p:last-child{margin-bottom:0;transition-delay:.45s}
+
+    /* ── 3 PILARES ─────────────────────────────────── */
+    .pillars{position:relative;z-index:1;max-width:1200px;margin:0 auto;
+      padding:clamp(60px,9vh,100px) 5vw clamp(80px,12vh,140px);
+      display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(40px,5vw,80px)}
+    .pillar{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s}
+    .pillar.vis{opacity:1;transform:none}
+    .pillar:nth-child(2){transition-delay:.12s}
+    .pillar:nth-child(3){transition-delay:.24s}
+    .pillar-num{font-family:var(--ff-display);font-size:clamp(48px,5.5vw,82px);
+      line-height:1;color:var(--light);font-weight:500;letter-spacing:-0.03em;margin-bottom:24px}
+    .pillar-name{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--black);
+      font-weight:600;margin-bottom:18px;padding-bottom:14px;border-bottom:1.5px solid var(--black)}
+    .pillar-text{font-size:clamp(14px,1.05vw,16px);line-height:1.65;color:var(--black);opacity:.75}
+
+    /* ── EQUIPO EN ACCIÓN (photo placeholders) ────── */
+    .team-action{position:relative;z-index:1;max-width:1200px;margin:0 auto;
+      padding:0 5vw clamp(80px,12vh,140px)}
+    .team-action-head{display:inline-flex;align-items:center;gap:14px;font-size:11px;
+      letter-spacing:.32em;text-transform:uppercase;color:var(--light);font-weight:500;margin-bottom:36px;
+      opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}
+    .team-action-head::before{content:'';display:inline-block;width:28px;height:1px;background:currentColor}
+    .team-action.vis .team-action-head{opacity:1;transform:none}
+    .team-action-grid{display:grid;grid-template-columns:1.6fr 1fr;grid-template-rows:1fr 1fr;
+      gap:16px;height:clamp(420px,62vh,640px)}
+    .photo-slot{position:relative;background:rgba(0,0,0,0.025);
+      border:1px dashed rgba(0,0,0,0.28);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+      color:var(--black);
+      opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s,background .25s,border-color .25s}
+    .team-action.vis .photo-slot{opacity:1;transform:none}
+    .team-action.vis .photo-slot:nth-child(2){transition-delay:.12s}
+    .team-action.vis .photo-slot:nth-child(3){transition-delay:.24s}
+    .photo-slot:first-child{grid-row:1 / 3}
+    .photo-slot:hover{background:rgba(253,117,43,0.06);border-color:var(--light);color:var(--light)}
+    .photo-slot svg{width:38px;height:38px;stroke:currentColor;stroke-width:1.3;fill:none;
+      opacity:.55;transition:opacity .25s}
+    .photo-slot:hover svg{opacity:1}
+    .photo-label{font-size:11px;letter-spacing:.28em;text-transform:uppercase;font-weight:600}
+    .photo-hint{font-size:11px;opacity:.55;font-weight:400}
+
+    /* ── TONO DE MARCA (voice) ─────────────────────── */
+    .voice{position:relative;z-index:1;max-width:980px;margin:0 auto;
+      padding:clamp(60px,9vh,100px) 5vw clamp(80px,12vh,140px)}
+    .voice-head{display:inline-flex;align-items:center;gap:14px;font-size:11px;letter-spacing:.32em;
+      text-transform:uppercase;color:var(--light);font-weight:500;margin-bottom:28px;
+      opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}
+    .voice-head::before{content:'';display:inline-block;width:28px;height:1px;background:currentColor}
+    .voice.vis .voice-head{opacity:1;transform:none}
+    .voice-lead{font-family:var(--ff-display);font-size:clamp(22px,2.8vw,38px);line-height:1.25;
+      letter-spacing:-0.005em;color:var(--black);margin-bottom:36px;max-width:760px;font-weight:500;
+      opacity:0;transform:translateY(20px);transition:opacity .85s ease .1s,transform .85s ease .1s}
+    .voice.vis .voice-lead{opacity:1;transform:none}
+    .voice-intro{font-size:clamp(15px,1.2vw,18px);line-height:1.7;color:var(--black);opacity:.72;
+      max-width:680px;margin-bottom:64px;
+      opacity:0;transform:translateY(16px);transition:opacity .8s ease .25s,transform .8s ease .25s}
+    .voice.vis .voice-intro{opacity:.72;transform:none}
+    .voice-compare{display:grid;gap:36px;max-width:820px}
+    .voice-row{opacity:0;transform:translateY(20px);transition:opacity .8s,transform .8s;
+      padding-top:28px;border-top:1px solid rgba(0,0,0,0.15)}
+    .voice.vis .voice-row{opacity:1;transform:none}
+    .voice.vis .voice-row.yes{transition-delay:.15s}
+    .voice-row-label{font-size:10px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;
+      margin-bottom:16px;display:flex;align-items:center;gap:10px}
+    .voice-row.no .voice-row-label{color:rgba(0,0,0,.45)}
+    .voice-row.no .voice-row-label::before{content:'×';font-size:18px;font-weight:400}
+    .voice-row.no .voice-quote{font-family:var(--ff-display);font-size:clamp(20px,2.2vw,30px);
+      line-height:1.3;color:rgba(0,0,0,.45);font-style:italic;
+      text-decoration:line-through;text-decoration-thickness:1px;text-decoration-color:rgba(0,0,0,.35)}
+    .voice-row.yes .voice-row-label{color:var(--light)}
+    .voice-row.yes .voice-row-label::before{content:'';display:inline-block;width:20px;height:1px;
+      background:var(--light)}
+    .voice-row.yes .voice-quote{font-family:var(--ff-display);font-size:clamp(24px,2.8vw,38px);
+      line-height:1.25;color:var(--black);font-weight:500}
+
+    /* ── MARCAS MARQUEE (banda negra) ──────────────── */
+    .brands{position:relative;z-index:1;background:var(--black);color:var(--milk);
+      padding:clamp(80px,12vh,130px) 0;overflow:hidden}
+    .brands-head{text-align:center;padding:0 5vw;margin-bottom:clamp(48px,7vh,80px)}
+    .brands-tag{display:inline-flex;align-items:center;gap:14px;font-size:11px;
+      letter-spacing:.32em;text-transform:uppercase;color:var(--light);font-weight:500;margin-bottom:22px;
+      opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}
+    .brands-tag::before{content:'';display:inline-block;width:28px;height:1px;background:currentColor}
+    .brands.vis .brands-tag{opacity:1;transform:none}
+    .brands-title{font-family:var(--ff-display);font-size:clamp(32px,4.5vw,64px);
+      line-height:1.1;color:var(--milk);letter-spacing:-0.01em;font-weight:500;
+      opacity:0;transform:translateY(20px);transition:opacity .85s ease .15s,transform .85s ease .15s}
+    .brands.vis .brands-title{opacity:1;transform:none}
+    .marquee{position:relative;overflow:hidden;
+      -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%);
+      mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%)}
+    .marquee + .marquee{margin-top:clamp(20px,3vh,36px)}
+    .marquee-track{display:flex;width:max-content;animation:marqueeL 48s linear infinite}
+    .marquee.reverse .marquee-track{animation:marqueeR 56s linear infinite}
+    @keyframes marqueeL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @keyframes marqueeR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+    .marquee-item{flex-shrink:0;padding:0 clamp(28px,4vw,56px);
+      font-family:var(--ff-display);font-size:clamp(22px,2.4vw,34px);font-weight:500;
+      color:var(--milk);letter-spacing:0.02em;opacity:.85;white-space:nowrap;line-height:1}
+    .marquee-item.divider{color:var(--light);opacity:.55;font-weight:300}
+
     @media(max-width:820px){
       .intro{min-height:52vh;padding-top:clamp(90px,13vh,130px)}
       .kw-sticky{padding:18vh 6vw 4vh}
@@ -163,6 +283,11 @@
       .kw-wol{-webkit-text-stroke-width:1.2px}
       .team-grid{grid-template-columns:repeat(2,1fr)}
       .slogan-line{font-size:clamp(24px,8vw,48px)}
+      .pillars{grid-template-columns:1fr;gap:48px}
+      .team-action-grid{grid-template-columns:1fr;grid-template-rows:1.4fr 1fr 1fr;height:auto;min-height:600px}
+      .photo-slot:first-child{grid-row:auto}
+      .voice-compare{gap:28px}
+      .marquee-item{font-size:clamp(20px,5vw,28px);padding:0 clamp(20px,5vw,36px)}
     }
   </style>
 </head>
@@ -231,23 +356,147 @@
   </div>
 </div>
 
-<!-- ABOUT -->
-<section class="about" id="aboutSection">
-  <h2 class="about-head" id="aboutHead">Nuestra historia</h2>
+<!-- MANIFESTO -->
+<section class="manifesto" id="manifestoSection">
+  <span class="manifesto-tag">Manifiesto</span>
+  <h2 class="manifesto-lead">Code Studio es una productora audiovisual que trabaja <span class="accent">desde la historia.</span></h2>
+  <p>No arrancamos por el formato ni por la estética. Arrancamos por lo que hay que contar, para quién y por qué importa. Después viene la cámara.</p>
+  <p>Trabajamos con marcas y artistas que entienden que una pieza audiovisual no es solo lo que se ve — es lo que queda.</p>
+</section>
 
-  <div class="acc" data-acc>
-    <div class="acc-q"><h3>¿Cómo empezó todo?</h3><div class="acc-icon"></div></div>
-    <div class="acc-a"><p>Somos CODE: cuatro amigos que una noche, entre risas, pizza y una cámara, se animaron a filmar su primer video. Lo que empezó como un juego en la facultad se convirtió en una forma de vivir: la cámara, la edición y el arte de contar historias nos atraparon —y no nos soltaron más.</p></div>
+<!-- 3 PILARES -->
+<section class="pillars" id="pillarsSection">
+  <div class="pillar">
+    <div class="pillar-num">01</div>
+    <div class="pillar-name">Historia</div>
+    <p class="pillar-text">Todo proyecto tiene algo que decir. Antes de filmar, entendemos qué es ese algo — cuál es la historia detrás de la marca, del artista, del momento. Ese es nuestro punto de partida.</p>
+  </div>
+  <div class="pillar">
+    <div class="pillar-num">02</div>
+    <div class="pillar-name">Estética</div>
+    <p class="pillar-text">La imagen no es decoración. Es el lenguaje con el que la historia se comunica. Cada decisión visual — el plano, la luz, el ritmo — está al servicio de lo que se quiere contar.</p>
+  </div>
+  <div class="pillar">
+    <div class="pillar-num">03</div>
+    <div class="pillar-name">Ejecución</div>
+    <p class="pillar-text">Una buena idea sin una buena producción no llega. Nos encargamos del proceso completo — concepto, rodaje y post — para que la historia llegue como tiene que llegar.</p>
+  </div>
+</section>
+
+<!-- EQUIPO EN ACCIÓN (photo placeholders) -->
+<section class="team-action" id="teamActionSection">
+  <p class="team-action-head">Equipo en acción</p>
+  <div class="team-action-grid">
+    <div class="photo-slot" data-photo="hero">
+      <svg viewBox="0 0 40 40"><rect x="6" y="11" width="28" height="22"/><circle cx="20" cy="22" r="6"/><rect x="15" y="7" width="10" height="4"/></svg>
+      <span class="photo-label">Foto principal — rodaje</span>
+      <span class="photo-hint">Sugerido: 1600 × 1200px (4:3)</span>
+    </div>
+    <div class="photo-slot" data-photo="bts1">
+      <svg viewBox="0 0 40 40"><rect x="6" y="11" width="28" height="22"/><circle cx="20" cy="22" r="6"/><rect x="15" y="7" width="10" height="4"/></svg>
+      <span class="photo-label">Behind the scenes</span>
+      <span class="photo-hint">1200 × 900px</span>
+    </div>
+    <div class="photo-slot" data-photo="bts2">
+      <svg viewBox="0 0 40 40"><rect x="6" y="11" width="28" height="22"/><circle cx="20" cy="22" r="6"/><rect x="15" y="7" width="10" height="4"/></svg>
+      <span class="photo-label">Locación / equipo</span>
+      <span class="photo-hint">1200 × 900px</span>
+    </div>
+  </div>
+</section>
+
+<!-- TONO DE MARCA -->
+<section class="voice" id="voiceSection">
+  <p class="voice-head">Tono de marca — Cómo habla Code</p>
+  <h2 class="voice-lead">Code Studio habla directo. Sin relleno, sin frases motivacionales, sin <em style="font-style:normal;color:var(--light);font-weight:600">"pasión", "creatividad" o "soluciones integrales".</em></h2>
+  <p class="voice-intro">Cuando escribe, dice algo concreto. No se explica de más. No convence — muestra. El tono es seguro sin ser arrogante. Cercano sin ser informal. Siempre hay una idea detrás de cada frase.</p>
+
+  <div class="voice-compare">
+    <div class="voice-row no">
+      <div class="voice-row-label">Lo que NO dice Code</div>
+      <p class="voice-quote">"Somos un equipo apasionado que lleva tu marca al siguiente nivel."</p>
+    </div>
+    <div class="voice-row yes">
+      <div class="voice-row-label">Lo que SÍ dice Code</div>
+      <p class="voice-quote">"Cada proyecto esconde una historia. Juntos la hacemos real."</p>
+    </div>
+  </div>
+</section>
+
+<!-- MARCAS MARQUEE -->
+<section class="brands" id="brandsSection">
+  <header class="brands-head">
+    <p class="brands-tag">Confiaron en nosotros</p>
+    <h2 class="brands-title">Marcas que ya están en cancha</h2>
+  </header>
+
+  <div class="marquee">
+    <div class="marquee-track">
+      <!-- Set 1 -->
+      <span class="marquee-item">Gobierno de Canelones</span>
+      <span class="marquee-item divider">/</span>
+      <span class="marquee-item">Mercado Libre</span>
+      <span class="marquee-item divider">/</span>
+      <span class="marquee-item">CIF</span>
+      <span class="marquee-item divider">/</span>
+      <span class="marquee-item">Sedal</span>
+      <span class="marquee-item divider">/</span>
+      <span class="marquee-item">Vans</span>
+      <span class="marquee-item divider">/</span>
+      <span class="marquee-item">Volvo</span>
+      <span class="marquee-item divider">/</span>
+      <span class="marquee-item">Itaú</span>
+      <span class="marquee-item divider">/</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="marquee-item">Gobierno de Canelones</span>
+      <span class="marquee-item divider">/</span>
+      <span class="marquee-item">Mercado Libre</span>
+      <span class="marquee-item divider">/</span>
+      <span class="marquee-item">CIF</span>
+      <span class="marquee-item divider">/</span>
+      <span class="marquee-item">Sedal</span>
+      <span class="marquee-item divider">/</span>
+      <span class="marquee-item">Vans</span>
+      <span class="marquee-item divider">/</span>
+      <span class="marquee-item">Volvo</span>
+      <span class="marquee-item divider">/</span>
+      <span class="marquee-item">Itaú</span>
+      <span class="marquee-item divider">/</span>
+    </div>
   </div>
 
-  <div class="acc" data-acc>
-    <div class="acc-q"><h3>¿Qué hacemos?</h3><div class="acc-icon"></div></div>
-    <div class="acc-a"><p>Hoy hacemos lo que amamos: cubrimos shows, viajamos, contamos momentos y transformamos vivencias en piezas con alma. Hemos tenido la suerte de estar en el centro de experiencias únicas y cada proyecto nos enseña algo nuevo.</p></div>
-  </div>
-
-  <div class="acc" data-acc>
-    <div class="acc-q"><h3>¿Quiénes somos?</h3><div class="acc-icon"></div></div>
-    <div class="acc-a"><p>CODE no es solo una productora: es una productora amiga. Trabajamos desde la cercanía y la confianza, con profesionalismo y un estilo propio. Creamos contenido pensado para conectar de verdad, desde el vínculo y en comunidad.</p></div>
+  <div class="marquee reverse">
+    <div class="marquee-track">
+      <span class="marquee-item">Monster Energy</span>
+      <span class="marquee-item divider">/</span>
+      <span class="marquee-item">Assist Card</span>
+      <span class="marquee-item divider">/</span>
+      <span class="marquee-item">Foton</span>
+      <span class="marquee-item divider">/</span>
+      <span class="marquee-item">College</span>
+      <span class="marquee-item divider">/</span>
+      <span class="marquee-item">Fito Páez</span>
+      <span class="marquee-item divider">/</span>
+      <span class="marquee-item">Familia Deicas</span>
+      <span class="marquee-item divider">/</span>
+      <span class="marquee-item">Britos Hnos</span>
+      <span class="marquee-item divider">/</span>
+      <!-- Duplicate -->
+      <span class="marquee-item">Monster Energy</span>
+      <span class="marquee-item divider">/</span>
+      <span class="marquee-item">Assist Card</span>
+      <span class="marquee-item divider">/</span>
+      <span class="marquee-item">Foton</span>
+      <span class="marquee-item divider">/</span>
+      <span class="marquee-item">College</span>
+      <span class="marquee-item divider">/</span>
+      <span class="marquee-item">Fito Páez</span>
+      <span class="marquee-item divider">/</span>
+      <span class="marquee-item">Familia Deicas</span>
+      <span class="marquee-item divider">/</span>
+      <span class="marquee-item">Britos Hnos</span>
+      <span class="marquee-item divider">/</span>
+    </div>
   </div>
 </section>
 
@@ -398,23 +647,6 @@ window.addEventListener('scroll',()=>{
   if(!ticking){ticking=true;requestAnimationFrame(()=>{updateKw();ticking=false})}
 },{passive:true});
 
-/* ── ACCORDION ──────────────────────────────────── */
-document.querySelectorAll('[data-acc]').forEach(acc=>{
-  const q=acc.querySelector('.acc-q');
-  const a=acc.querySelector('.acc-a');
-  q.addEventListener('click',()=>{
-    const isOpen=acc.classList.contains('open');
-    document.querySelectorAll('[data-acc].open').forEach(o=>{
-      o.classList.remove('open');
-      o.querySelector('.acc-a').style.maxHeight='0';
-    });
-    if(!isOpen){
-      acc.classList.add('open');
-      a.style.maxHeight=a.scrollHeight+'px';
-    }
-  });
-});
-
 /* ── INTERSECTION REVEALS ───────────────────────── */
 const revealObs=new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
@@ -423,18 +655,26 @@ const revealObs=new IntersectionObserver((entries)=>{
       revealObs.unobserve(e.target);
     }
   });
-},{threshold:0.2});
+},{threshold:0.18});
 
-const aboutHead=document.getElementById('aboutHead');
-if(aboutHead) revealObs.observe(aboutHead);
+// Secciones que se revelan completas (cada una con sus propios delays internos en CSS)
+[
+  'manifestoSection',
+  'pillarsSection',
+  'teamActionSection',
+  'voiceSection',
+  'brandsSection',
+  'sloganSection',
+  'teamSection'
+].forEach(id=>{
+  const el=document.getElementById(id);
+  if(el) revealObs.observe(el);
+});
 
-const sloganEl=document.getElementById('sloganSection');
-if(sloganEl) revealObs.observe(sloganEl);
-
+// Elementos individuales con stagger propio
 const teamHead=document.getElementById('teamHead');
 if(teamHead) revealObs.observe(teamHead);
-
-document.querySelectorAll('.team-card').forEach(c=>revealObs.observe(c));
+document.querySelectorAll('.team-card, .pillar').forEach(c=>revealObs.observe(c));
 
 })();
 </script>
