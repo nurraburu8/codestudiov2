@@ -278,6 +278,10 @@
       opacity: 1;
       padding-left: 0.5em;
     }
+    .work-title .word{
+      display: inline-block;
+      white-space: nowrap; /* nunca corta una palabra a la mitad */
+    }
     .work-title .char{
       display: inline-block;
       opacity: 0;
@@ -407,7 +411,7 @@
       }
 
       .bottom { bottom: 28px; padding: 0 20px; }
-      .work-title { font-size: clamp(38px, 11vw, 64px); margin-bottom: 16px; }
+      .work-title { font-size: clamp(28px, 8.8vw, 52px); margin-bottom: 16px; line-height: 0.95; }
       .work-title .type{ font-size: clamp(10px, 2.6vw, 12px); letter-spacing: 0.28em; margin-bottom: 1.2em; }
       .work-title .client { padding-left: 0.3em; }
       .progress-bar { margin-bottom: 14px; }
@@ -554,33 +558,37 @@
       let advanceTimer = null;
       let progressRAF  = null;
 
-      function setSpans(el, text) {
+      // Renderiza texto envolviendo cada palabra en .word (no-wrap interno)
+      // y cada caracter en .char (para la animación). Así el line-break sólo
+      // ocurre entre palabras, nunca a la mitad de una.
+      function setSpans(el, text, startOffset) {
         el.innerHTML = '';
-        let i = 0;
-        for (const ch of text) {
-          const s = document.createElement('span');
-          s.className = 'char';
-          s.innerHTML = ch === ' ' ? '&nbsp;' : ch;
-          s.style.animationDelay = (i * 28) + 'ms';
-          el.appendChild(s);
-          i++;
-        }
+        if (!text) return;
+        const words = String(text).split(' ');
+        let i = startOffset || 0;
+        words.forEach((word, wi) => {
+          const wordSpan = document.createElement('span');
+          wordSpan.className = 'word';
+          for (const ch of word) {
+            const s = document.createElement('span');
+            s.className = 'char';
+            s.textContent = ch;
+            s.style.animationDelay = (i * 28) + 'ms';
+            wordSpan.appendChild(s);
+            i++;
+          }
+          el.appendChild(wordSpan);
+          if (wi < words.length - 1) {
+            el.appendChild(document.createTextNode(' '));
+            i++;
+          }
+        });
       }
 
       function renderTitle(work, id) {
-        setSpans(titleType, work.type);
-        // small delay for client
-        titleClient.innerHTML = '';
-        let i = 0;
+        setSpans(titleType, work.type, 0);
         const offset = (work.type || '').length + 2;
-        for (const ch of (work.client || '')) {
-          const s = document.createElement('span');
-          s.className = 'char';
-          s.innerHTML = ch === ' ' ? '&nbsp;' : ch;
-          s.style.animationDelay = ((i + offset) * 28) + 'ms';
-          titleClient.appendChild(s);
-          i++;
-        }
+        setSpans(titleClient, work.client || '', offset);
         // Always use the explicit id from the slide's data-id (or work.id as fallback).
         // Avoids a fallback object that would produce work.html?id= (empty).
         const realId = id || work.id || '';
