@@ -376,9 +376,9 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="slideshow" id="slideshow">
+    <div class="slideshow" id="slideshow" style="cursor:pointer;" role="link" aria-label="Ver detalle del trabajo">
       <div class="slide active" data-id="fiesta-cerveza-26">
-        <video muted loop playsinline preload="auto"><source src="assets/video/trabajos/2026-05-15_23h11_32.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="auto"><source src="assets/video/trabajos/2026-05-15_23h13_02.mp4" type="video/mp4"></video>
       </div>
       <div class="slide" data-id="antel-fibra">
         <video muted loop playsinline preload="none"><source src="assets/video/trabajos/2026-05-15_23h11_32.mp4" type="video/mp4"></video>
@@ -420,7 +420,9 @@
           <button data-index="6">7</button>
           <button data-index="7">8</button>
         </div>
+        <!-- Botón "Ver detalle" comentado: el slideshow completo es clickeable.
         <a class="hero-cta" id="heroCta" href="#">Ver detalle <span>→</span></a>
+        -->
       </div>
     </div>
 
@@ -503,7 +505,7 @@
         const realId = id || work.id || '';
         const href = realId ? ('work.html?id=' + realId) : '#';
         titleLink.href = href;
-        heroCta.href  = href;
+        if (heroCta) heroCta.href = href;   // heroCta puede estar comentado
       }
 
       function animateProgress() {
@@ -576,6 +578,15 @@
       window.addEventListener('scroll', () => {
         homeHeader.classList.toggle('scrolled', window.scrollY > 50);
       }, { passive: true });
+
+      // ── Slideshow clickeable: cualquier clic sobre el video lleva al detail ──
+      const slideshow = document.getElementById('slideshow');
+      if (slideshow) {
+        slideshow.addEventListener('click', () => {
+          const href = titleLink && titleLink.getAttribute('href');
+          if (href && href !== '#') window.location.href = href;
+        });
+      }
 
       // ── LOGO INTRO (minimal fade in/out) ──
       const intro = document.getElementById('logoIntro');
