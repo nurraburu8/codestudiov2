@@ -42,9 +42,7 @@
     .kw-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;
       justify-content:center;padding:18vh 7vw 4vh}
     .kw-list{display:flex;flex-direction:column;gap:1vh}
-    .kw{opacity:0;will-change:transform,opacity}
-    /* kw0 y kw1 esperan a que termine el intro (~1.4s) — se revelan en sync. */
-    .kw.kw-peek-init{transition:opacity .9s ease 1.4s, transform .9s ease 1.4s}
+    .kw{opacity:0;transition:opacity .55s ease,transform .55s ease;will-change:transform,opacity}
     .kw:nth-child(odd){text-align:left}
     .kw:nth-child(even){text-align:right}
     .kw-t{font-family:var(--ff-display);font-size:clamp(38px,9vw,110px);line-height:.9;display:block;color:var(--black)}
@@ -555,6 +553,12 @@ const kwLogo=document.getElementById('kwLogo');
 const kwCta=document.getElementById('kwCta');
 const logoMark=document.getElementById('logoMark');
 let logoDanced=false;
+// Flag controlado por JS: kw0 y kw1 se quedan ocultas hasta que termine el
+// intro (~1.4s). Después, scroll-driven updates aplican normal.
+// Reemplaza al CSS transition-delay anterior que se reiniciaba con cada
+// scroll, dejando la 2da palabra colgada hasta que paraba el scroll.
+let revealReady=false;
+setTimeout(()=>{revealReady=true;updateKw();},1400);
 
 function easeOut(t){return 1-Math.pow(1-t,3)}
 function clamp01(v){return Math.max(0,Math.min(1,v))}
@@ -590,6 +594,13 @@ function updateKw(){
       ease=Math.max(ease,pre);
     } else if(i===1){
       ease=Math.max(ease,pre*0.32);
+    }
+
+    // Antes de que termine el intro, forzar kw0 y kw1 ocultas. El scroll
+    // sigue siendo válido (su target se actualiza), pero no se muestran
+    // visualmente hasta que el flag se enciende.
+    if(!revealReady && (i===0 || i===1)){
+      ease=0;
     }
 
     const isR=i%2===1;
@@ -630,14 +641,6 @@ function startDance(){
 
 function setKwH(){kwWrap.style.height=(window.innerHeight*1.5)+'px'}
 setKwH();
-
-// kw0 y kw1 esperan el mismo delay (1.4s) para revelarse en sync, después del intro.
-[kwItems[0], kwItems[1]].forEach(kw=>{
-  kw.classList.add('kw-peek-init');
-  kw.addEventListener('transitionend',()=>{
-    kw.classList.remove('kw-peek-init');
-  },{once:true});
-});
 updateKw();
 
 window.addEventListener('resize',()=>{setKwH();updateKw()});
