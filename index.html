@@ -19,123 +19,36 @@
       color: #fff;
     }
 
-    /* ── LOGO INTRO ── */
+    /* ── LOGO INTRO (minimal: fondo naranja + logo + fade) ── */
     .logo-intro{
       position: fixed;
       inset: 0;
       z-index: 9999;
-      background: #000;
+      background: var(--light);
       display: flex;
       align-items: center;
       justify-content: center;
       transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-                  transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
                   visibility 0s linear 0.7s;
     }
     .logo-intro.done{
       opacity: 0;
-      transform: scale(1.06);
       visibility: hidden;
-    }
-
-    .logo-intro .intro-stack{
-      position: relative;
-      display: inline-block;
     }
     .logo-intro .intro-logo{
       display: block;
       height: clamp(70px, 8vw, 130px);
       width: auto;
-      filter: brightness(0) invert(1);
-      position: relative;
-      z-index: 2;
-    }
-
-    /* Wipe — sub-wrapper con overflow:hidden para no clippear el twinkle. */
-    .logo-intro .intro-wipe-clip{
-      position: absolute;
-      top: -12%; bottom: -12%;
-      left: -4px; right: -4px;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 5;
-    }
-    .logo-intro .intro-wipe{
-      position: absolute;
-      inset: 0;
-      background: #000;
-      transform: translate3d(0, 0, 0);
-      will-change: transform, opacity;
-      backface-visibility: hidden;
-    }
-
-    /* Línea naranja en el borde de avance del wipe. Está en left:-2px del
-       wipe; cuando el wipe traslada, la línea viaja con él. */
-    .logo-intro .intro-wipe::before{
-      content: '';
-      position: absolute;
-      top: -4%; bottom: -4%;
-      left: -2px;
-      width: 2px;
-      background: linear-gradient(to bottom,
-        transparent 0%,
-        #FD7628 20%,
-        #fff 50%,
-        #FD7628 80%,
-        transparent 100%);
-      box-shadow:
-        2px 0 12px #FD7628,
-        2px 0 26px rgba(253,118,40, 0.6),
-        2px 0 60px rgba(236,27,7, 0.35);
-    }
-
-    .logo-intro.reveal .intro-wipe{
-      animation: introWipe 1.0s cubic-bezier(0.36, 0, 0.4, 1) forwards;
-    }
-    @keyframes introWipe{
-      0%   { transform: translate3d(0%, 0, 0); opacity: 1; }
-      88%  { transform: translate3d(96%, 0, 0); opacity: 1; }
-      100% { transform: translate3d(105%, 0, 0); opacity: 0; }
-    }
-
-    /* Radial flash on the logo when the wipe completes — the orange edge
-       "absorbs" into the logo as a brief burst. */
-    .logo-intro .intro-burst{
-      position: absolute;
-      top: 50%; left: 50%;
-      width: clamp(180px, 18vw, 320px);
-      height: clamp(180px, 18vw, 320px);
-      transform: translate(-50%, -50%) scale(0.4);
-      border-radius: 50%;
-      background: radial-gradient(circle,
-        rgba(253,117,43, 0.55) 0%,
-        rgba(236,27,7, 0.2) 40%,
-        transparent 70%);
-      mix-blend-mode: screen;
-      pointer-events: none;
+      filter: brightness(0) invert(1);          /* logo en milk/blanco sobre naranja */
       opacity: 0;
-      z-index: 3;
-      filter: blur(8px);
+      transform: scale(1.04);
+      will-change: opacity, transform;
     }
-    .logo-intro.reveal .intro-burst{
-      animation: introBurst 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.9s forwards;
+    .logo-intro.reveal .intro-logo{
+      animation: introLogoIn 0.95s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
-    @keyframes introBurst{
-      0%   { opacity: 0;    transform: translate(-50%, -50%) scale(0.4); }
-      35%  { opacity: 0.95; transform: translate(-50%, -50%) scale(1); }
-      100% { opacity: 0;    transform: translate(-50%, -50%) scale(1.6); }
-    }
-
-    /* Twinkle (idle pulse). Also runs during the intro so the logo never
-       looks "static" while the wipe travels. */
-    .logo-intro .intro-logo.twinkle{
-      animation: logoTwinkle 3s ease-in-out infinite;
-    }
-    @keyframes logoTwinkle{
-      0%, 100% { filter: brightness(0) invert(1)
-                   drop-shadow(0 0 4px rgba(253,118,40,0.4)); }
-      50%      { filter: brightness(0) invert(1)
-                   drop-shadow(0 0 13px rgba(253,118,40,0.75)); }
+    @keyframes introLogoIn{
+      to { opacity: 1; transform: scale(1); }
     }
 
     /* Hero starts hidden + slightly scaled so it crossfades in when the
@@ -429,13 +342,9 @@
 </head>
 <body class="intro-active">
 
-  <!-- Logo intro: translate3d wipe + scanner edge + final burst -->
+  <!-- Logo intro: minimalista — fondo naranja sólido + logo + fade -->
   <div class="logo-intro" id="logoIntro">
-    <div class="intro-stack">
-      <img class="intro-logo" id="introLogo" src="assets/img/logo.png" alt="Code Studio"/>
-      <div class="intro-wipe-clip"><div class="intro-wipe"></div></div>
-      <div class="intro-burst"></div>
-    </div>
+    <img class="intro-logo" id="introLogo" src="assets/img/logo.png" alt="Code Studio"/>
   </div>
 
   <!-- Header -->
@@ -668,7 +577,7 @@
         homeHeader.classList.toggle('scrolled', window.scrollY > 50);
       }, { passive: true });
 
-      // ── LOGO INTRO (translate3d wipe + scanner edge + burst) ──
+      // ── LOGO INTRO (minimal fade in/out) ──
       const intro = document.getElementById('logoIntro');
       const introLogo = document.getElementById('introLogo');
       const hero = document.querySelector('.hero');
@@ -677,20 +586,18 @@
       const finishIntro = () => {
         if (introDone) return;
         introDone = true;
-        // Hero starts crossfading IN at the same moment the intro starts fading OUT.
-        // Both transitions are 0.7-0.85s → no harsh cut between them.
+        // Hero crossfade in al mismo tiempo que el intro fade out.
         if (hero) hero.classList.add('ready');
         if (intro) intro.classList.add('done');
         document.body.classList.remove('intro-active');
         startSlideshow();
-        setTimeout(() => { if (intro && intro.parentNode) intro.parentNode.removeChild(intro); }, 900);
+        setTimeout(() => { if (intro && intro.parentNode) intro.parentNode.removeChild(intro); }, 800);
       };
 
       const triggerReveal = () => {
         if (intro) intro.classList.add('reveal');
-        // Wipe ends at ~1.0s, burst at ~1.6s. Hold briefly then fade out.
-        if (introLogo) setTimeout(() => introLogo.classList.add('twinkle'), 1050);
-        setTimeout(finishIntro, 2000);
+        // Logo fade-in: 0.95s → hold 0.4s → fade out (0.7s overlapping con hero).
+        setTimeout(finishIntro, 1450);
       };
 
       // Pre-warm the first slide's video so it has frames ready when the
