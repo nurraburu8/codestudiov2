@@ -1,0 +1,378 @@
+---
+/**
+ * Grid de trabajos. Filtra por categoría o muestra todos.
+ * Migrado desde legacy/js/gallery.js + legacy/css/gallery.css.
+ *
+ * Genera el HTML en build-time (sin JS necesario para mostrar la grid).
+ * El JS solo se usa para el efecto de tilt 3D en hover.
+ */
+import { getWorksByCategory, type WorkCategory } from '@/data/works';
+
+interface Props {
+  /** Filtro de categoría o "all" para mostrar todos */
+  filter?: WorkCategory | 'all';
+  /** Límite opcional de tarjetas */
+  limit?: number;
+  /** Selector del elemento donde escribir el contador (opcional) */
+  countTarget?: string;
+}
+
+const { filter = 'all', limit, countTarget } = Astro.props;
+
+const works = limit
+  ? getWorksByCategory(filter).slice(0, limit)
+  : getWorksByCategory(filter);
+
+const PALETTES = [
+  { bg: '#FD752B', fg: '#000000', accent: '#000000' },
+  { bg: '#EC1B07', fg: '#FBF9F5', accent: '#000000' },
+  { bg: '#FBF9F5', fg: '#000000', accent: '#EC1B07' },
+  { bg: '#000000', fg: '#FBF9F5', accent: '#FD752B' },
+  { bg: '#FD752B', fg: '#FBF9F5', accent: '#EC1B07' },
+  { bg: '#EC1B07', fg: '#000000', accent: '#FBF9F5' },
+  { bg: '#000000', fg: '#FD752B', accent: '#EC1B07' },
+  { bg: '#FBF9F5', fg: '#EC1B07', accent: '#000000' },
+];
+---
+
+<div
+  class="card-grid"
+  data-count={works.length}
+  data-count-target={countTarget}
+>
+  {
+    works.map((w, idx) => {
+      const num = String(idx + 1).padStart(2, '0');
+      const palette = PALETTES[idx % PALETTES.length]!;
+      return (
+        <a class="cd" href={`/work/${w.id}`}>
+          <div class="ci">
+            <div class="cm">
+              {w.cover ? (
+                <img src={w.cover} alt={w.client} loading="lazy" />
+              ) : (
+                <div
+                  class="cm-placeholder"
+                  style={`background:${palette.bg};color:${palette.fg};`}
+                >
+                  <span class="pl-type" style={`color:${palette.accent};`}>
+                    {w.type}
+                  </span>
+                  <span class="pl-client">{w.client}</span>
+                </div>
+              )}
+              <div class="cov" />
+              <span class="cnum">{num}</span>
+              <div class="cvw">VER</div>
+              <div class="cb tl">
+                <svg viewBox="0 0 40 40">
+                  <path d="M4 36 L4 12 C4 7.6 7.6 4 12 4 L36 4" />
+                </svg>
+              </div>
+              <div class="cb tr">
+                <svg viewBox="0 0 40 40">
+                  <path d="M4 36 L4 12 C4 7.6 7.6 4 12 4 L36 4" />
+                </svg>
+              </div>
+              <div class="cb br">
+                <svg viewBox="0 0 40 40">
+                  <path d="M4 36 L4 12 C4 7.6 7.6 4 12 4 L36 4" />
+                </svg>
+              </div>
+              <div class="cb bl">
+                <svg viewBox="0 0 40 40">
+                  <path d="M4 36 L4 12 C4 7.6 7.6 4 12 4 L36 4" />
+                </svg>
+              </div>
+            </div>
+            <div class="cinf">
+              <div>
+                <div class="ccat">{w.category}</div>
+                <h3 class="cnm">{w.client}</h3>
+              </div>
+              <span class="cyr">{w.year}</span>
+            </div>
+          </div>
+        </a>
+      );
+    })
+  }
+</div>
+
+<style>
+  .card-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2vw;
+    padding: 0 5vw 60px;
+    max-width: 1500px;
+    margin: 0 auto;
+    perspective: 1600px;
+  }
+
+  .cd {
+    display: block;
+    cursor: pointer;
+    transform-style: preserve-3d;
+  }
+
+  .ci {
+    position: relative;
+    border-radius: 8px;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition:
+      transform 0.6s var(--ease-out),
+      box-shadow 0.5s;
+  }
+
+  .cd.tilt-active .ci { transition: box-shadow 0.4s; }
+
+  .cd:hover .ci {
+    box-shadow:
+      0 0 0 2px var(--light),
+      0 24px 64px rgba(0, 0, 0, 0.75);
+  }
+
+  /* Corner brackets */
+  .cb {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 0.4s, transform 0.5s var(--ease-out);
+  }
+
+  .cb svg {
+    width: 100%;
+    height: 100%;
+    stroke: var(--milk);
+    stroke-width: 3;
+    fill: none;
+    stroke-linecap: round;
+  }
+
+  .cb.tl { top: 14px; left: 14px; }
+  .cb.tr { top: 14px; right: 14px; transform: rotate(90deg); }
+  .cb.br { bottom: 14px; right: 14px; transform: rotate(180deg); }
+  .cb.bl { bottom: 14px; left: 14px; transform: rotate(270deg); }
+
+  .cd:hover .cb { opacity: 0.7; }
+  .cd:hover .cb.tl { transform: translate(3px, 3px); }
+  .cd:hover .cb.tr { transform: rotate(90deg) translate(3px, 3px); }
+  .cd:hover .cb.br { transform: rotate(180deg) translate(3px, 3px); }
+  .cd:hover .cb.bl { transform: rotate(270deg) translate(3px, 3px); }
+
+  .cm {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cm video,
+  .cm img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+    transition: transform 0.7s var(--ease-out);
+  }
+
+  .cd:hover .cm video,
+  .cd:hover .cm img { transform: scale(1.04); }
+
+  .cm-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 26px 22px;
+    overflow: hidden;
+    transition: transform 0.7s var(--ease-out);
+  }
+
+  .cd:hover .cm-placeholder { transform: scale(1.04); }
+
+  .cm-placeholder .pl-type {
+    font-family: var(--ff-body);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cm-placeholder .pl-client {
+    font-family: var(--ff-display);
+    font-size: clamp(28px, 3vw, 44px);
+    letter-spacing: 0.02em;
+    line-height: 0.9;
+    text-align: left;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+    max-width: 100%;
+    align-self: flex-start;
+  }
+
+  .cov {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 2;
+  }
+
+  .cd:hover .cov { opacity: 1; }
+
+  .cnum {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    font-family: var(--ff-display);
+    font-size: clamp(40px, 3.6vw, 64px);
+    color: rgba(0, 0, 0, 0.18);
+    z-index: 3;
+    line-height: 1;
+  }
+
+  .cvw {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.7);
+    opacity: 0;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    border: 1.5px solid var(--light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--light);
+    background: transparent;
+    z-index: 6;
+    transition:
+      opacity 0.3s,
+      transform 0.4s var(--ease-out),
+      background 0.25s,
+      color 0.25s;
+  }
+
+  .cd:hover .cvw {
+    background: var(--light);
+    color: var(--black);
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .cinf {
+    padding: 16px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    background: var(--black);
+    border-radius: 0 0 8px 8px;
+    border-top: 2px solid var(--light);
+  }
+
+  .ccat {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 4px;
+  }
+
+  .cnm {
+    font-family: var(--ff-display);
+    font-size: clamp(17px, 1.6vw, 24px);
+    line-height: 1.05;
+    letter-spacing: 0.03em;
+    color: var(--milk);
+  }
+
+  .cyr {
+    font-size: 11px;
+    color: var(--milk);
+    opacity: 0.7;
+    font-weight: 500;
+  }
+
+  @media (max-width: 820px) {
+    .card-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 0 5vw 60px;
+    }
+  }
+</style>
+
+<script>
+  /**
+   * Efecto 3D tilt en hover (solo desktop con puntero fino).
+   */
+  const isFinePointer = () =>
+    window.matchMedia('(pointer: fine)').matches && window.innerWidth > 820;
+
+  document.querySelectorAll<HTMLElement>('.card-grid .cd').forEach((card) => {
+    const ci = card.querySelector<HTMLElement>('.ci');
+    if (!ci) return;
+
+    const MAX = 3;
+    let raf: number | null = null;
+    let tx = 0,
+      ty = 0,
+      cx = 0,
+      cy = 0;
+
+    function loop() {
+      cx += (tx - cx) * 0.16;
+      cy += (ty - cy) * 0.16;
+      ci!.style.transform = `rotateX(${cy.toFixed(2)}deg) rotateY(${cx.toFixed(2)}deg)`;
+      if (Math.abs(tx - cx) > 0.04 || Math.abs(ty - cy) > 0.04) {
+        raf = requestAnimationFrame(loop);
+      } else {
+        if (Math.abs(tx) < 0.04 && Math.abs(ty) < 0.04) ci!.style.transform = '';
+        raf = null;
+      }
+    }
+
+    card.addEventListener('mousemove', (e) => {
+      if (!isFinePointer()) return;
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;
+      const py = (e.clientY - r.top) / r.height;
+      tx = (px - 0.5) * MAX * 2;
+      ty = (py - 0.5) * -MAX * 2;
+      card.classList.add('tilt-active');
+      if (!raf) raf = requestAnimationFrame(loop);
+    });
+
+    card.addEventListener('mouseleave', () => {
+      tx = 0;
+      ty = 0;
+      card.classList.remove('tilt-active');
+      if (!raf) raf = requestAnimationFrame(loop);
+    });
+  });
+</script>

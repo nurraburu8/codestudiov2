@@ -20,6 +20,8 @@ interface Props {
   noindex?: boolean;
   /** Schema JSON-LD adicional (además del Organization) */
   jsonLd?: Record<string, unknown>;
+  /** Clase CSS extra para el <body> */
+  bodyClass?: string;
 }
 
 const {
@@ -30,6 +32,7 @@ const {
   ogType = 'website',
   noindex = false,
   jsonLd,
+  bodyClass = '',
 } = Astro.props;
 
 const canonicalURL = new URL(canonicalPath, Astro.site ?? SITE.url).toString();
@@ -100,7 +103,7 @@ const ogImageURL = ogImage.startsWith('http')
 
     <slot name="head" />
   </head>
-  <body>
+  <body class={bodyClass}>
     <slot />
   </body>
 </html>

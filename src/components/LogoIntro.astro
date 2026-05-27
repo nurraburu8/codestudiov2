@@ -1,0 +1,51 @@
+---
+/**
+ * Animación de intro: fondo naranja sólido + logo fade-in.
+ * Se muestra al cargar el index y desaparece luego de ~1.4s.
+ */
+---
+
+<div class="logo-intro" id="logoIntro">
+  <img class="intro-logo" id="introLogo" src="/logo.png" alt="Code Studio" />
+</div>
+
+<style>
+  .logo-intro {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      opacity 0.7s var(--ease-out),
+      visibility 0s linear 0.7s;
+  }
+
+  .logo-intro.done {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .intro-logo {
+    display: block;
+    height: clamp(70px, 8vw, 130px);
+    width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0;
+    transform: scale(1.04);
+    will-change: opacity, transform;
+  }
+
+  .logo-intro.reveal .intro-logo {
+    animation: introLogoIn 0.95s var(--ease-out) forwards;
+  }
+
+  @keyframes introLogoIn {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+</style>
