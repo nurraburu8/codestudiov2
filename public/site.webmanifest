@@ -1,0 +1,21 @@
+{
+  "name": "Code Studio",
+  "short_name": "CodeStudio",
+  "description": "Productora audiovisual uruguaya. Shows, marcas y eventos desde la historia.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#FD752B",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

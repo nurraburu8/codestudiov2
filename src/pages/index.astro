@@ -1,0 +1,133 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Footer from '@components/Footer.astro';
+import { PAGES_SEO, SITE } from '@/consts';
+
+const seo = PAGES_SEO.home;
+---
+
+<Layout title={seo.title} description={seo.description}>
+  <!-- TODO: migrar slideshow del hero desde legacy/index.html -->
+  <main class="placeholder">
+    <header class="placeholder-header">
+      <a href="/" class="logo">
+        <img src="/logo.png" alt={SITE.name} />
+      </a>
+      <nav class="placeholder-nav">
+        <a href="/shows">Shows & Fiestas</a>
+        <a href="/marcas">Marcas</a>
+        <a href="/eventos">Eventos</a>
+        <a href="/nosotros">Sobre nosotros</a>
+        <a href="/contacto">Contacto</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <p class="kicker">Productora audiovisual · Uruguay</p>
+      <h1>Code Studio</h1>
+      <p class="tagline">{SITE.tagline}</p>
+      <p class="status">
+        Migración en curso a Astro · Fase 1 completada<br />
+        <small>Setup base, SEO, Header/Footer y design tokens migrados desde legacy/.</small>
+      </p>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Placeholder temporal — se reemplaza en la Fase 2 con el hero real */
+  .placeholder {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .placeholder-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 5vw;
+  }
+
+  .placeholder-header .logo img {
+    height: clamp(32px, 4.5vw, 64px);
+    width: auto;
+    filter: brightness(0) invert(1);
+  }
+
+  .placeholder-nav {
+    display: flex;
+    gap: 32px;
+  }
+
+  .placeholder-nav a {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--milk);
+    transition: color 0.25s;
+  }
+
+  .placeholder-nav a:hover { color: var(--light); }
+
+  .hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 5vw;
+    background: linear-gradient(180deg, var(--black) 0%, #0a0a0a 100%);
+  }
+
+  .kicker {
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 32px;
+    font-weight: 500;
+  }
+
+  h1 {
+    font-family: var(--ff-display);
+    font-size: clamp(72px, 14vw, 200px);
+    font-weight: 500;
+    line-height: 0.88;
+    color: var(--milk);
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+  }
+
+  .tagline {
+    font-style: italic;
+    font-size: clamp(14px, 1.4vw, 18px);
+    color: var(--mute);
+    margin-bottom: 64px;
+  }
+
+  .status {
+    font-size: 13px;
+    color: var(--mute);
+    letter-spacing: 0.04em;
+    line-height: 1.8;
+  }
+
+  .status small {
+    font-size: 11px;
+    opacity: 0.7;
+  }
+
+  @media (max-width: 820px) {
+    .placeholder-nav { display: none; }
+  }
+</style>

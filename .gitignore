@@ -1,0 +1,40 @@
+# Astro
+dist/
+.astro/
+
+# Dependencias
+node_modules/
+
+# Env y secretos
+.env
+.env.local
+.env.production
+.env.development
+*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Build cache
+.cache/
+.turbo/
+
+# Cloudflare Pages
+.wrangler/
+
+# TypeScript
+*.tsbuildinfo

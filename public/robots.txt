@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://codestudio.com.uy/sitemap-index.xml
