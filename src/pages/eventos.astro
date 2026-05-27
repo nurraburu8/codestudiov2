@@ -1,0 +1,21 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+import PageHead from '@components/PageHead.astro';
+import Gallery from '@components/Gallery.astro';
+import { PAGES_SEO } from '@/consts';
+import { getWorksByCategory } from '@/data/works';
+
+const seo = PAGES_SEO.eventos;
+const works = getWorksByCategory('Eventos');
+---
+
+<Layout title={seo.title} description={seo.description}>
+  <Header current="/eventos" />
+  <main>
+    <PageHead title="Eventos" count={works.length} />
+    <Gallery filter="Eventos" />
+  </main>
+  <Footer />
+</Layout>

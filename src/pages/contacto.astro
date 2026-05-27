@@ -1,0 +1,453 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+import SocialIcons from '@components/SocialIcons.astro';
+import { PAGES_SEO, CONTACT } from '@/consts';
+
+const seo = PAGES_SEO.contacto;
+
+// Web3Forms access key viene de .env (PUBLIC_ → expuesta al cliente).
+// Si está vacía, el form hace fallback a mailto.
+const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? '';
+---
+
+<Layout title={seo.title} description={seo.description} bodyClass="contact-page">
+  <Header current="/contacto" light={true} />
+
+  <main>
+    <header class="cnt-head">
+      <p class="cnt-tag">Hablemos</p>
+      <h1 class="cnt-title">Contacto</h1>
+      <p class="cnt-sub">"Todo empieza con una idea y un mensaje."</p>
+    </header>
+
+    <form class="cnt-form" id="cntForm" novalidate>
+      {/* Honeypot anti-spam (campo invisible) */}
+      <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
+
+      <div class="field">
+        <label for="cnt-name">Nombre <span class="req">*</span></label>
+        <input
+          id="cnt-name"
+          type="text"
+          name="name"
+          placeholder="Tu nombre..."
+          required
+          autocomplete="name"
+          minlength="2"
+        />
+      </div>
+
+      <div class="field">
+        <label for="cnt-email">Email <span class="req">*</span></label>
+        <input
+          id="cnt-email"
+          type="email"
+          name="email"
+          placeholder="Tu email..."
+          required
+          autocomplete="email"
+        />
+      </div>
+
+      <div class="field">
+        <label for="cnt-msg">Mensaje <span class="req">*</span></label>
+        <textarea
+          id="cnt-msg"
+          name="message"
+          placeholder="Dejanos un mensaje..."
+          required
+          minlength="10"></textarea>
+      </div>
+
+      <button class="cnt-submit" type="submit">
+        <span class="label">Enviar</span>
+        <span class="arrow">→</span>
+      </button>
+
+      <p class="cnt-success" id="cntSuccess" role="status" aria-live="polite"></p>
+    </form>
+
+    <div class="socials-wrap">
+      <SocialIcons />
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style is:global>
+  /* La página contacto usa tema "milk" (fondo blanco) */
+  body.contact-page {
+    background: var(--milk);
+    color: var(--black);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  body.contact-page::after {
+    opacity: 0.012;
+  }
+
+  body.contact-page main {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 160px 5vw 80px;
+    width: 100%;
+  }
+
+  body.contact-page .site-footer {
+    margin-top: auto;
+  }
+
+  /* Social icons en la página contacto: color negro sobre fondo claro */
+  body.contact-page .socials-wrap {
+    margin-top: 84px;
+  }
+
+  body.contact-page .socials a {
+    color: var(--black);
+  }
+</style>
+
+<style>
+  /* Hero */
+  .cnt-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 64px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fi 0.8s ease 0.2s forwards;
+  }
+
+  .cnt-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-size: clamp(10px, 1vw, 12px);
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--light);
+    font-weight: 500;
+    margin-bottom: 22px;
+  }
+
+  .cnt-tag::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: currentColor;
+  }
+
+  .cnt-title {
+    font-family: var(--ff-display);
+    font-size: clamp(56px, 10vw, 128px);
+    line-height: 0.88;
+    margin-bottom: 26px;
+    color: var(--black);
+  }
+
+  .cnt-sub {
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(15px, 1.4vw, 20px);
+    color: var(--black);
+    opacity: 0.6;
+    letter-spacing: 0.02em;
+  }
+
+  @keyframes fi {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Form */
+  .cnt-form {
+    width: 100%;
+    max-width: 560px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fi 0.9s ease 0.5s forwards;
+  }
+
+  .hidden {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .field label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--black);
+    opacity: 0.7;
+    font-weight: 600;
+  }
+
+  .field label .req {
+    color: var(--power);
+    margin-left: 2px;
+  }
+
+  .field input,
+  .field textarea {
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--black);
+    background: transparent;
+    border: 1px solid var(--black);
+    border-radius: 0;
+    padding: 16px 18px;
+    outline: none;
+    transition: border-color 0.25s, background 0.25s;
+    width: 100%;
+    letter-spacing: 0.01em;
+  }
+
+  .field textarea {
+    min-height: 150px;
+    resize: vertical;
+    line-height: 1.55;
+  }
+
+  .field input::placeholder,
+  .field textarea::placeholder {
+    color: rgba(0, 0, 0, 0.35);
+    font-weight: 300;
+  }
+
+  .field input:hover,
+  .field textarea:hover {
+    border-color: var(--light);
+  }
+
+  .field input:focus,
+  .field textarea:focus {
+    border-color: var(--light);
+    background: rgba(253, 117, 43, 0.06);
+  }
+
+  /* CTA */
+  .cnt-submit {
+    position: relative;
+    z-index: 1;
+    align-self: flex-start;
+    margin-top: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    min-height: 52px;
+    box-sizing: border-box;
+    font-family: var(--ff-display);
+    font-size: clamp(14px, 1.2vw, 17px);
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--light);
+    padding: 0 32px;
+    line-height: 1;
+    border: 1.5px solid var(--light);
+    border-radius: 0;
+    background: transparent;
+    cursor: pointer;
+    transition:
+      background 0.3s,
+      color 0.3s,
+      gap 0.35s var(--ease-out);
+  }
+
+  .cnt-submit:hover {
+    background: var(--light);
+    color: var(--black);
+    gap: 18px;
+  }
+
+  .cnt-submit:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  .cnt-submit .arrow {
+    display: inline-block;
+    transition: transform 0.35s var(--ease-out);
+  }
+
+  .cnt-submit:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  .cnt-success {
+    margin-top: 18px;
+    font-size: 13px;
+    color: var(--power);
+    letter-spacing: 0.05em;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.4s, transform 0.4s;
+    min-height: 18px;
+  }
+
+  .cnt-success.show {
+    opacity: 1;
+    transform: none;
+  }
+
+  .cnt-success.ok {
+    color: #16a34a;
+  }
+
+  /* Social icons en contacto */
+  :global(body.contact-page .socials-wrap) {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fi 0.8s ease 0.8s forwards;
+  }
+
+  @media (max-width: 820px) {
+    .cnt-head {
+      margin-bottom: 48px;
+    }
+    .cnt-form {
+      gap: 22px;
+    }
+    .cnt-submit {
+      align-self: stretch;
+      text-align: center;
+    }
+  }
+</style>
+
+<script define:vars={{ web3formsKey, destEmail: CONTACT.email }}>
+  /**
+   * Submit del form de contacto.
+   * Estrategia: si hay access_key de Web3Forms, hace POST allá.
+   *             Si no, fallback a mailto (abre cliente de correo).
+   */
+  (function () {
+    const form = document.getElementById('cntForm');
+    if (!form) return;
+
+    const success = document.getElementById('cntSuccess');
+    const submitBtn = form.querySelector('.cnt-submit');
+    const labelEl = submitBtn.querySelector('.label');
+    const labelOriginal = labelEl.textContent;
+
+    function showMsg(text, isError) {
+      success.textContent = text;
+      success.classList.toggle('ok', !isError);
+      success.classList.add('show');
+      clearTimeout(showMsg._t);
+      showMsg._t = setTimeout(() => success.classList.remove('show'), 8000);
+    }
+
+    function buildMailtoUrl(name, email, msg) {
+      const subject = `Nuevo contacto desde la web — ${name}`;
+      const body =
+        `Hola Code Studio,\n\n` +
+        `Mi nombre es ${name} y quiero ponerme en contacto con ustedes.\n\n` +
+        `─── Datos ───\n` +
+        `Nombre:  ${name}\n` +
+        `Email:   ${email}\n\n` +
+        `─── Mensaje ───\n` +
+        `${msg}\n\n` +
+        `—\nEnviado desde codestudio.com.uy`;
+      return `mailto:${destEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Honeypot: si el bot marcó el checkbox, abortar silenciosamente
+      if (form.querySelector('[name="botcheck"]').checked) return;
+
+      const fields = ['cnt-name', 'cnt-email', 'cnt-msg'].map((id) => document.getElementById(id));
+      let ok = true;
+      fields.forEach((f) => {
+        const bad = !f.value.trim() || (f.type === 'email' && !/^\S+@\S+\.\S+$/.test(f.value));
+        f.style.borderColor = bad ? 'var(--power)' : '';
+        if (bad) ok = false;
+      });
+      if (!ok) {
+        showMsg('Revisá los campos requeridos.', true);
+        return;
+      }
+
+      const [nameEl, emailEl, msgEl] = fields;
+      const name = nameEl.value.trim();
+      const email = emailEl.value.trim();
+      const msg = msgEl.value.trim();
+
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.7';
+      labelEl.textContent = 'Enviando…';
+
+      // Caso 1: hay access key configurada → Web3Forms
+      if (web3formsKey) {
+        try {
+          const res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json',
+            },
+            body: JSON.stringify({
+              access_key: web3formsKey,
+              name,
+              email,
+              message: msg,
+              subject: `Nuevo contacto desde la web — ${name}`,
+              from_name: 'Code Studio Web',
+              replyto: email,
+              botcheck: '',
+            }),
+          });
+          const data = await res.json().catch(() => ({}));
+          if (!data.success) throw new Error(data.message || 'send_failed');
+          showMsg('¡Gracias! Recibimos tu mensaje y te respondemos a la brevedad.', false);
+          form.reset();
+        } catch (err) {
+          console.error('[contacto] Web3Forms error', err);
+          window.location.href = buildMailtoUrl(name, email, msg);
+          showMsg('Abrimos tu cliente de correo para terminar de enviar.', false);
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = '';
+          labelEl.textContent = labelOriginal;
+        }
+        return;
+      }
+
+      // Caso 2: sin access key → fallback directo a mailto
+      window.location.href = buildMailtoUrl(name, email, msg);
+      showMsg('Abrimos tu cliente de correo para terminar de enviar.', false);
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = '';
+      labelEl.textContent = labelOriginal;
+      form.reset();
+    });
+  })();
+</script>

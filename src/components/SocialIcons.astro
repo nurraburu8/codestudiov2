@@ -1,0 +1,80 @@
+---
+import { SOCIAL, CONTACT } from '@/consts';
+---
+
+<nav class="socials" aria-label="Redes sociales">
+  <a href={SOCIAL.linkedin} aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path
+        d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3v9zM6.5 8.25A1.75 1.75 0 1 1 8.3 6.5a1.78 1.78 0 0 1-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19a.66.66 0 0 0 0 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"
+      ></path>
+    </svg>
+  </a>
+  <a href={SOCIAL.instagram} aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+    </svg>
+  </a>
+  <a href={SOCIAL.vimeo} aria-label="Vimeo" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path
+        d="M22.875 6.353c-.09 1.964-1.471 4.655-4.142 8.073C15.974 18 13.628 19.751 11.7 19.751c-1.193 0-2.203-1.099-3.025-3.299L7.027 10.43c-.61-2.2-1.265-3.299-1.965-3.299-.153 0-.687.319-1.601.954L2.5 6.851c1.005-.879 1.998-1.759 2.974-2.642C6.815 3.039 7.819 2.422 8.487 2.36c1.575-.151 2.546.927 2.911 3.234.394 2.49.667 4.04.821 4.645.456 2.073.957 3.109 1.503 3.109.423 0 1.06-.668 1.91-2.003.847-1.335 1.302-2.349 1.362-3.046.121-1.149-.334-1.726-1.362-1.726-.485 0-.984.111-1.498.331.998-3.265 2.902-4.85 5.713-4.762 2.085.061 3.068 1.413 2.948 4.052z"
+      ></path>
+    </svg>
+  </a>
+  <a href={`mailto:${CONTACT.email}`} aria-label="Email">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></polyline>
+    </svg>
+  </a>
+</nav>
+
+<style>
+  .socials {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+  }
+
+  .socials a {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid currentColor;
+    background: transparent;
+    transition: background 0.25s, color 0.25s, transform 0.25s, border-color 0.25s;
+  }
+
+  .socials a:hover {
+    background: var(--light);
+    color: var(--black);
+    border-color: var(--light);
+    transform: translateY(-3px);
+  }
+
+  .socials svg {
+    width: 18px;
+    height: 18px;
+  }
+</style>
