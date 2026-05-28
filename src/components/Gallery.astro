@@ -1,27 +1,21 @@
 ---
 /**
  * Grid de trabajos. Filtra por categoría o muestra todos.
- * Migrado desde legacy/js/gallery.js + legacy/css/gallery.css.
- *
- * Genera el HTML en build-time (sin JS necesario para mostrar la grid).
- * El JS solo se usa para el efecto de tilt 3D en hover.
+ * Lee de Astro Content Collections (src/content/trabajos/*.md).
+ * Generada en build time (sin JS necesario para mostrar la grid).
+ * El JS sólo agrega el efecto 3D tilt en hover.
  */
-import { getWorksByCategory, type WorkCategory } from '@/data/works';
+import { getTrabajosByCategory, type TrabajoCategory } from '@lib/trabajos';
 
 interface Props {
-  /** Filtro de categoría o "all" para mostrar todos */
-  filter?: WorkCategory | 'all';
-  /** Límite opcional de tarjetas */
+  filter?: TrabajoCategory | 'all';
   limit?: number;
-  /** Selector del elemento donde escribir el contador (opcional) */
-  countTarget?: string;
 }
 
-const { filter = 'all', limit, countTarget } = Astro.props;
+const { filter = 'all', limit } = Astro.props;
 
-const works = limit
-  ? getWorksByCategory(filter).slice(0, limit)
-  : getWorksByCategory(filter);
+const allWorks = await getTrabajosByCategory(filter);
+const works = limit ? allWorks.slice(0, limit) : allWorks;
 
 const PALETTES = [
   { bg: '#FD752B', fg: '#000000', accent: '#000000' },
@@ -35,11 +29,7 @@ const PALETTES = [
 ];
 ---
 
-<div
-  class="card-grid"
-  data-count={works.length}
-  data-count-target={countTarget}
->
+<div class="card-grid">
   {
     works.map((w, idx) => {
       const num = String(idx + 1).padStart(2, '0');
@@ -48,17 +38,17 @@ const PALETTES = [
         <a class="cd" href={`/work/${w.id}`}>
           <div class="ci">
             <div class="cm">
-              {w.cover ? (
-                <img src={w.cover} alt={w.client} loading="lazy" />
+              {w.data.cover ? (
+                <img src={w.data.cover} alt={w.data.client} loading="lazy" />
               ) : (
                 <div
                   class="cm-placeholder"
                   style={`background:${palette.bg};color:${palette.fg};`}
                 >
                   <span class="pl-type" style={`color:${palette.accent};`}>
-                    {w.type}
+                    {w.data.type}
                   </span>
-                  <span class="pl-client">{w.client}</span>
+                  <span class="pl-client">{w.data.client}</span>
                 </div>
               )}
               <div class="cov" />
@@ -87,10 +77,10 @@ const PALETTES = [
             </div>
             <div class="cinf">
               <div>
-                <div class="ccat">{w.category}</div>
-                <h3 class="cnm">{w.client}</h3>
+                <div class="ccat">{w.data.category}</div>
+                <h3 class="cnm">{w.data.client}</h3>
               </div>
-              <span class="cyr">{w.year}</span>
+              <span class="cyr">{w.data.year}</span>
             </div>
           </div>
         </a>
@@ -136,7 +126,6 @@ const PALETTES = [
       0 24px 64px rgba(0, 0, 0, 0.75);
   }
 
-  /* Corner brackets */
   .cb {
     position: absolute;
     width: 20px;
@@ -328,9 +317,6 @@ const PALETTES = [
 </style>
 
 <script>
-  /**
-   * Efecto 3D tilt en hover (solo desktop con puntero fino).
-   */
   const isFinePointer = () =>
     window.matchMedia('(pointer: fine)').matches && window.innerWidth > 820;
 

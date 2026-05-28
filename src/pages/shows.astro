@@ -5,10 +5,10 @@ import Footer from '@components/Footer.astro';
 import PageHead from '@components/PageHead.astro';
 import Gallery from '@components/Gallery.astro';
 import { PAGES_SEO } from '@/consts';
-import { getWorksByCategory } from '@/data/works';
+import { getTrabajosByCategory } from '@lib/trabajos';
 
 const seo = PAGES_SEO.shows;
-const works = getWorksByCategory('Shows & Fiestas');
+const works = await getTrabajosByCategory('Shows & Fiestas');
 ---
 
 <Layout title={seo.title} description={seo.description}>

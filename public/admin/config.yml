@@ -1,0 +1,103 @@
+# ─────────────────────────────────────────────────────────────
+# Code Studio — Decap CMS configuration
+# Editor visual del contenido. Cada cambio se commitea al repo
+# y Cloudflare Pages re-deploya automaticamente.
+# Docs: https://decapcms.org/docs/
+# ─────────────────────────────────────────────────────────────
+
+# ── BACKEND ───────────────────────────────────────────────────
+# `github` directo: requiere registrar una OAuth App en GitHub
+# y desplegar un mini proxy (Cloudflare Worker o similar) que
+# resuelva el callback /auth/.
+#
+# Alternativa rapida: usar la backend `git-gateway` con Netlify
+# Identity (mas simple pero requiere cuenta en Netlify).
+#
+# PENDIENTE post-deploy:
+#   1. Crear OAuth App en GitHub Settings → Developer settings
+#   2. Desplegar worker proxy (ver README seccion "CMS")
+#   3. Reemplazar `<TU-WORKER>.workers.dev` aca abajo
+backend:
+  name: github
+  repo: ''  # ← rellenar con `usuario/codestudio` cuando se cree el repo en GitHub
+  branch: main
+  base_url: https://YOUR-WORKER.workers.dev  # ← URL del proxy OAuth
+  auth_endpoint: auth
+
+# Carpeta donde Decap sube imagenes que el cliente arrastre al editor.
+# Cloudinary mejora la performance pero por ahora se sirven desde public/uploads.
+media_folder: public/uploads
+public_folder: /uploads
+
+# UI en español
+locale: es
+
+# Editor de markdown enriquecido
+markdown_editor:
+  buttons:
+    - bold
+    - italic
+    - link
+    - heading-two
+    - heading-three
+    - quote
+    - bulleted-list
+    - numbered-list
+
+# ── COLLECTIONS ───────────────────────────────────────────────
+collections:
+  - name: trabajos
+    label: Trabajos
+    label_singular: Trabajo
+    folder: src/content/trabajos
+    create: true
+    delete: true
+    slug: '{{slug}}'
+    extension: md
+    format: yaml-frontmatter
+    summary: '{{client}} · {{year}} ({{category}})'
+    sortable_fields: [order, year, client]
+    view_filters:
+      - label: 'Solo Shows & Fiestas'
+        field: category
+        pattern: Shows & Fiestas
+      - label: 'Solo Marcas'
+        field: category
+        pattern: Marcas
+      - label: 'Solo Eventos'
+        field: category
+        pattern: Eventos
+      - label: 'Solo publicados'
+        field: publish
+        pattern: true
+    fields:
+      - { label: Cliente, name: client, widget: string, hint: 'Nombre del cliente en mayúsculas (ej: VANS × HARLEM)' }
+      - { label: Tipo, name: type, widget: select, options: ['AFTERMOVIE', 'COMERCIAL', 'VIDEOCLIP', 'DOCUMENTAL', 'EVENTO', 'GIRA', 'BRANDED CONTENT', 'OTRO'] }
+      - { label: Categoría, name: category, widget: select, options: ['Shows & Fiestas', 'Marcas', 'Eventos'], hint: 'Define en qué página aparece' }
+      - { label: Año, name: year, widget: number, value_type: int, min: 2000, max: 2100 }
+      - { label: Ubicación, name: location, widget: string, default: 'Montevideo, Uruguay' }
+      - { label: Video (URL o ruta /videos/...), name: video, widget: string, hint: 'Subí el video a Cloudinary y pegá la URL aquí. O usá /videos/archivo.mp4 si está en /public/videos/' }
+      - { label: Cover (opcional), name: cover, widget: image, required: false, hint: 'Imagen de portada. Si está vacío, se usa el placeholder de paleta automático.' }
+      - { label: Frase destacada, name: tagline, widget: string, hint: 'Frase corta (1 línea) que aparece en la página de detalle. Sin comillas.' }
+      - { label: Orden, name: order, widget: number, value_type: int, default: 99, hint: 'Menor número aparece primero. Usá 1, 2, 3... para los destacados.' }
+      - { label: Publicado, name: publish, widget: boolean, default: true, hint: 'Si está apagado, no se muestra ni se indexa en Google.' }
+
+      - label: Créditos
+        name: credits
+        widget: list
+        label_singular: Crédito
+        summary: '{{fields.role}} — {{fields.name}}'
+        fields:
+          - { label: Rol, name: role, widget: string }
+          - { label: Nombre, name: name, widget: string }
+
+      - label: Stats / Números
+        name: stats
+        widget: list
+        label_singular: Stat
+        summary: '{{fields.label}}: {{fields.value}}'
+        fields:
+          - { label: 'Etiqueta (ej: Asistentes)', name: label, widget: string }
+          - { label: 'Valor (ej: 80K+)', name: value, widget: string }
+
+      - { label: Descripción, name: body, widget: markdown, hint: 'Texto del proyecto. Separá párrafos con una línea en blanco. Soporta negritas, listas y links.' }

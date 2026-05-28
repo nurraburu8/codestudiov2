@@ -1,0 +1,32 @@
+# ────────────────────────────────────────────────────────────
+# Cloudflare Pages — Redirects
+# Mantiene SEO redirigiendo URLs viejas del sitio HTML.
+# Docs: https://developers.cloudflare.com/pages/configuration/redirects/
+# ────────────────────────────────────────────────────────────
+
+# ── Redirects de Adobe Portfolio → estructura nueva ──────────
+# Si Google ya indexó /inicio o /shows.html, redirigir limpio.
+/inicio              /                301
+/index.html          /                301
+/shows.html          /shows           301
+/marcas.html         /marcas          301
+/eventos.html        /eventos         301
+/nosotros.html       /nosotros        301
+/contacto.html       /contacto        301
+
+# ── Trabajos con query string viejo ──────────────────────────
+# /work.html?id=fiesta-cerveza-26 → /work/fiesta-cerveza-26
+# Cloudflare Pages no soporta capturas de query strings en _redirects,
+# así que esto se maneja con un script JS en el caso de que alguien
+# entre por el link viejo. (Bajo impacto: solo afecta links externos
+# que apunten al sitio viejo, ya que Google va a re-indexar las URLs
+# nuevas via el sitemap.xml).
+/work.html           /                301
+
+# ── www → apex (preferimos sin www) ──────────────────────────
+# Esto se configura en Cloudflare Dashboard → Rules → Bulk Redirects
+# en lugar de _redirects, porque _redirects solo opera dentro del mismo origen.
+
+# ── Trailing slash normalizado ───────────────────────────────
+# Astro genera /shows/index.html — Cloudflare Pages sirve tanto
+# /shows como /shows/ automáticamente. No necesitamos forzar nada.

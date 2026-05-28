@@ -1,38 +1,43 @@
 ---
 /**
  * Página dinámica de detalle por trabajo.
- * Genera una HTML estática por cada work en build time (mejor SEO que ?id=).
- * URL final: /work/<id>/
+ * Genera 1 HTML estático por cada trabajo de la colección.
+ * URL: /work/<slug>/
  */
+import { render } from 'astro:content';
 import Layout from '@layouts/Layout.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import Gallery from '@components/Gallery.astro';
-import { WORKS } from '@/data/works';
+import { getAllTrabajos } from '@lib/trabajos';
 import { SITE } from '@/consts';
 
-export function getStaticPaths() {
-  return WORKS.map((w) => ({
+export async function getStaticPaths() {
+  const trabajos = await getAllTrabajos();
+  return trabajos.map((w) => ({
     params: { id: w.id },
     props: { work: w },
   }));
 }
 
 const { work } = Astro.props;
-const otherWorks = WORKS.filter((w) => w.id !== work.id).slice(0, 3);
+const { Content } = await render(work);
 
-const pageTitle = `${work.client} — Code Studio`;
-const pageDescription = work.tagline || `${work.type} — ${work.client} por Code Studio.`;
+const pageTitle = `${work.data.client} — Code Studio`;
+const pageDescription = work.data.tagline || `${work.data.type} — ${work.data.client} por Code Studio.`;
 
-// VideoObject JSON-LD para que Google indexe el video como rich result
+const categorySlug =
+  work.data.category === 'Marcas' ? 'marcas' :
+  work.data.category === 'Eventos' ? 'eventos' : 'shows';
+
 const videoJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'VideoObject',
-  name: `${work.client} — ${work.type}`,
-  description: work.description.join(' '),
+  name: `${work.data.client} — ${work.data.type}`,
+  description: work.body ?? '',
   thumbnailUrl: `${SITE.url}/hero-poster.jpg`,
-  uploadDate: `${work.year}-01-01`,
-  contentUrl: `${SITE.url}${work.video}`,
+  uploadDate: `${work.data.year}-01-01`,
+  contentUrl: `${SITE.url}${work.data.video}`,
   publisher: {
     '@type': 'Organization',
     name: SITE.name,
@@ -50,70 +55,68 @@ const videoJsonLd = {
   <Header />
 
   <div class="back-bar">
-    <a href={`/${work.category === 'Marcas' ? 'marcas' : work.category === 'Eventos' ? 'eventos' : 'shows'}`}>
-      ← Volver a {work.category}
-    </a>
+    <a href={`/${categorySlug}`}>← Volver a {work.data.category}</a>
   </div>
 
   <section class="work-hero">
     <div class="work-meta">
-      <span class="work-cat">{work.category}</span>
-      <span class="work-year">{work.year}</span>
-      <span class="work-loc">{work.location}</span>
+      <span class="work-cat">{work.data.category}</span>
+      <span class="work-year">{work.data.year}</span>
+      <span class="work-loc">{work.data.location}</span>
     </div>
     <h1 class="work-title">
-      <span class="type">{work.type}</span>
-      <span class="client">{work.client}</span>
+      <span class="type">{work.data.type}</span>
+      <span class="client">{work.data.client}</span>
     </h1>
-    {work.tagline && <p class="work-tagline">"{work.tagline}"</p>}
+    {work.data.tagline && <p class="work-tagline">"{work.data.tagline}"</p>}
     <div class="video-wrap">
       <video controls preload="metadata" playsinline poster="/hero-poster.jpg">
-        <source src={work.video} type="video/mp4" />
+        <source src={work.data.video} type="video/mp4" />
       </video>
     </div>
   </section>
 
   <section class="work-body">
     <div class="work-desc">
-      {work.description.map((p) => <p>{p}</p>)}
+      <Content />
     </div>
 
     <aside class="sidebar">
-      <div class="stats">
-        {
-          work.stats.map((s) => (
-            <div class="stat-card">
-              <div class="v">{s.v}</div>
-              <div class="k">{s.k}</div>
-            </div>
-          ))
-        }
-      </div>
-
-      <div class="credits">
-        <h4>Créditos</h4>
-        <div class="credits-list">
-          {
-            Object.entries(work.credits).map(([k, v]) => (
-              <div class="credit-row">
-                <span class="k">{k}</span>
-                <span class="v">{v}</span>
+      {
+        work.data.stats.length > 0 && (
+          <div class="stats">
+            {work.data.stats.map((s) => (
+              <div class="stat-card">
+                <div class="v">{s.value}</div>
+                <div class="k">{s.label}</div>
               </div>
-            ))
-          }
-        </div>
-      </div>
+            ))}
+          </div>
+        )
+      }
+
+      {
+        work.data.credits.length > 0 && (
+          <div class="credits">
+            <h4>Créditos</h4>
+            <div class="credits-list">
+              {work.data.credits.map((c) => (
+                <div class="credit-row">
+                  <span class="k">{c.role}</span>
+                  <span class="v">{c.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )
+      }
     </aside>
   </section>
 
-  {
-    otherWorks.length > 0 && (
-      <section class="related">
-        <h2>Otros trabajos</h2>
-        <Gallery filter="all" limit={3} />
-      </section>
-    )
-  }
+  <section class="related">
+    <h2>Otros trabajos</h2>
+    <Gallery filter="all" limit={3} />
+  </section>
 
   <Footer />
 </Layout>
@@ -141,7 +144,6 @@ const videoJsonLd = {
 
   .back-bar a:hover { gap: 14px; }
 
-  /* HERO */
   .work-hero {
     position: relative;
     z-index: 1;
@@ -242,7 +244,6 @@ const videoJsonLd = {
     display: block;
   }
 
-  /* BODY */
   .work-body {
     position: relative;
     z-index: 1;
@@ -254,7 +255,7 @@ const videoJsonLd = {
     gap: clamp(40px, 6vw, 100px);
   }
 
-  .work-desc p {
+  .work-desc :global(p) {
     font-size: clamp(16px, 1.25vw, 19px);
     line-height: 1.65;
     color: var(--milk);
@@ -262,7 +263,7 @@ const videoJsonLd = {
     margin-bottom: 22px;
   }
 
-  .work-desc p:first-of-type::first-line {
+  .work-desc :global(p:first-of-type::first-line) {
     font-weight: 600;
     color: var(--light);
   }
@@ -349,7 +350,6 @@ const videoJsonLd = {
     font-weight: 500;
   }
 
-  /* RELATED */
   .related {
     position: relative;
     z-index: 1;

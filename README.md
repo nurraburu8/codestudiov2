@@ -110,9 +110,65 @@ Para activar Cloudflare Pages con dominio personalizado:
 
 ## Edición de contenido (para el cliente)
 
-> TODO: instrucciones de Decap CMS — se completan en Fase 4.
+El sitio usa **Astro Content Collections** para los trabajos. Cada trabajo es un archivo markdown en [src/content/trabajos/](src/content/trabajos/) con frontmatter validado contra el schema de [src/content.config.ts](src/content.config.ts).
 
-Acceso al panel: `https://codestudio.com.uy/admin`
+### Panel CMS visual (Decap)
+
+Una vez configurado el OAuth (ver más abajo), el cliente entra a:
+
+- **URL:** `https://codestudio.com.uy/admin`
+- **Login:** GitHub OAuth
+
+Desde ahí puede crear/editar/borrar trabajos, subir imágenes, sin tocar código. Cada cambio crea un commit en el repo y Cloudflare Pages re-deploya solo (1-2 min).
+
+### Setup pendiente del CMS (post-deploy)
+
+El panel necesita un OAuth provider para autenticarse contra GitHub. Pasos:
+
+1. **GitHub** → Settings → Developer settings → OAuth Apps → New OAuth App
+   - Homepage URL: `https://codestudio.com.uy`
+   - Authorization callback URL: `https://<TU-WORKER>.workers.dev/auth/callback`
+2. Desplegar un Cloudflare Worker como proxy OAuth (ver [decap-cms-cloudflare-pages-auth](https://github.com/i40west/netlify-cms-oauth) o similar).
+3. Editar [public/admin/config.yml](public/admin/config.yml):
+   - `repo`: `usuario/codestudio`
+   - `base_url`: URL del Worker
+
+---
+
+## Estructura de contenido
+
+```
+src/content/trabajos/
+├── fiesta-cerveza-26.md
+├── antel-fibra.md
+├── ntvg.md
+└── ...
+```
+
+Cada archivo tiene la forma:
+
+```yaml
+---
+client: NOMBRE CLIENTE
+type: AFTERMOVIE | COMERCIAL | VIDEOCLIP | ...
+category: Shows & Fiestas | Marcas | Eventos
+year: 2026
+location: Ciudad, País
+video: /videos/archivo.mp4
+cover: null  # o /uploads/cover.jpg
+tagline: Frase corta destacada
+order: 1     # menor = primero
+publish: true
+credits:
+  - { role: Dirección, name: Valentí Prieto }
+  - { role: Edición,   name: Mateo R. Murias }
+stats:
+  - { label: Asistentes, value: 80K+ }
+---
+
+Texto largo del proyecto en markdown.
+Separar párrafos con línea en blanco.
+```
 
 ---
 

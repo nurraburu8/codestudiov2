@@ -1,14 +1,16 @@
 ---
 /**
  * Hero slideshow del home.
- * Auto-avanza cada 7s, click sobre el video lleva al detalle del trabajo.
- * Animación tipo "char-in" sobre los títulos al cambiar de slide.
- *
- * Migrado desde legacy/index.html.
+ * Lee los trabajos desde la colección y los renderiza como slides.
  */
-import { WORKS } from '@/data/works';
+import { getAllTrabajos } from '@lib/trabajos';
 
-const slides = WORKS;
+const slides = await getAllTrabajos();
+const slideMeta = slides.map((w) => ({
+  id: w.id,
+  type: w.data.type,
+  client: w.data.client,
+}));
 ---
 
 <section class="hero">
@@ -29,7 +31,7 @@ const slides = WORKS;
             preload={i === 0 ? 'auto' : 'none'}
             poster={i === 0 ? '/hero-poster.jpg' : undefined}
           >
-            <source src={w.video} type="video/mp4" />
+            <source src={w.data.video} type="video/mp4" />
           </video>
         </div>
       ))
@@ -58,19 +60,7 @@ const slides = WORKS;
   </div>
 </section>
 
-<script
-  define:vars={{
-    worksData: slides.map((w) => ({
-      id: w.id,
-      type: w.type,
-      client: w.client,
-    })),
-  }}
->
-  /**
-   * Lógica del slideshow: avance automático, click-to-detail,
-   * y animación char-by-char en los títulos.
-   */
+<script define:vars={{ worksData: slideMeta }}>
   (function () {
     const SLIDE_DURATION = 7000;
 
@@ -189,14 +179,11 @@ const slides = WORKS;
       });
     }
 
-    // Pre-cargar primer video
     const firstVideo = slides[0].querySelector('video');
     if (firstVideo) {
       try { firstVideo.load(); } catch (e) {}
     }
 
-    // Esperar a que termine el intro antes de arrancar el slideshow.
-    // El LogoIntro emite 'codestudio:intro-done' cuando termina.
     function startSlideshow() {
       const id = slides[0].dataset.id;
       renderTitle(getWork(id));
@@ -212,7 +199,6 @@ const slides = WORKS;
 
     document.addEventListener('codestudio:intro-done', startSlideshow, { once: true });
 
-    // Fallback: si por alguna razón el intro no se monta, arrancar igual a los 2s
     setTimeout(() => {
       if (!progressRAF) startSlideshow();
     }, 2500);
@@ -336,17 +322,9 @@ const slides = WORKS;
   }
 
   @keyframes charIn {
-    0% {
-      opacity: 0;
-      transform: translateY(46px);
-      filter: blur(12px);
-    }
+    0% { opacity: 0; transform: translateY(46px); filter: blur(12px); }
     60% { filter: blur(0); }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-      filter: blur(0);
-    }
+    100% { opacity: 1; transform: translateY(0); filter: blur(0); }
   }
 
   .progress-bar {
@@ -401,45 +379,27 @@ const slides = WORKS;
   .slide-nav button:hover { opacity: 1; }
 
   @media (max-width: 820px) {
-    .bottom {
-      bottom: 28px;
-      padding: 0 20px;
-    }
-
+    .bottom { bottom: 28px; padding: 0 20px; }
     .work-title {
       font-size: clamp(28px, 8.8vw, 52px);
       margin-bottom: 16px;
       line-height: 0.95;
     }
-
     .work-title :global(.type) {
       font-size: clamp(10px, 2.6vw, 12px);
       letter-spacing: 0.28em;
       margin-bottom: 1.2em;
     }
-
     .work-title :global(.client) { padding-left: 0.3em; }
-
     .progress-bar { margin-bottom: 14px; }
-
-    .bottom-row {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 14px;
-    }
-
+    .bottom-row { flex-direction: column; align-items: flex-start; gap: 14px; }
     .slide-nav {
       gap: 22px;
       overflow-x: auto;
       scrollbar-width: none;
       width: 100%;
     }
-
     .slide-nav::-webkit-scrollbar { display: none; }
-
-    .slide-nav button {
-      font-size: 22px;
-      flex: 0 0 auto;
-    }
+    .slide-nav button { font-size: 22px; flex: 0 0 auto; }
   }
 </style>

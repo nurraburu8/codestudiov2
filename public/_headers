@@ -1,0 +1,53 @@
+# ────────────────────────────────────────────────────────────
+# Cloudflare Pages — Headers HTTP
+# Reglas de cache + seguridad por path.
+# Docs: https://developers.cloudflare.com/pages/configuration/headers/
+# ────────────────────────────────────────────────────────────
+
+# ── Assets versionados (Astro hashea los nombres) ─────────────
+# Cache eterno: cuando cambia el contenido, el filename cambia
+/_assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# ── Videos y poster en /public/videos ─────────────────────────
+# Cache largo pero re-validable (los nombres no cambian si se actualiza)
+/videos/*
+  Cache-Control: public, max-age=2592000, must-revalidate
+  Accept-Ranges: bytes
+
+# ── Imágenes en public/ ──────────────────────────────────────
+/logos/*
+  Cache-Control: public, max-age=2592000, must-revalidate
+
+# ── Favicon + manifest ────────────────────────────────────────
+/favicon.svg
+  Cache-Control: public, max-age=604800
+/favicon-32.png
+  Cache-Control: public, max-age=604800
+/apple-touch-icon.png
+  Cache-Control: public, max-age=604800
+/site.webmanifest
+  Cache-Control: public, max-age=604800
+  Content-Type: application/manifest+json
+
+# ── Robots y sitemap ──────────────────────────────────────────
+/robots.txt
+  Cache-Control: public, max-age=86400
+/sitemap-*.xml
+  Cache-Control: public, max-age=3600
+
+# ── Admin (Decap CMS): nunca cachear ──────────────────────────
+/admin/*
+  Cache-Control: no-store, must-revalidate
+  X-Robots-Tag: noindex, nofollow
+
+# ── Headers de seguridad globales ─────────────────────────────
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()

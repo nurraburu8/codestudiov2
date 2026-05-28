@@ -1,0 +1,6 @@
+# Cloudflare Pages — config (opcional, util para deploys via CLI)
+# Docs: https://developers.cloudflare.com/pages/functions/wrangler-configuration/
+
+name = "codestudio"
+compatibility_date = "2026-05-01"
+pages_build_output_dir = "dist"
