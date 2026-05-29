@@ -6,7 +6,9 @@
  * componentes hacen fallback a los assets locales en /public.
  */
 
-const CLOUD_NAME = import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME ?? '';
+// cloud_name es público (va en las URLs de delivery). Default al real;
+// se puede override con PUBLIC_CLOUDINARY_CLOUD_NAME si hiciera falta.
+const CLOUD_NAME = import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME || 'dvdrfqhpy';
 
 export const cloudinaryEnabled = Boolean(CLOUD_NAME);
 

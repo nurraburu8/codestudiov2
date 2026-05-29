@@ -3,13 +3,12 @@ import Layout from '@layouts/Layout.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import SocialIcons from '@components/SocialIcons.astro';
-import { PAGES_SEO, CONTACT } from '@/consts';
+import { PAGES_SEO, CONTACT, WEB3FORMS_ACCESS_KEY } from '@/consts';
 
 const seo = PAGES_SEO.contacto;
 
-// Web3Forms access key viene de .env (PUBLIC_ → expuesta al cliente).
-// Si está vacía, el form hace fallback a mailto.
-const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? '';
+// Web3Forms access key (público). Si estuviera vacía, el form hace fallback a mailto.
+const web3formsKey = WEB3FORMS_ACCESS_KEY;
 ---
 
 <Layout title={seo.title} description={seo.description} bodyClass="contact-page">

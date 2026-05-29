@@ -3,10 +3,27 @@
  * Centralizar acá toda info que se repite (SEO, redes, contacto).
  */
 
+/**
+ * URL canónica del sitio.
+ *   - PREVIEW (ahora): default a la URL temporal del Worker.
+ *   - PRODUCCIÓN: al lanzar, cambiar este default a 'https://codestudio.com.uy'
+ *     (o setear PUBLIC_SITE_URL si la plataforma lo permite).
+ * El Layout pone noindex automático mientras el host sea workers.dev/pages.dev.
+ */
+export const SITE_URL =
+  import.meta.env.PUBLIC_SITE_URL || 'https://codestudiov2.urraburunicolas.workers.dev';
+
+/**
+ * Web3Forms access key (público: va en el frontend del form).
+ * Default al real; override con PUBLIC_WEB3FORMS_ACCESS_KEY si hiciera falta.
+ */
+export const WEB3FORMS_ACCESS_KEY =
+  import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || '40797790-1f95-43df-8f99-20af221163be';
+
 export const SITE = {
   name: 'Code Studio',
   shortName: 'CodeStudio',
-  url: 'https://codestudio.com.uy',
+  url: SITE_URL,
   defaultLocale: 'es_UY',
   tagline: 'For those who create endlessly',
   description:
