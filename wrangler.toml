@@ -6,5 +6,9 @@ compatibility_date = "2026-05-01"
 
 [assets]
 directory = "./dist"
+# URLs sin trailing slash (coincide con trailingSlash:'never' de Astro):
+#   /shows  → sirve /shows/index.html directo (sin redirect 307)
+#   /shows/ → redirige a /shows
+html_handling = "drop-trailing-slash"
 # Sirve /404.html para rutas no encontradas (nuestra 404 con branding)
 not_found_handling = "404-page"

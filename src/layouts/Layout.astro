@@ -45,7 +45,9 @@ const ogImageURL = ogImage.startsWith('http')
 // para que Google no indexe el preview. Al setear PUBLIC_SITE_URL al dominio
 // final, la indexación se activa sola.
 const isTemporaryHost =
-  base.hostname.endsWith('pages.dev') || base.hostname === 'localhost';
+  base.hostname.endsWith('pages.dev') ||
+  base.hostname.endsWith('workers.dev') ||
+  base.hostname === 'localhost';
 const shouldNoindex = noindex || isTemporaryHost;
 
 const orgSchema = buildOrganizationSchema(base.origin);
