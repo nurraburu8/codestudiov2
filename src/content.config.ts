@@ -14,8 +14,10 @@ const trabajos = defineCollection({
     category: z.enum(['Shows & Fiestas', 'Marcas', 'Eventos']),
     year: z.number().int().min(2000).max(2100),
     location: z.string(),
-    /** Path absoluto desde public/ (ej: "/videos/foo.mp4") o URL Cloudinary */
+    /** Path absoluto desde public/ (ej: "/videos/foo.mp4"). Fallback si no hay cloudinaryId */
     video: z.string(),
+    /** Public ID del video en Cloudinary (ej: "codestudio/fiesta-cerveza"). Si está, se usa delivery optimizado */
+    cloudinaryId: z.string().optional().nullable(),
     /** Imagen cover opcional. Si está vacío, se usa el placeholder de paleta */
     cover: z.string().optional().nullable(),
     /** Frase corta destacada (aparece en la página de detalle) */

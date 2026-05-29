@@ -3,13 +3,16 @@
  * Hero slideshow del home.
  * Lee los trabajos desde la colección y los renderiza como slides.
  */
-import { getAllTrabajos } from '@lib/trabajos';
+import { getAllTrabajos, resolveVideo } from '@lib/trabajos';
 
-const slides = await getAllTrabajos();
-const slideMeta = slides.map((w) => ({
-  id: w.id,
-  type: w.data.type,
-  client: w.data.client,
+const slides = (await getAllTrabajos()).map((w) => ({
+  entry: w,
+  ...resolveVideo(w.data),
+}));
+const slideMeta = slides.map((s) => ({
+  id: s.entry.id,
+  type: s.entry.data.type,
+  client: s.entry.data.client,
 }));
 ---
 
@@ -22,16 +25,16 @@ const slideMeta = slides.map((w) => ({
     tabindex="0"
   >
     {
-      slides.map((w, i) => (
-        <div class={`slide ${i === 0 ? 'active' : ''}`} data-id={w.id}>
+      slides.map((s, i) => (
+        <div class={`slide ${i === 0 ? 'active' : ''}`} data-id={s.entry.id}>
           <video
             muted
             loop
             playsinline
             preload={i === 0 ? 'auto' : 'none'}
-            poster={i === 0 ? '/hero-poster.jpg' : undefined}
+            poster={i === 0 ? s.poster : undefined}
           >
-            <source src={w.data.video} type="video/mp4" />
+            <source src={s.src} type="video/mp4" />
           </video>
         </div>
       ))

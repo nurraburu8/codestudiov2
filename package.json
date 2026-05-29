@@ -10,7 +10,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
-    "gen:assets": "node scripts/gen-assets.mjs"
+    "gen:assets": "node scripts/gen-assets.mjs",
+    "upload:cloudinary": "node scripts/upload-cloudinary.mjs"
   },
   "dependencies": {
     "astro": "^5.0.0",
@@ -19,6 +20,7 @@
     "typescript": "^5.6.0"
   },
   "devDependencies": {
+    "cloudinary": "^2.5.0",
     "sharp": "^0.34.0"
   }
 }
