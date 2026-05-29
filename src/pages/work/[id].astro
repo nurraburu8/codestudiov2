@@ -12,6 +12,8 @@ import Gallery from '@components/Gallery.astro';
 import { getAllTrabajos, resolveVideo } from '@lib/trabajos';
 import { SITE } from '@/consts';
 
+const base = (Astro.site ?? new URL(SITE.url)).origin;
+
 export async function getStaticPaths() {
   const trabajos = await getAllTrabajos();
   return trabajos.map((w) => ({
@@ -36,13 +38,13 @@ const videoJsonLd = {
   '@type': 'VideoObject',
   name: `${work.data.client} — ${work.data.type}`,
   description: work.body ?? '',
-  thumbnailUrl: `${SITE.url}/hero-poster.jpg`,
+  thumbnailUrl: video.poster.startsWith('http') ? video.poster : `${base}${video.poster}`,
   uploadDate: `${work.data.year}-01-01`,
-  contentUrl: `${SITE.url}${work.data.video}`,
+  contentUrl: video.src.startsWith('http') ? video.src : `${base}${work.data.video}`,
   publisher: {
     '@type': 'Organization',
     name: SITE.name,
-    logo: `${SITE.url}/logo.png`,
+    logo: `${base}/logo.png`,
   },
 };
 ---

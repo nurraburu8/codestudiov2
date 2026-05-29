@@ -80,20 +80,24 @@ export type PageKey = keyof typeof PAGES_SEO;
 
 /**
  * Schema.org Organization — JSON-LD que Google usa para rich results.
- * Se incrusta una vez en el Layout base.
+ * Se construye con la URL base real (puede ser .pages.dev en preview
+ * o el dominio final en producción).
  */
-export const ORGANIZATION_SCHEMA = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: SITE.name,
-  alternateName: SITE.shortName,
-  url: SITE.url,
-  logo: `${SITE.url}/logo.png`,
-  description: SITE.description,
-  email: CONTACT.email,
-  address: {
-    '@type': 'PostalAddress',
-    addressCountry: 'UY',
-  },
-  sameAs: [SOCIAL.instagram, SOCIAL.linkedin, SOCIAL.vimeo],
-} as const;
+export function buildOrganizationSchema(baseUrl: string) {
+  const url = baseUrl.replace(/\/$/, '');
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: SITE.name,
+    alternateName: SITE.shortName,
+    url,
+    logo: `${url}/logo.png`,
+    description: SITE.description,
+    email: CONTACT.email,
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: 'UY',
+    },
+    sameAs: [SOCIAL.instagram, SOCIAL.linkedin, SOCIAL.vimeo],
+  };
+}

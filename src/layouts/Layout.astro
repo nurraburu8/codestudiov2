@@ -4,7 +4,7 @@
  * Centraliza meta tags SEO, Open Graph, Twitter Cards, JSON-LD,
  * preconnect a fuentes, favicon y estilos globales.
  */
-import { SITE, ORGANIZATION_SCHEMA, DEFAULT_OG_IMAGE } from '@/consts';
+import { SITE, buildOrganizationSchema, DEFAULT_OG_IMAGE } from '@/consts';
 import '@styles/global.css';
 
 interface Props {
@@ -35,10 +35,20 @@ const {
   bodyClass = '',
 } = Astro.props;
 
-const canonicalURL = new URL(canonicalPath, Astro.site ?? SITE.url).toString();
+const base = Astro.site ?? new URL(SITE.url);
+const canonicalURL = new URL(canonicalPath, base).toString();
 const ogImageURL = ogImage.startsWith('http')
   ? ogImage
-  : new URL(ogImage, Astro.site ?? SITE.url).toString();
+  : new URL(ogImage, base).toString();
+
+// Auto-noindex mientras el sitio esté en una URL temporal (.pages.dev) o local,
+// para que Google no indexe el preview. Al setear PUBLIC_SITE_URL al dominio
+// final, la indexación se activa sola.
+const isTemporaryHost =
+  base.hostname.endsWith('pages.dev') || base.hostname === 'localhost';
+const shouldNoindex = noindex || isTemporaryHost;
+
+const orgSchema = buildOrganizationSchema(base.origin);
 ---
 
 <!doctype html>
@@ -53,7 +63,7 @@ const ogImageURL = ogImage.startsWith('http')
     <meta name="title" content={title} />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {shouldNoindex && <meta name="robots" content="noindex, nofollow" />}
 
     <!-- ── Open Graph / Facebook / WhatsApp ───────── -->
     <meta property="og:type" content={ogType} />
@@ -92,7 +102,7 @@ const ogImageURL = ogImage.startsWith('http')
     <script
       type="application/ld+json"
       is:inline
-      set:html={JSON.stringify(ORGANIZATION_SCHEMA)}
+      set:html={JSON.stringify(orgSchema)}
     />
 
     {
