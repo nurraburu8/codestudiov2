@@ -5,6 +5,7 @@ category: Shows & Fiestas
 year: 2026
 location: Paysandú, Uruguay
 video: /videos/2026-05-15_23h13_02.mp4
+cloudinaryId: codestudio/2026-05-15_23h13_02
 cover: null
 tagline: Cuatro días, una ciudad entera bailando.
 order: 1

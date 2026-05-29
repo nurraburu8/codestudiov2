@@ -5,6 +5,7 @@ category: Shows & Fiestas
 year: 2025
 location: Teatro de Verano, Montevideo
 video: /videos/2026-05-15_23h12_29.mp4
+cloudinaryId: codestudio/2026-05-15_23h12_29
 cover: null
 tagline: Cuando una banda de rock toca con orquesta.
 order: 7

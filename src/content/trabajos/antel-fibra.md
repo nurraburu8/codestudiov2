@@ -5,6 +5,7 @@ category: Marcas
 year: 2026
 location: Montevideo, Uruguay
 video: /videos/2026-05-15_23h11_32.mp4
+cloudinaryId: codestudio/2026-05-15_23h11_32
 cover: null
 tagline: Conectar como un acto cotidiano, no como una promesa.
 order: 2

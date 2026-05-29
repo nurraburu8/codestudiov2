@@ -5,6 +5,7 @@ category: Shows & Fiestas
 year: 2026
 location: Montevideo, Uruguay
 video: /videos/2026-05-15_23h12_29.mp4
+cloudinaryId: codestudio/2026-05-15_23h12_29
 cover: null
 tagline: Un videoclip que es, en realidad, un cortometraje.
 order: 3

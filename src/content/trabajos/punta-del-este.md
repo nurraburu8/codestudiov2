@@ -5,6 +5,7 @@ category: Eventos
 year: 2026
 location: Punta del Este, Uruguay
 video: /videos/2026-05-15_23h13_02.mp4
+cloudinaryId: codestudio/2026-05-15_23h13_02
 cover: null
 tagline: La postal cuando se van los turistas.
 order: 4

@@ -5,6 +5,7 @@ category: Shows & Fiestas
 year: 2025
 location: Uruguay & Argentina
 video: /videos/2026-05-15_23h11_32.mp4
+cloudinaryId: codestudio/2026-05-15_23h11_32
 cover: null
 tagline: Seguir a una leyenda durante nueve fechas.
 order: 6

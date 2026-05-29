@@ -5,6 +5,7 @@ category: Eventos
 year: 2024
 location: Galpón W, Montevideo
 video: /videos/2026-05-15_23h13_02.mp4
+cloudinaryId: codestudio/2026-05-15_23h13_02
 cover: null
 tagline: La noche que no termina hasta que sale el sol.
 order: 8

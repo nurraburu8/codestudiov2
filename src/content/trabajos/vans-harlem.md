@@ -5,6 +5,7 @@ category: Marcas
 year: 2025
 location: Montevideo, Uruguay
 video: /videos/2026-05-15_23h12_29.mp4
+cloudinaryId: codestudio/2026-05-15_23h12_29
 cover: null
 tagline: Skate, música y barrio en un mismo plano.
 order: 5
