@@ -22,6 +22,9 @@
 /logos/*
   Cache-Control: public, max-age=2592000, must-revalidate
 
+/og/*
+  Cache-Control: public, max-age=2592000, must-revalidate
+
 # ── Favicon + manifest ────────────────────────────────────────
 /favicon.svg
   Cache-Control: public, max-age=604800
