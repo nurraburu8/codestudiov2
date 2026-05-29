@@ -1,6 +1,10 @@
-# Cloudflare Pages — config (opcional, util para deploys via CLI)
-# Docs: https://developers.cloudflare.com/pages/functions/wrangler-configuration/
-
-name = "codestudio"
+# Cloudflare Workers — sitio estático (Astro output: static)
+# El sitio se sirve via el binding de static assets desde ./dist.
+# Docs: https://developers.cloudflare.com/workers/static-assets/
+name = "codestudiov2"
 compatibility_date = "2026-05-01"
-pages_build_output_dir = "dist"
+
+[assets]
+directory = "./dist"
+# Sirve /404.html para rutas no encontradas (nuestra 404 con branding)
+not_found_handling = "404-page"
