@@ -63,16 +63,12 @@ const links = [
     justify-content: space-between;
     align-items: center;
     padding: 18px 5vw;
-    transition:
-      transform 0.45s var(--ease-out),
-      background 0.35s ease,
-      backdrop-filter 0.35s ease;
+    background: var(--black);
+    transition: transform 0.45s var(--ease-out);
   }
 
-  .nav.scrolled {
-    background: var(--black);
-    border-bottom: 1px solid var(--light);
-  }
+  /* .scrolled mantiene los mismos estilos que el default — ya está negro. */
+  .nav.scrolled { background: var(--black); }
 
   .nav.hide { transform: translateY(-100%); }
 
@@ -117,17 +113,6 @@ const links = [
   .nav-l a.act { opacity: 1; color: var(--light); }
   .nav-l a.act::after { width: 100%; }
 
-  /* ── Tema claro (páginas milk) ──────────────────────── */
-  .nav-light .nav-b img { filter: brightness(0); }
-  .nav-light .nav-l a { color: var(--black); opacity: 0.7; }
-  .nav-light .nav-l a:hover,
-  .nav-light .nav-l a.act { color: var(--light); opacity: 1; }
-  .nav-light.scrolled {
-    background: var(--milk);
-    border-bottom: 1px solid var(--black);
-  }
-  .nav-light .ham span { background: var(--black); }
-
   /* ── Hamburger ──────────────────────────────────────── */
   .ham {
     display: none;
@@ -142,7 +127,7 @@ const links = [
     display: block;
     width: 22px;
     height: 1.5px;
-    background: var(--tx);
+    background: var(--milk);
     transition: transform 0.3s, opacity 0.3s;
   }
 

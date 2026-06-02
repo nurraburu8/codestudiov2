@@ -164,9 +164,7 @@ const videoJsonLd = {
   }
 
   .work-cat {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
+    display: inline-block;
     font-size: 10px;
     letter-spacing: 0.32em;
     text-transform: uppercase;
@@ -174,17 +172,9 @@ const videoJsonLd = {
     font-weight: 500;
   }
 
-  .work-cat::before {
-    content: '';
-    display: inline-block;
-    width: 24px;
-    height: 1px;
-    background: currentColor;
-  }
-
   .work-year {
     font-size: 11px;
-    color: var(--milk);
+    color: var(--black);
     letter-spacing: 0.18em;
     text-transform: uppercase;
     font-weight: 500;
@@ -192,8 +182,8 @@ const videoJsonLd = {
 
   .work-loc {
     font-size: 11px;
-    color: var(--milk);
-    opacity: 0.7;
+    color: var(--black);
+    opacity: 0.55;
     letter-spacing: 0.18em;
     text-transform: uppercase;
   }
@@ -204,7 +194,7 @@ const videoJsonLd = {
     line-height: 0.88;
     letter-spacing: 0.01em;
     margin-bottom: 6px;
-    color: var(--milk);
+    color: var(--black);
   }
 
   .work-title .type {
@@ -226,7 +216,7 @@ const videoJsonLd = {
     font-style: italic;
     font-weight: 300;
     font-size: clamp(16px, 1.6vw, 22px);
-    color: rgba(235, 235, 235, 0.55);
+    color: rgba(0, 0, 0, 0.55);
     max-width: 760px;
     margin: 18px 0 48px;
     line-height: 1.4;
@@ -237,7 +227,7 @@ const videoJsonLd = {
     aspect-ratio: 16 / 9;
     overflow: hidden;
     background: var(--black);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.15);
   }
 
   .video-wrap video {
@@ -261,7 +251,8 @@ const videoJsonLd = {
   .work-desc :global(p) {
     font-size: clamp(16px, 1.25vw, 19px);
     line-height: 1.65;
-    color: var(--milk);
+    color: var(--black);
+    opacity: 0.78;
     letter-spacing: 0.005em;
     margin-bottom: 22px;
   }
@@ -279,9 +270,7 @@ const videoJsonLd = {
 
   .sidebar h4 {
     font-family: var(--ff-body);
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
+    display: inline-block;
     align-self: flex-start;
     font-size: 10px;
     letter-spacing: 0.3em;
@@ -289,14 +278,6 @@ const videoJsonLd = {
     color: var(--light);
     font-weight: 500;
     margin-bottom: 18px;
-  }
-
-  .sidebar h4::before {
-    content: '';
-    display: inline-block;
-    width: 24px;
-    height: 1px;
-    background: currentColor;
   }
 
   .credit-row {
@@ -318,7 +299,7 @@ const videoJsonLd = {
 
   .credit-row .v {
     font-size: 13px;
-    color: var(--milk);
+    color: var(--black);
     text-align: right;
     font-weight: 500;
   }
@@ -331,7 +312,7 @@ const videoJsonLd = {
 
   .stat-card {
     padding: 22px 14px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(0, 0, 0, 0.15);
     text-align: center;
     background: transparent;
   }
@@ -348,7 +329,7 @@ const videoJsonLd = {
     font-size: 9px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--milk);
+    color: var(--black);
     opacity: 0.55;
     font-weight: 500;
   }
@@ -366,9 +347,7 @@ const videoJsonLd = {
     font-size: clamp(28px, 3.6vw, 48px);
     letter-spacing: 0.01em;
     margin-bottom: 36px;
-    padding-bottom: 16px;
-    border-bottom: 2px solid var(--light);
-    color: var(--milk);
+    color: var(--black);
   }
 
   .related :global(.card-grid) { padding: 0; }

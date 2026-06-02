@@ -28,26 +28,16 @@ const countStr = `${String(count).padStart(2, '0')} proyectos`;
     font-family: var(--ff-display);
     font-size: clamp(52px, 8.5vw, 108px);
     line-height: 0.9;
-    color: var(--milk);
+    color: var(--black);
   }
 
   .pg-count {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
+    display: inline-block;
     margin-top: 16px;
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.26em;
     color: var(--light);
     text-transform: uppercase;
-  }
-
-  .pg-count::before {
-    content: '';
-    display: inline-block;
-    width: 24px;
-    height: 1px;
-    background: currentColor;
   }
 </style>

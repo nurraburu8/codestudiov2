@@ -273,15 +273,21 @@ const PALETTES = [
     transform: translate(-50%, -50%) scale(1);
   }
 
+  /* Altura fija de la barra de info: aunque el título wrappee a 2 líneas,
+     todas las cards quedan exactamente del mismo alto. */
   .cinf {
     padding: 16px 18px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    gap: 12px;
     background: var(--black);
     border-radius: 0 0 8px 8px;
-    border-top: 2px solid var(--light);
+    min-height: 92px;
+    box-sizing: border-box;
   }
+
+  .cinf > div { min-width: 0; flex: 1; }   /* permite que el título se trunque */
 
   .ccat {
     font-size: 10px;
@@ -292,12 +298,20 @@ const PALETTES = [
     margin-bottom: 4px;
   }
 
+  /* Title clampeado a 2 líneas — si es muy largo, se trunca con "…". */
   .cnm {
     font-family: var(--ff-display);
     font-size: clamp(17px, 1.6vw, 24px);
     line-height: 1.05;
     letter-spacing: 0.03em;
     color: var(--milk);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    word-break: normal;
+    overflow-wrap: anywhere;
   }
 
   .cyr {

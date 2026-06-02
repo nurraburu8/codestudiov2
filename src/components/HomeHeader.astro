@@ -51,15 +51,11 @@ import { SITE } from '@/consts';
     display: flex;
     align-items: center;
     padding: 14px 5vw;
-    transition:
-      background 0.4s ease,
-      backdrop-filter 0.4s ease;
+    background: var(--black);
   }
 
-  .home-header.scrolled {
-    background: var(--black);
-    border-bottom: 1px solid var(--light);
-  }
+  /* .scrolled mantiene los mismos estilos — header ya es negro siempre. */
+  .home-header.scrolled { background: var(--black); }
 
   .header-left { flex: 1; }
 
@@ -67,6 +63,7 @@ import { SITE } from '@/consts';
     height: clamp(32px, 4.5vw, 64px);
     width: auto;
     display: block;
+    filter: brightness(0) invert(1);   /* logo blanco sobre header negro */
   }
 
   .header-center {

@@ -12,13 +12,13 @@
   --power: #EC1B07;   /* rojo de acento */
   --black: #000000;
 
-  /* ── Superficies ────────────────────────────────────── */
-  --bg:    #000000;
-  --bg-2:  #000000;
-  --tx:    #ffffff;
-  --mute:  #9a9a9a;
-  --hair:        rgba(255, 255, 255, 0.18);
-  --hair-strong: rgba(255, 255, 255, 0.32);
+  /* ── Superficies — tema MILK (fondo blanco) ────────── */
+  --bg:    #FBF9F5;
+  --bg-2:  #ffffff;
+  --tx:    #000000;
+  --mute:  rgba(0, 0, 0, 0.55);
+  --hair:        rgba(0, 0, 0, 0.18);
+  --hair-strong: rgba(0, 0, 0, 0.32);
 
   /* ── Tipografía ─────────────────────────────────────── */
   --ff-display: 'Space Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -87,9 +87,7 @@ body::after {
 }
 
 .section-kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
+  display: inline-block;
   font-family: var(--ff-body);
   font-size: 11px;
   letter-spacing: 0.3em;
@@ -97,14 +95,6 @@ body::after {
   color: var(--light);
   margin-bottom: 18px;
   font-weight: 500;
-}
-
-.section-kicker::before {
-  content: '';
-  display: inline-block;
-  width: 28px;
-  height: 1px;
-  background: currentColor;
 }
 
 /* ── Botón CTA universal ──────────────────────────────── */

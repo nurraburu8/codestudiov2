@@ -12,12 +12,12 @@ const web3formsKey = WEB3FORMS_ACCESS_KEY;
 ---
 
 <Layout title={seo.title} description={seo.description} bodyClass="contact-page">
-  <Header current="/contacto" light={true} />
+  <Header current="/contacto" />
 
   <main>
     <header class="cnt-head">
       <p class="cnt-tag">Hablemos</p>
-      <h1 class="cnt-title">Contacto</h1>
+      <h1 class="cnt-title">Tu historia está ahí, encontrémosla juntos</h1>
       <p class="cnt-sub">"Todo empieza con una idea y un mensaje."</p>
     </header>
 
@@ -73,14 +73,12 @@ const web3formsKey = WEB3FORMS_ACCESS_KEY;
     </div>
   </main>
 
-  <Footer />
+  <Footer hideSocials={true} />
 </Layout>
 
 <style is:global>
-  /* La página contacto usa tema "milk" (fondo blanco) */
+  /* Contacto necesita flex column para que el footer quede pegado abajo. */
   body.contact-page {
-    background: var(--milk);
-    color: var(--black);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -127,9 +125,7 @@ const web3formsKey = WEB3FORMS_ACCESS_KEY;
   }
 
   .cnt-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
+    display: inline-block;
     font-size: clamp(10px, 1vw, 12px);
     letter-spacing: 0.32em;
     text-transform: uppercase;
@@ -138,20 +134,16 @@ const web3formsKey = WEB3FORMS_ACCESS_KEY;
     margin-bottom: 22px;
   }
 
-  .cnt-tag::before {
-    content: '';
-    display: inline-block;
-    width: 28px;
-    height: 1px;
-    background: currentColor;
-  }
-
   .cnt-title {
     font-family: var(--ff-display);
-    font-size: clamp(56px, 10vw, 128px);
-    line-height: 0.88;
+    font-size: clamp(34px, 5.6vw, 76px);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
     margin-bottom: 26px;
     color: var(--black);
+    max-width: 14ch;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .cnt-sub {

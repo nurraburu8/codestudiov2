@@ -282,9 +282,7 @@ const slideMeta = slides.map((s) => ({
   }
 
   .work-title :global(.type) {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
+    display: inline-block;
     font-family: var(--ff-body);
     font-style: normal;
     font-weight: 500;
@@ -293,14 +291,6 @@ const slideMeta = slides.map((s) => ({
     text-transform: uppercase;
     color: var(--light);
     margin-bottom: 1.4em;
-  }
-
-  .work-title :global(.type)::before {
-    content: '';
-    display: inline-block;
-    width: 28px;
-    height: 1px;
-    background: currentColor;
   }
 
   .work-title :global(.client) {
