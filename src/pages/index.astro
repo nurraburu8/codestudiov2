@@ -27,6 +27,12 @@ const firstPoster = featured.length > 0 ? resolveVideo(featured[0].data).poster 
   }
   <LogoIntro />
   <HomeHeader />
+
+  {/* h1 oculto visualmente pero leído por Google y lectores de pantalla.
+      El branding visual en el home está en el logo del header + slideshow,
+      así que un h1 visible no encaja. */}
+  <h1 class="visually-hidden">Code Studio · Productora audiovisual en Uruguay</h1>
+
   <HeroSlideshow />
 
   <section class="home-gallery-wrap">

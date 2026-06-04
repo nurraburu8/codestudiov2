@@ -27,7 +27,16 @@ const { Content } = await render(work);
 const video = resolveVideo(work.data);
 
 const pageTitle = `${work.data.client} — Code Studio`;
-const pageDescription = work.data.tagline || `${work.data.type} — ${work.data.client} por Code Studio.`;
+// Description rica: tagline + tipo + cliente + año + ubicación.
+// Sale entre 130-160 chars, mejor SEO que el tagline solo.
+const pageDescription = [
+  work.data.tagline,
+  `${work.data.type.toLowerCase()} para ${work.data.client} (${work.data.year}).`,
+  `Producción Code Studio en ${work.data.location}.`,
+]
+  .filter(Boolean)
+  .join(' ')
+  .slice(0, 160);
 
 const categorySlug =
   work.data.category === 'Marcas' ? 'marcas' :
@@ -141,9 +150,12 @@ const videoJsonLd = {
     font-weight: 600;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--light);
-    transition: gap 0.3s;
+    /* Negro para contraste WCAG sobre milk; el hover sí vuelve naranja */
+    color: var(--black);
+    transition: gap 0.3s, color 0.3s;
   }
+
+  .back-bar a:hover { color: var(--light); }
 
   .back-bar a:hover { gap: 14px; }
 
@@ -168,7 +180,8 @@ const videoJsonLd = {
     font-size: 10px;
     letter-spacing: 0.32em;
     text-transform: uppercase;
-    color: var(--light);
+    /* Negro para contraste WCAG sobre milk */
+    color: var(--black);
     font-weight: 500;
   }
 
@@ -205,8 +218,9 @@ const videoJsonLd = {
     font-size: clamp(12px, 1.1vw, 16px);
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: var(--light);
-    opacity: 0.7;
+    /* Negro con opacidad para contraste WCAG */
+    color: var(--black);
+    opacity: 0.6;
     margin-bottom: 18px;
   }
 
@@ -259,7 +273,8 @@ const videoJsonLd = {
 
   .work-desc :global(p:first-of-type::first-line) {
     font-weight: 600;
-    color: var(--light);
+    /* Negro bold (contraste WCAG) en lugar de naranja chico */
+    color: var(--black);
   }
 
   .sidebar {
@@ -275,7 +290,8 @@ const videoJsonLd = {
     font-size: 10px;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: var(--light);
+    /* Negro para contraste WCAG sobre milk */
+    color: var(--black);
     font-weight: 500;
     margin-bottom: 18px;
   }
@@ -293,7 +309,8 @@ const videoJsonLd = {
     font-size: 11px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--light);
+    /* Negro para contraste WCAG sobre milk */
+    color: var(--black);
     font-weight: 600;
   }
 

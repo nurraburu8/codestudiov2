@@ -366,7 +366,10 @@ const slideMeta = slides.map((s) => ({
     color: var(--milk);
     opacity: 0.55;
     cursor: pointer;
-    padding: 0;
+    /* Hit area 24x24+ (WCAG tactile targets) */
+    min-width: 24px;
+    min-height: 24px;
+    padding: 4px 6px;
     transition: color 0.2s, opacity 0.2s, font-weight 0.2s;
   }
 

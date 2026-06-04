@@ -82,6 +82,9 @@ import { SITE } from '@/consts';
 
   .header-center a,
   .header-right a {
+    /* Padding vertical para hit area de 32px+ (WCAG tactile targets) */
+    display: inline-block;
+    padding: 10px 0;
     font-family: var(--ff-body);
     font-size: 10px;
     font-weight: 500;
@@ -114,9 +117,14 @@ import { SITE } from '@/consts';
   .ham {
     display: none;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 5px;
     cursor: pointer;
-    padding: 8px;
+    /* Hit area 44x44 (WCAG tactile targets) */
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px;
     background: none;
     border: none;
   }
