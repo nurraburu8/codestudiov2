@@ -26,6 +26,8 @@ const trabajos = defineCollection({
     order: z.number().int().default(99),
     /** Si false, el trabajo no se muestra ni se indexa */
     publish: z.boolean().default(true),
+    /** Si true, aparece en el slideshow del home. Por defecto false. */
+    featured: z.boolean().default(false),
     credits: z
       .array(
         z.object({

@@ -2,6 +2,10 @@
 dist/
 .astro/
 
+# Videos source del cliente (pesados, no van al repo).
+# Los clips y posters GENERADOS desde acá sí se commitean en public/videos/.
+source-videos/
+
 # Dependencias
 node_modules/
 

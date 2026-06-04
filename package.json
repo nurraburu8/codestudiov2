@@ -11,6 +11,7 @@
     "astro": "astro",
     "check": "astro check",
     "gen:assets": "node scripts/gen-assets.mjs",
+    "gen:clips": "node scripts/gen-clips.mjs",
     "upload:cloudinary": "node scripts/upload-cloudinary.mjs"
   },
   "dependencies": {

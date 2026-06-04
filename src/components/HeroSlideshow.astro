@@ -3,9 +3,9 @@
  * Hero slideshow del home.
  * Lee los trabajos desde la colección y los renderiza como slides.
  */
-import { getAllTrabajos, resolveVideo } from '@lib/trabajos';
+import { getFeaturedTrabajos, resolveVideo } from '@lib/trabajos';
 
-const slides = (await getAllTrabajos()).map((w) => ({
+const slides = (await getFeaturedTrabajos()).map((w) => ({
   entry: w,
   ...resolveVideo(w.data),
 }));
@@ -31,8 +31,8 @@ const slideMeta = slides.map((s) => ({
             muted
             loop
             playsinline
-            preload={i === 0 ? 'auto' : 'none'}
-            poster={i === 0 ? s.poster : undefined}
+            preload={i === 0 ? 'auto' : 'metadata'}
+            poster={s.poster}
           >
             <source src={s.src} type="video/mp4" />
           </video>
@@ -157,6 +157,13 @@ const slideMeta = slides.map((s) => ({
         const p = v.play();
         if (p && p.catch) p.catch(() => {});
       }
+
+      // Prefetch del próximo slide para que la transición sea fluida.
+      // Empieza a bufferear el siguiente video apenas el actual comienza
+      // a reproducirse — así para cuando avance (en 7s) ya está listo.
+      const nextSlide = slides[(current + 1) % slides.length];
+      const nextVideo = nextSlide?.querySelector('video');
+      if (nextVideo) ensureVideoLoaded(nextVideo);
 
       progressFill.style.width = '0%';
       animateProgress();

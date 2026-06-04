@@ -1,37 +1,35 @@
 ---
 client: NO SLEEP CLUB
-type: EVENTO
-category: Eventos
-year: 2024
-location: Galpón W, Montevideo
-video: /videos/2026-05-15_23h13_02.mp4
-cloudinaryId: codestudio/2026-05-15_23h13_02
+type: AFTERMOVIES — MÚLTIPLES EDICIONES
+category: Shows & Fiestas
+year: 2025
+location: Montevideo, Uruguay
+video: ""
+cloudinaryId: null
 cover: null
-tagline: La noche que no termina hasta que sale el sol.
-order: 8
+tagline: La identidad visual de las noches más largas de la ciudad.
+order: 14
 publish: true
+featured: false
 credits:
+  - role: Producción
+    name: Code Studio
   - role: Dirección
-    name: Franco Lorenzi
-  - role: DF
-    name: Valentí Prieto
+    name: Code Studio
   - role: Edición
-    name: Santiago Mondo
-  - role: Color
-    name: Mateo Rodríguez Murias
-  - role: Música
-    name: Sets originales — DJ Tula, DJ Pez
+    name: Code Studio
 stats:
-  - label: Duración
-    value: 2'30"
-  - label: Asistentes
-    value: 1.2K
-  - label: Sets
-    value: '8'
+  - label: Headliners cubiertos
+    value: Danny Ávila, Sara Landry, Space 92
+  - label: Ediciones
+    value: Múltiples
 ---
 
-Aftermovie de la 12ª edición de No Sleep Club, fiesta electrónica recurrente en un galpón industrial al sur de Montevideo. La consigna del cliente fue simple: "capten la energía, eviten los lugares comunes del género".
+A lo largo de distintas ediciones, Code ha sido parte de la identidad visual de No Sleep Club, registrando su crecimiento y la fuerza de cada evento. Nuestro trabajo se centra en traducir la experiencia de la noche a un lenguaje audiovisual sólido, combinando estética, ritmo y narrativa para reflejar el espíritu de la marca.
 
-Lo resolvimos apostando por planos de detalle (manos, gestos, transpiración, luces sobre rostros) en lugar del clásico plano general de pista llena. El montaje sigue el arco de la noche: del primer set hasta el cierre con luz natural entrando por las claraboyas.
+Desde la planificación hasta la edición final, cada pieza busca mantener la coherencia visual y la energía que define a No Sleep: una propuesta que une música, comunidad y creatividad.
 
-Pieza usada para promocionar la edición siguiente y para la propuesta de la marca a sponsors internacionales.
+Entregables destacados:
+- Aftermovie Danny Ávila
+- Aftermovie Sara Landry
+- Aftermovie Space 92

@@ -33,6 +33,12 @@ export async function getAllTrabajos(): Promise<TrabajoEntry[]> {
   return all.sort(sortTrabajos);
 }
 
+/** Trabajos destacados que aparecen en el hero del home. */
+export async function getFeaturedTrabajos(): Promise<TrabajoEntry[]> {
+  const all = await getAllTrabajos();
+  return all.filter((w) => w.data.featured === true);
+}
+
 /** Filtrados por categoría (o todos). */
 export async function getTrabajosByCategory(
   category: TrabajoCategory | 'all'

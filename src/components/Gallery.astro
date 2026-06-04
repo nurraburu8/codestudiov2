@@ -273,8 +273,8 @@ const PALETTES = [
     transform: translate(-50%, -50%) scale(1);
   }
 
-  /* Altura fija de la barra de info: aunque el título wrappee a 2 líneas,
-     todas las cards quedan exactamente del mismo alto. */
+  /* Altura FIJA (no min-height) — toda card mide exactamente igual,
+     sin importar el largo del título. El título se trunca con line-clamp. */
   .cinf {
     padding: 16px 18px;
     display: flex;
@@ -283,8 +283,9 @@ const PALETTES = [
     gap: 12px;
     background: var(--black);
     border-radius: 0 0 8px 8px;
-    min-height: 92px;
+    height: 104px;
     box-sizing: border-box;
+    overflow: hidden;
   }
 
   .cinf > div { min-width: 0; flex: 1; }   /* permite que el título se trunque */
