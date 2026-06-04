@@ -42,3 +42,6 @@ desktop.ini
 
 # TypeScript
 *.tsbuildinfo
+
+# Temp del audit de performance
+.perf-tmp/
