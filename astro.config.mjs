@@ -26,7 +26,10 @@ export default defineConfig({
     }),
   ],
   build: {
-    inlineStylesheets: 'auto',
+    // 'always' inlinea TODO el CSS en cada HTML. Para sitios chicos como este
+    // (CSS chunks de 4-8KB) elimina 3 requests render-blocking por página
+    // y mejora el LCP/FCP. La sobrecarga de bytes es mínima vs el ahorro de RTTs.
+    inlineStylesheets: 'always',
     assets: '_assets',
   },
   vite: {

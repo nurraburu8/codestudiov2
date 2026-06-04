@@ -31,7 +31,7 @@ const slideMeta = slides.map((s) => ({
             muted
             loop
             playsinline
-            preload={i === 0 ? 'auto' : 'metadata'}
+            preload={i === 0 ? 'auto' : 'none'}
             poster={s.poster}
           >
             <source src={s.src} type="video/mp4" />
