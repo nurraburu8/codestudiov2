@@ -92,13 +92,9 @@ const orgSchema = buildOrganizationSchema(base.origin);
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#000000" />
 
-    <!-- ── Preconnect fuentes ─────────────────────── -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Fuente Space Grotesk: self-hosted via @fontsource-variable
+         (importada desde src/styles/global.css → inlined en el HTML).
+         Sin preconnect a Google porque ya no usamos su CDN. -->
 
     <!-- ── Schema.org Organization (JSON-LD) ──────── -->
     <script

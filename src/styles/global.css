@@ -3,6 +3,10 @@
    Migrado desde legacy/css/brand.css preservando identidad visual.
    ───────────────────────────────────────────────────────────── */
 
+/* Space Grotesk variable self-hosted (incluye 300-700 + font-display: swap).
+   Reemplaza al <link> a fonts.googleapis.com que era render-blocking. */
+@import '@fontsource-variable/space-grotesk';
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {

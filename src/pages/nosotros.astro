@@ -165,14 +165,20 @@ const workingPhotos = [
         {
           brandsTop.map((b) => (
             <div class="marquee-item">
-              <img src={b.src} alt={b.alt} loading="eager" decoding="async" />
+              <picture>
+                <source srcset={b.src.replace(/\.png$/, '.webp')} type="image/webp" />
+                <img src={b.src} alt={b.alt} loading="eager" decoding="async" />
+              </picture>
             </div>
           ))
         }
         {
           brandsTop.map((b) => (
             <div class="marquee-item" aria-hidden="true">
-              <img src={b.src} alt="" loading="eager" decoding="async" />
+              <picture>
+                <source srcset={b.src.replace(/\.png$/, '.webp')} type="image/webp" />
+                <img src={b.src} alt="" loading="eager" decoding="async" />
+              </picture>
             </div>
           ))
         }
@@ -184,14 +190,20 @@ const workingPhotos = [
         {
           brandsBottom.map((b) => (
             <div class="marquee-item">
-              <img src={b.src} alt={b.alt} loading="eager" decoding="async" />
+              <picture>
+                <source srcset={b.src.replace(/\.png$/, '.webp')} type="image/webp" />
+                <img src={b.src} alt={b.alt} loading="eager" decoding="async" />
+              </picture>
             </div>
           ))
         }
         {
           brandsBottom.map((b) => (
             <div class="marquee-item" aria-hidden="true">
-              <img src={b.src} alt="" loading="eager" decoding="async" />
+              <picture>
+                <source srcset={b.src.replace(/\.png$/, '.webp')} type="image/webp" />
+                <img src={b.src} alt="" loading="eager" decoding="async" />
+              </picture>
             </div>
           ))
         }

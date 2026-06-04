@@ -11,9 +11,19 @@ export type TrabajoCategory = 'Shows & Fiestas' | 'Marcas' | 'Eventos';
 const FALLBACK_POSTER = '/hero-poster.jpg';
 
 /**
+ * Sirve la versión WebP del poster si existe (generada por gen:webp).
+ * El atributo `poster=""` del <video> acepta solo una URL — no soporta
+ * <picture> fallback. WebP tiene 97%+ soporte en browsers modernos; el
+ * resto ve fondo negro hasta que arranca el video (degradación aceptable).
+ */
+function preferWebp(path: string): string {
+  return path.replace(/\.(jpe?g|png)$/i, '.webp');
+}
+
+/**
  * Resuelve la URL de video y poster de un trabajo.
  *   - Si tiene cloudinaryId: usa Cloudinary (con poster generado del frame 0).
- *   - Si no: usa el video local + el cover específico del trabajo (data.cover).
+ *   - Si no: usa el video local + el cover específico del trabajo (data.cover) en WebP.
  *   - Fallback final: hero-poster genérico.
  *
  * El poster específico es importante para el LCP: cuando el slide carga,
@@ -23,9 +33,9 @@ export function resolveVideo(data: TrabajoEntry['data']): { src: string; poster:
   if (data.cloudinaryId) {
     const src = cldVideoUrl(data.cloudinaryId);
     const poster = cldVideoPoster(data.cloudinaryId);
-    if (src) return { src, poster: poster ?? data.cover ?? FALLBACK_POSTER };
+    if (src) return { src, poster: poster ?? preferWebp(data.cover ?? FALLBACK_POSTER) };
   }
-  return { src: data.video, poster: data.cover ?? FALLBACK_POSTER };
+  return { src: data.video, poster: preferWebp(data.cover ?? FALLBACK_POSTER) };
 }
 
 /** Ordena por `order` ascendente; los que tienen el mismo orden quedan por año desc. */

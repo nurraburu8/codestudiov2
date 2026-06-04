@@ -12,12 +12,14 @@
     "check": "astro check",
     "gen:assets": "node scripts/gen-assets.mjs",
     "gen:clips": "node scripts/gen-clips.mjs",
+    "gen:webp": "node scripts/gen-webp.mjs",
     "upload:cloudinary": "node scripts/upload-cloudinary.mjs"
   },
   "dependencies": {
-    "astro": "^5.0.0",
-    "@astrojs/sitemap": "^3.2.0",
     "@astrojs/check": "^0.9.4",
+    "@astrojs/sitemap": "^3.2.0",
+    "@fontsource-variable/space-grotesk": "^5.2.10",
+    "astro": "^5.0.0",
     "typescript": "^5.6.0"
   },
   "devDependencies": {
