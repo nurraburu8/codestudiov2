@@ -16,21 +16,30 @@ const AUTHORIZE_URL = 'https://github.com/login/oauth/authorize';
 const TOKEN_URL = 'https://github.com/login/oauth/access_token';
 
 function renderCallback(status, token, provider) {
-  const payload = JSON.stringify({ token, provider: provider || 'github' });
-  // Decap escucha mensajes con el formato: "authorization:<provider>:<status>:<json>"
-  const message = `authorization:${provider || 'github'}:${status}:${payload}`;
+  const prov = provider || 'github';
+  const payload = JSON.stringify({ token, provider: prov });
+  const message = `authorization:${prov}:${status}:${payload}`;
+  // Relay approach: el popup escucha el "ping" de Decap (que llega con su
+  // origen real), responde con ese origen exacto, y cierra la ventana.
+  // Esto evita que Decap rechace el postMessage por origen desconocido.
   return `<!doctype html><html><body><script>
     (function () {
-      function send() {
+      var msg = ${JSON.stringify(message)};
+      function send(targetOrigin) {
         if (!window.opener) return;
-        window.opener.postMessage(${JSON.stringify(message)}, '*');
+        window.opener.postMessage(msg, targetOrigin || '*');
       }
+      // Escucha el ping "authorizing:github" de Decap para obtener su origen
       window.addEventListener('message', function (e) {
-        if (e.data === 'authorizing:github') send();
+        if (e.data === 'authorizing:${prov}') {
+          send(e.origin);
+          setTimeout(function () { window.close(); }, 500);
+        }
       }, false);
-      send();
+      // También intentar enviar de inmediato por si el listener ya está listo
+      send('*');
     })();
-  </script>Autenticado. Podés cerrar esta ventana.</body></html>`;
+  </script><p>Autenticado. Cerrando...</p></body></html>`;
 }
 
 export default {
