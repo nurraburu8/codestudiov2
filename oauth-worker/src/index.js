@@ -1,11 +1,6 @@
 /**
- * Proxy OAuth para Decap CMS ↔ GitHub.
- *
- * Flujo:
- *   /auth     → redirige a GitHub authorize (con state aleatorio)
- *   /callback → recibe ?code de GitHub, lo canjea por access_token,
- *               y devuelve un HTML que postMessage al window opener
- *               (que es el panel /admin de Decap).
+ * Proxy OAuth para Sveltia CMS / Decap CMS ↔ GitHub.
+ * Compatible con el formato de mensaje de sveltia-cms y netlify-auth-providers.
  *
  * Secrets requeridos (wrangler secret put):
  *   GITHUB_CLIENT_ID
@@ -13,45 +8,49 @@
  */
 
 const AUTHORIZE_URL = 'https://github.com/login/oauth/authorize';
-const TOKEN_URL = 'https://github.com/login/oauth/access_token';
+const TOKEN_URL     = 'https://github.com/login/oauth/access_token';
 
-function renderCallback(status, token, provider) {
-  const prov = provider || 'github';
-  const payload = JSON.stringify({ token, provider: prov });
-  const message = `authorization:${prov}:${status}:${payload}`;
-  // Relay approach: el popup escucha el "ping" de Decap (que llega con su
-  // origen real), responde con ese origen exacto, y cierra la ventana.
-  // Esto evita que Decap rechace el postMessage por origen desconocido.
-  return `<!doctype html><html><body><script>
-    (function () {
-      var msg = ${JSON.stringify(message)};
-      function send(targetOrigin) {
-        if (!window.opener) return;
-        window.opener.postMessage(msg, targetOrigin || '*');
+function renderCallback(status, token) {
+  const payload = JSON.stringify({ token, provider: 'github' });
+  const message  = `authorization:github:${status}:${payload}`;
+  return `<!doctype html><html><head><meta charset="utf-8"></head><body>
+<script>
+(function () {
+  var msg = ${JSON.stringify(message)};
+  // Sveltia CMS escucha el evento message directamente sin ping previo.
+  // Intentamos enviar inmediatamente y reintentamos por si hay race condition.
+  function send() {
+    if (!window.opener) return false;
+    window.opener.postMessage(msg, '*');
+    return true;
+  }
+  if (!send()) {
+    var t = 0;
+    var iv = setInterval(function () {
+      if (send() || ++t > 20) {
+        clearInterval(iv);
+        setTimeout(function () { window.close(); }, 500);
       }
-      // Escucha el ping "authorizing:github" de Decap para obtener su origen
-      window.addEventListener('message', function (e) {
-        if (e.data === 'authorizing:${prov}') {
-          send(e.origin);
-          setTimeout(function () { window.close(); }, 500);
-        }
-      }, false);
-      // También intentar enviar de inmediato por si el listener ya está listo
-      send('*');
-    })();
-  </script><p>Autenticado. Cerrando...</p></body></html>`;
+    }, 150);
+  } else {
+    setTimeout(function () { window.close(); }, 500);
+  }
+})();
+</script>
+<p style="font-family:sans-serif;padding:2rem">Autenticado. Cerrando...</p>
+</body></html>`;
 }
 
 export default {
   async fetch(request, env) {
-    const url = new URL(request.url);
+    const url    = new URL(request.url);
     const origin = `${url.protocol}//${url.host}`;
 
     if (url.pathname === '/auth') {
       const params = new URLSearchParams({
-        client_id: env.GITHUB_CLIENT_ID,
+        client_id:    env.GITHUB_CLIENT_ID,
         redirect_uri: `${origin}/callback`,
-        scope: 'repo,user',
+        scope:        'repo,user',
       });
       return Response.redirect(`${AUTHORIZE_URL}?${params}`, 302);
     }
@@ -65,10 +64,10 @@ export default {
         });
       }
       const tokenRes = await fetch(TOKEN_URL, {
-        method: 'POST',
+        method:  'POST',
         headers: { accept: 'application/json', 'content-type': 'application/json' },
-        body: JSON.stringify({
-          client_id: env.GITHUB_CLIENT_ID,
+        body:    JSON.stringify({
+          client_id:     env.GITHUB_CLIENT_ID,
           client_secret: env.GITHUB_CLIENT_SECRET,
           code,
         }),
@@ -80,12 +79,12 @@ export default {
           status: 401,
         });
       }
-      return new Response(renderCallback('success', data.access_token, 'github'), {
+      return new Response(renderCallback('success', data.access_token), {
         headers: { 'content-type': 'text/html; charset=utf-8' },
       });
     }
 
-    return new Response('codestudio-oauth: endpoints /auth y /callback', {
+    return new Response('codestudio-oauth worker OK', {
       headers: { 'content-type': 'text/plain; charset=utf-8' },
     });
   },
