@@ -5,4 +5,19 @@
       "Bash(npx --yes serve -p 3000)"
     ]
   }
+  ,
+
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"[$(date '+%Y-%m-%d %H:%M:%S')] Tool: $CLAUDE_TOOL_NAME | File: $CLAUDE_TOOL_INPUT\" >> .claude/activity.log"
+          }
+        ]
+      }
+    ]
+  }
 }

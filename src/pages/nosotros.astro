@@ -156,8 +156,7 @@ const workingPhotos = [
   <!-- 6. MARCAS MARQUEE -->
   <section class="brands reveal" id="brandsSection">
     <header class="brands-head">
-      <p class="brands-tag">Confiaron en nosotros</p>
-      <h2 class="brands-title">Marcas que ya están en cancha</h2>
+      <h2 class="brands-title">Marcas que confiaron en nosotros</h2>
     </header>
 
     <div class="marquee">
@@ -450,16 +449,6 @@ const workingPhotos = [
     margin-bottom: clamp(48px, 7vh, 80px);
   }
 
-  .brands-tag {
-    display: inline-block;
-    font-size: 11px;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: var(--light);
-    font-weight: 500;
-    margin-bottom: 22px;
-  }
-
   .brands-title {
     font-family: var(--ff-display);
     font-size: clamp(32px, 4.5vw, 64px);
@@ -514,6 +503,10 @@ const workingPhotos = [
     height: clamp(70px, 9vh, 96px);
     padding: 0 clamp(16px, 2vw, 28px);
   }
+
+  /* picture no tiene dimensiones propias — display:contents lo "desaparece"
+     del árbol de layout y el img hereda el flex-item directamente. */
+  .marquee-item picture { display: contents; }
 
   .marquee-item img {
     max-width: 100%;

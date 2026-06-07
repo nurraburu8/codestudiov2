@@ -25,8 +25,8 @@
   --hair-strong: rgba(0, 0, 0, 0.32);
 
   /* ── Tipografía ─────────────────────────────────────── */
-  --ff-display: 'Space Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --ff-body:    'Space Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --ff-display: 'Space Grotesk Variable', 'Space Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --ff-body:    'Space Grotesk Variable', 'Space Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
   /* ── Spacing escala ─────────────────────────────────── */
   --sp-xs: 8px;
