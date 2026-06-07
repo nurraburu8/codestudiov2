@@ -20,6 +20,13 @@ export const SITE_URL =
 export const WEB3FORMS_ACCESS_KEY =
   import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || '40797790-1f95-43df-8f99-20af221163be';
 
+/**
+ * Token de Cloudflare Web Analytics (público).
+ * Se obtiene en Cloudflare → Analytics → Web Analytics → Add a site.
+ * Si está vacío, el snippet no se inyecta.
+ */
+export const CF_ANALYTICS_TOKEN = import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN || '';
+
 export const SITE = {
   name: 'Code Studio',
   shortName: 'CodeStudio',

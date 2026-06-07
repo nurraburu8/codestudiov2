@@ -1,0 +1,7 @@
+name = "codestudio-oauth"
+main = "src/index.js"
+compatibility_date = "2026-05-01"
+
+# Secrets (configurar con `wrangler secret put`):
+#   GITHUB_CLIENT_ID
+#   GITHUB_CLIENT_SECRET

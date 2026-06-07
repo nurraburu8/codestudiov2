@@ -4,7 +4,7 @@
  * Centraliza meta tags SEO, Open Graph, Twitter Cards, JSON-LD,
  * preconnect a fuentes, favicon y estilos globales.
  */
-import { SITE, buildOrganizationSchema, DEFAULT_OG_IMAGE } from '@/consts';
+import { SITE, buildOrganizationSchema, DEFAULT_OG_IMAGE, CF_ANALYTICS_TOKEN } from '@/consts';
 import '@styles/global.css';
 
 interface Props {
@@ -110,6 +110,17 @@ const orgSchema = buildOrganizationSchema(base.origin);
     }
 
     <slot name="head" />
+
+    {
+      CF_ANALYTICS_TOKEN && !shouldNoindex && (
+        <script
+          is:inline
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={`{"token": "${CF_ANALYTICS_TOKEN}"}`}
+        />
+      )
+    }
   </head>
   <body class={bodyClass}>
     <slot />

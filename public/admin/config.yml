@@ -19,9 +19,9 @@
 #   3. Reemplazar `<TU-WORKER>.workers.dev` aca abajo
 backend:
   name: github
-  repo: ''  # ← rellenar con `usuario/codestudio` cuando se cree el repo en GitHub
+  repo: balurra/codestudiov2
   branch: main
-  base_url: https://YOUR-WORKER.workers.dev  # ← URL del proxy OAuth
+  base_url: https://codestudio-oauth.urraburunicolas.workers.dev
   auth_endpoint: auth
 
 # Carpeta donde Decap sube imagenes que el cliente arrastre al editor.
@@ -77,10 +77,12 @@ collections:
       - { label: Año, name: year, widget: number, value_type: int, min: 2000, max: 2100 }
       - { label: Ubicación, name: location, widget: string, default: 'Montevideo, Uruguay' }
       - { label: Video (URL o ruta /videos/...), name: video, widget: string, hint: 'Subí el video a Cloudinary y pegá la URL aquí. O usá /videos/archivo.mp4 si está en /public/videos/' }
+      - { label: Cloudinary public_id (opcional), name: cloudinaryId, widget: string, required: false, hint: 'Si subiste el video a Cloudinary, pegá acá el public_id (ej: codestudio/aftermovie-vans). Tiene prioridad sobre el campo Video.' }
       - { label: Cover (opcional), name: cover, widget: image, required: false, hint: 'Imagen de portada. Si está vacío, se usa el placeholder de paleta automático.' }
       - { label: Frase destacada, name: tagline, widget: string, hint: 'Frase corta (1 línea) que aparece en la página de detalle. Sin comillas.' }
       - { label: Orden, name: order, widget: number, value_type: int, default: 99, hint: 'Menor número aparece primero. Usá 1, 2, 3... para los destacados.' }
       - { label: Publicado, name: publish, widget: boolean, default: true, hint: 'Si está apagado, no se muestra ni se indexa en Google.' }
+      - { label: Destacado en home, name: featured, widget: boolean, default: false, hint: 'Si está prendido, aparece en el slideshow del home.' }
 
       - label: Créditos
         name: credits
