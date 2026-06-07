@@ -1,11 +1,11 @@
 ---
-client: CASACA
+client: CASACA modificado
 type: CONTENIDO DE MARCA
 category: Marcas
 year: 2025
 location: Montevideo, Uruguay
-video: ""
-cloudinaryId: null
+video: video/mp4
+cloudinaryId: ''
 cover: null
 tagline: Trabajo para Casaca.
 order: 22
@@ -16,9 +16,11 @@ credits:
     name: Code Studio
   - role: Edición
     name: Code Studio
-stats: []
+stats:
+  - label: qa
+    value: qa
 ---
 
 Producción audiovisual para la marca Casaca.
 
-*Pieza completa disponible en codestudio.com.uy/casaca — pendiente de completar descripción detallada.*
+_Pieza completa disponible en codestudio.com.uy/casaca — pendiente de completar descripción detallada._
