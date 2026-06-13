@@ -1,11 +1,11 @@
 ---
-client: CANELONES SUENA BIEN
-type: 'AFTERMOVIE & COBERTURA EN VIVO'
+client: CANELONES SUENA BIEN EDITADOOOOO
+type: AFTERMOVIE & COBERTURA EN VIVO
 category: Shows & Fiestas
 year: 2026
 location: Atlántida, Canelones, Uruguay
 video: /videos/clips/canelones-suena-bien-26.mp4
-cloudinaryId: null
+cloudinaryId: ''
 cover: /videos/posters/canelones-suena-bien-26.jpg
 tagline: Dos días, seis piezas en vivo y un aftermovie que ata la historia.
 order: 1
