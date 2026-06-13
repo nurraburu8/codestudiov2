@@ -8,9 +8,9 @@ video: /videos/clips/fiesta-de-la-cerveza-2025.mp4
 cloudinaryId: null
 cover: /videos/posters/fiesta-de-la-cerveza-2025.jpg
 tagline: 'La séptima edición: 12 piezas en vivo y un aftermovie de cierre.'
-order: 2
+order: 8
 publish: true
-featured: true
+featured: false
 credits:
   - role: Dirección
     name: Valentí Prieto

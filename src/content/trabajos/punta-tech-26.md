@@ -4,13 +4,13 @@ type: AFTERMOVIE
 category: Eventos
 year: 2026
 location: Punta del Este, Uruguay
-video: ""
+video: /videos/clips/punta-tech-26.mp4
 cloudinaryId: null
-cover: null
+cover: /videos/posters/punta-tech-26.jpg
 tagline: La cumbre de los techies de Latinoamérica, edición 18.
-order: 30
+order: 5
 publish: true
-featured: false
+featured: true
 credits:
   - role: Producción
     name: Code Studio

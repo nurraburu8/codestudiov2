@@ -6,6 +6,10 @@ dist/
 # Los clips y posters GENERADOS desde acá sí se commitean en public/videos/.
 source-videos/
 
+# Drop pristino del cliente (videos completos + fotos originales sin optimizar).
+# Las versiones web optimizadas SÍ se commitean en public/team/ y public/videos/.
+fotos_videos/
+
 # Dependencias
 node_modules/
 

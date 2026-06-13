@@ -8,7 +8,7 @@ video: /videos/clips/canelones-suena-bien-26.mp4
 cloudinaryId: null
 cover: /videos/posters/canelones-suena-bien-26.jpg
 tagline: Dos días, seis piezas en vivo y un aftermovie que ata la historia.
-order: 7
+order: 1
 publish: true
 featured: true
 credits:

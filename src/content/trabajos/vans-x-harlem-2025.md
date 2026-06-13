@@ -4,13 +4,13 @@ type: COBERTURA DE FESTIVAL
 category: Shows & Fiestas
 year: 2025
 location: Santa Fe, Argentina
-video: ""
+video: /videos/clips/vans-x-harlem-2025.mp4
 cloudinaryId: null
-cover: null
+cover: /videos/posters/vans-x-harlem-2025.jpg
 tagline: Nuestro primer trabajo fuera del país, cubriendo Vans en Harlem.
-order: 10
+order: 2
 publish: true
-featured: false
+featured: true
 credits:
   - role: Producción
     name: Code Studio

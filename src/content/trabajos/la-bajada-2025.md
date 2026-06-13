@@ -8,9 +8,9 @@ video: /videos/clips/la-bajada-2025.mp4
 cloudinaryId: null
 cover: /videos/posters/la-bajada-2025.jpg
 tagline: La fiesta que abre la temporada.
-order: 8
+order: 10
 publish: true
-featured: true
+featured: false
 credits:
   - role: Dirección
     name: Mateo Rodríguez Murias

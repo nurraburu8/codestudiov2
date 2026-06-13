@@ -8,9 +8,9 @@ video: /videos/clips/vans-nacho.mp4
 cloudinaryId: null
 cover: /videos/posters/vans-nacho.jpg
 tagline: Skate, calle y zapatillas en un solo plano.
-order: 3
+order: 11
 publish: true
-featured: true
+featured: false
 credits:
   - role: Dirección
     name: Franco Lorenzi

@@ -4,13 +4,13 @@ type: 'GIRA — AFTERMOVIES'
 category: Shows & Fiestas
 year: 2024
 location: Buenos Aires, Montevideo y La Plata
-video: ""
+video: /videos/clips/gira-fito-paez.mp4
 cloudinaryId: null
-cover: null
+cover: /videos/posters/gira-fito-paez.jpg
 tagline: Dos años acompañando a Fito en las giras El Amor Después del Amor y Páez4030.
-order: 11
+order: 3
 publish: true
-featured: false
+featured: true
 credits:
   - role: Producción
     name: Code Studio

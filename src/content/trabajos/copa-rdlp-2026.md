@@ -8,7 +8,7 @@ video: /videos/clips/copa-rdlp-2026.mp4
 cloudinaryId: null
 cover: /videos/posters/copa-rdlp-2026.jpg
 tagline: El campeonato cubierto de principio a fin.
-order: 6
+order: 4
 publish: true
 featured: true
 credits:

@@ -23,15 +23,18 @@
 
 export const CLIPS_CONFIG = {
   // archivo en source-videos/                     → slug              | start
-  'VANS X NACHO_3.mp4':                            { slug: 'vans-nacho',         startSec: 15 },
-  'SUEÑO CELESTE_VF.mp4':                          { slug: 'sueno-celeste',           startSec: 20 },
+  // ── Hero con video real del cliente (main/) ──────────────────────────
+  'AftermovieCopaRdlP26.mp4':                      { slug: 'copa-rdlp-2026',          startSec: 30 },
+  'AftermoviePuntaTech26_fINAL.mp4':               { slug: 'punta-tech-26',           startSec: 60 },
+  'CSB 2026 - V5.mp4':                             { slug: 'canelones-suena-bien-26', startSec: 45 },
+  'Fito - Estadio Uno La Plata.mp4':               { slug: 'gira-fito-paez',          startSec: 25 },
   'SUEÑO CELESTE Vcode.mp4':                       { slug: 'sueno-celeste-code',      startSec: 5  },
+  'VANS X HARLEM v2.mp4':                          { slug: 'vans-x-harlem-2025',      startSec: 14 },
+  // ── Hero con sources previos (clips ya generados, se skipean) ────────
+  'VANS X NACHO_3.mp4':                            { slug: 'vans-nacho',              startSec: 15 },
   'FDLC 2026 After.mp4':                           { slug: 'fdlc-2026',               startSec: 20 },
   'FDLC 2025 16_9 .mp4':                           { slug: 'fiesta-de-la-cerveza-2025', startSec: 25 },
   'Cuarteto de Nos Colonia - Sin Placa.mp4':       { slug: 'cuarteto-de-nos',         startSec: 12 },
-  'AftermoviePuntaTech26_fINAL.mp4':               { slug: 'punta-tech-2026',         startSec: 15 },
-  'AftermovieCopaRdlP26.mp4':                      { slug: 'copa-rdlp-2026',          startSec: 15 },
-  'Aftermovie-CSB26.mp4':                          { slug: 'canelones-suena-bien-26', startSec: 15 },
   'AFTERMOVIE LA BAJADA_5.mp4':                    { slug: 'la-bajada-2025',          startSec: 20 },
 };
 

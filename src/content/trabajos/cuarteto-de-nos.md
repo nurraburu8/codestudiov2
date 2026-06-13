@@ -8,9 +8,9 @@ video: /videos/clips/cuarteto-de-nos.mp4
 cloudinaryId: null
 cover: /videos/posters/cuarteto-de-nos.jpg
 tagline: La banda en Colonia, sin placa.
-order: 5
+order: 9
 publish: true
-featured: true
+featured: false
 credits:
   - role: Dirección
     name: Santiago Mondo
