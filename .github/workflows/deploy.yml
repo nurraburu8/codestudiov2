@@ -41,4 +41,7 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          # Fija wrangler 4.x — sino el action toma una 3.x vieja que no
+          # entiende el compatibility_date 2026 ni la sintaxis [assets].
+          wranglerVersion: "4.100.0"
           command: deploy
