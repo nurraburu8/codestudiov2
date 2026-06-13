@@ -1,5 +1,5 @@
 ---
-client: CANELONES SUENA BIEN EDITADOOOOO
+client: CANELONES SUENA BIEN
 type: AFTERMOVIE & COBERTURA EN VIVO
 category: Shows & Fiestas
 year: 2026
