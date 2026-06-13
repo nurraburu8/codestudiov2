@@ -52,6 +52,8 @@ const workingPhotos = [
   { src: '/team/work-1', alt: 'El equipo de Code Studio cubriendo un show en vivo' },
   { src: '/team/work-2', alt: 'Filmando al DJ desde el escenario' },
   { src: '/team/work-3', alt: 'Rodaje en el festival de Vans' },
+  { src: '/team/work-4', alt: 'El equipo de Code Studio en el evento de Vans' },
+  { src: '/team/work-5', alt: 'Cámara en mano durante un show' },
 ];
 ---
 
@@ -92,6 +94,31 @@ const workingPhotos = [
         </div>
       ))
     }
+  </section>
+
+  <!-- TONO DE MARCA — CÓMO HABLA CODE -->
+  <section class="voice reveal" id="voiceSection">
+    <span class="voice-tag">Cómo habla Code</span>
+    <p class="voice-lead">
+      Code Studio habla directo. Sin relleno, sin frases motivacionales, sin palabras como
+      <span class="accent">“pasión”, “creatividad”</span> o “soluciones integrales”.
+    </p>
+    <p>Cuando escribe, dice algo concreto. No se explica de más. No convence — muestra.</p>
+    <p>
+      El tono es seguro sin ser arrogante. Cercano sin ser informal. Siempre hay una idea detrás de
+      cada frase.
+    </p>
+
+    <div class="voice-contrast">
+      <div class="vc-row vc-no">
+        <span class="vc-label">Lo que no dice Code</span>
+        <p>“Somos un equipo apasionado que lleva tu marca al siguiente nivel.”</p>
+      </div>
+      <div class="vc-row vc-yes">
+        <span class="vc-label">Lo que sí dice</span>
+        <p>“Cada proyecto esconde una historia. Juntos la hacemos real.”</p>
+      </div>
+    </div>
   </section>
 
   <!-- 3. EQUIPO (foto + nombre de cada uno) -->
@@ -137,6 +164,12 @@ const workingPhotos = [
           </div>
         ))
       }
+    </div>
+
+    <div class="bts-video">
+      <video autoplay muted loop playsinline preload="metadata" poster="/team/bts.jpg">
+        <source src="/team/bts.mp4" type="video/mp4" />
+      </video>
     </div>
   </section>
 
@@ -325,6 +358,88 @@ const workingPhotos = [
 
   .manifesto p:last-child { margin-bottom: 0; }
 
+  /* ── TONO DE MARCA / VOICE ──────────────────── */
+  .voice {
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: clamp(40px, 6vh, 70px) 5vw clamp(60px, 9vh, 100px);
+    text-align: center;
+  }
+
+  .voice-tag {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--black);
+    font-weight: 500;
+    margin-bottom: 32px;
+  }
+
+  .voice-lead {
+    font-family: var(--ff-display);
+    font-size: clamp(22px, 3vw, 38px);
+    line-height: 1.22;
+    letter-spacing: -0.01em;
+    color: var(--black);
+    font-weight: 500;
+    margin: 0 auto 36px;
+    max-width: 720px;
+  }
+
+  .voice-lead .accent { color: var(--light); }
+
+  .voice > p:not(.voice-lead) {
+    font-size: clamp(15px, 1.2vw, 18px);
+    line-height: 1.7;
+    color: var(--black);
+    opacity: 0.72;
+    margin: 0 auto 18px;
+    max-width: 600px;
+  }
+
+  /* Contraste "lo que no dice / lo que sí dice" */
+  .voice-contrast {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: clamp(40px, 6vh, 64px);
+    text-align: left;
+  }
+
+  .vc-row {
+    padding: 28px 26px;
+    border: 1px solid var(--hair);
+  }
+
+  .vc-label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  .vc-row p {
+    font-family: var(--ff-display);
+    font-size: clamp(16px, 1.5vw, 21px);
+    line-height: 1.35;
+    font-weight: 500;
+  }
+
+  /* "No dice": apagado, con tachado sutil para reforzar el rechazo. */
+  .vc-no { background: transparent; }
+  .vc-no .vc-label { color: var(--black); opacity: 0.45; }
+  .vc-no p { color: var(--black); opacity: 0.4; text-decoration: line-through; text-decoration-thickness: 1px; }
+
+  /* "Sí dice": destacado en negro pleno con borde naranja. */
+  .vc-yes { border-color: var(--light); background: rgba(253, 117, 43, 0.04); }
+  .vc-yes .vc-label { color: var(--light); }
+  .vc-yes p { color: var(--black); }
+
   /* ── PILARES ────────────────────────────────── */
   .pillars {
     position: relative;
@@ -377,10 +492,10 @@ const workingPhotos = [
 
   .team-action-grid {
     display: grid;
-    grid-template-columns: 1.6fr 1fr;
+    grid-template-columns: 1.4fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    gap: 16px;
-    height: clamp(420px, 62vh, 640px);
+    gap: 14px;
+    height: clamp(440px, 64vh, 660px);
   }
 
   .photo-slot {
@@ -389,6 +504,7 @@ const workingPhotos = [
     background: rgba(0, 0, 0, 0.04);
   }
 
+  /* La primera (retrato vertical) ocupa toda la columna izquierda. */
   .photo-slot:first-child { grid-row: 1 / 3; }
 
   .photo-slot picture { display: contents; }
@@ -402,6 +518,22 @@ const workingPhotos = [
   }
 
   .photo-slot:hover img { transform: scale(1.04); }
+
+  /* ── Banda de video BTS (Secuencia, golden hour) ── */
+  .bts-video {
+    margin-top: 14px;
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.06);
+  }
+
+  .bts-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
   /* ── BRANDS MARQUEE ─────────────────────────── */
   .brands {
@@ -596,12 +728,15 @@ const workingPhotos = [
     .pillars { grid-template-columns: 1fr; gap: 48px; }
     .pillar-name { font-size: clamp(36px, 9vw, 56px); }
     .team-action-grid {
-      grid-template-columns: 1fr;
-      grid-template-rows: 1.4fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
       height: auto;
-      min-height: 580px;
+      gap: 10px;
     }
-    .photo-slot:first-child { grid-row: auto; }
+    .photo-slot { aspect-ratio: 1 / 1; }
+    /* El retrato vertical ocupa el ancho completo arriba. */
+    .photo-slot:first-child { grid-row: auto; grid-column: 1 / 3; aspect-ratio: 4 / 5; }
+    .voice-contrast { grid-template-columns: 1fr; }
     .team-grid { grid-template-columns: repeat(2, 1fr); }
     .slogan-line { font-size: clamp(24px, 8vw, 48px); }
     .marquee-item {
