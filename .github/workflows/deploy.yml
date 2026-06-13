@@ -1,0 +1,44 @@
+name: Deploy a Cloudflare Workers
+
+# Se dispara con cada push a main (incluye los commits que hace el CMS Sveltia
+# cuando el cliente guarda contenido) y también se puede correr a mano desde
+# la pestaña Actions de GitHub.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Solo necesita leer el repo para buildear.
+permissions:
+  contents: read
+
+# Si llegan varios commits seguidos (ej: el cliente guarda varias veces),
+# cancela el deploy en curso y deja solo el último — evita pisar versiones.
+concurrency:
+  group: deploy-main
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Build (Astro → dist/)
+        run: npm run build
+
+      - name: Deploy a Cloudflare
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          command: deploy
