@@ -37,11 +37,19 @@ jobs:
       - name: Build (Astro → dist/)
         run: npm run build
 
+      - name: Verificar que el secret existe
+        env:
+          TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "::error::El secret CLOUDFLARE_API_TOKEN está vacío o no existe en este repo."
+            exit 1
+          fi
+          echo "Secret presente (longitud: ${#TOKEN} caracteres)."
+
+      # Deploy directo (mismo comando que funciona en local) — así el output
+      # del error de wrangler queda visible si algo falla.
       - name: Deploy a Cloudflare
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          # Fija wrangler 4.x — sino el action toma una 3.x vieja que no
-          # entiende el compatibility_date 2026 ni la sintaxis [assets].
-          wranglerVersion: "4.100.0"
-          command: deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: npx wrangler@4.100.0 deploy
