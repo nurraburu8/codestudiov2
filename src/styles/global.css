@@ -12,7 +12,8 @@
 :root {
   /* ── Paleta de marca ────────────────────────────────── */
   --milk:  #FBF9F5;
-  --light: #FD752B;   /* naranja Code Studio */
+  --light: #FD752B;   /* naranja Code Studio (bordes, botones, fondos) */
+  --accent-ink: #C9530F;  /* naranja oscuro para TEXTO sobre fondo claro — cumple WCAG AA (4:1) */
   --power: #EC1B07;   /* rojo de acento */
   --black: #000000;
 
