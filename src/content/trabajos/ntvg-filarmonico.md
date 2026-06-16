@@ -1,7 +1,7 @@
 ---
 client: 'NO TE VA GUSTAR × OSSODRE'
 type: REGISTRO DE SHOW
-category: Shows & Fiestas
+category: Shows
 year: 2025
 location: Montevideo, Uruguay
 video: ""

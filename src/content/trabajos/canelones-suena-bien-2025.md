@@ -1,11 +1,11 @@
 ---
 client: CANELONES SUENA BIEN
 type: 'BRANDING + COBERTURA EN VIVO'
-category: Shows & Fiestas
+category: Shows
 year: 2025
 location: Atlántida, Canelones, Uruguay
 video: ""
-cloudinaryId: null
+cloudinaryId: codestudio/csb-2026-v5
 cover: null
 tagline: 'Branding, campaña y cobertura: la edición que armamos de punta a punta.'
 order: 12

@@ -1,7 +1,7 @@
 ---
 client: COPA TOYOTA
 type: AFTERMOVIE
-category: Eventos
+category: Shows
 year: 2026
 location: Playa Montoya, Uruguay
 video: ""

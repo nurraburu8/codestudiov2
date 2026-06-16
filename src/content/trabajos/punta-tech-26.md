@@ -1,11 +1,11 @@
 ---
 client: PUNTA TECH MEETUP
 type: AFTERMOVIE
-category: Eventos
+category: Shows
 year: 2026
 location: Punta del Este, Uruguay
 video: /videos/clips/punta-tech-26.mp4
-cloudinaryId: null
+cloudinaryId: codestudio/aftermoviepuntatech26-final
 cover: /videos/posters/punta-tech-26.jpg
 tagline: La cumbre de los techies de Latinoamérica, edición 18.
 order: 5

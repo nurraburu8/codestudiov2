@@ -39,9 +39,8 @@ collections:
         name: category
         widget: select
         options:
-          - Shows & Fiestas
-          - Marcas
-          - Eventos
+          - Shows
+          - Campañas
       - { label: "Año", name: year, widget: number, value_type: int, min: 2000, max: 2100 }
       - { label: "Ubicación", name: location, widget: string, default: "Montevideo, Uruguay" }
       - { label: "Video URL", name: video, widget: string }

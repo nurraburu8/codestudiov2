@@ -1,7 +1,7 @@
 ---
 client: WINE SECRET
 type: AFTERMOVIE + FOTOGRAFÍA
-category: Marcas
+category: Campañas
 year: 2025
 location: Paysandu Bar, Uruguay
 video: ""

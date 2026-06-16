@@ -3,11 +3,11 @@
  * Hero slideshow del home.
  * Lee los trabajos desde la colección y los renderiza como slides.
  */
-import { getFeaturedTrabajos, resolveVideo } from '@lib/trabajos';
+import { getFeaturedTrabajos, resolveHeroVideo } from '@lib/trabajos';
 
 const slides = (await getFeaturedTrabajos()).map((w) => ({
   entry: w,
-  ...resolveVideo(w.data),
+  ...resolveHeroVideo(w.data),
 }));
 const slideMeta = slides.map((s) => ({
   id: s.entry.id,

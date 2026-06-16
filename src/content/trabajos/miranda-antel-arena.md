@@ -1,7 +1,7 @@
 ---
 client: MIRANDA!
 type: AFTERMOVIE
-category: Shows & Fiestas
+category: Shows
 year: 2024
 location: Antel Arena, Montevideo
 video: ""

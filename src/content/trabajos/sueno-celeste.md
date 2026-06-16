@@ -1,11 +1,11 @@
 ---
 client: SUEÑO CELESTE
 type: CAMPAÑA INSTITUCIONAL
-category: Eventos
+category: Shows
 year: 2026
 location: Canelones, Uruguay
 video: /videos/clips/sueno-celeste-code.mp4
-cloudinaryId: null
+cloudinaryId: codestudio/sueno-celeste-vcode
 cover: /videos/posters/sueno-celeste-code.jpg
 tagline: Cuando el deporte se cruza con el territorio.
 order: 6

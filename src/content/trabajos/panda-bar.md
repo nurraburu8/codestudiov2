@@ -1,7 +1,7 @@
 ---
 client: PANDA BAR
 type: CONTENIDO DE MARCA
-category: Marcas
+category: Campañas
 year: 2025
 location: Montevideo, Uruguay
 video: ""

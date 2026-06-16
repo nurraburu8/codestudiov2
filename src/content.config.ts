@@ -11,7 +11,7 @@ const trabajos = defineCollection({
   schema: z.object({
     client: z.string(),
     type: z.string(),
-    category: z.enum(['Shows & Fiestas', 'Marcas', 'Eventos']),
+    category: z.enum(['Shows', 'Campañas']),
     year: z.number().int().min(2000).max(2100),
     location: z.string(),
     /** Path absoluto desde public/ (ej: "/videos/foo.mp4"). Fallback si no hay cloudinaryId */

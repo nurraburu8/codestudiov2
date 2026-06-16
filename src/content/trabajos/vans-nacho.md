@@ -1,11 +1,11 @@
 ---
 client: VANS × NACHO
 type: COMERCIAL
-category: Marcas
+category: Campañas
 year: 2026
 location: Montevideo, Uruguay
 video: /videos/clips/vans-nacho.mp4
-cloudinaryId: null
+cloudinaryId: codestudio/vans-x-nacho-3
 cover: /videos/posters/vans-nacho.jpg
 tagline: Skate, calle y zapatillas en un solo plano.
 order: 11

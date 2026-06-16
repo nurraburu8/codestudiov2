@@ -1,21 +1,15 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import Header from '@components/Header.astro';
-import Footer from '@components/Footer.astro';
-import PageHead from '@components/PageHead.astro';
-import Gallery from '@components/Gallery.astro';
-import { PAGES_SEO } from '@/consts';
-import { getTrabajosByCategory } from '@lib/trabajos';
-
-const seo = PAGES_SEO.marcas;
-const works = await getTrabajosByCategory('Marcas');
+// URL legacy — redirige a /campanas
 ---
-
-<Layout title={seo.title} description={seo.description}>
-  <Header current="/marcas" />
-  <main>
-    <PageHead title="Marcas" count={works.length} />
-    <Gallery filter="Marcas" />
-  </main>
-  <Footer />
-</Layout>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content="0;url=/campanas" />
+    <link rel="canonical" href="/campanas" />
+    <title>Redirigiendo...</title>
+  </head>
+  <body>
+    <a href="/campanas">Ir a Campañas →</a>
+  </body>
+</html>

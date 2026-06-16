@@ -1,7 +1,7 @@
 ---
 client: KGM
 type: COBERTURA DE LANZAMIENTO
-category: Eventos
+category: Shows
 year: 2025
 location: Montevideo, Uruguay
 video: ""

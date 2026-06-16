@@ -38,9 +38,7 @@ const pageDescription = [
   .join(' ')
   .slice(0, 160);
 
-const categorySlug =
-  work.data.category === 'Marcas' ? 'marcas' :
-  work.data.category === 'Eventos' ? 'eventos' : 'shows';
+const categorySlug = work.data.category === 'Campañas' ? 'campanas' : 'shows';
 
 const videoJsonLd = {
   '@context': 'https://schema.org',

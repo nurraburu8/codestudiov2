@@ -1,7 +1,7 @@
 ---
 client: RANCH CAFÉ
 type: CONTENIDO DE MARCA
-category: Marcas
+category: Campañas
 year: 2025
 location: Uruguay
 video: ""

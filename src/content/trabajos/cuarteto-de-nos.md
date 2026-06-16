@@ -1,11 +1,11 @@
 ---
 client: CUARTETO DE NOS
 type: SHOW EN VIVO
-category: Shows & Fiestas
+category: Shows
 year: 2026
 location: Colonia, Uruguay
 video: /videos/clips/cuarteto-de-nos.mp4
-cloudinaryId: null
+cloudinaryId: codestudio/cuarteto-de-nos-colonia-sin-placa
 cover: /videos/posters/cuarteto-de-nos.jpg
 tagline: La banda en Colonia, sin placa.
 order: 9

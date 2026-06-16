@@ -1,7 +1,7 @@
 ---
 client: SEDAL
 type: CONTENIDO SOCIAL FIRST
-category: Marcas
+category: Campañas
 year: 2025
 location: Montevideo, Uruguay
 video: ""

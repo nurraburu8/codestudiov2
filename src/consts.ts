@@ -69,22 +69,16 @@ export const PAGES_SEO = {
     keywords: ['productora audiovisual uruguay', 'video uruguay', 'comerciales', 'aftermovies'],
   },
   shows: {
-    title: 'Shows y Fiestas · Aftermovies y videoclips · Code Studio',
+    title: 'Shows · Aftermovies, festivales y coberturas · Code Studio',
     description:
-      'Aftermovies, videoclips y registros audiovisuales para shows en vivo y fiestas en Uruguay. Trabajos con Fito Páez, Monster Energy y más.',
-    keywords: ['aftermovie uruguay', 'videoclip', 'video shows en vivo', 'productora fiestas'],
+      'Aftermovies, coberturas en vivo y registros audiovisuales para shows, festivales y eventos en Uruguay. Fito Páez, FDLC, Canelones Suena Bien y más.',
+    keywords: ['aftermovie uruguay', 'cobertura festival uruguay', 'video shows en vivo', 'productora eventos'],
   },
-  marcas: {
-    title: 'Marcas · Producción audiovisual publicitaria · Code Studio',
+  campanas: {
+    title: 'Campañas · Producción audiovisual publicitaria · Code Studio',
     description:
-      'Comerciales, branded content y campañas audiovisuales para marcas en Uruguay. Mercado Libre, CIF, Sedal, Vans, Volvo, Itaú y más.',
+      'Comerciales, branded content y campañas audiovisuales para marcas en Uruguay. Vans, Sedal, Mercado Libre, Monster y más.',
     keywords: ['comerciales uruguay', 'branded content', 'publicidad audiovisual', 'spots tv'],
-  },
-  eventos: {
-    title: 'Eventos · Cobertura audiovisual corporativa · Code Studio',
-    description:
-      'Cobertura audiovisual de eventos corporativos, lanzamientos y experiencias en Uruguay. Producción de video profesional para tu evento.',
-    keywords: ['cobertura eventos uruguay', 'video corporativo', 'lanzamientos'],
   },
   nosotros: {
     title: 'Nosotros · Code Studio · Productora audiovisual Uruguay',

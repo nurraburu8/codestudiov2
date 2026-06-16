@@ -1,7 +1,7 @@
 ---
 client: NO SLEEP CLUB
 type: AFTERMOVIES — MÚLTIPLES EDICIONES
-category: Shows & Fiestas
+category: Shows
 year: 2025
 location: Montevideo, Uruguay
 video: ""

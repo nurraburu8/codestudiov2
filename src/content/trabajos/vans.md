@@ -1,7 +1,7 @@
 ---
 client: VANS
 type: PRODUCCIÓN INTEGRAL DE EVENTO
-category: Marcas
+category: Campañas
 year: 2025
 location: Punta Carretas Shopping, Montevideo
 video: ""

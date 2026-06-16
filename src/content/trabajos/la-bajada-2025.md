@@ -1,11 +1,11 @@
 ---
 client: LA BAJADA
 type: AFTERMOVIE
-category: Shows & Fiestas
+category: Shows
 year: 2025
 location: Punta del Este, Uruguay
 video: /videos/clips/la-bajada-2025.mp4
-cloudinaryId: null
+cloudinaryId: codestudio/aftermovie-la-bajada-5
 cover: /videos/posters/la-bajada-2025.jpg
 tagline: La fiesta que abre la temporada.
 order: 10

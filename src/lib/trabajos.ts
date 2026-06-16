@@ -6,7 +6,7 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import { cldVideoUrl, cldVideoPoster } from '@lib/cloudinary';
 
 export type TrabajoEntry = CollectionEntry<'trabajos'>;
-export type TrabajoCategory = 'Shows & Fiestas' | 'Marcas' | 'Eventos';
+export type TrabajoCategory = 'Shows' | 'Campañas';
 
 const FALLBACK_POSTER = '/hero-poster.jpg';
 
@@ -21,13 +21,18 @@ function preferWebp(path: string): string {
 }
 
 /**
- * Resuelve la URL de video y poster de un trabajo.
- *   - Si tiene cloudinaryId: usa Cloudinary (con poster generado del frame 0).
- *   - Si no: usa el video local + el cover específico del trabajo (data.cover) en WebP.
- *   - Fallback final: hero-poster genérico.
- *
- * El poster específico es importante para el LCP: cuando el slide carga,
- * el usuario ve el frame de ESE trabajo, no una imagen genérica.
+ * Para el hero slideshow: siempre usa el clip local corto (~10s, muted autoplay).
+ * Ignoramos cloudinaryId aquí a propósito — el hero nunca debe bufferar el video
+ * completo, que puede pesar cientos de MB.
+ */
+export function resolveHeroVideo(data: TrabajoEntry['data']): { src: string; poster: string } {
+  return { src: data.video, poster: preferWebp(data.cover ?? FALLBACK_POSTER) };
+}
+
+/**
+ * Para la página de detalle (/work/[id]): usa Cloudinary si está disponible,
+ * con fallback al clip local. El usuario ya eligió ver ese trabajo, así que
+ * el video completo tiene sentido acá.
  */
 export function resolveVideo(data: TrabajoEntry['data']): { src: string; poster: string } {
   if (data.cloudinaryId) {

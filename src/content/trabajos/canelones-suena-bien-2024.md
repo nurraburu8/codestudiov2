@@ -1,7 +1,7 @@
 ---
 client: 'NO TE VA GUSTAR — 30 AÑOS'
 type: COBERTURA DE SHOW
-category: Shows & Fiestas
+category: Shows
 year: 2024
 location: Atlántida, Canelones, Uruguay
 video: ""

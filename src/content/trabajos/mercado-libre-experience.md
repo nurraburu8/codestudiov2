@@ -1,7 +1,7 @@
 ---
 client: MERCADO LIBRE
 type: COBERTURA DE EVENTO
-category: Eventos
+category: Shows
 year: 2025
 location: Antel Arena, Montevideo
 video: ""

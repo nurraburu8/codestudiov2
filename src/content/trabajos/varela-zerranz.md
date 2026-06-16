@@ -1,7 +1,7 @@
 ---
 client: VARELA ZERRANZ × BRITOS HNOS.
 type: CONTENIDO DE MARCA + COBERTURA
-category: Marcas
+category: Campañas
 year: 2025
 location: Uruguay
 video: ""

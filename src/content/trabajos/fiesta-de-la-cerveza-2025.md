@@ -1,11 +1,11 @@
 ---
 client: FIESTA DE LA CERVEZA
 type: 'AFTERMOVIE & COBERTURA EN VIVO'
-category: Shows & Fiestas
+category: Shows
 year: 2025
 location: Parque del Plata, Canelones, Uruguay
 video: /videos/clips/fiesta-de-la-cerveza-2025.mp4
-cloudinaryId: null
+cloudinaryId: codestudio/fdlc-2025-16-9
 cover: /videos/posters/fiesta-de-la-cerveza-2025.jpg
 tagline: 'La séptima edición: 12 piezas en vivo y un aftermovie de cierre.'
 order: 8

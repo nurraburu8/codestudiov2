@@ -7,15 +7,15 @@ import Gallery from '@components/Gallery.astro';
 import { PAGES_SEO } from '@/consts';
 import { getTrabajosByCategory } from '@lib/trabajos';
 
-const seo = PAGES_SEO.shows;
-const works = await getTrabajosByCategory('Shows');
+const seo = PAGES_SEO.campanas;
+const works = await getTrabajosByCategory('Campañas');
 ---
 
 <Layout title={seo.title} description={seo.description}>
-  <Header current="/shows" />
+  <Header current="/campanas" />
   <main>
-    <PageHead title="Shows" count={works.length} />
-    <Gallery filter="Shows" />
+    <PageHead title="Campañas" count={works.length} />
+    <Gallery filter="Campañas" />
   </main>
   <Footer />
 </Layout>

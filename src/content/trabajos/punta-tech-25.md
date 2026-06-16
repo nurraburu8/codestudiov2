@@ -1,7 +1,7 @@
 ---
 client: PUNTA TECH MEETUP
 type: AFTERMOVIE + COBERTURA INTEGRAL
-category: Eventos
+category: Shows
 year: 2025
 location: Punta del Este, Uruguay
 video: ""

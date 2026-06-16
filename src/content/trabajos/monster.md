@@ -1,7 +1,7 @@
 ---
 client: MONSTER
 type: COBERTURA DE EVENTOS + CONTENIDO PROMO
-category: Marcas
+category: Campañas
 year: 2024
 location: Uruguay
 video: ""
