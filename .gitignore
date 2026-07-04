@@ -51,3 +51,10 @@ desktop.ini
 
 # Temp del audit de performance
 .perf-tmp/
+
+# Documentos internos / para cliente (no van al repo público)
+checklist-pre-deploy.html
+reporte-cliente.html
+
+# Config local de Claude Code
+.claude/settings.local.json

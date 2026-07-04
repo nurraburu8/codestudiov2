@@ -61,7 +61,7 @@ codestudio/
 │   ├── pages/           # Cada archivo = una ruta (index.astro, contacto.astro, etc)
 │   ├── styles/          # CSS global y design tokens
 │   ├── consts.ts        # Constantes globales (SEO, redes, contacto)
-│   └── lib/             # Helpers (cloudinary, etc) — TODO
+│   └── lib/             # Helpers (cloudinary, etc)
 ├── legacy/              # Sitio HTML puro previo (referencia, NO se deploya)
 ├── astro.config.mjs     # Config de Astro
 ├── tsconfig.json        # Config TypeScript con alias @/, @components/, etc
@@ -80,7 +80,7 @@ codestudio/
 | CMS | Decap CMS | Gratis |
 | Formulario | Web3Forms | 250 envíos/mes |
 | Analytics | Cloudflare Web Analytics | Gratis sin cookies |
-| Email del dominio | Google Workspace (existente) | — |
+| Email del dominio | Google Workspace | — |
 | Monitoring | UptimeRobot | 50 monitors |
 
 ---
@@ -97,77 +97,39 @@ Configurar Cloudflare Pages apuntando a este repo:
 
 El deploy es automático con cada push a `main`.
 
-### DNS
-
-El dominio `codestudio.com.uy` está registrado en **Antel** (nameservers `ns1.anteldata.com.uy`).
-Para activar Cloudflare Pages con dominio personalizado:
-
-1. Migrar nameservers a Cloudflare (panel Antel)
-2. Copiar los MX records de Google Workspace a Cloudflare DNS **antes** del switch para no romper el email
-3. Configurar custom domain en Cloudflare Pages
-
 ---
 
-## Edición de contenido (para el cliente)
+## CMS visual (Decap)
 
-El sitio usa **Astro Content Collections** para los trabajos. Cada trabajo es un archivo markdown en [src/content/trabajos/](src/content/trabajos/) con frontmatter validado contra el schema de [src/content.config.ts](src/content.config.ts).
+El panel CMS está en `https://codestudio.com.uy/admin` y permite crear/editar/borrar trabajos sin tocar código. Cada cambio genera un commit en el repo y Cloudflare Pages re-deploya automáticamente (1-2 min).
 
-### Panel CMS visual (Decap)
-
-Una vez configurado el OAuth (ver más abajo), el cliente entra a:
-
-- **URL:** `https://codestudio.com.uy/admin`
-- **Login:** GitHub OAuth
-
-Desde ahí puede crear/editar/borrar trabajos, subir imágenes, sin tocar código. Cada cambio crea un commit en el repo y Cloudflare Pages re-deploya solo (1-2 min).
-
-### Setup pendiente del CMS (post-deploy)
-
-El panel necesita un OAuth provider para autenticarse contra GitHub. Pasos:
-
-1. **GitHub** → Settings → Developer settings → OAuth Apps → New OAuth App
-   - Homepage URL: `https://codestudio.com.uy`
-   - Authorization callback URL: `https://<TU-WORKER>.workers.dev/auth/callback`
-2. Desplegar un Cloudflare Worker como proxy OAuth (ver [decap-cms-cloudflare-pages-auth](https://github.com/i40west/netlify-cms-oauth) o similar).
-3. Editar [public/admin/config.yml](public/admin/config.yml):
-   - `repo`: `usuario/codestudio`
-   - `base_url`: URL del Worker
+Autenticación vía GitHub OAuth usando el worker en [oauth-worker/](oauth-worker/).
 
 ---
 
 ## Estructura de contenido
 
-```
-src/content/trabajos/
-├── fiesta-cerveza-26.md
-├── antel-fibra.md
-├── ntvg.md
-└── ...
-```
-
-Cada archivo tiene la forma:
+Cada trabajo es un archivo markdown en [src/content/trabajos/](src/content/trabajos/) con frontmatter validado:
 
 ```yaml
 ---
 client: NOMBRE CLIENTE
 type: AFTERMOVIE | COMERCIAL | VIDEOCLIP | ...
-category: Shows & Fiestas | Marcas | Eventos
+category: Shows | Campañas
 year: 2026
 location: Ciudad, País
 video: /videos/archivo.mp4
-cover: null  # o /uploads/cover.jpg
+cover: null
 tagline: Frase corta destacada
-order: 1     # menor = primero
+order: 1
 publish: true
 credits:
   - { role: Dirección, name: Valentí Prieto }
-  - { role: Edición,   name: Mateo R. Murias }
 stats:
   - { label: Asistentes, value: 80K+ }
 ---
 
 Texto largo del proyecto en markdown.
-Separar párrafos con línea en blanco.
 ```
 
 ---
@@ -178,15 +140,3 @@ El estado HTML puro previo a esta migración queda preservado en:
 
 - **Tag git:** `v1-html-puro`
 - **Carpeta:** `legacy/`
-
-Para volver al sitio anterior:
-
-```bash
-git checkout v1-html-puro
-```
-
----
-
-## Soporte
-
-Cualquier consulta técnica: revisar `legacy/` para ver implementaciones previas, o el archivo `checklist-pre-deploy.html` para tareas pendientes.
