@@ -105,12 +105,18 @@ const PALETTES = [
     padding: 0 5vw 60px;
     max-width: 1500px;
     margin: 0 auto;
-    perspective: 1600px;
   }
 
   .cd {
     display: block;
     cursor: pointer;
+    /* El perspective va acá (por-carta) y no en .card-grid: si estuviera en
+       el contenedor, todas las cartas compartirían un único punto de fuga
+       fijo en el centro de la grilla, y el tilt de cada una se vería
+       distinto (o hasta invertido) según su posición respecto a ese punto.
+       Con perspective por-carta, cada una tiene su propio punto de fuga
+       centrado en sí misma, así el mismo hover se ve igual en todas. */
+    perspective: 1600px;
     transform-style: preserve-3d;
   }
 
