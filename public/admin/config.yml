@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: balurra/codestudiov2
+  repo: nurraburu8/codestudiov2
   branch: main
   base_url: https://codestudio-oauth.urraburunicolas.workers.dev
   auth_endpoint: auth

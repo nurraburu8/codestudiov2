@@ -27,7 +27,7 @@ El worker queda en `https://codestudio-oauth.urraburunicolas.workers.dev` — es
 
 ## 3. Dar acceso al cliente
 
-El cliente loguea con GitHub. Para que pueda editar, tiene que ser colaborador del repo `balurra/codestudiov2` (GitHub → repo → Settings → Collaborators → Add).
+El cliente loguea con GitHub. Para que pueda editar, tiene que ser colaborador del repo `nurraburu8/codestudiov2` (GitHub → repo → Settings → Collaborators → Add).
 
 ## 4. Probar
 
