@@ -30,3 +30,7 @@
 # ── Trailing slash normalizado ───────────────────────────────
 # Astro genera /shows/index.html — Cloudflare Pages sirve tanto
 # /shows como /shows/ automáticamente. No necesitamos forzar nada.
+
+# ── Trabajos fusionados (duplicados) ─────────────────────────
+/work/copa-toyota    /work/copa-rdlp-2026   301
+/work/copa-toyota/   /work/copa-rdlp-2026   301

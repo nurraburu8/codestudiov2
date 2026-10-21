@@ -28,6 +28,16 @@ stats:
     value: '2'
   - label: Años
     value: 2023–2024
+gallery:
+  - kind: video
+    cloudinaryId: codestudio/trabajos/gira-fito-paez/fito-movistar-noviembre-a
+    caption: 'Movistar Arena · Noviembre'
+  - kind: video
+    cloudinaryId: codestudio/trabajos/gira-fito-paez/fito-movistar-diciembre
+    caption: 'Movistar Arena · Diciembre'
+  - kind: video
+    cloudinaryId: codestudio/trabajos/gira-fito-paez/fito-uruguay
+    caption: 'Uruguay'
 ---
 
 Acompañar a Fito en sus giras *El Amor Después del Amor* y *Páez4030* fue uno de los desafíos más emocionantes que vivimos. Registramos y editamos material de múltiples fechas, desde los shows de Montevideo y La Plata en 2023 hasta las siete funciones del Movistar Arena en 2024.

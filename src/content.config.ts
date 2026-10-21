@@ -46,6 +46,20 @@ const trabajos = defineCollection({
         })
       )
       .default([]),
+    /**
+     * Material extra del trabajo (fotos y videos) que se muestra en /work/<slug>
+     * debajo del video principal. Todo vive en Cloudinary; lo sube
+     * scripts/upload-drive.mjs o se carga a mano desde el CMS.
+     */
+    gallery: z
+      .array(
+        z.object({
+          kind: z.enum(['foto', 'video']),
+          cloudinaryId: z.string(),
+          caption: z.string().optional().nullable(),
+        })
+      )
+      .default([]),
   }),
 });
 
