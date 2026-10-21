@@ -5,7 +5,7 @@ category: Shows
 year: 2026
 location: Atlántida, Canelones, Uruguay
 video: /videos/clips/canelones-suena-bien-26.mp4
-cloudinaryId: codestudio/aftermovie-csb26
+cloudinaryId: codestudio/csb-2026-v5
 cover: /videos/posters/canelones-suena-bien-26.jpg
 tagline: Dos días, seis piezas en vivo y un aftermovie que ata la historia.
 order: 1

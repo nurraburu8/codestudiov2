@@ -23,13 +23,14 @@
 
 export const CLIPS_CONFIG = {
   // archivo en source-videos/                     → slug              | start
-  // ── Hero con video real del cliente (main/) ──────────────────────────
-  'AftermovieCopaRdlP26.mp4':                      { slug: 'copa-rdlp-2026',          startSec: 30 },
-  'AftermoviePuntaTech26_fINAL.mp4':               { slug: 'punta-tech-26',           startSec: 60 },
-  'CSB 2026 - V5.mp4':                             { slug: 'canelones-suena-bien-26', startSec: 45 },
-  'Fito - Estadio Uno La Plata.mp4':               { slug: 'gira-fito-paez',          startSec: 25 },
+  // ── Hero: intros de ~10s que armó el cliente (Drive → PROYECTOS PRINCIPALES INICIO)
+  'intro-csb.mp4':                                 { slug: 'canelones-suena-bien-26', startSec: 0, duration: 10.4 },
+  'intro-vans.mp4':                                { slug: 'vans-x-harlem-2025',      startSec: 0, duration: 10.3 },
+  'intro-antel.mp4':                               { slug: 'antel-summit',            startSec: 0, duration: 10.3 },
+  'intro-fito.mp4':                                { slug: 'gira-fito-paez',          startSec: 0, duration: 10.3 },
+  'intro-puntatech.mp4':                           { slug: 'punta-tech-26',           startSec: 0, duration: 11.3 },
+  'intro-copatoyota.mp4':                          { slug: 'copa-rdlp-2026',          startSec: 0, duration: 11.3 },
   'SUEÑO CELESTE Vcode.mp4':                       { slug: 'sueno-celeste-code',      startSec: 5  },
-  'VANS X HARLEM v2.mp4':                          { slug: 'vans-x-harlem-2025',      startSec: 14 },
   // ── Hero con sources previos (clips ya generados, se skipean) ────────
   'VANS X NACHO_3.mp4':                            { slug: 'vans-nacho',              startSec: 15 },
   'FDLC 2026 After.mp4':                           { slug: 'fdlc-2026',               startSec: 20 },

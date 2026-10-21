@@ -28,6 +28,31 @@ stats:
     value: 200+
   - label: Días
     value: '2'
+gallery:
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/vans-x-harlem-2025/086a0244
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/vans-x-harlem-2025/1o9a1196
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/vans-x-harlem-2025/1o9a6890
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/vans-x-harlem-2025/1o9a7195
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/vans-x-harlem-2025/1o9a7380
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/vans-x-harlem-2025/1o9a7475
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/vans-x-harlem-2025/1o9a7593
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/vans-x-harlem-2025/1o9a7636
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/vans-x-harlem-2025/1o9a7680
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/vans-x-harlem-2025/1o9a7753
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/vans-x-harlem-2025/1o9a7953
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/vans-x-harlem-2025/1o9a9024
 ---
 
 Nuestro primer viaje al exterior como grupo encargados de la producción audiovisual de Vans en el festival Harlem de Santa Fe, Argentina. Realizamos 10 cápsulas y más de 200 fotos en ambos días de festival.

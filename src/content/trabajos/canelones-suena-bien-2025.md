@@ -5,7 +5,7 @@ category: Shows
 year: 2025
 location: Atlántida, Canelones, Uruguay
 video: ""
-cloudinaryId: codestudio/csb-2026-v5
+cloudinaryId: codestudio/trabajos/canelones-suena-bien-2025/suena-bien-2025
 cover: null
 tagline: 'Branding, campaña y cobertura: la edición que armamos de punta a punta.'
 order: 9

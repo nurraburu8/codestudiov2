@@ -1,13 +1,13 @@
 ---
-client: COPA RDLP
+client: COPA TOYOTA RÍO DE LA PLATA
 type: AFTERMOVIE
 category: Campañas
 year: 2026
-location: Punta del Este, Uruguay
+location: Playa Montoya, Uruguay
 video: /videos/clips/copa-rdlp-2026.mp4
 cloudinaryId: codestudio/aftermoviecopardlp26
 cover: /videos/posters/copa-rdlp-2026.jpg
-tagline: El campeonato cubierto de principio a fin.
+tagline: Tres días de surf latinoamericano, en una sola pieza.
 order: 7
 publish: true
 highlight: true
@@ -26,16 +26,71 @@ credits:
   - role: Color
     name: Mateo Rodríguez Murias
 stats:
-  - label: Jornadas
+  - label: Días
     value: '3'
-  - label: Cámaras
-    value: '5'
-  - label: Asistentes
-    value: 8K+
+  - label: Circuito
+    value: ALAS Global Tour
+  - label: Fecha
+    value: 29–31 ene 2026
+gallery:
+  - kind: video
+    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/reel-01-toyota2
+    caption: 'Reel en vivo · Toyota'
+  - kind: video
+    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/reel-02-presentacion
+    caption: 'Reel en vivo · Presentación'
+  - kind: video
+    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/reel-03-entrevista
+    caption: 'Reel en vivo · Entrevista'
+  - kind: video
+    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/reel-toyota3
+    caption: 'Reel en vivo · Toyota'
+  - kind: video
+    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/reel-monster-01
+    caption: 'Reel en vivo · Monster'
+  - kind: video
+    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/reel-monster-2
+    caption: 'Reel en vivo · Monster'
+  - kind: video
+    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/reel-vans-1
+    caption: 'Reel en vivo · Vans'
+  - kind: video
+    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/reel-vans2
+    caption: 'Reel en vivo · Vans'
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/086a4836
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/086a5011
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/086a5092
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/086a5459
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/086a5918
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/086a5934
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/7iv01483
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/7iv02229
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/7iv03490
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/7iv03568
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/7iv03600
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/codestudio-uy-lecorchphoto-36
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/codestudio-uy-lecorchphoto-44
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/codestudio-uy-lecorchphoto-48
+  - kind: foto
+    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/img-3746
 ---
 
-Aftermovie del campeonato Copa RDLP 2026, evento deportivo de tres jornadas en Punta del Este. La pieza recorre la previa, el desarrollo de las jornadas y la ceremonia final, alternando entre el spectacle del público y la intimidad del vestuario.
+Copa Toyota Río de la Plata — 29, 30 y 31 de enero de 2026.
 
-Trabajamos con un dispositivo de cinco cámaras: dos al borde de cancha, una cinemática para entrevistas, una drone para los planos generales y una GoPro en el equipo para los momentos de adentro.
+Durante tres días, Uruguay fue sede del surf latinoamericano en Playa Montoya, como parte del circuito internacional del ALAS Global Tour. Estuvimos allí para documentar la energía de la competencia y la esencia del surf en cada ola. Una cobertura que nos permitió comenzar el año siendo parte de un momento importante para el surf en Uruguay.
 
-Entregamos una pieza institucional de 4 minutos y cuatro cortes para redes y prensa.
+Aftermovie realizado en base a los tres días de competición, más reels en vivo durante el evento.

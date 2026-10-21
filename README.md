@@ -132,6 +132,24 @@ stats:
 Texto largo del proyecto en markdown.
 ```
 
+### Galería por trabajo (fotos y videos extra)
+
+El campo opcional `gallery` lista material extra que se muestra en `/work/<slug>` debajo del video principal (videos en grilla + fotos con lightbox). Todo vive en Cloudinary:
+
+```yaml
+gallery:
+  - { kind: video, cloudinaryId: codestudio/trabajos/antel-summit/roberto-musso, caption: Roberto Musso }
+  - { kind: foto, cloudinaryId: codestudio/trabajos/antel-summit/codestudio-0040 }
+```
+
+Se puede editar desde el CMS (lista "Galería") o cargar en masa desde el Drive del cliente:
+
+1. Bajar el Drive a `fotos_videos/drive/` respetando las carpetas (ignorado por git).
+2. Mapear archivos → trabajo en [scripts/drive-manifest.mjs](scripts/drive-manifest.mjs).
+3. `node scripts/upload-drive.mjs` (o `--dry-run`, o filtrar por slug: `node scripts/upload-drive.mjs antel,cif`).
+
+El script achica las fotos, comprime los videos de más de 95MB, no sube dos veces el mismo archivo (compara por contenido) y reescribe `cloudinaryId` + `gallery` en cada `.md`.
+
 ---
 
 ## Tag de backup

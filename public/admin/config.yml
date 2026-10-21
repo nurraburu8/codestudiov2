@@ -66,4 +66,14 @@ collections:
         fields:
           - { label: Etiqueta, name: label, widget: string }
           - { label: Valor, name: value, widget: string }
+      - label: Galería (fotos y videos extra)
+        name: gallery
+        widget: list
+        required: false
+        label_singular: Archivo
+        summary: '{{kind}} · {{cloudinaryId}}'
+        fields:
+          - { label: Tipo, name: kind, widget: select, options: [foto, video], default: foto }
+          - { label: "Cloudinary public_id", name: cloudinaryId, widget: string }
+          - { label: "Texto (opcional)", name: caption, widget: string, required: false }
       - { label: "Descripcion", name: body, widget: markdown }
