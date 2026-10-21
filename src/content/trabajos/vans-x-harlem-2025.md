@@ -12,22 +12,10 @@ order: 2
 publish: true
 highlight: true
 featured: true
-credits:
-  - role: Producción
-    name: Code Studio
-  - role: Cámara
-    name: Code Studio
-  - role: Edición
-    name: Code Studio
-  - role: Fotografía
-    name: Code Studio
+credits: []
 stats:
-  - label: Cápsulas
-    value: '10'
-  - label: Fotos
-    value: 200+
-  - label: Días
-    value: '2'
+  - label: Año
+    value: '2025'
 gallery:
   - kind: foto
     cloudinaryId: codestudio/trabajos/vans-x-harlem-2025/086a0244

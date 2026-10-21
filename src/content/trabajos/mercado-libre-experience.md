@@ -12,18 +12,10 @@ order: 36
 publish: true
 highlight: false
 featured: false
-credits:
-  - role: Producción
-    name: Code Studio
-  - role: Cámaras
-    name: Code Studio
-  - role: Edición
-    name: Code Studio
+credits: []
 stats:
-  - label: Venue
-    value: Antel Arena
-  - label: Evento
-    value: ML Experience
+  - label: Año
+    value: '2025'
 ---
 
 Cubrimos el Mercado Libre Experience en el Antel Arena — un evento que reunió innovación, tecnología y grandes ideas en una sola jornada.

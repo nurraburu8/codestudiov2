@@ -12,18 +12,10 @@ order: 14
 publish: true
 highlight: false
 featured: false
-credits:
-  - role: Producción
-    name: Code Studio
-  - role: Dirección
-    name: Code Studio
-  - role: Edición
-    name: Code Studio
+credits: []
 stats:
-  - label: Headliners cubiertos
-    value: Danny Ávila, Sara Landry, Space 92
-  - label: Ediciones
-    value: Múltiples
+  - label: Año
+    value: '2025'
 gallery:
   - kind: video
     cloudinaryId: codestudio/trabajos/no-sleep-club/aftermovie-danny-avila

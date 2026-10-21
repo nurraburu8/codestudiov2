@@ -12,14 +12,10 @@ order: 45
 publish: true
 highlight: false
 featured: false
-credits:
-  - role: Producción
-    name: Code Studio
-  - role: Edición
-    name: Code Studio
+credits: []
 stats:
-  - label: qa
-    value: qa
+  - label: Año
+    value: '2025'
 ---
 
 Producción audiovisual para la marca Casaca.

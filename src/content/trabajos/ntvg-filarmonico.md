@@ -12,18 +12,10 @@ order: 16
 publish: true
 highlight: false
 featured: false
-credits:
-  - role: Producción
-    name: Code Studio
-  - role: Cámaras
-    name: Code Studio
-  - role: Edición
-    name: Code Studio
+credits: []
 stats:
-  - label: Noches
-    value: '2'
-  - label: Shows
-    value: '2'
+  - label: Año
+    value: '2025'
 ---
 
 No Te Va Gustar cerró su colaboración con la Orquesta Sinfónica del Sodre con dos shows únicos en Montevideo. Dos noches donde el rock y la música clásica se encontraron en un mismo escenario, dando vida a un espectáculo lleno de emoción y energía.

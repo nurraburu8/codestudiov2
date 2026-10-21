@@ -12,26 +12,10 @@ order: 12
 publish: true
 highlight: false
 featured: false
-credits:
-  - role: Dirección
-    name: Mateo Rodríguez Murias
-  - role: Producción
-    name: Code Studio
-  - role: DF
-    name: Santiago Mondo
-  - role: Cámaras
-    name: Code Studio (4 operadores)
-  - role: Edición
-    name: Valentí Prieto
-  - role: Color
-    name: Franco Lorenzi
+credits: []
 stats:
-  - label: Duración
-    value: '2''50"'
-  - label: Asistentes
-    value: 5K+
-  - label: Cámaras
-    value: '4'
+  - label: Año
+    value: '2025'
 ---
 
 Aftermovie de La Bajada 2025, una de las primeras fiestas grandes de la temporada en Punta del Este. La pieza captura el espíritu del verano arrancando: predio nuevo, line-up internacional y un público que llegó decidido a abrir la temporada con fuerza.

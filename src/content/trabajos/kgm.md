@@ -12,18 +12,10 @@ order: 35
 publish: true
 highlight: false
 featured: false
-credits:
-  - role: Producción
-    name: Code Studio
-  - role: Cámaras
-    name: Code Studio
-  - role: Edición
-    name: Code Studio
+credits: []
 stats:
-  - label: Evento
-    value: Lanzamiento
-  - label: País
-    value: Uruguay
+  - label: Año
+    value: '2025'
 ---
 
 Cobertura audiovisual del evento que marcó el desembarco de KGM en Uruguay. Una noche que marcó el comienzo de una nueva era en movilidad — primer contacto de la marca con prensa, dealers y público local.

@@ -12,26 +12,10 @@ order: 7
 publish: true
 highlight: true
 featured: true
-credits:
-  - role: Dirección
-    name: Valentí Prieto
-  - role: Producción
-    name: Code Studio
-  - role: DF
-    name: Santiago Mondo
-  - role: Cámara drone
-    name: Externo — UAV.uy
-  - role: Edición
-    name: Franco Lorenzi
-  - role: Color
-    name: Mateo Rodríguez Murias
+credits: []
 stats:
-  - label: Días
-    value: '3'
-  - label: Circuito
-    value: ALAS Global Tour
-  - label: Fecha
-    value: 29–31 ene 2026
+  - label: Año
+    value: '2026'
 gallery:
   - kind: video
     cloudinaryId: codestudio/trabajos/copa-rdlp-2026/reel-01-toyota2

@@ -12,22 +12,10 @@ order: 5
 publish: true
 highlight: true
 featured: true
-credits:
-  - role: Producción
-    name: Code Studio
-  - role: Dirección
-    name: Code Studio
-  - role: Cámaras
-    name: Code Studio
-  - role: Edición
-    name: Code Studio
+credits: []
 stats:
-  - label: Fechas Movistar Arena
-    value: '7'
-  - label: Países
-    value: '2'
-  - label: Años
-    value: 2023–2024
+  - label: Año
+    value: '2024'
 gallery:
   - kind: video
     cloudinaryId: codestudio/trabajos/gira-fito-paez/fito-movistar-noviembre-a

@@ -12,16 +12,8 @@ order: 13
 publish: true
 highlight: false
 featured: false
-credits:
-  - role: Producción
-    name: Code Studio
-  - role: Cámaras
-    name: Code Studio
-  - role: Edición
-    name: Code Studio
+credits: []
 stats:
-  - label: Venue
-    value: Antel Arena
   - label: Año
     value: '2024'
 ---
