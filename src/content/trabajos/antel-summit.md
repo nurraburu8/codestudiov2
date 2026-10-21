@@ -12,12 +12,10 @@ order: 4
 publish: true
 featured: true
 highlight: true
-credits:
-  - role: Producción
-    name: Code Studio
-  - role: Edición
-    name: Code Studio
-stats: []
+credits: []
+stats:
+  - label: Año
+    value: '2025'
 gallery:
   - kind: video
     cloudinaryId: codestudio/trabajos/antel-summit/historia-hernan-casciari

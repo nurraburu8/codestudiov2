@@ -12,26 +12,10 @@ order: 10
 publish: true
 highlight: false
 featured: false
-credits:
-  - role: Dirección
-    name: Santiago Mondo
-  - role: Producción
-    name: Code Studio
-  - role: DF
-    name: Valentí Prieto
-  - role: Cámara B
-    name: Franco Lorenzi
-  - role: Edición & color
-    name: Mateo Rodríguez Murias
-  - role: Audio
-    name: Provisto por la banda
+credits: []
 stats:
-  - label: Duración
-    value: '3''20"'
-  - label: Cámaras
-    value: '4'
-  - label: Asistentes
-    value: 4K
+  - label: Año
+    value: '2026'
 ---
 
 Cobertura del show del Cuarteto de Nos en Colonia, dentro de la gira presentación del último álbum. La pieza prioriza la performance sobre la fiesta: planos cerrados de manos, mirada al público, instrumento, vuelta al frontman.

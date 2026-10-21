@@ -12,26 +12,10 @@ order: 40
 publish: true
 highlight: false
 featured: false
-credits:
-  - role: Dirección
-    name: Franco Lorenzi
-  - role: Producción
-    name: Code Studio
-  - role: Dirección de fotografía
-    name: Valentí Prieto
-  - role: Cámara skate
-    name: Santiago Mondo
-  - role: Edición
-    name: Mateo Rodríguez Murias
-  - role: Color
-    name: Code Studio
+credits: []
 stats:
-  - label: Duración
-    value: 60"
-  - label: Versiones
-    value: '4'
-  - label: Formato
-    value: 4K
+  - label: Año
+    value: '2026'
 ---
 
 Pieza colaborativa entre Vans y el skater uruguayo Nacho. El brief pedía un comercial de 60 segundos que se sintiera más documental que publicidad — barrio, fricción real con el cemento, sin sobreproducción.

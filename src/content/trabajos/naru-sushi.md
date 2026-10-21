@@ -12,12 +12,10 @@ order: 25
 publish: true
 featured: false
 highlight: false
-credits:
-  - role: Producción
-    name: Code Studio
-  - role: Fotografía
-    name: Code Studio
-stats: []
+credits: []
+stats:
+  - label: Año
+    value: '2025'
 ---
 
 Fotografía de producto para Naru Sushi.

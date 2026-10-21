@@ -12,12 +12,10 @@ order: 15
 publish: true
 featured: false
 highlight: false
-credits:
-  - role: Producción
-    name: Code Studio
-  - role: Edición
-    name: Code Studio
-stats: []
+credits: []
+stats:
+  - label: Año
+    value: '2025'
 gallery:
   - kind: video
     cloudinaryId: codestudio/trabajos/la-planta/planta-colonial-2

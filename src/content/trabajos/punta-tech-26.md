@@ -12,18 +12,12 @@ order: 6
 publish: true
 highlight: true
 featured: true
-credits:
-  - role: Producción
-    name: Code Studio
-  - role: Cámaras
-    name: Code Studio
-  - role: Edición
-    name: Code Studio
+credits: []
 stats:
-  - label: Edición
-    value: '18ª'
   - label: Año
     value: '2026'
+  - label: Edición
+    value: 18ª
 ---
 
 Cobertura audiovisual para la edición número 18 de Punta Tech Meetup, el evento más importante de networking de Latinoamérica que reúne a los líderes techies en Punta del Este.

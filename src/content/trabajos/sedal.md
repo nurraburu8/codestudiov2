@@ -12,18 +12,10 @@ order: 42
 publish: true
 highlight: false
 featured: false
-credits:
-  - role: Producción
-    name: Code Studio
-  - role: Dirección
-    name: Code Studio
-  - role: Edición
-    name: Code Studio
+credits: []
 stats:
-  - label: Cápsulas
-    value: '5'
-  - label: Plataforma
-    value: TikTok
+  - label: Año
+    value: '2025'
 ---
 
 Cinco cápsulas diseñadas principalmente para TikTok, elaboradas con tendencias propias de la plataforma. Enfoque fresco y *social first*: capturamos momentos clave que muestran cómo el brillo se mantiene 24/7, reforzando las características de la línea y complementando los assets globales de la marca.

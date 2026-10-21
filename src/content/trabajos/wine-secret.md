@@ -12,20 +12,12 @@ order: 23
 publish: true
 highlight: false
 featured: false
-credits:
-  - role: Producción
-    name: Code Studio
-  - role: Cámara
-    name: Code Studio
-  - role: Edición
-    name: Code Studio
-  - role: Fotografía
-    name: Code Studio
+credits: []
 stats:
-  - label: Antigüedad del bar
-    value: 114 años
+  - label: Año
+    value: '2025'
   - label: Edición
-    value: '2da'
+    value: 2ª
 ---
 
 Cobertura del primer encuentro de la segunda edición de *Bares de Wine Secret* 2025, en Paysandu Bar — un verdadero ícono con 114 años de trayectoria.

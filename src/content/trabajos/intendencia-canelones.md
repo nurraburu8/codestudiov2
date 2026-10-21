@@ -12,12 +12,10 @@ order: 8
 publish: true
 featured: false
 highlight: true
-credits:
-  - role: Producción
-    name: Code Studio
-  - role: Edición
-    name: Code Studio
-stats: []
+credits: []
+stats:
+  - label: Año
+    value: '2025'
 ---
 
 Producción audiovisual para la Intendencia de Canelones.

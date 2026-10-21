@@ -12,18 +12,8 @@ order: 3
 publish: true
 highlight: true
 featured: false
-credits:
-  - role: Producción audiovisual
-    name: Code Studio
-  - role: Fotografía
-    name: Code Studio
-  - role: Cámara
-    name: Code Studio
-  - role: Edición
-    name: Code Studio
+credits: []
 stats:
-  - label: Tipo
-    value: Big Opening
   - label: Año
     value: '2025'
 gallery:

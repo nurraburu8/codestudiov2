@@ -12,22 +12,10 @@ order: 9
 publish: true
 highlight: true
 featured: false
-credits:
-  - role: 'Branding & dirección de arte'
-    name: Code Studio
-  - role: Producción
-    name: Code Studio
-  - role: Cámaras
-    name: Code Studio
-  - role: Edición en vivo
-    name: Code Studio
-  - role: Fotografía
-    name: Code Studio
+credits: []
 stats:
-  - label: Días
-    value: '2'
-  - label: Headliners
-    value: Divididos, Nicki Nicole, Mesita
+  - label: Año
+    value: '2025'
 ---
 
 Diseñamos el branding, lanzamos la campaña y realizamos la cobertura audiovisual de la edición 2025 del festival, sobre la rambla de Atlántida. Dos jornadas con edición en vivo para alimentar las redes en tiempo real, fotografía profesional y producción de video — aftermovies y one-shots — que captaron la energía del público.

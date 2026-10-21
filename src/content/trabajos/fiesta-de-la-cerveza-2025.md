@@ -12,26 +12,12 @@ order: 11
 publish: true
 highlight: false
 featured: false
-credits:
-  - role: Dirección
-    name: Valentí Prieto
-  - role: Producción
-    name: Franco Lorenzi
-  - role: DF
-    name: Santiago Mondo
-  - role: Cámaras
-    name: Code Studio (5 operadores)
-  - role: Edición
-    name: Mateo Rodríguez Murias
+credits: []
 stats:
-  - label: Asistentes
-    value: 40K+
-  - label: Productores
-    value: '30'
-  - label: Propuestas gastro
-    value: '40'
-  - label: Piezas en vivo
-    value: '12'
+  - label: Año
+    value: '2025'
+  - label: Edición
+    value: 7ª
 ---
 
 Producción y cobertura audiovisual de la séptima edición de la Fiesta de la Cerveza Artesanal, los días 13 y 14 de abril en Parque del Plata. Realizamos 12 piezas en vivo durante las dos jornadas, más el aftermovie de cierre.

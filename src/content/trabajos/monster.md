@@ -12,18 +12,8 @@ order: 41
 publish: true
 highlight: false
 featured: false
-credits:
-  - role: Producción
-    name: Code Studio
-  - role: Fotografía
-    name: Code Studio
-  - role: Cámara
-    name: Code Studio
-  - role: Edición
-    name: Code Studio
+credits: []
 stats:
-  - label: Eventos cubiertos
-    value: '4'
   - label: Año
     value: '2024'
 ---

@@ -12,30 +12,10 @@ order: 1
 publish: true
 highlight: true
 featured: true
-credits:
-  - role: Dirección
-    name: Code Studio
-  - role: Guion
-    name: Mateo Rodríguez Murias
-  - role: Preproducción
-    name: Mateo Rodríguez Murias
-  - role: Producción
-    name: Santiago Mondo
-  - role: Cámaras
-    name: Leo Méndez, Santiago Mondo, Mateo Rodríguez Murias
-  - role: FPV / Drone
-    name: Andrés Umpiérrez, Facundo Acosta
-  - role: Edición
-    name: Valentín Prieto, Franco Lorenzi
-  - role: VFX
-    name: Esteban Corchs, Code Studio
+credits: []
 stats:
-  - label: Piezas en vivo
-    value: '6'
-  - label: Días de cobertura
-    value: '2'
-  - label: Cámaras
-    value: '3'
+  - label: Año
+    value: '2026'
 ---
 
 Cobertura en vivo durante dos días del festival Canelones Suena Bien 2026, encargado por la Intendencia de Canelones. Produjimos seis piezas que se publicaron en tiempo real en los canales oficiales de la Intendencia, alternando con el armado del relato del aftermovie.

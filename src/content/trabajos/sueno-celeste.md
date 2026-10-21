@@ -12,24 +12,10 @@ order: 32
 publish: true
 highlight: false
 featured: false
-credits:
-  - role: Dirección
-    name: Mateo Rodríguez Murias
-  - role: Guion
-    name: Mateo Rodríguez Murias
-  - role: Cámara
-    name: Santiago Mondo
-  - role: Producción
-    name: Code Studio
-  - role: Edición
-    name: Valentí Prieto
-  - role: Color
-    name: Code Studio
+credits: []
 stats:
-  - label: Cliente
-    value: Intendencia + AUF
-  - label: Entregables
-    value: Pieza + recap
+  - label: Año
+    value: '2026'
 ---
 
 Fuimos parte de la cobertura audiovisual de la campaña SUEÑO CELESTE, proyecto de la Intendencia de Canelones en colaboración con la AUF (Asociación Uruguaya de Fútbol). Una iniciativa que une el deporte con el desarrollo territorial y la cercanía con la comunidad.
