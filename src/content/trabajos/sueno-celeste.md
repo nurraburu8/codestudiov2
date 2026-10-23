@@ -1,7 +1,7 @@
 ---
 client: SUEÑO CELESTE
 type: CAMPAÑA INSTITUCIONAL
-category: Shows
+category: Campañas
 year: 2026
 location: Canelones, Uruguay
 video: /videos/clips/sueno-celeste-code.mp4
@@ -10,12 +10,15 @@ cover: /videos/posters/sueno-celeste-code.jpg
 tagline: Cuando el deporte se cruza con el territorio.
 order: 32
 publish: true
-highlight: false
 featured: false
-credits: []
+highlight: false
+credits:
+  - role: code
+    name: code
 stats:
   - label: Año
     value: '2026'
+gallery: []
 ---
 
 Fuimos parte de la cobertura audiovisual de la campaña SUEÑO CELESTE, proyecto de la Intendencia de Canelones en colaboración con la AUF (Asociación Uruguaya de Fútbol). Una iniciativa que une el deporte con el desarrollo territorial y la cercanía con la comunidad.
