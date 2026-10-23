@@ -1,5 +1,5 @@
 ---
-client: ANTEL SUMMIT - lucero
+client: ANTEL SUMMIT
 type: COBERTURA DE EVENTO
 category: Shows
 year: 2025
