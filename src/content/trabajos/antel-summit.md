@@ -1,5 +1,5 @@
 ---
-client: ANTEL SUMMIT
+client: ANTEL SUMMIT - lucero
 type: COBERTURA DE EVENTO
 category: Shows
 year: 2025
@@ -13,8 +13,8 @@ publish: true
 featured: true
 highlight: true
 credits:
-  - role: IA
-    name: IA
+  - role: Code studio
+    name: Code studio
 stats:
   - label: Año
     value: '2025'
