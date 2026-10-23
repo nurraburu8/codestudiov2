@@ -12,68 +12,85 @@ order: 4
 publish: true
 featured: true
 highlight: true
-credits: []
+credits:
+  - role: IA
+    name: IA
 stats:
   - label: Año
     value: '2025'
 gallery:
   - kind: video
     cloudinaryId: codestudio/trabajos/antel-summit/historia-hernan-casciari
-    caption: 'Hernán Casciari'
+    caption: Hernán Casciari
   - kind: video
     cloudinaryId: codestudio/trabajos/antel-summit/roberto-musso
-    caption: 'Roberto Musso'
+    caption: Roberto Musso
   - kind: video
     cloudinaryId: codestudio/trabajos/antel-summit/irene-solaiman
-    caption: 'Irene Solaiman'
+    caption: Irene Solaiman
   - kind: video
     cloudinaryId: codestudio/trabajos/antel-summit/helena-rovner-1
-    caption: 'Helena Rovner'
+    caption: Helena Rovner
   - kind: video
     cloudinaryId: codestudio/trabajos/antel-summit/laura-maccio-1
-    caption: 'Laura Maccio'
+    caption: Laura Maccio
   - kind: video
     cloudinaryId: codestudio/trabajos/antel-summit/paco-martin
-    caption: 'Paco Martín'
+    caption: Paco Martín
   - kind: video
     cloudinaryId: codestudio/trabajos/antel-summit/networking
-    caption: 'Networking'
+    caption: Networking
   - kind: video
     cloudinaryId: codestudio/trabajos/antel-summit/reel-stands-0
-    caption: 'Stands'
+    caption: Stands
   - kind: video
     cloudinaryId: codestudio/trabajos/antel-summit/01
-    caption: 'Historia en vivo'
+    caption: Historia en vivo
   - kind: foto
     cloudinaryId: codestudio/trabajos/antel-summit/codestudio-0040
+    caption: ''
   - kind: foto
     cloudinaryId: codestudio/trabajos/antel-summit/codestudio-0191
+    caption: ''
   - kind: foto
     cloudinaryId: codestudio/trabajos/antel-summit/codestudio-0265
+    caption: ''
   - kind: foto
     cloudinaryId: codestudio/trabajos/antel-summit/codestudio-0366
+    caption: ''
   - kind: foto
     cloudinaryId: codestudio/trabajos/antel-summit/codestudio-0548
+    caption: ''
   - kind: foto
     cloudinaryId: codestudio/trabajos/antel-summit/codestudio-0657
+    caption: ''
   - kind: foto
     cloudinaryId: codestudio/trabajos/antel-summit/codestudio-0985
+    caption: ''
   - kind: foto
     cloudinaryId: codestudio/trabajos/antel-summit/codestudio-1005
+    caption: ''
   - kind: foto
     cloudinaryId: codestudio/trabajos/antel-summit/codestudio-1027
+    caption: ''
   - kind: foto
     cloudinaryId: codestudio/trabajos/antel-summit/codestudio-3
+    caption: ''
   - kind: foto
     cloudinaryId: codestudio/trabajos/antel-summit/codestudio-4675
+    caption: ''
   - kind: foto
     cloudinaryId: codestudio/trabajos/antel-summit/codestudio-5
+    caption: ''
   - kind: foto
     cloudinaryId: codestudio/trabajos/antel-summit/codestudio-6
+    caption: ''
   - kind: foto
     cloudinaryId: codestudio/trabajos/antel-summit/codestudio
+    caption: ''
   - kind: foto
     cloudinaryId: codestudio/trabajos/antel-summit/codestudio-uy-2
+    caption: ''
 ---
 
 Producción audiovisual para Antel Summit.
