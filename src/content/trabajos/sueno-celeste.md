@@ -7,8 +7,8 @@ location: Canelones, Uruguay
 video: /videos/clips/sueno-celeste-code.mp4
 cloudinaryId: codestudio/sueno-celeste-vcode
 cover: /videos/posters/sueno-celeste-code.jpg
-tagline: Cuando el deporte se cruza con el territorio.
-order: 32
+tagline: Producción y cobertura audiovisual para la Intendencia de Canelones.
+order: 6
 publish: true
 featured: false
 highlight: false
