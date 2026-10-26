@@ -2,13 +2,13 @@
 client: ANTEL SUMMIT
 type: COBERTURA DE EVENTO
 category: Campañas
-year: 2025
+year: 2026
 location: Montevideo, Uruguay
 video: /videos/clips/antel-summit.mp4
 cloudinaryId: codestudio/trabajos/antel-summit/resumen-summit-16-9-final
 cover: /videos/posters/antel-summit.jpg
 tagline: Trabajo para Antel Summit.
-order: 4
+order: 2
 publish: true
 featured: true
 highlight: true
@@ -95,4 +95,6 @@ gallery:
 
 Producción audiovisual para Antel Summit.
 
-*Pendiente de completar descripción y material audiovisual.*
+_Tuvimos como_ desafío _de armar un grupo de 17 profesionales para realizar la cobertura integral del evento, contando con fotógrafos, fillmakers, editores y productores, para poder brindar contenido que se pudiera reflejar en vivo a través de las diferentes cuentas de ANTEL._ 
+
+_Se entregaron mas de 40 piezas audiovisuales y 200 fotos en vivo. Ademas de un aftermovie para resumir la jornada completa, que_ subió al finalizar el evento.
