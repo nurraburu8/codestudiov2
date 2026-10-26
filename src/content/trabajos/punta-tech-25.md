@@ -1,23 +1,24 @@
 ---
 client: PUNTA TECH MEETUP
 type: AFTERMOVIE + COBERTURA INTEGRAL
-category: Shows
+category: Campañas
 year: 2025
 location: Punta del Este, Uruguay
-video: ""
-cloudinaryId: null
+video: ccvvvv
+cloudinaryId: ''
 cover: null
-tagline: La edición 17 de la cumbre techie más grande de la región.
+tagline: La edición 17 de la cumbre tecnológica más grande de la región.
 order: 33
 publish: true
-highlight: false
 featured: false
-credits: []
+highlight: false
+credits:
+  - role: code
+    name: code
 stats:
   - label: Año
     value: '2025'
-  - label: Edición
-    value: 17ª
+gallery: []
 ---
 
 Cobertura audiovisual integral de la edición 17 de Punta Tech Meetup, el evento más importante de networking de Latinoamérica que reúne a los líderes techies en Punta del Este.
