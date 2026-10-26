@@ -7,40 +7,54 @@ location: Santa Fe, Argentina
 video: /videos/clips/vans-x-harlem-2025.mp4
 cloudinaryId: codestudio/vans-x-harlem-v2
 cover: /videos/posters/vans-x-harlem-2025.jpg
-tagline: Nuestro primer trabajo fuera del país, cubriendo Vans en Harlem.
+tagline: Cobertura integral en vivo para Vans Argentina.
 order: 2
 publish: true
-highlight: true
 featured: true
-credits: []
+highlight: true
+credits:
+  - role: code
+    name: code
 stats:
   - label: Año
     value: '2025'
 gallery:
   - kind: foto
     cloudinaryId: codestudio/trabajos/vans-x-harlem-2025/086a0244
+    caption: ''
   - kind: foto
     cloudinaryId: codestudio/trabajos/vans-x-harlem-2025/1o9a1196
+    caption: ''
   - kind: foto
     cloudinaryId: codestudio/trabajos/vans-x-harlem-2025/1o9a6890
+    caption: ''
   - kind: foto
     cloudinaryId: codestudio/trabajos/vans-x-harlem-2025/1o9a7195
+    caption: ''
   - kind: foto
     cloudinaryId: codestudio/trabajos/vans-x-harlem-2025/1o9a7380
+    caption: ''
   - kind: foto
     cloudinaryId: codestudio/trabajos/vans-x-harlem-2025/1o9a7475
+    caption: ''
   - kind: foto
     cloudinaryId: codestudio/trabajos/vans-x-harlem-2025/1o9a7593
+    caption: ''
   - kind: foto
     cloudinaryId: codestudio/trabajos/vans-x-harlem-2025/1o9a7636
+    caption: ''
   - kind: foto
     cloudinaryId: codestudio/trabajos/vans-x-harlem-2025/1o9a7680
+    caption: ''
   - kind: foto
     cloudinaryId: codestudio/trabajos/vans-x-harlem-2025/1o9a7753
+    caption: ''
   - kind: foto
     cloudinaryId: codestudio/trabajos/vans-x-harlem-2025/1o9a7953
+    caption: ''
   - kind: foto
     cloudinaryId: codestudio/trabajos/vans-x-harlem-2025/1o9a9024
+    caption: ''
 ---
 
 Nuestro primer viaje al exterior como grupo encargados de la producción audiovisual de Vans en el festival Harlem de Santa Fe, Argentina. Realizamos 10 cápsulas y más de 200 fotos en ambos días de festival.
