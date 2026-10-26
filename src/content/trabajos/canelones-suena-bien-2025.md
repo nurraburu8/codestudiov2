@@ -1,21 +1,24 @@
 ---
 client: CANELONES SUENA BIEN
-type: 'BRANDING + COBERTURA EN VIVO'
+type: BRANDING + COBERTURA EN VIVO
 category: Shows
 year: 2025
 location: Atlántida, Canelones, Uruguay
-video: ""
+video: https://vimeo.com/1060690459?fl=ip&fe=ec
 cloudinaryId: codestudio/trabajos/canelones-suena-bien-2025/suena-bien-2025
 cover: null
-tagline: 'Branding, campaña y cobertura: la edición que armamos de punta a punta.'
+tagline: Branding, campaña y cobertura en vivo para la Intendencia de Canelones.
 order: 9
 publish: true
-highlight: true
 featured: false
-credits: []
+highlight: true
+credits:
+  - role: code
+    name: code
 stats:
   - label: Año
     value: '2025'
+gallery: []
 ---
 
 Diseñamos el branding, lanzamos la campaña y realizamos la cobertura audiovisual de la edición 2025 del festival, sobre la rambla de Atlántida. Dos jornadas con edición en vivo para alimentar las redes en tiempo real, fotografía profesional y producción de video — aftermovies y one-shots — que captaron la energía del público.
