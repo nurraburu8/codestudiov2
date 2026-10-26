@@ -7,7 +7,7 @@ location: Playa Montoya, Uruguay
 video: /videos/clips/copa-rdlp-2026.mp4
 cloudinaryId: codestudio/aftermoviecopardlp26
 cover: /videos/posters/copa-rdlp-2026.jpg
-tagline: Tres días de surf latinoamericano, en una sola pieza.
+tagline: Cobertura en vivo para Copa TOYOTA RIO DE LA PLATA 2026
 order: 7
 publish: true
 featured: true
@@ -92,6 +92,8 @@ gallery:
 
 Copa Toyota Río de la Plata — 29, 30 y 31 de enero de 2026.
 
-Durante tres días, Uruguay fue sede del surf latinoamericano en Playa Montoya, como parte del circuito internacional del ALAS Global Tour. Estuvimos allí para documentar la energía de la competencia y la esencia del surf en cada ola. Una cobertura que nos permitió comenzar el año siendo parte de un momento importante para el surf en Uruguay.
+Durante tres días, Uruguay fue sede del surf latinoamericano en Playa Montoya, como parte del circuito internacional del ALAS Global Tour. 
 
-Aftermovie realizado en base a los tres días de competición, más reels en vivo durante el evento.
+Estuvimos allí para documentar la energía de la competencia y la esencia del surf en cada ola. Una cobertura que nos permitió comenzar el año siendo parte de un momento importante para el surf en Uruguay.
+
+Se entregaron 10 piezas para reels y mas de 200 fotos en vivo. Ademas del Aftermovie realizado en base a los tres días de competición.
