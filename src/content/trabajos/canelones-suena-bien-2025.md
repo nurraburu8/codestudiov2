@@ -1,5 +1,5 @@
 ---
-client: CANELONES SUENA BIEN
+client: CSB 2025
 type: BRANDING + COBERTURA EN VIVO
 category: Shows
 year: 2025
@@ -7,7 +7,7 @@ location: Atlántida, Canelones, Uruguay
 video: https://vimeo.com/1060690459?fl=ip&fe=ec
 cloudinaryId: codestudio/trabajos/canelones-suena-bien-2025/suena-bien-2025
 cover: null
-tagline: Branding, campaña y cobertura en vivo para la Intendencia de Canelones.
+tagline: Canelones SUENA BIEN 2025. Branding, campaña y cobertura en vivo para la Intendencia de Canelones.
 order: 9
 publish: true
 featured: false
