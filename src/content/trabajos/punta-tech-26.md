@@ -25,4 +25,4 @@ gallery: []
 
 Cobertura audiovisual para la edición número 18 de Punta Tech Meetup, el evento más importante de networking de Latinoamérica que reúne a los líderes techies en Punta del Este.
 
-El dispositivo combinó cobertura de las charlas y paneles principales con el registro del costado humano del encuentro, y las diferntes entidades de  empresas que asistieron.
+El dispositivo combinó cobertura de las charlas y paneles principales con el registro del costado humano del encuentro, y las diferentes entidades de  empresas que asistieron.
