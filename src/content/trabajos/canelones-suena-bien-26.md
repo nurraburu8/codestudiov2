@@ -1,21 +1,24 @@
 ---
 client: CANELONES SUENA BIEN
-type: 'AFTERMOVIE & COBERTURA EN VIVO'
+type: AFTERMOVIE & COBERTURA EN VIVO
 category: Shows
 year: 2026
 location: Atlántida, Canelones, Uruguay
 video: /videos/clips/canelones-suena-bien-26.mp4
 cloudinaryId: codestudio/csb-2026-v5
 cover: /videos/posters/canelones-suena-bien-26.jpg
-tagline: Dos días, seis piezas en vivo y un aftermovie que ata la historia.
+tagline: Cobertura en vivo para la Intendencia de Canelones.
 order: 1
 publish: true
-highlight: true
 featured: true
-credits: []
+highlight: true
+credits:
+  - role: Code
+    name: Code
 stats:
   - label: Año
     value: '2026'
+gallery: []
 ---
 
 Cobertura en vivo durante dos días del festival Canelones Suena Bien 2026, encargado por la Intendencia de Canelones. Produjimos seis piezas que se publicaron en tiempo real en los canales oficiales de la Intendencia, alternando con el armado del relato del aftermovie.
