@@ -1,7 +1,7 @@
 ---
 client: ANTEL SUMMIT
 type: COBERTURA DE EVENTO
-category: Shows
+category: Campañas
 year: 2025
 location: Montevideo, Uruguay
 video: /videos/clips/antel-summit.mp4
