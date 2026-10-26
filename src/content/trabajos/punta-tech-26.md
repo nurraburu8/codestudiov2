@@ -1,6 +1,6 @@
 ---
 client: PUNTA TECH MEETUP
-type: AFTERMOVIE
+type: EVENTO
 category: Campañas
 year: 2026
 location: Punta del Este, Uruguay
@@ -25,4 +25,4 @@ gallery: []
 
 Cobertura audiovisual para la edición número 18 de Punta Tech Meetup, el evento más importante de networking de Latinoamérica que reúne a los líderes techies en Punta del Este.
 
-El dispositivo combinó cobertura de las charlas y paneles principales con el registro del costado humano del encuentro — conversaciones de pasillo, cocktails, las charlas que arrancan en la fila del café.
+El dispositivo combinó cobertura de las charlas y paneles principales con el registro del costado humano del encuentro, y las diferntes entidades de  empresas que asistieron.
