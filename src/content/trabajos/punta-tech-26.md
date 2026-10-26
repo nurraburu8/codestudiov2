@@ -1,5 +1,5 @@
 ---
-client: PUNTA TECH MEETUP
+client: PUNTA TECH MEETUP 26
 type: EVENTO
 category: Campañas
 year: 2026
