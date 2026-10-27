@@ -8,7 +8,7 @@ video: /videos/clips/antel-summit.mp4
 cloudinaryId: codestudio/trabajos/antel-summit/resumen-summit-16-9-final
 cover: /videos/posters/antel-summit.jpg
 tagline: Trabajo para Antel Summit.
-order: 2
+order: 3
 publish: true
 featured: true
 highlight: true
@@ -17,7 +17,7 @@ credits:
     name: Code studio
 stats:
   - label: Año
-    value: '2025'
+    value: '2026'
 gallery:
   - kind: video
     cloudinaryId: codestudio/trabajos/antel-summit/historia-hernan-casciari
