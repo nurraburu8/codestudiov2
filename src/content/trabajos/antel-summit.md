@@ -8,7 +8,7 @@ video: /videos/clips/antel-summit.mp4
 cloudinaryId: codestudio/trabajos/antel-summit/resumen-summit-16-9-final
 cover: /videos/posters/antel-summit.jpg
 tagline: Trabajo para Antel Summit.
-order: 3
+order: 2
 publish: true
 featured: true
 highlight: true
