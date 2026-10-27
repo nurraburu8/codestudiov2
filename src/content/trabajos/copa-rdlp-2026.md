@@ -1,5 +1,5 @@
 ---
-client: COPA TOYOTA RÍO DE LA PLATA
+client: COPA TOYOTA RDLP 26
 type: EVENTO
 category: Campañas
 year: 2026
