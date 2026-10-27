@@ -1,5 +1,5 @@
 ---
-client: COPA TOYOTA RDLP 26
+client: COPA TOYOTA RDLP
 type: EVENTO
 category: Campañas
 year: 2026
