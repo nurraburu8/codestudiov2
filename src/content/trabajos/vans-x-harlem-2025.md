@@ -57,8 +57,12 @@ gallery:
     caption: ''
 ---
 
-Nuestro primer viaje al exterior como grupo encargados de la producción audiovisual de Vans en el festival Harlem de Santa Fe, Argentina. Realizamos 10 cápsulas y más de 200 fotos en ambos días de festival.
+Nuestro primer hito internacional: producción audiovisual integral para Vans durante las dos jornadas del Festival Harlem en Santa Fe, Argentina.
 
-El trabajo combinó registro en vivo del evento — público, escenario, performance — con la dirección de arte propia de la marca: foco en zapatillas, fricción real con el cemento del predio y la energía del público joven que define a Vans.
+El desafío consistió en sincronizar el ritmo frenético del festival con la identidad urbana de la marca. Combinamos el registro en vivo, enfocados en el calzado, el contacto directo con las bandas y el publico, con la cultura urbana.
 
-Pieza clave en la expansión del estudio: primera vez fuera del país, primera vez gestionando entrega diaria de contenido en un festival internacional.
+**Entregables:**
+
+- 10 cápsulas de video (cobertura + contenido de marca).
+- +200 fotografías finales.
+- Workflow de entregas en vivo.
