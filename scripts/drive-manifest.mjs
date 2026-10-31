@@ -153,6 +153,25 @@ export const MANIFEST = {
     main: 'Copia de Mercado Libre x Lucero Final.mp4',
   },
 
+  // Estos dos tenían la descarga bloqueada en el Drive; los bajó el cliente
+  // a mano y se copiaron a la raíz de fotos_videos/drive/.
+  'ntvg-filarmonico': {
+    main: 'NTVG Filarmonico v4.MP4',
+  },
+
+  // _YT es la pieza completa (74s); la "Vcode" de 14s que ya estaba subida
+  // queda como video adicional.
+  'sueno-celeste': {
+    main: 'SUEÑO CELESTE_YT.mp4',
+    videos: [
+      {
+        file: '../../source-videos/SUEÑO CELESTE Vcode.mp4',
+        publicId: 'codestudio/sueno-celeste-vcode',
+        caption: 'Versión corta',
+      },
+    ],
+  },
+
   // Fiesta de la Cerveza y La Bajada: los videos del Drive ya estaban subidos
   // (fdlc-2025-16-9, fdlc-2026-after, aftermovie-la-bajada-5).
 };

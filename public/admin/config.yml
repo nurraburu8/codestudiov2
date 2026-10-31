@@ -91,7 +91,7 @@ collections:
         widget: image
         required: false
         choose_url: true
-        hint: Imagen de la tarjeta del trabajo (horizontal). Si la dejás vacía, se usa un cuadro del video completo.
+        hint: Imagen de la tarjeta del trabajo. Mejor horizontal; si es vertical se recorta sola a horizontal buscando lo importante (caras, logos). Si la dejás vacía, se usa un cuadro del video completo.
       - label: "2 · Video completo"
         name: fullVideo
         widget: file
