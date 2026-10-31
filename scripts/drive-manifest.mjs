@@ -3,7 +3,8 @@
  * Lo consume scripts/upload-drive.mjs.
  *
  * Por trabajo (clave = slug del .md en src/content/trabajos/):
- *   main:   video principal de la ficha (escribe `cloudinaryId`)
+ *   cover:  portada de la tarjeta (escribe `cover`)
+ *   main:   video principal de la ficha (escribe `fullVideo`)
  *   videos: videos extra → `gallery` (string o { file, caption, publicId })
  *   photos: fotos → `gallery`
  * `publicId` fuerza un id existente en Cloudinary (videos ya subidos antes
@@ -21,6 +22,7 @@ const range = (dir, files) => files.map((f) => `${dir}/${f}`);
 
 export const MANIFEST = {
   'antel-summit': {
+    cover: 'PORTADAS/Antel summit Portada.jpg',
     main: 'Proyecto Antel Summit/resumen-SUMMIT-16-9_final.mp4',
     videos: [
       { file: 'Proyecto Antel Summit/Historias en vivo/Historia_Hernan_Casciari.mp4', caption: 'Hernán Casciari' },
@@ -52,6 +54,7 @@ export const MANIFEST = {
   },
 
   'copa-rdlp-2026': {
+    cover: 'PORTADAS/CTRP 26 Portada.jpg',
     main: 'Proyecto Copa ToYota/AftermovieCopaRdlP26.mp4',
     mainPublicId: 'codestudio/aftermoviecopardlp26',
     videos: [
@@ -109,6 +112,7 @@ export const MANIFEST = {
   },
 
   'canelones-suena-bien-26': {
+    cover: 'PORTADAS/Suena bien Portada.jpg',
     main: 'ProyectoS CSB/CSB 2026 - V5.mp4',
     mainPublicId: 'codestudio/csb-2026-v5',
   },
@@ -134,6 +138,19 @@ export const MANIFEST = {
       '023A3451.jpg', '023A3527.jpg', '023A8103.jpg', '023A8479.jpg', '023A8784.jpg',
       '086A9533-2.jpg', '086A9584.jpg', '086A9731.jpg',
     ]),
+  },
+
+  'fdlc-2026': {
+    cover: 'PORTADAS/fdlc 26 Portada.jpg',
+  },
+
+  'punta-tech-26': {
+    cover: 'PORTADAS/pt26 Portada.jpg',
+  },
+
+  // "Mercado Libre x Lucero Final.mp4" tiene la descarga bloqueada; la copia es el mismo video.
+  'mercado-libre-experience': {
+    main: 'Copia de Mercado Libre x Lucero Final.mp4',
   },
 
   // Fiesta de la Cerveza y La Bajada: los videos del Drive ya estaban subidos

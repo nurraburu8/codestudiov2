@@ -5,7 +5,7 @@ category: Campañas
 year: 2025
 location: Antel Arena, Montevideo
 video: https://vimeo.com/1107272401?fl=ip&fe=ec
-fullVideo: ''
+fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/mercado-libre-experience/copia-de-mercado-libre-x-lucero-final.mp4
 cover: null
 tagline: Innovación, tecnología y grandes ideas en el Antel Arena.
 order: 36

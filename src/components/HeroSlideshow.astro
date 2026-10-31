@@ -27,13 +27,17 @@ const slideMeta = slides.map((s) => ({
     {
       slides.map((s, i) => (
         <div class={`slide ${i === 0 ? 'active' : ''}`} data-id={s.entry.id}>
+          {/* Sin `loop`: cada slide dura lo que dura su clip (avanza en `ended`).
+              El <source media> elige el recorte vertical en celulares parados. */}
           <video
             muted
-            loop
             playsinline
             preload={i === 0 ? 'auto' : 'none'}
             poster={s.poster}
           >
+            {s.srcVertical && (
+              <source src={s.srcVertical} type="video/mp4" media="(orientation: portrait)" />
+            )}
             <source src={s.src} type="video/mp4" />
           </video>
         </div>
@@ -65,8 +69,12 @@ const slideMeta = slides.map((s) => ({
 
 <script define:vars={{ worksData: slideMeta }}>
   (function () {
-    const SLIDE_DURATION = 7000;
+    // Cada slide dura lo que dura su clip: avanza cuando el video termina.
+    // Este tiempo solo se usa si el video no puede reproducirse (autoplay
+    // bloqueado, modo ahorro de batería, error de red).
+    const FALLBACK_DURATION = 8000;
 
+    const hero = document.querySelector('.hero');
     const slides = Array.from(document.querySelectorAll('.slide'));
     const btns = Array.from(document.querySelectorAll('#slideNav button'));
     const titleType = document.getElementById('workType');
@@ -78,8 +86,13 @@ const slideMeta = slides.map((s) => ({
     if (!slides.length || !titleType || !titleClient || !titleLink || !progressFill) return;
 
     let current = 0;
-    let advanceTimer = null;
+    let started = false;
+    let fallbackTimer = null;
+    let fallbackStart = 0;
     let progressRAF = null;
+    // Se pausa cuando la pestaña no está visible o el hero salió de pantalla.
+    let tabVisible = !document.hidden;
+    let heroVisible = true;
 
     function getWork(id) {
       return worksData.find((w) => w.id === id) || { type: '', client: '', id };
@@ -116,65 +129,94 @@ const slideMeta = slides.map((s) => ({
       titleLink.href = work.id ? `/work/${work.id}` : '#';
     }
 
-    function animateProgress() {
+    function videoOf(i) {
+      return slides[i] ? slides[i].querySelector('video') : null;
+    }
+
+    function ensureVideoLoaded(v) {
+      if (!v || v.preload === 'auto') return;
+      v.preload = 'auto';
+      try { v.load(); } catch (e) {}
+    }
+
+    // La barra sigue al video real (currentTime / duration); en modo
+    // fallback, al reloj.
+    function tickProgress() {
       cancelAnimationFrame(progressRAF);
-      const start = performance.now();
-      const step = (now) => {
-        const elapsed = now - start;
-        const pct = Math.min(100, (elapsed / SLIDE_DURATION) * 100);
-        progressFill.style.width = pct + '%';
-        if (pct < 100) progressRAF = requestAnimationFrame(step);
+      const step = () => {
+        const v = videoOf(current);
+        let pct = 0;
+        if (fallbackTimer) {
+          pct = ((performance.now() - fallbackStart) / FALLBACK_DURATION) * 100;
+        } else if (v && v.duration) {
+          pct = (v.currentTime / v.duration) * 100;
+        }
+        progressFill.style.width = Math.min(100, pct) + '%';
+        progressRAF = requestAnimationFrame(step);
       };
       progressRAF = requestAnimationFrame(step);
     }
 
-    function ensureVideoLoaded(v) {
-      if (!v) return;
-      if (v.preload !== 'auto') {
-        v.preload = 'auto';
-        try { v.load(); } catch (e) {}
-      }
+    function next() {
+      goTo((current + 1) % slides.length);
+    }
+
+    function startFallback() {
+      if (fallbackTimer) return;
+      fallbackStart = performance.now();
+      fallbackTimer = setTimeout(next, FALLBACK_DURATION);
+    }
+
+    function clearFallback() {
+      clearTimeout(fallbackTimer);
+      fallbackTimer = null;
+    }
+
+    function playCurrent() {
+      const v = videoOf(current);
+      if (!v) return startFallback();
+      ensureVideoLoaded(v);
+      const p = v.play();
+      if (p && p.catch) p.catch(startFallback);
     }
 
     function goTo(idx) {
+      clearFallback();
       slides[current].classList.remove('active');
       btns[current].classList.remove('active');
-      const prevVideo = slides[current].querySelector('video');
-      if (prevVideo) prevVideo.pause();
+      const prev = videoOf(current);
+      if (prev) prev.pause();
 
       current = idx;
-      const slide = slides[current];
-      slide.classList.add('active');
+      slides[current].classList.add('active');
       btns[current].classList.add('active');
+      renderTitle(getWork(slides[current].dataset.id));
 
-      const id = slide.dataset.id;
-      renderTitle(getWork(id));
-
-      const v = slide.querySelector('video');
+      const v = videoOf(current);
       if (v) {
-        ensureVideoLoaded(v);
         try { v.currentTime = 0; } catch (e) {}
-        const p = v.play();
-        if (p && p.catch) p.catch(() => {});
       }
-
-      // Prefetch del próximo slide para que la transición sea fluida.
-      // Empieza a bufferear el siguiente video apenas el actual comienza
-      // a reproducirse — así para cuando avance (en 7s) ya está listo.
-      const nextSlide = slides[(current + 1) % slides.length];
-      const nextVideo = nextSlide?.querySelector('video');
-      if (nextVideo) ensureVideoLoaded(nextVideo);
-
       progressFill.style.width = '0%';
-      animateProgress();
-
-      clearTimeout(advanceTimer);
-      advanceTimer = setTimeout(() => goTo((current + 1) % slides.length), SLIDE_DURATION);
+      if (tabVisible && heroVisible) playCurrent();
     }
 
-    btns.forEach((b) =>
-      b.addEventListener('click', () => goTo(parseInt(b.dataset.index, 10)))
-    );
+    slides.forEach((slide, i) => {
+      const v = slide.querySelector('video');
+      if (!v) return;
+      v.addEventListener('ended', () => {
+        if (i === current) next();
+      });
+      v.addEventListener('error', () => {
+        if (i === current) startFallback();
+      });
+      // Recién cuando el clip actual ya se puede reproducir entero, empieza a
+      // bajar el siguiente: así no compiten por la conexión al entrar.
+      v.addEventListener('canplaythrough', () => {
+        if (i === current) ensureVideoLoaded(videoOf((i + 1) % slides.length));
+      });
+    });
+
+    btns.forEach((b) => b.addEventListener('click', () => goTo(parseInt(b.dataset.index, 10))));
 
     if (slideshow) {
       slideshow.addEventListener('click', () => {
@@ -189,29 +231,41 @@ const slideMeta = slides.map((s) => ({
       });
     }
 
-    const firstVideo = slides[0].querySelector('video');
-    if (firstVideo) {
-      try { firstVideo.load(); } catch (e) {}
+    function updatePlayback() {
+      if (!started) return;
+      const v = videoOf(current);
+      if (tabVisible && heroVisible) {
+        if (v && v.paused && !fallbackTimer) playCurrent();
+      } else if (v) {
+        v.pause();
+      }
+    }
+
+    document.addEventListener('visibilitychange', () => {
+      tabVisible = !document.hidden;
+      updatePlayback();
+    });
+
+    if (hero && 'IntersectionObserver' in window) {
+      new IntersectionObserver(
+        ([entry]) => {
+          heroVisible = entry.isIntersecting;
+          updatePlayback();
+        },
+        { threshold: 0.15 }
+      ).observe(hero);
     }
 
     function startSlideshow() {
-      const id = slides[0].dataset.id;
-      renderTitle(getWork(id));
-      const fv = slides[0].querySelector('video');
-      if (fv) {
-        ensureVideoLoaded(fv);
-        const p = fv.play();
-        if (p && p.catch) p.catch(() => {});
-      }
-      animateProgress();
-      advanceTimer = setTimeout(() => goTo((current + 1) % slides.length), SLIDE_DURATION);
+      if (started) return;
+      started = true;
+      renderTitle(getWork(slides[0].dataset.id));
+      tickProgress();
+      if (tabVisible && heroVisible) playCurrent();
     }
 
     document.addEventListener('codestudio:intro-done', startSlideshow, { once: true });
-
-    setTimeout(() => {
-      if (!progressRAF) startSlideshow();
-    }, 2500);
+    setTimeout(startSlideshow, 2500);
   })();
 </script>
 

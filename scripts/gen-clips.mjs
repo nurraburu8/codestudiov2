@@ -125,16 +125,20 @@ for (const [filename, config] of Object.entries(CLIPS_CONFIG)) {
   const srcPath = realFilename ? join(SRC, realFilename) : join(SRC, filename);
   const slug = config.slug;
   const startSec = config.startSec ?? 10;
+  // duration: 'full' = el archivo entero (los intro-*.mp4 ya vienen editados).
   const duration = config.duration ?? DEFAULTS.duration;
   const crf = config.crf ?? DEFAULTS.crf;
   const preset = config.preset ?? DEFAULTS.preset;
-  const posterSec = startSec + duration / 2;
+  // Poster = primer cuadro del clip: es lo que se ve hasta que arranca el
+  // video, así no hay salto cuando empieza a reproducirse.
+  const posterSec = startSec;
 
   const clipPath = join(OUT_CLIP, `${slug}.mp4`);
+  const clipVerticalPath = join(OUT_CLIP, `${slug}-v.mp4`);
   const posterPath = join(OUT_POSTER, `${slug}.jpg`);
 
   console.log(`▸ ${filename}`);
-  console.log(`  slug=${slug}  start=${startSec}s  dur=${duration}s  crf=${crf}`);
+  console.log(`  slug=${slug}  start=${startSec}s  dur=${duration === 'full' ? 'completo' : duration + 's'}  crf=${crf}`);
 
   if (!existsSync(srcPath)) {
     console.log(`  ⚠️  source no encontrado — skip\n`);
@@ -142,7 +146,12 @@ for (const [filename, config] of Object.entries(CLIPS_CONFIG)) {
     continue;
   }
 
-  if (!force && outputIsFresh(srcPath, clipPath) && outputIsFresh(srcPath, posterPath)) {
+  if (
+    !force &&
+    outputIsFresh(srcPath, clipPath) &&
+    outputIsFresh(srcPath, clipVerticalPath) &&
+    outputIsFresh(srcPath, posterPath)
+  ) {
     console.log(`  ⏭  outputs ya están al día — skip (usá --force para re-generar)\n`);
     stats.skipped++;
     continue;
@@ -153,22 +162,27 @@ for (const [filename, config] of Object.entries(CLIPS_CONFIG)) {
     continue;
   }
 
-  const clipCmd = [
+  // CRF + techo de bitrate: en planos con mucho movimiento el CRF solo se
+  // disparaba a 5+ Mbps; con el techo el peso queda acotado sin diferencia
+  // visible detrás del oscurecido del hero.
+  const clipCmd = (vf, maxrate, out) => [
     'ffmpeg', '-y', '-hide_banner', '-loglevel', 'error',
     '-ss', String(startSec),
     '-i', quote(srcPath),
-    '-t', String(duration),
-    '-vf', quote(vfChain),
+    ...(duration === 'full' ? [] : ['-t', String(duration)]),
+    '-vf', quote(vf),
     '-c:v', 'libx264',
     '-preset', preset,
     '-crf', String(crf),
-    '-profile:v', 'main',
+    '-maxrate', maxrate,
+    '-bufsize', `${parseInt(maxrate, 10) * 2}k`,
+    '-profile:v', 'high',
     '-level', '4.0',
     '-pix_fmt', 'yuv420p',
     '-movflags', '+faststart',
     '-an',
     '-f', 'mp4',
-    quote(clipPath),
+    quote(out),
   ].join(' ');
 
   const posterCmd = [
@@ -181,14 +195,22 @@ for (const [filename, config] of Object.entries(CLIPS_CONFIG)) {
     quote(posterPath),
   ].join(' ');
 
-  // Clip
+  // Clip horizontal (desktop) + vertical (celular en pantalla vertical).
+  // El vertical es el recorte central 3:4 a 1080 de alto: es lo único que se
+  // ve con object-fit: cover en un celular parado, así que se baja solo eso,
+  // con más resolución útil y menos peso que el horizontal entero.
   try {
-    process.stdout.write('  → clip   ');
-    const t = Date.now();
-    execSync(clipCmd, { stdio: 'pipe' });
-    const sz = statSync(clipPath).size;
-    stats.totalBytes += sz;
-    console.log(`✓ ${fmtMB(sz)}  (${fmtSec(Date.now() - t)})`);
+    for (const [label, cmd, out] of [
+      ['clip   ', clipCmd(vfChain, DEFAULTS.maxrate, clipPath), clipPath],
+      ['clip-v ', clipCmd(DEFAULTS.vfVertical, DEFAULTS.maxrateVertical, clipVerticalPath), clipVerticalPath],
+    ]) {
+      process.stdout.write(`  → ${label}`);
+      const t = Date.now();
+      execSync(cmd, { stdio: 'pipe' });
+      const sz = statSync(out).size;
+      stats.totalBytes += sz;
+      console.log(`✓ ${fmtMB(sz)}  (${fmtSec(Date.now() - t)})`);
+    }
   } catch (e) {
     console.log(`✗ FALLÓ`);
     console.error(`  ${e.message?.split('\n')[0] || e}`);

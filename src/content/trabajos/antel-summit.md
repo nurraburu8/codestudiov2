@@ -6,7 +6,7 @@ year: 2026
 location: Montevideo, Uruguay
 video: /videos/clips/antel-summit.mp4
 fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/antel-summit/resumen-summit-16-9-final.mp4
-cover: /videos/posters/antel-summit.jpg
+cover: https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/antel-summit/antel-summit-portada.jpg
 tagline: Cobertura integral para ANTEL
 order: 2
 archived: false

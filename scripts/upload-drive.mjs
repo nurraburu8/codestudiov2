@@ -140,20 +140,33 @@ const CLD = `https://res.cloudinary.com/${PUBLIC_CLOUDINARY_CLOUD_NAME}`;
 const cldUrl = (kind, id) =>
   kind === 'video' ? `${CLD}/video/upload/${id}.mp4` : `${CLD}/image/upload/${id}.jpg`;
 
-/** Reemplaza (o agrega) `fullVideo`, `photos` y `videos` en el frontmatter del trabajo. */
-function writeFrontmatter(slug, mainId, gallery) {
+/**
+ * Escribe en el frontmatter del trabajo lo que defina el manifest: `cover` y
+ * `fullVideo` si hay, y `photos` / `videos` solo si el manifest tiene esas
+ * listas (así una entrada con solo portada no borra la galería existente).
+ */
+function writeFrontmatter(slug, { coverId, mainId, gallery, lists }) {
   const path = join('src/content/trabajos', `${slug}.md`);
-  const src = readFileSync(path, 'utf8');
+  // En Windows git puede dejar CRLF: normalizamos para que las regex de abajo matcheen.
+  const src = readFileSync(path, 'utf8').replace(/\r\n/g, '\n');
   const end = src.indexOf('\n---', 4);
   let fm = src.slice(0, end);
   const body = src.slice(end);
 
+  const setLine = (key, value) => {
+    const re = new RegExp(`\\n${key}:.*`);
+    const line = `\n${key}: ${value}`;
+    fm = re.test(fm) ? fm.replace(re, line) : fm + line;
+  };
+  if (coverId) setLine('cover', cldUrl('foto', coverId));
+  if (mainId) setLine('fullVideo', cldUrl('video', mainId));
+  if (!lists) {
+    writeFileSync(path, fm + body);
+    return;
+  }
+
   // Saca los bloques `photos:` / `videos:` previos (la key + sus líneas indentadas).
   fm = fm.replace(/\n(?:photos|videos):(?: \[\])?(?:\n(?: {2}|- ).*)*/g, '').replace(/\n+$/, '');
-  if (mainId) {
-    const line = `\nfullVideo: ${cldUrl('video', mainId)}`;
-    fm = /\nfullVideo:.*/.test(fm) ? fm.replace(/\nfullVideo:.*/, line) : fm + line;
-  }
   const photos = gallery.filter((g) => g.kind === 'foto');
   const videos = gallery.filter((g) => g.kind === 'video');
   const quote = (s) => `'${(s ?? '').replace(/'/g, "''")}'`;
@@ -189,12 +202,14 @@ const entries = Object.entries(MANIFEST).filter(
 for (const [slug, cfg] of entries) {
   console.log(`\n■ ${slug}`);
   const items = [
+    ...(cfg.cover ? [{ file: cfg.cover, cover: true }] : []),
     ...(cfg.main ? [{ file: cfg.main, main: true, publicId: cfg.mainPublicId }] : []),
     ...(cfg.videos ?? []).map((v) => (typeof v === 'string' ? { file: v } : v)),
     ...(cfg.photos ?? []).map((f) => ({ file: f })),
   ];
 
   let mainId = null;
+  let coverId = null;
   const gallery = [];
   for (const item of items) {
     // Los nombres del Drive pueden venir con tildes en NFD o NFC.
@@ -223,13 +238,15 @@ for (const [slug, cfg] of entries) {
       }
       seen.set(hash, publicId);
     }
-    console.log(`  ${item.main ? '★' : '·'} ${item.file} → ${publicId} [${status}]`);
-    if (item.main) mainId = publicId;
+    console.log(`  ${item.cover ? '▣' : item.main ? '★' : '·'} ${item.file} → ${publicId} [${status}]`);
+    if (item.cover) coverId = publicId;
+    else if (item.main) mainId = publicId;
     else if (!gallery.some((g) => g.cloudinaryId === publicId))
       gallery.push({ kind, cloudinaryId: publicId, caption: item.caption });
   }
 
-  if (!DRY) writeFrontmatter(slug, mainId, gallery);
+  const lists = Boolean(cfg.photos || cfg.videos);
+  if (!DRY) writeFrontmatter(slug, { coverId, mainId, gallery, lists });
 }
 
 console.log(DRY ? '\n(dry-run: no se subió ni escribió nada)\n' : '\nListo.\n');

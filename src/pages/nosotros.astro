@@ -7,23 +7,31 @@ import { PAGES_SEO } from '@/consts';
 const seo = PAGES_SEO.nosotros;
 
 /**
- * Faltan los logos de ANTEL, OFI, LUCERO, SPEED, NTVG y CUARTETO DE NOS:
- * cuando lleguen los archivos, se agregan acá.
+ * Logos del Drive del cliente (carpeta LOGOS), procesados a public/logos/
+ * (png + webp). Todavía faltan OFI, LUCERO y CUARTETO DE NOS.
  */
 const brands = [
-  { src: '/logos/cif.png', alt: 'CIF' },
-  { src: '/logos/logo-vertical-negativo.png', alt: 'Intendencia de Canelones' },
+  { src: '/logos/antel.png', alt: 'Antel' },
   { src: '/logos/vns.png', alt: 'Vans' },
+  { src: '/logos/mercado-libre.png', alt: 'Mercado Libre' },
   { src: '/logos/fito-paez.png', alt: 'Fito Páez' },
+  { src: '/logos/ntvg.png', alt: 'No Te Va Gustar' },
+  { src: '/logos/converse.png', alt: 'Converse' },
+  { src: '/logos/logo-vertical-negativo.png', alt: 'Gobierno de Canelones' },
+  { src: '/logos/sedal.png', alt: 'Sedal' },
+  { src: '/logos/la-vela-puerca.png', alt: 'La Vela Puerca' },
+  { src: '/logos/cif.png', alt: 'CIF' },
+  { src: '/logos/speed.png', alt: 'Speed' },
+  { src: '/logos/medica-uruguaya.png', alt: 'Médica Uruguaya' },
   { src: '/logos/college.png', alt: 'College' },
 ];
 
 /**
  * El marquee anima hasta -50% del track, así que cada mitad tiene que ser
- * más ancha que la pantalla o se ve un hueco al cerrar el loop. Con 5 logos
- * no alcanza: repetimos la lista para llenar la mitad.
+ * más ancha que la pantalla o se ve un hueco al cerrar el loop. Con pocos
+ * logos no alcanza: repetimos la lista para llenar la mitad.
  */
-const brandsHalf = [...brands, ...brands];
+const brandsHalf = brands.length >= 12 ? brands : [...brands, ...brands];
 
 const team = [
   { name: 'Valentín Prieto', role: 'Cofundador', photo: '/team/valentin' },
