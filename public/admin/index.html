@@ -10,13 +10,52 @@
   </head>
   <body>
     <!--
-      Panel admin de Decap CMS.
-      Se carga el bundle desde unpkg (la version oficial).
-      La configuracion (que campos editar, donde se guarda, etc) vive en /admin/config.yml.
-
-      Acceso: https://codestudio.com.uy/admin
-      Login: GitHub OAuth (ver config.yml backend para el flujo).
+      Panel admin de Sveltia CMS (bundle oficial desde unpkg).
+      La configuración (qué campos se editan, dónde se guarda, etc) vive en /admin/config.yml.
+      Login: GitHub OAuth (ver config.yml → backend).
     -->
+    <script>
+      /**
+       * Aviso al eliminar trabajos.
+       * Va ANTES del script de Sveltia: al arrancar, Sveltia reemplaza el
+       * contenido de la página. Por eso también los estilos van inline y se
+       * revisa con un intervalo (un <style> o un MutationObserver se pierden).
+       * Sveltia no tiene un evento "antes de eliminar" ni permite cambiar el
+       * texto de la confirmación (y su interfaz está en inglés), así que cuando
+       * se abre ese diálogo le agregamos este aviso arriba del texto original.
+       * No bloquea nada: el usuario sigue eligiendo Delete o Cancel.
+       */
+      (function () {
+        var AVISO =
+          '<strong style="color:#fd752b">Ojo: eliminar no es archivar.</strong> Esto borra el trabajo del sitio y del ' +
+          'CMS de forma definitiva (solo se puede recuperar desde el historial de GitHub).<br>' +
+          'Si solo querés sacarlo de la web, tocá <strong style="color:#fd752b">Cancel</strong>, entrá al trabajo y ' +
+          'activá <strong style="color:#fd752b">Archivado</strong>: deja de mostrarse pero queda guardado para volver ' +
+          'a activarlo cuando quieras.';
+        // Confirmación de Sveltia al borrar entradas: una, varias o todas
+        // ("this entry", "the selected entry", "all the entries"…).
+        var CONFIRMA_BORRADO = /are you sure you want to delete[^?]*entr(y|ies)/i;
+
+        function agregarAviso() {
+          document.querySelectorAll('dialog[open]').forEach(function (dialog) {
+            if (dialog.querySelector('.cs-aviso-eliminar')) return;
+            if (!CONFIRMA_BORRADO.test(dialog.textContent || '')) return;
+            var body = dialog.querySelector('[id$="-body"]') || dialog;
+            var aviso = document.createElement('div');
+            aviso.className = 'cs-aviso-eliminar';
+            aviso.style.cssText =
+              'margin:0 0 14px;padding:12px 14px;border-left:3px solid #fd752b;' +
+              'border-radius:4px;background:rgba(253,117,43,.12);line-height:1.45';
+            aviso.setAttribute('role', 'note');
+            aviso.innerHTML = AVISO;
+            body.insertBefore(aviso, body.firstChild);
+          });
+        }
+
+        // Liviano: solo mira los <dialog> abiertos.
+        setInterval(agregarAviso, 300);
+      })();
+    </script>
     <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
   </body>
 </html>

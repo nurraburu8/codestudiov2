@@ -19,7 +19,8 @@ const trabajos = defineCollection({
     client: z.string(),
     type: z.string(),
     category: z.enum(['Shows', 'Campañas', 'Fotografía']),
-    year: z.number().int().min(2000).max(2100),
+    /** El CMS lo guarda como texto (ver config.yml): se convierte a número acá. */
+    year: z.coerce.number().int().min(2000).max(2100),
     location: z.string().nullish().transform((v) => v ?? ''),
     /** Clip corto y mudo para el slideshow del inicio. */
     video: media,

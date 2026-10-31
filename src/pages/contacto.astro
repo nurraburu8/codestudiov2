@@ -343,6 +343,14 @@ const web3formsKey = WEB3FORMS_ACCESS_KEY;
     const form = document.getElementById('cntForm');
     if (!form) return;
 
+    // Si llega desde el llamado a la acción de un trabajo (?trabajo=…),
+    // el mensaje arranca mencionándolo.
+    const trabajo = new URLSearchParams(location.search).get('trabajo');
+    const msgField = form.querySelector('[name="message"]');
+    if (trabajo && msgField && !msgField.value) {
+      msgField.value = `Hola! Vi el trabajo de ${trabajo.slice(0, 80)} y quiero consultarles por `;
+    }
+
     const success = document.getElementById('cntSuccess');
     const submitBtn = form.querySelector('.cnt-submit');
     const labelEl = submitBtn.querySelector('.label');
