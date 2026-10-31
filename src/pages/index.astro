@@ -6,7 +6,7 @@ import LogoIntro from '@components/LogoIntro.astro';
 import Gallery from '@components/Gallery.astro';
 import Footer from '@components/Footer.astro';
 import { PAGES_SEO } from '@/consts';
-import { getFeaturedTrabajos, resolveVideo } from '@lib/trabajos';
+import { getFeaturedTrabajos, resolveHeroVideo } from '@lib/trabajos';
 
 const seo = PAGES_SEO.home;
 
@@ -14,7 +14,7 @@ const seo = PAGES_SEO.home;
 // El browser arranca a bajarlo en paralelo a la intro del logo, así cuando
 // el hero aparece el poster ya está en cache → mejor LCP.
 const featured = await getFeaturedTrabajos();
-const firstPoster = featured.length > 0 ? resolveVideo(featured[0].data).poster : null;
+const firstPoster = featured.length > 0 ? resolveHeroVideo(featured[0]!.data).poster : null;
 ---
 
 <Layout title={seo.title} description={seo.description} bodyClass="intro-active">

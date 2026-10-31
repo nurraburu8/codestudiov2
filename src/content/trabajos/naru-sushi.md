@@ -5,17 +5,17 @@ category: Fotografía
 year: 2025
 location: Uruguay
 video: ""
-cloudinaryId: null
+fullVideo: ''
 cover: null
 tagline: Fotografía de producto para Naru Sushi.
 order: 25
-publish: true
-featured: false
-highlight: false
+archived: false
 credits: []
 stats:
   - label: Año
     value: '2025'
+photos: []
+videos: []
 ---
 
 Fotografía de producto para Naru Sushi.

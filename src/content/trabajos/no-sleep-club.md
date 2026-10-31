@@ -5,29 +5,24 @@ category: Shows
 year: 2025
 location: Montevideo, Uruguay
 video: ""
-cloudinaryId: codestudio/trabajos/no-sleep-club/aftermovie-sara-landry-v2
+fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/no-sleep-club/aftermovie-sara-landry-v2.mp4
 cover: null
 tagline: La identidad visual de las noches más largas de la ciudad.
 order: 14
-publish: true
-highlight: false
-featured: false
+archived: false
 credits: []
 stats:
   - label: Año
     value: '2025'
-gallery:
-  - kind: video
-    cloudinaryId: codestudio/trabajos/no-sleep-club/aftermovie-danny-avila
+photos: []
+videos:
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/no-sleep-club/aftermovie-danny-avila.mp4
     caption: 'Danny Ávila'
-  - kind: video
-    cloudinaryId: codestudio/trabajos/no-sleep-club/aftermovie-nico-moreno
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/no-sleep-club/aftermovie-nico-moreno.mp4
     caption: 'Nico Moreno'
-  - kind: video
-    cloudinaryId: codestudio/trabajos/no-sleep-club/aftermovie-deborah
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/no-sleep-club/aftermovie-deborah.mp4
     caption: 'Deborah'
-  - kind: video
-    cloudinaryId: codestudio/trabajos/no-sleep-club/aftermvoie-space
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/no-sleep-club/aftermvoie-space.mp4
     caption: 'Space 92'
 ---
 

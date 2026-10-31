@@ -5,17 +5,17 @@ category: Campañas
 year: 2025
 location: Montevideo, Uruguay
 video: video/mp4
-cloudinaryId: ''
+fullVideo: ''
 cover: null
 tagline: Trabajo para Casaca.
 order: 45
-publish: true
-highlight: false
-featured: false
+archived: false
 credits: []
 stats:
   - label: Año
     value: '2025'
+photos: []
+videos: []
 ---
 
 Producción audiovisual para la marca Casaca.

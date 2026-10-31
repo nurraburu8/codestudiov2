@@ -5,17 +5,17 @@ category: Shows
 year: 2025
 location: Punta del Este, Uruguay
 video: /videos/clips/la-bajada-2025.mp4
-cloudinaryId: codestudio/aftermovie-la-bajada-5
+fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/aftermovie-la-bajada-5.mp4
 cover: /videos/posters/la-bajada-2025.jpg
 tagline: La fiesta que abre la temporada.
 order: 12
-publish: true
-highlight: false
-featured: false
+archived: false
 credits: []
 stats:
   - label: Año
     value: '2025'
+photos: []
+videos: []
 ---
 
 Aftermovie de La Bajada 2025, una de las primeras fiestas grandes de la temporada en Punta del Este. La pieza captura el espíritu del verano arrancando: predio nuevo, line-up internacional y un público que llegó decidido a abrir la temporada con fuerza.

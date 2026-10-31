@@ -46,20 +46,18 @@ const pageDescription = [
   .slice(0, 160);
 
 // Material extra (fotos + videos) que vive en Cloudinary.
-const photos = work.data.gallery
-  .filter((g) => g.kind === 'foto')
-  .map((g) => ({
-    thumb: cldImageUrl(g.cloudinaryId, { width: 900, crop: 'limit' }),
-    full: cldImageUrl(g.cloudinaryId, { width: 2400, crop: 'limit' }),
-    caption: g.caption ?? '',
+const photos = work.data.photos
+  .map((src) => ({
+    thumb: cldImageUrl(src, { width: 900, crop: 'limit' }),
+    full: cldImageUrl(src, { width: 2400, crop: 'limit' }),
+    caption: '',
   }))
   .filter((p) => p.thumb && p.full);
-const extraVideos = work.data.gallery
-  .filter((g) => g.kind === 'video')
-  .map((g) => ({
-    src: cldVideoUrl(g.cloudinaryId),
-    poster: cldVideoPoster(g.cloudinaryId, 900),
-    caption: g.caption ?? '',
+const extraVideos = work.data.videos
+  .map((v) => ({
+    src: cldVideoUrl(v.src),
+    poster: cldVideoPoster(v.src, 900),
+    caption: v.caption ?? '',
   }))
   .filter((v) => v.src);
 
@@ -73,7 +71,7 @@ const videoJsonLd = {
   description: work.body ?? '',
   thumbnailUrl: video.poster.startsWith('http') ? video.poster : `${base}${video.poster}`,
   uploadDate: `${work.data.year}-01-01`,
-  contentUrl: video.src.startsWith('http') ? video.src : `${base}${work.data.video}`,
+  contentUrl: video.src.startsWith('http') ? video.src : `${base}${video.src}`,
   publisher: {
     '@type': 'Organization',
     name: SITE.name,

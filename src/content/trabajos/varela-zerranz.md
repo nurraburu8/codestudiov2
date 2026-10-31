@@ -5,17 +5,17 @@ category: Campañas
 year: 2025
 location: Uruguay
 video: ""
-cloudinaryId: null
+fullVideo: ''
 cover: null
 tagline: Papas y vino — dos marcas uruguayas en tres recetas.
 order: 43
-publish: true
-highlight: false
-featured: false
+archived: false
 credits: []
 stats:
   - label: Año
     value: '2025'
+photos: []
+videos: []
 ---
 
 Cobertura audiovisual de la Noche de San Juan 2025. Realizamos la producción audiovisual, cámara y edición de 3 recetas que combinan los productos de ambas empresas uruguayas: las papas de Britos Hnos. y los vinos de Varela Zerranz.

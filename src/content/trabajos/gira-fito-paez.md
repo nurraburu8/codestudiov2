@@ -5,26 +5,22 @@ category: Shows
 year: 2024
 location: Buenos Aires, Montevideo y La Plata
 video: /videos/clips/gira-fito-paez.mp4
-cloudinaryId: codestudio/fito-estadio-uno-la-plata
+fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/fito-estadio-uno-la-plata.mp4
 cover: /videos/posters/gira-fito-paez.jpg
 tagline: Dos años acompañando a Fito en las giras El Amor Después del Amor y Páez4030.
 order: 5
-publish: true
-highlight: true
-featured: true
+archived: false
 credits: []
 stats:
   - label: Año
     value: '2024'
-gallery:
-  - kind: video
-    cloudinaryId: codestudio/trabajos/gira-fito-paez/fito-movistar-noviembre-a
+photos: []
+videos:
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/gira-fito-paez/fito-movistar-noviembre-a.mp4
     caption: 'Movistar Arena · Noviembre'
-  - kind: video
-    cloudinaryId: codestudio/trabajos/gira-fito-paez/fito-movistar-diciembre
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/gira-fito-paez/fito-movistar-diciembre.mp4
     caption: 'Movistar Arena · Diciembre'
-  - kind: video
-    cloudinaryId: codestudio/trabajos/gira-fito-paez/fito-uruguay
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/gira-fito-paez/fito-uruguay.mp4
     caption: 'Uruguay'
 ---
 

@@ -5,26 +5,22 @@ category: Campañas
 year: 2025
 location: Uruguay
 video: ""
-cloudinaryId: codestudio/trabajos/cif/copia-de-mi-hogar-mi-templo-v2
+fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/cif/copia-de-mi-hogar-mi-templo-v2.mp4
 cover: null
 tagline: Trabajo para CIF.
 order: 18
-publish: true
-featured: false
-highlight: false
+archived: false
 credits: []
 stats:
   - label: Año
     value: '2025'
-gallery:
-  - kind: video
-    cloudinaryId: codestudio/trabajos/cif/copia-de-clean-tok-v3
+photos: []
+videos:
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/cif/copia-de-clean-tok-v3.mp4
     caption: 'Clean Tok'
-  - kind: video
-    cloudinaryId: codestudio/trabajos/cif/copia-de-narratorv2
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/cif/copia-de-narratorv2.mp4
     caption: 'Narrator'
-  - kind: video
-    cloudinaryId: codestudio/trabajos/cif/copia-de-05-sqed
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/cif/copia-de-05-sqed.mp4
     caption: 'SQED'
 ---
 

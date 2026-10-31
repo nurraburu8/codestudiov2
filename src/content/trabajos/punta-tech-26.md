@@ -5,22 +5,19 @@ category: Campañas
 year: 2026
 location: Punta del Este, Uruguay
 video: /videos/clips/punta-tech-26.mp4
-cloudinaryId: codestudio/aftermoviepuntatech26-final
+fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/aftermoviepuntatech26-final.mp4
 cover: /videos/posters/punta-tech-26.jpg
 tagline: La cumbre de los techies de Latinoamérica, edición 18.
 order: 6
-publish: true
-featured: true
-highlight: true
-credits:
-  - role: Code
-    name: Code
+archived: false
+credits: []
 stats:
   - label: Año
     value: '2026'
   - label: Edición
     value: 18ª
-gallery: []
+photos: []
+videos: []
 ---
 
 Cobertura audiovisual para la edición número 18 de Punta Tech Meetup, y nuestra 2da vez formando parte del evento más importante de networking de Latinoamérica que reúne a los líderes techies en Punta del Este.

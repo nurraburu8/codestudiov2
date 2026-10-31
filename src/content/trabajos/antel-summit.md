@@ -5,92 +5,50 @@ category: Campañas
 year: 2026
 location: Montevideo, Uruguay
 video: /videos/clips/antel-summit.mp4
-cloudinaryId: codestudio/trabajos/antel-summit/resumen-summit-16-9-final
+fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/antel-summit/resumen-summit-16-9-final.mp4
 cover: /videos/posters/antel-summit.jpg
 tagline: Cobertura integral para ANTEL
 order: 2
-publish: true
-featured: true
-highlight: true
-credits:
-  - role: Code studio
-    name: Code studio
+archived: false
+credits: []
 stats:
   - label: Año
     value: '2026'
-gallery:
-  - kind: video
-    cloudinaryId: codestudio/trabajos/antel-summit/historia-hernan-casciari
-    caption: Hernán Casciari
-  - kind: video
-    cloudinaryId: codestudio/trabajos/antel-summit/roberto-musso
-    caption: Roberto Musso
-  - kind: video
-    cloudinaryId: codestudio/trabajos/antel-summit/irene-solaiman
-    caption: Irene Solaiman
-  - kind: video
-    cloudinaryId: codestudio/trabajos/antel-summit/helena-rovner-1
-    caption: Helena Rovner
-  - kind: video
-    cloudinaryId: codestudio/trabajos/antel-summit/laura-maccio-1
-    caption: Laura Maccio
-  - kind: video
-    cloudinaryId: codestudio/trabajos/antel-summit/paco-martin
-    caption: Paco Martín
-  - kind: video
-    cloudinaryId: codestudio/trabajos/antel-summit/networking
-    caption: Networking
-  - kind: video
-    cloudinaryId: codestudio/trabajos/antel-summit/reel-stands-0
-    caption: Stands
-  - kind: video
-    cloudinaryId: codestudio/trabajos/antel-summit/01
-    caption: Historia en vivo
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/antel-summit/codestudio-0040
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/antel-summit/codestudio-0191
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/antel-summit/codestudio-0265
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/antel-summit/codestudio-0366
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/antel-summit/codestudio-0548
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/antel-summit/codestudio-0657
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/antel-summit/codestudio-0985
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/antel-summit/codestudio-1005
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/antel-summit/codestudio-1027
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/antel-summit/codestudio-3
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/antel-summit/codestudio-4675
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/antel-summit/codestudio-5
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/antel-summit/codestudio-6
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/antel-summit/codestudio
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/antel-summit/codestudio-uy-2
-    caption: ''
+photos:
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/antel-summit/codestudio-0040.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/antel-summit/codestudio-0191.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/antel-summit/codestudio-0265.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/antel-summit/codestudio-0366.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/antel-summit/codestudio-0548.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/antel-summit/codestudio-0657.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/antel-summit/codestudio-0985.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/antel-summit/codestudio-1005.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/antel-summit/codestudio-1027.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/antel-summit/codestudio-3.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/antel-summit/codestudio-4675.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/antel-summit/codestudio-5.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/antel-summit/codestudio-6.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/antel-summit/codestudio.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/antel-summit/codestudio-uy-2.jpg
+videos:
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/antel-summit/historia-hernan-casciari.mp4
+    caption: 'Hernán Casciari'
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/antel-summit/roberto-musso.mp4
+    caption: 'Roberto Musso'
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/antel-summit/irene-solaiman.mp4
+    caption: 'Irene Solaiman'
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/antel-summit/helena-rovner-1.mp4
+    caption: 'Helena Rovner'
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/antel-summit/laura-maccio-1.mp4
+    caption: 'Laura Maccio'
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/antel-summit/paco-martin.mp4
+    caption: 'Paco Martín'
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/antel-summit/networking.mp4
+    caption: 'Networking'
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/antel-summit/reel-stands-0.mp4
+    caption: 'Stands'
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/antel-summit/01.mp4
+    caption: 'Historia en vivo'
 ---
 
 Producción audiovisual para Antel Summit.

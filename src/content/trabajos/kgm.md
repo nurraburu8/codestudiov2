@@ -5,17 +5,17 @@ category: Shows
 year: 2025
 location: Montevideo, Uruguay
 video: ""
-cloudinaryId: null
+fullVideo: ''
 cover: null
 tagline: El desembarco de la marca en Uruguay.
 order: 35
-publish: true
-highlight: false
-featured: false
+archived: false
 credits: []
 stats:
   - label: Año
     value: '2025'
+photos: []
+videos: []
 ---
 
 Cobertura audiovisual del evento que marcó el desembarco de KGM en Uruguay. Una noche que marcó el comienzo de una nueva era en movilidad — primer contacto de la marca con prensa, dealers y público local.

@@ -5,17 +5,17 @@ category: Fotografía
 year: 2025
 location: Montevideo, Uruguay
 video: ""
-cloudinaryId: null
+fullVideo: ''
 cover: null
 tagline: Trabajo para Panda Bar.
 order: 22
-publish: true
-highlight: false
-featured: false
+archived: false
 credits: []
 stats:
   - label: Año
     value: '2025'
+photos: []
+videos: []
 ---
 
 Producción audiovisual para Panda Bar.

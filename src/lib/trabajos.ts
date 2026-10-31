@@ -1,11 +1,15 @@
 /**
  * Helpers para leer la colección de trabajos.
- * Centralizan la lógica de filtrado/ordenado y aplican el filtro `publish`.
+ * Centralizan la lógica de filtrado/ordenado y dejan afuera los archivados.
  */
 import { getCollection, type CollectionEntry } from 'astro:content';
-import { cldVideoUrl, cldVideoPoster } from '@lib/cloudinary';
+import { cldImageUrl, cldPublicId, cldVideoUrl, cldVideoPoster } from '@lib/cloudinary';
+// Orden de la pantalla principal: lo edita el cliente desde el CMS
+// ("Pantalla principal"), arrastrando trabajos en cada lista.
+import inicio from '../content/inicio.json';
 
 export type TrabajoEntry = CollectionEntry<'trabajos'>;
+export type TrabajoData = TrabajoEntry['data'];
 export type TrabajoCategory = 'Shows' | 'Campañas' | 'Fotografía';
 
 /**
@@ -27,36 +31,43 @@ export const CATEGORY_SLUGS: Record<TrabajoCategory, string> = {
 const FALLBACK_POSTER = '/hero-poster.jpg';
 
 /**
- * Sirve la versión WebP del poster si existe (generada por gen:webp).
+ * Sirve la versión WebP de un poster local si existe (generada por gen:webp).
  * El atributo `poster=""` del <video> acepta solo una URL — no soporta
- * <picture> fallback. WebP tiene 97%+ soporte en browsers modernos; el
- * resto ve fondo negro hasta que arranca el video (degradación aceptable).
+ * <picture> fallback. Las imágenes de Cloudinary ya salen con f_auto.
  */
 function preferWebp(path: string): string {
-  return path.replace(/\.(jpe?g|png)$/i, '.webp');
+  return path.startsWith('/') ? path.replace(/\.(jpe?g|png)$/i, '.webp') : path;
 }
 
 /**
- * Para el hero slideshow: siempre usa el clip local corto (~10s, muted autoplay).
- * Ignoramos cloudinaryId aquí a propósito — el hero nunca debe bufferar el video
- * completo, que puede pesar cientos de MB.
+ * Imagen de portada del trabajo, al ancho pedido.
+ * Si no cargaron portada, usa un cuadro del video completo (si está en Cloudinary).
  */
-export function resolveHeroVideo(data: TrabajoEntry['data']): { src: string; poster: string } {
-  return { src: data.video, poster: preferWebp(data.cover ?? FALLBACK_POSTER) };
-}
-
-/**
- * Para la página de detalle (/work/[id]): usa Cloudinary si está disponible,
- * con fallback al clip local. El usuario ya eligió ver ese trabajo, así que
- * el video completo tiene sentido acá.
- */
-export function resolveVideo(data: TrabajoEntry['data']): { src: string; poster: string } {
-  if (data.cloudinaryId) {
-    const src = cldVideoUrl(data.cloudinaryId);
-    const poster = cldVideoPoster(data.cloudinaryId);
-    if (src) return { src, poster: poster ?? preferWebp(data.cover ?? FALLBACK_POSTER) };
+export function resolveCover(data: TrabajoData, width = 1280): string | null {
+  if (data.cover) {
+    return cldPublicId(data.cover)
+      ? cldImageUrl(data.cover, { width, crop: 'limit' })
+      : preferWebp(data.cover);
   }
-  return { src: data.video, poster: preferWebp(data.cover ?? FALLBACK_POSTER) };
+  return data.fullVideo ? cldVideoPoster(data.fullVideo, width) : null;
+}
+
+/**
+ * Para el hero slideshow: siempre el clip corto (~10s, muted autoplay).
+ * Nunca el video completo, que puede pesar cientos de MB. Si el clip está en
+ * Cloudinary se pide achicado y sin audio.
+ */
+export function resolveHeroVideo(data: TrabajoData): { src: string; poster: string } {
+  const src = cldVideoUrl(data.video, 'q_auto,w_1280,ac_none') ?? '';
+  const poster = resolveCover(data) ?? cldVideoPoster(data.video) ?? FALLBACK_POSTER;
+  return { src, poster };
+}
+
+/** Para la página de detalle (/work/[id]): el video completo. */
+export function resolveVideo(data: TrabajoData): { src: string; poster: string } {
+  const src = cldVideoUrl(data.fullVideo) ?? '';
+  const poster = resolveCover(data) ?? FALLBACK_POSTER;
+  return { src, poster };
 }
 
 /** Ordena por `order` ascendente; los que tienen el mismo orden quedan por año desc. */
@@ -65,22 +76,28 @@ function sortTrabajos(a: TrabajoEntry, b: TrabajoEntry): number {
   return b.data.year - a.data.year;
 }
 
-/** Todos los trabajos publicados, ordenados. */
+/** Todos los trabajos no archivados, ordenados. */
 export async function getAllTrabajos(): Promise<TrabajoEntry[]> {
-  const all = await getCollection('trabajos', ({ data }) => data.publish !== false);
+  const all = await getCollection('trabajos', ({ data }) => !data.archived);
   return all.sort(sortTrabajos);
 }
 
-/** Trabajos destacados que aparecen en el hero del home. */
-export async function getFeaturedTrabajos(): Promise<TrabajoEntry[]> {
+/** Trabajos de una lista de la pantalla principal, en el orden del CMS. */
+async function getInicioList(slugs: string[]): Promise<TrabajoEntry[]> {
   const all = await getAllTrabajos();
-  return all.filter((w) => w.data.featured === true);
+  const byId = new Map(all.map((w) => [w.id, w]));
+  return slugs.map((s) => byId.get(s)).filter((w): w is TrabajoEntry => Boolean(w));
 }
 
-/** Trabajos de la grilla "Proyectos destacados" del home. */
+/** Trabajos del slideshow del inicio. Se saltean los que no tienen clip. */
+export async function getFeaturedTrabajos(): Promise<TrabajoEntry[]> {
+  const list = await getInicioList(inicio.slideshow ?? []);
+  return list.filter((w) => w.data.video);
+}
+
+/** Trabajos de la grilla "Proyectos destacados" del inicio. */
 export async function getHighlightTrabajos(): Promise<TrabajoEntry[]> {
-  const all = await getAllTrabajos();
-  return all.filter((w) => w.data.highlight === true);
+  return getInicioList(inicio.destacados ?? []);
 }
 
 /** Filtrados por categoría (o todos). */
@@ -90,10 +107,4 @@ export async function getTrabajosByCategory(
   const all = await getAllTrabajos();
   if (category === 'all') return all;
   return all.filter((w) => w.data.category === category);
-}
-
-/** Un trabajo por su slug (id de archivo sin extensión). */
-export async function getTrabajoBySlug(slug: string): Promise<TrabajoEntry | undefined> {
-  const all = await getAllTrabajos();
-  return all.find((w) => w.id === slug);
 }
