@@ -56,6 +56,30 @@ export function resolveCover(data: TrabajoData, width = 1280): string | null {
 
 const publicFileExists = (path: string) => existsSync(join(process.cwd(), 'public', path));
 
+/** Proporción de las tarjetas de trabajo (horizontales). */
+export const CARD_ASPECT = '16:10';
+const CARD_WIDTHS = [640, 960, 1400];
+
+/**
+ * Imagen de la tarjeta (horizontal 16:10), con srcset.
+ * - Portada en Cloudinary: se recorta a 16:10 con encuadre automático
+ *   (las portadas que mandó el cliente son verticales).
+ * - Sin portada: un cuadro del video completo, si está en Cloudinary.
+ * - Portada local (posters de los clips, ya horizontales): tal cual.
+ */
+export function resolveCardImage(data: TrabajoData): { src: string; srcset?: string } | null {
+  const fromCld = (value: string, kind: 'image' | 'video') => {
+    const url = (w: number) =>
+      kind === 'image'
+        ? cldImageUrl(value, { crop: 'fill', aspect: CARD_ASPECT, gravity: 'auto', width: w })!
+        : cldVideoPoster(value, w)!;
+    return { src: url(960), srcset: CARD_WIDTHS.map((w) => `${url(w)} ${w}w`).join(', ') };
+  };
+  if (data.cover) return cldPublicId(data.cover) ? fromCld(data.cover, 'image') : { src: preferWebp(data.cover) };
+  if (data.fullVideo && cldPublicId(data.fullVideo)) return fromCld(data.fullVideo, 'video');
+  return null;
+}
+
 /**
  * Para el hero slideshow: siempre el clip corto (muted autoplay), nunca el
  * video completo.
@@ -91,7 +115,12 @@ export function resolveHeroVideo(data: TrabajoData): {
 /** Para la página de detalle (/work/[id]): el video completo. */
 export function resolveVideo(data: TrabajoData): { src: string; poster: string } {
   const src = cldVideoUrl(data.fullVideo) ?? '';
-  const poster = resolveCover(data) ?? FALLBACK_POSTER;
+  // El player es 16:9: una portada de Cloudinary (suelen ser verticales) se
+  // recorta a esa proporción con encuadre automático.
+  const poster =
+    (data.cover && cldPublicId(data.cover)
+      ? cldImageUrl(data.cover, { crop: 'fill', aspect: '16:9', gravity: 'auto', width: 1600 })
+      : resolveCover(data)) ?? FALLBACK_POSTER;
   return { src, poster };
 }
 

@@ -56,6 +56,10 @@ interface ImageOpts {
   height?: number;
   /** 'fill' recorta al tamaño, 'limit' no agranda, etc */
   crop?: 'fill' | 'limit' | 'fit' | 'scale';
+  /** Proporción para recortar con crop 'fill', ej: '16:10'. */
+  aspect?: string;
+  /** 'auto' = Cloudinary elige el encuadre (caras, sujetos, texto). */
+  gravity?: 'auto' | 'center';
 }
 
 /** URL de imagen optimizada. Paths locales/URLs externas pasan tal cual. */
@@ -64,8 +68,10 @@ export function cldImageUrl(value: string, opts: ImageOpts = {}): string | null 
   const id = cldPublicId(value);
   if (!id) return value;
   const t = ['f_auto', 'q_auto'];
+  if (opts.crop) t.push(`c_${opts.crop}`);
+  if (opts.aspect) t.push(`ar_${opts.aspect}`);
+  if (opts.gravity) t.push(`g_${opts.gravity}`);
   if (opts.width) t.push(`w_${opts.width}`);
   if (opts.height) t.push(`h_${opts.height}`);
-  if (opts.crop) t.push(`c_${opts.crop}`);
   return `${BASE}/image/upload/${t.join(',')}/${id}`;
 }
