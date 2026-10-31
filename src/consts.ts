@@ -39,6 +39,11 @@ export const SITE = {
 
 export const CONTACT = {
   email: 'hola@codestudio.com.uy',
+  /**
+   * WhatsApp en formato internacional, solo dígitos (ej: 59899123456).
+   * Vacío = no se muestra el botón de WhatsApp en los llamados a la acción.
+   */
+  whatsapp: (import.meta.env.PUBLIC_WHATSAPP || '').replace(/\D/g, ''),
   country: 'Uruguay',
 } as const;
 

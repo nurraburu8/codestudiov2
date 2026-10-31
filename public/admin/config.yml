@@ -72,7 +72,11 @@ collections:
           - { label: "Shows & Fiestas", value: Shows }
           - { label: "Eventos & Campañas", value: Campañas }
           - { label: "Fotografía Producto", value: Fotografía }
-      - { label: "Año", name: year, widget: number, value_type: int, min: 2000, max: 2100 }
+      # Texto y no número: Sveltia muestra los números con separador de miles ("2,025").
+      - label: "Año"
+        name: year
+        widget: string
+        pattern: ['^(19|20)[0-9]{2}$', 'Año con 4 cifras, por ejemplo 2026']
       - { label: "Ubicación", name: location, widget: string, default: "Montevideo, Uruguay", required: false }
       - { label: "Frase destacada", name: tagline, widget: string, required: false, hint: Aparece debajo del título en la página del trabajo. }
       - label: Archivado

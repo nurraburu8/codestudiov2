@@ -9,6 +9,7 @@ import Layout from '@layouts/Layout.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import Gallery from '@components/Gallery.astro';
+import ProjectCTA from '@components/ProjectCTA.astro';
 import {
   getAllTrabajos,
   resolveVideo,
@@ -17,6 +18,7 @@ import {
 } from '@lib/trabajos';
 import { SITE } from '@/consts';
 import { cldImageUrl, cldVideoUrl, cldVideoPoster } from '@lib/cloudinary';
+import { contactLinks } from '@lib/contacto';
 
 const base = (Astro.site ?? new URL(SITE.url)).origin;
 
@@ -60,6 +62,8 @@ const extraVideos = work.data.videos
     caption: v.caption ?? '',
   }))
   .filter((v) => v.src);
+
+const contacto = contactLinks(work.data.client);
 
 const categorySlug = CATEGORY_SLUGS[work.data.category];
 const categoryLabel = CATEGORY_LABELS[work.data.category];
@@ -109,6 +113,21 @@ const videoJsonLd = {
           <video controls preload="metadata" playsinline poster={video.poster}>
             <source src={video.src} type="video/mp4" />
           </video>
+          {/* Al terminar el video: contacto rápido en lugar de pantalla negra. */}
+          <div class="video-end" hidden>
+            <p class="video-end-title">¿Te gustó? Hagamos el tuyo.</p>
+            <div class="video-end-actions">
+              {contacto.whatsapp && (
+                <a class="btn-cta primary" href={contacto.whatsapp} target="_blank" rel="noopener">
+                  WhatsApp
+                </a>
+              )}
+              <a class:list={['btn-cta', { primary: !contacto.whatsapp }]} href={contacto.mail}>
+                Escribinos
+              </a>
+              <button class="btn-cta video-replay" type="button">↺ Ver de nuevo</button>
+            </div>
+          </div>
         </div>
       )
     }
@@ -190,6 +209,8 @@ const videoJsonLd = {
     )
   }
 
+  <ProjectCTA client={work.data.client} category={work.data.category} />
+
   <section class="related">
     <h2>Otros trabajos</h2>
     <Gallery filter="all" limit={3} />
@@ -199,6 +220,22 @@ const videoJsonLd = {
 </Layout>
 
 <script>
+  // Fin del video principal: muestra el contacto rápido. Se oculta al volver
+  // a reproducir (botón "Ver de nuevo" o los controles del video).
+  const mainVideo = document.querySelector<HTMLVideoElement>('.video-wrap video');
+  const videoEnd = document.querySelector<HTMLElement>('.video-end');
+  if (mainVideo && videoEnd) {
+    mainVideo.addEventListener('ended', () => {
+      if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+      videoEnd.hidden = false;
+    });
+    mainVideo.addEventListener('play', () => (videoEnd.hidden = true));
+    videoEnd.querySelector('.video-replay')?.addEventListener('click', () => {
+      mainVideo.currentTime = 0;
+      mainVideo.play().catch(() => {});
+    });
+  }
+
   // Lightbox simple: sin JS los links abren la foto grande en la misma pestaña.
   const dialog = document.querySelector<HTMLDialogElement>('dialog.lightbox');
   const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('.media-photos .photo'));
@@ -445,6 +482,56 @@ const videoJsonLd = {
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+
+  .video-end {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(18px, 3vw, 32px);
+    padding: 24px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.78);
+    animation: videoEndIn 0.5s var(--ease-out);
+  }
+
+  .video-end[hidden] { display: none; }
+
+  @keyframes videoEndIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .video-end-title {
+    font-family: var(--ff-display);
+    font-size: clamp(24px, 4vw, 56px);
+    line-height: 1;
+    color: var(--milk);
+  }
+
+  .video-end-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .video-end .btn-cta { min-height: 44px; padding: 0 22px; font-size: clamp(12px, 1vw, 15px); }
+
+  .video-end .btn-cta.primary { background: var(--light); color: var(--black); }
+
+  .video-end .video-replay { color: var(--milk); border-color: rgba(251, 249, 245, 0.5); }
+
+  /* En celular el video mide ~210px de alto: todo más compacto. */
+  @media (max-width: 600px) {
+    .video-end { gap: 12px; padding: 12px; }
+    .video-end-title { font-size: 20px; }
+    .video-end-actions { gap: 8px; }
+    .video-end .btn-cta { min-height: 36px; padding: 0 14px; font-size: 11px; letter-spacing: 0.14em; }
   }
 
   .work-body {
