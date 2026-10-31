@@ -6,7 +6,7 @@ year: 2026
 location: Playa Montoya, Uruguay
 video: /videos/clips/copa-rdlp-2026.mp4
 fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/aftermoviecopardlp26.mp4
-cover: /videos/posters/copa-rdlp-2026.jpg
+cover: https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/copa-rdlp-2026/ctrp-26-portada.jpg
 tagline: Cobertura en vivo para Copa TOYOTA RIO DE LA PLATA 2026
 order: 7
 archived: false

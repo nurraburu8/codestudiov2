@@ -6,7 +6,7 @@ year: 2026
 location: Punta del Este, Uruguay
 video: /videos/clips/punta-tech-26.mp4
 fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/aftermoviepuntatech26-final.mp4
-cover: /videos/posters/punta-tech-26.jpg
+cover: https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/punta-tech-26/pt26-portada.jpg
 tagline: La cumbre de los techies de Latinoamérica, edición 18.
 order: 6
 archived: false

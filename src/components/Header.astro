@@ -10,9 +10,14 @@ interface Props {
   current?: string;
   /** Si true, aplica tema claro (para páginas con fondo blanco como nosotros/contacto) */
   light?: boolean;
+  /**
+   * Si true, el header arranca transparente sobre el contenido (el video del
+   * hero en el home) y se vuelve negro sólido al pasar el hero.
+   */
+  overlay?: boolean;
 }
 
-const { current = '', light = false } = Astro.props;
+const { current = '', light = false, overlay = false } = Astro.props;
 
 const links = [
   { href: '/shows', label: CATEGORY_LABELS.Shows },
@@ -23,7 +28,7 @@ const links = [
 ];
 ---
 
-<nav class:list={['nav', { 'nav-light': light }]} aria-label="Navegación principal">
+<nav class:list={['nav', { 'nav-light': light, 'nav-overlay': overlay }]} aria-label="Navegación principal">
   <a href="/" class="nav-b" aria-label={`${SITE.name} - Inicio`}>
     <img src="/logo.png" alt={SITE.name} width="36" height="36" />
   </a>
@@ -62,12 +67,27 @@ const links = [
     justify-content: space-between;
     align-items: center;
     padding: 18px 5vw;
-    background: var(--black);
     transition: transform 0.45s var(--ease-out);
   }
 
-  /* .scrolled mantiene los mismos estilos que el default — ya está negro. */
-  .nav.scrolled { background: var(--black); }
+  /* El fondo negro va en una capa aparte para poder fundirlo con opacidad
+     (un degradé no se puede animar a un color sólido). */
+  .nav::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--black);
+    transition: opacity 0.4s var(--ease-out);
+  }
+
+  /* Home: transparente sobre el video, con un degradé suave para que el logo
+     y los links se lean sobre cualquier cuadro. Al pasar el hero, negro. */
+  .nav-overlay {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0));
+  }
+  .nav-overlay::before { opacity: 0; }
+  .nav-overlay.scrolled::before { opacity: 1; }
 
   .nav.hide { transform: translateY(-100%); }
 
@@ -181,18 +201,12 @@ const links = [
 
   .mob-menu a:hover { color: var(--light); }
 
-  /* ── Mobile layout (logo centered, ham right) ───────── */
+  /* ── Mobile: logo chico a la izquierda, hamburguesa a la derecha ── */
   @media (max-width: 820px) {
-    .nav {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      padding: 14px 5vw;
-    }
-    .nav-b { grid-column: 2; justify-self: center; }
-    .nav-b img { height: 44px; }
+    .nav { padding: 10px 16px 10px 20px; }
+    .nav-b img { height: 28px; }
     .nav-l { display: none; }
-    .ham { display: flex; grid-column: 3; justify-self: end; }
+    .ham { display: flex; }
   }
 </style>
 
@@ -201,18 +215,25 @@ const links = [
    * Comportamiento del nav: scroll-spy, hide-on-scroll-down,
    * toggle del menú mobile.
    */
-  const nav = document.querySelector('.nav');
+  const nav = document.querySelector<HTMLElement>('.nav');
   const ham = document.querySelector('.ham');
   const mobMenu = document.getElementById('mob-menu');
 
   if (nav && ham && mobMenu) {
     let lastScroll = 0;
 
+    // En el home (overlay) el header queda transparente mientras se ve el
+    // hero; en el resto de las páginas, apenas se scrollea.
+    const overlay = nav.classList.contains('nav-overlay');
+    const solidAfter = () => (overlay ? window.innerHeight - nav.offsetHeight : 50);
+    // Si la página carga ya scrolleada (recarga, botón atrás), arrancar sólido.
+    nav.classList.toggle('scrolled', window.scrollY > solidAfter());
+
     window.addEventListener(
       'scroll',
       () => {
         const y = window.scrollY;
-        nav.classList.toggle('scrolled', y > 50);
+        nav.classList.toggle('scrolled', y > solidAfter());
 
         // Hide on scroll down, show on scroll up (después de 200px)
         if (y > 200) {

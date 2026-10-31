@@ -2,6 +2,8 @@
  * Helpers para leer la colección de trabajos.
  * Centralizan la lógica de filtrado/ordenado y dejan afuera los archivados.
  */
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { cldImageUrl, cldPublicId, cldVideoUrl, cldVideoPoster } from '@lib/cloudinary';
 // Orden de la pantalla principal: lo edita el cliente desde el CMS
@@ -52,15 +54,38 @@ export function resolveCover(data: TrabajoData, width = 1280): string | null {
   return data.fullVideo ? cldVideoPoster(data.fullVideo, width) : null;
 }
 
+const publicFileExists = (path: string) => existsSync(join(process.cwd(), 'public', path));
+
 /**
- * Para el hero slideshow: siempre el clip corto (~10s, muted autoplay).
- * Nunca el video completo, que puede pesar cientos de MB. Si el clip está en
- * Cloudinary se pide achicado y sin audio.
+ * Para el hero slideshow: siempre el clip corto (muted autoplay), nunca el
+ * video completo.
+ * - src: versión horizontal (desktop).
+ * - srcVertical: recorte 3:4 para celulares parados, si existe
+ *   (gen:clips genera <slug>-v.mp4; en Cloudinary se recorta al vuelo).
+ * - poster: primer cuadro del clip, así no hay salto al arrancar. La portada
+ *   del trabajo es vertical (para las tarjetas) y no sirve acá.
  */
-export function resolveHeroVideo(data: TrabajoData): { src: string; poster: string } {
-  const src = cldVideoUrl(data.video, 'q_auto,w_1280,ac_none') ?? '';
-  const poster = resolveCover(data) ?? cldVideoPoster(data.video) ?? FALLBACK_POSTER;
-  return { src, poster };
+export function resolveHeroVideo(data: TrabajoData): {
+  src: string;
+  srcVertical: string | null;
+  poster: string;
+} {
+  if (data.video.startsWith('/')) {
+    const vertical = data.video.replace(/\.mp4$/i, '-v.mp4');
+    const poster = data.video.replace('/videos/clips/', '/videos/posters/').replace(/\.mp4$/i, '.jpg');
+    return {
+      src: data.video,
+      srcVertical: publicFileExists(vertical) ? vertical : null,
+      poster: publicFileExists(poster) ? preferWebp(poster) : (resolveCover(data) ?? FALLBACK_POSTER),
+    };
+  }
+  return {
+    src: cldVideoUrl(data.video, 'q_auto,w_1280,ac_none') ?? '',
+    srcVertical: cldPublicId(data.video)
+      ? cldVideoUrl(data.video, 'q_auto,c_fill,ar_3:4,h_1080,g_center,ac_none')
+      : null,
+    poster: cldVideoPoster(data.video) ?? resolveCover(data) ?? FALLBACK_POSTER,
+  };
 }
 
 /** Para la página de detalle (/work/[id]): el video completo. */

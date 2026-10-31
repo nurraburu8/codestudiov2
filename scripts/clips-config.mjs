@@ -23,13 +23,14 @@
 
 export const CLIPS_CONFIG = {
   // archivo en source-videos/                     → slug              | start
-  // ── Hero: intros de ~10s que armó el cliente (Drive → PROYECTOS PRINCIPALES INICIO)
-  'intro-csb.mp4':                                 { slug: 'canelones-suena-bien-26', startSec: 0, duration: 10.4 },
-  'intro-vans.mp4':                                { slug: 'vans-x-harlem-2025',      startSec: 0, duration: 10.3 },
-  'intro-antel.mp4':                               { slug: 'antel-summit',            startSec: 0, duration: 10.3 },
-  'intro-fito.mp4':                                { slug: 'gira-fito-paez',          startSec: 0, duration: 10.3 },
-  'intro-puntatech.mp4':                           { slug: 'punta-tech-26',           startSec: 0, duration: 11.3 },
-  'intro-copatoyota.mp4':                          { slug: 'copa-rdlp-2026',          startSec: 0, duration: 11.3 },
+  // ── Hero: intros que armó el cliente (Drive → PROYECTOS PRINCIPALES INICIO).
+  //    Van enteros ('full'): el slideshow espera a que termine cada uno.
+  'intro-csb.mp4':                                 { slug: 'canelones-suena-bien-26', startSec: 0, duration: 'full' },
+  'intro-vans.mp4':                                { slug: 'vans-x-harlem-2025',      startSec: 0, duration: 'full' },
+  'intro-antel.mp4':                               { slug: 'antel-summit',            startSec: 0, duration: 'full' },
+  'intro-fito.mp4':                                { slug: 'gira-fito-paez',          startSec: 0, duration: 'full' },
+  'intro-puntatech.mp4':                           { slug: 'punta-tech-26',           startSec: 0, duration: 'full' },
+  'intro-copatoyota.mp4':                          { slug: 'copa-rdlp-2026',          startSec: 0, duration: 'full' },
   'SUEÑO CELESTE Vcode.mp4':                       { slug: 'sueno-celeste-code',      startSec: 5  },
   // ── Hero con sources previos (clips ya generados, se skipean) ────────
   'VANS X NACHO_3.mp4':                            { slug: 'vans-nacho',              startSec: 15 },
@@ -42,16 +43,23 @@ export const CLIPS_CONFIG = {
 /**
  * Defaults aplicados a TODOS los clips.
  *
- * - width × height: 1280×720 standard para autoplay de hero.
- * - duration: 10s.
- * - crf: 24 = sweet spot calidad/peso para web (~3-4MB por clip).
+ * - width × height: 1280×720 para el hero en desktop.
+ * - duration: 10s (o 'full' por clip para usar el archivo entero).
+ * - crf 26 + maxrate 2.5 Mbps: ~2-3.5MB por clip de 10s. Con CRF 24 sin techo
+ *   los planos con mucho movimiento pasaban 5 Mbps sin diferencia visible
+ *   detrás del oscurecido del hero.
+ * - vfVertical: recorte central 3:4 a 1080 de alto para celulares parados
+ *   (<slug>-v.mp4). maxrateVertical: techo para esa versión.
  * - preset: slow = mejor compresión sin perder calidad.
  */
 export const DEFAULTS = {
   width: 1280,
   height: 720,
   duration: 10,
-  crf: 24,
+  crf: 26,
+  maxrate: '2500k',
+  vfVertical: 'crop=ih*3/4:ih,scale=810:1080',
+  maxrateVertical: '2000k',
   preset: 'slow',
   posterQuality: 3,
 };
