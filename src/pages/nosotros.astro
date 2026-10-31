@@ -27,11 +27,23 @@ const brands = [
 ];
 
 /**
- * El marquee anima hasta -50% del track, así que cada mitad tiene que ser
- * más ancha que la pantalla o se ve un hueco al cerrar el loop. Con pocos
- * logos no alcanza: repetimos la lista para llenar la mitad.
+ * Dos renglones que se mueven en sentidos opuestos (logos alternados entre
+ * uno y otro para mezclar marcas grandes y chicas).
+ *
+ * Cada track anima hasta -50%, así que cada mitad tiene que ser más ancha que
+ * la pantalla o se ve un hueco al cerrar el loop: repetimos el renglón hasta
+ * tener al menos 14 logos por mitad (~2800px con logos de 200px, más ancho
+ * que una pantalla de 2560px).
  */
-const brandsHalf = brands.length >= 12 ? brands : [...brands, ...brands];
+const fillHalf = <T,>(list: T[], min = 14): T[] => {
+  const out: T[] = [];
+  while (out.length < min) out.push(...list);
+  return out;
+};
+const brandRows = [
+  { dir: 'left', items: fillHalf(brands.filter((_, i) => i % 2 === 0)) },
+  { dir: 'right', items: fillHalf(brands.filter((_, i) => i % 2 === 1)) },
+];
 
 const team = [
   { name: 'Valentín Prieto', role: 'Cofundador', photo: '/team/valentin' },
@@ -172,30 +184,26 @@ const workingPhotos = [
       <h2 class="brands-title">Marcas que confiaron en nosotros</h2>
     </header>
 
-    <div class="marquee">
-      <div class="marquee-track">
-        {
-          brandsHalf.map((b) => (
-            <div class="marquee-item">
-              <picture>
-                <source srcset={b.src.replace(/\.png$/, '.webp')} type="image/webp" />
-                <img src={b.src} alt={b.alt} loading="eager" decoding="async" />
-              </picture>
+    {
+      brandRows.map((row) => {
+        // Solo la primera aparición de cada logo se anuncia a lectores de pantalla.
+        const unique = new Set(row.items).size;
+        return (
+          <div class="marquee">
+            <div class={`marquee-track marquee-${row.dir}`}>
+              {[...row.items, ...row.items].map((b, idx) => (
+                <div class="marquee-item" aria-hidden={idx >= unique ? 'true' : undefined}>
+                  <picture>
+                    <source srcset={b.src.replace(/\.png$/, '.webp')} type="image/webp" />
+                    <img src={b.src} alt={idx >= unique ? '' : b.alt} loading="eager" decoding="async" />
+                  </picture>
+                </div>
+              ))}
             </div>
-          ))
-        }
-        {
-          brandsHalf.map((b) => (
-            <div class="marquee-item" aria-hidden="true">
-              <picture>
-                <source srcset={b.src.replace(/\.png$/, '.webp')} type="image/webp" />
-                <img src={b.src} alt="" loading="eager" decoding="async" />
-              </picture>
-            </div>
-          ))
-        }
-      </div>
-    </div>
+          </div>
+        );
+      })
+    }
   </section>
 
   <Footer />
@@ -563,15 +571,25 @@ const workingPhotos = [
     mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
   }
 
+  .marquee + .marquee { margin-top: clamp(12px, 2vh, 24px); }
+
   .marquee-track {
     display: flex;
     width: max-content;
     animation: marqueeL 48s linear infinite;
   }
 
+  /* El segundo renglón va hacia el otro lado. */
+  .marquee-track.marquee-right { animation-name: marqueeR; }
+
   @keyframes marqueeL {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
+  }
+
+  @keyframes marqueeR {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
   }
 
   /* Cajita fija para cada logo — width + height uniformes. La <img>

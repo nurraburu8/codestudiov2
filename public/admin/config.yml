@@ -143,35 +143,34 @@ collections:
 
   - name: inicio
     label: Pantalla principal
-    description: Qué trabajos aparecen en la página de inicio y en qué orden. Arrastralos para reordenar.
+    description: >-
+      Qué trabajos aparecen en la página de inicio y en qué orden. Acá solo se eligen
+      trabajos que ya existen; para crear uno nuevo, andá a **Trabajos**.
     files:
       - name: inicio
         label: Pantalla principal
         file: src/content/inicio.json
         format: json
         fields:
-          - label: Slideshow (arriba de todo)
+          - label: Slideshow (video arriba de todo)
             name: slideshow
-            widget: list
+            widget: relation
+            multiple: true
             required: false
-            hint: Cada trabajo necesita su **clip corto para el slideshow** cargado; si no, se saltea.
-            field:
-              label: Trabajo
-              name: trabajo
-              widget: relation
-              collection: trabajos
-              value_field: '{{slug}}'
-              search_fields: [client]
-              display_fields: ['{{client}} · {{year}}']
-          - label: Proyectos destacados (debajo del slideshow)
+            collection: trabajos
+            value_field: '{{slug}}'
+            search_fields: [client]
+            display_fields: ['{{client}} · {{year}}']
+            hint: >-
+              Elegí trabajos que **ya existen** escribiendo su nombre, arrastrá las etiquetas para ordenarlas y quitá con la ✕. El botón "Agregar Trabajo" de este campo crea un trabajo **nuevo**: para elegir uno existente no hace falta. Cada trabajo necesita su **clip corto para el slideshow** cargado; si no, se saltea.
+          - label: Proyectos destacados (grilla debajo del slideshow)
             name: destacados
-            widget: list
+            widget: relation
+            multiple: true
             required: false
-            field:
-              label: Trabajo
-              name: trabajo
-              widget: relation
-              collection: trabajos
-              value_field: '{{slug}}'
-              search_fields: [client]
-              display_fields: ['{{client}} · {{year}}']
+            collection: trabajos
+            value_field: '{{slug}}'
+            search_fields: [client]
+            display_fields: ['{{client}} · {{year}}']
+            hint: >-
+              Elegí trabajos que **ya existen** escribiendo su nombre, arrastrá las etiquetas para ordenarlas y quitá con la ✕. El botón "Agregar Trabajo" de este campo crea un trabajo **nuevo**: para elegir uno existente no hace falta.
