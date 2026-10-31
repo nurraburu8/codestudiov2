@@ -61,7 +61,6 @@ const PALETTES = [
               )}
               <div class="cov" />
               <span class="cnum">{num}</span>
-              <div class="cvw">VER</div>
               <div class="cb tl">
                 <svg viewBox="0 0 40 40">
                   <path d="M4 36 L4 12 C4 7.6 7.6 4 12 4 L36 4" />
@@ -251,40 +250,6 @@ const PALETTES = [
     color: rgba(0, 0, 0, 0.18);
     z-index: 3;
     line-height: 1;
-  }
-
-  .cvw {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.7);
-    opacity: 0;
-    width: 76px;
-    height: 76px;
-    border-radius: 50%;
-    border: 1.5px solid var(--light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--light);
-    background: transparent;
-    z-index: 6;
-    transition:
-      opacity 0.3s,
-      transform 0.4s var(--ease-out),
-      background 0.25s,
-      color 0.25s;
-  }
-
-  .cd:hover .cvw {
-    background: var(--light);
-    color: var(--black);
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
   }
 
   /* Altura FIJA (no min-height) — toda card mide exactamente igual,
