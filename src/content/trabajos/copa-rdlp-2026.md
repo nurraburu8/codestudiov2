@@ -5,89 +5,48 @@ category: Campañas
 year: 2026
 location: Playa Montoya, Uruguay
 video: /videos/clips/copa-rdlp-2026.mp4
-cloudinaryId: codestudio/aftermoviecopardlp26
+fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/aftermoviecopardlp26.mp4
 cover: /videos/posters/copa-rdlp-2026.jpg
 tagline: Cobertura en vivo para Copa TOYOTA RIO DE LA PLATA 2026
 order: 7
-publish: true
-featured: true
-highlight: true
-credits:
-  - role: code
-    name: code
+archived: false
+credits: []
 stats:
   - label: Año
     value: '2026'
-gallery:
-  - kind: video
-    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/reel-01-toyota2
-    caption: Reel en vivo · Toyota
-  - kind: video
-    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/reel-02-presentacion
-    caption: Reel en vivo · Presentación
-  - kind: video
-    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/reel-03-entrevista
-    caption: Reel en vivo · Entrevista
-  - kind: video
-    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/reel-toyota3
-    caption: Reel en vivo · Toyota
-  - kind: video
-    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/reel-monster-01
-    caption: Reel en vivo · Monster
-  - kind: video
-    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/reel-monster-2
-    caption: Reel en vivo · Monster
-  - kind: video
-    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/reel-vans-1
-    caption: Reel en vivo · Vans
-  - kind: video
-    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/reel-vans2
-    caption: Reel en vivo · Vans
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/086a4836
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/086a5011
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/086a5092
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/086a5459
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/086a5918
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/086a5934
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/7iv01483
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/7iv02229
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/7iv03490
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/7iv03568
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/7iv03600
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/codestudio-uy-lecorchphoto-36
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/codestudio-uy-lecorchphoto-44
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/codestudio-uy-lecorchphoto-48
-    caption: ''
-  - kind: foto
-    cloudinaryId: codestudio/trabajos/copa-rdlp-2026/img-3746
-    caption: ''
+photos:
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/copa-rdlp-2026/086a4836.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/copa-rdlp-2026/086a5011.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/copa-rdlp-2026/086a5092.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/copa-rdlp-2026/086a5459.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/copa-rdlp-2026/086a5918.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/copa-rdlp-2026/086a5934.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/copa-rdlp-2026/7iv01483.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/copa-rdlp-2026/7iv02229.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/copa-rdlp-2026/7iv03490.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/copa-rdlp-2026/7iv03568.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/copa-rdlp-2026/7iv03600.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/copa-rdlp-2026/codestudio-uy-lecorchphoto-36.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/copa-rdlp-2026/codestudio-uy-lecorchphoto-44.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/copa-rdlp-2026/codestudio-uy-lecorchphoto-48.jpg
+  - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/copa-rdlp-2026/img-3746.jpg
+videos:
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/copa-rdlp-2026/reel-01-toyota2.mp4
+    caption: 'Reel en vivo · Toyota'
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/copa-rdlp-2026/reel-02-presentacion.mp4
+    caption: 'Reel en vivo · Presentación'
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/copa-rdlp-2026/reel-03-entrevista.mp4
+    caption: 'Reel en vivo · Entrevista'
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/copa-rdlp-2026/reel-toyota3.mp4
+    caption: 'Reel en vivo · Toyota'
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/copa-rdlp-2026/reel-monster-01.mp4
+    caption: 'Reel en vivo · Monster'
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/copa-rdlp-2026/reel-monster-2.mp4
+    caption: 'Reel en vivo · Monster'
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/copa-rdlp-2026/reel-vans-1.mp4
+    caption: 'Reel en vivo · Vans'
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/copa-rdlp-2026/reel-vans2.mp4
+    caption: 'Reel en vivo · Vans'
 ---
 
 Copa Toyota Río de la Plata — 29, 30 y 31 de enero de 2026.

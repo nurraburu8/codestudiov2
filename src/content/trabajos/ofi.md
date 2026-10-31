@@ -5,17 +5,17 @@ category: Campañas
 year: 2025
 location: Uruguay
 video: ""
-cloudinaryId: null
+fullVideo: ''
 cover: null
 tagline: Trabajo para OFI.
 order: 20
-publish: true
-featured: false
-highlight: false
+archived: false
 credits: []
 stats:
   - label: Año
     value: '2025'
+photos: []
+videos: []
 ---
 
 Producción audiovisual para OFI.

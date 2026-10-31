@@ -5,32 +5,26 @@ category: Campañas
 year: 2025
 location: Punta Carretas Shopping, Montevideo
 video: ""
-cloudinaryId: codestudio/trabajos/vans/vlog-paulo-x-vans-2
+fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/vans/vlog-paulo-x-vans-2.mp4
 cover: null
 tagline: La apertura de la nueva tienda, en una sola pieza.
 order: 3
-publish: true
-highlight: true
-featured: false
+archived: false
 credits: []
 stats:
   - label: Año
     value: '2025'
-gallery:
-  - kind: video
-    cloudinaryId: codestudio/trabajos/vans/backstage-vans-x-paulo-2
+photos: []
+videos:
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/vans/backstage-vans-x-paulo-2.mp4
     caption: 'Backstage'
-  - kind: video
-    cloudinaryId: codestudio/trabajos/vans/knu-vans-camp1-qt
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/vans/knu-vans-camp1-qt.mp4
     caption: 'Campaña · 1'
-  - kind: video
-    cloudinaryId: codestudio/trabajos/vans/vans-camp2
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/vans/vans-camp2.mp4
     caption: 'Campaña · 2'
-  - kind: video
-    cloudinaryId: codestudio/trabajos/vans/capsulas-camuflado-2
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/vans/capsulas-camuflado-2.mp4
     caption: 'Cápsula Camuflado · 1'
-  - kind: video
-    cloudinaryId: codestudio/trabajos/vans/capsulas-camuflado-2-2
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/vans/capsulas-camuflado-2-2.mp4
     caption: 'Cápsula Camuflado · 2'
 ---
 

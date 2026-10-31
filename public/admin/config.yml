@@ -1,3 +1,5 @@
+# Sveltia CMS — panel en /admin
+# Docs: https://sveltiacms.app/en/docs
 backend:
   name: github
   repo: nurraburu8/codestudiov2
@@ -5,23 +7,50 @@ backend:
   base_url: https://codestudio-oauth.urraburunicolas.workers.dev
   auth_endpoint: auth
 
-media_folder: public/uploads
-public_folder: /uploads
-
-locale: es
+# Todo el material (fotos y videos) se sube a Cloudinary, no al repo.
+# La api_key es pública (el secret nunca va acá). Para subir, cada persona
+# entra con su usuario de Cloudinary la primera vez que abre el selector.
+media_libraries:
+  cloudinary:
+    config:
+      cloud_name: dvdrfqhpy
+      api_key: '558428921538224'
+      folder:
+        path: codestudio/trabajos
+    output_filename_only: false
+    use_transformations: false
 
 collections:
   - name: trabajos
     label: Trabajos
     label_singular: Trabajo
+    description: >-
+      Los trabajos aparecen agrupados por sección. Para cambiar el orden en que se
+      muestran en cada página, usá el botón **Reordenar** y arrastralos.
     folder: src/content/trabajos
     create: true
     delete: true
     slug: '{{slug}}'
     extension: md
     format: yaml-frontmatter
-    summary: '{{client}} · {{year}} ({{category}})'
+    summary: "{{archived | ternary('🗄 ARCHIVADO · ', '')}}{{client}} · {{year}}"
+    thumbnail: cover
+    # Reordenar = arrastrar dentro de cada sección; guarda el campo "order".
+    reorder:
+      group: seccion
+    view_groups:
+      groups:
+        - { name: seccion, label: Sección, field: category }
+        - { name: estado, label: Archivados, field: archived }
+      default: seccion
+    view_filters:
+      - { label: Activos, field: archived, pattern: false }
+      - { label: Archivados, field: archived, pattern: true }
+    sortable_fields:
+      - client
+      - year
     fields:
+      # ── Datos ─────────────────────────────────────────────
       - { label: Cliente, name: client, widget: string }
       - label: Tipo
         name: type
@@ -35,45 +64,114 @@ collections:
           - GIRA
           - BRANDED CONTENT
           - OTRO
-      - label: Categoría
+      - label: Sección
         name: category
         widget: select
+        hint: Página de la web donde aparece el trabajo.
         options:
           - { label: "Shows & Fiestas", value: Shows }
           - { label: "Eventos & Campañas", value: Campañas }
           - { label: "Fotografía Producto", value: Fotografía }
       - { label: "Año", name: year, widget: number, value_type: int, min: 2000, max: 2100 }
-      - { label: "Ubicación", name: location, widget: string, default: "Montevideo, Uruguay" }
-      - { label: "Video URL", name: video, widget: string }
-      - { label: "Cloudinary public_id (opcional)", name: cloudinaryId, widget: string, required: false }
-      - { label: "Cover (opcional)", name: cover, widget: image, required: false }
-      - { label: "Frase destacada", name: tagline, widget: string }
-      - { label: "Orden", name: order, widget: number, value_type: int, default: 99 }
-      - { label: "Publicado", name: publish, widget: boolean, default: true }
-      - { label: "En el slideshow del home", name: featured, widget: boolean, default: false }
-      - { label: "En Proyectos destacados", name: highlight, widget: boolean, default: false }
-      - label: Creditos
+      - { label: "Ubicación", name: location, widget: string, default: "Montevideo, Uruguay", required: false }
+      - { label: "Frase destacada", name: tagline, widget: string, required: false, hint: Aparece debajo del título en la página del trabajo. }
+      - label: Archivado
+        name: archived
+        widget: boolean
+        default: false
+        hint: Si está activado, el trabajo deja de mostrarse en la web pero **no se borra**. Se puede volver a activar cuando quieras.
+
+      # ── Archivos (se suben a Cloudinary) ──────────────────
+      - label: "1 · Portada"
+        name: cover
+        widget: image
+        required: false
+        choose_url: true
+        hint: Imagen de la tarjeta del trabajo (horizontal). Si la dejás vacía, se usa un cuadro del video completo.
+      - label: "2 · Video completo"
+        name: fullVideo
+        widget: file
+        required: false
+        choose_url: true
+        accept: video/*
+        hint: El video principal que se ve al entrar al trabajo. Subilo acá o pegá el link de Cloudinary.
+      - label: "3 · Fotos adicionales"
+        name: photos
+        widget: image
+        multiple: true
+        required: false
+        choose_url: true
+        hint: Se muestran en la página del trabajo, en este orden (arrastralas para reordenar). Podés seleccionar varias a la vez.
+      - label: "4 · Videos adicionales"
+        name: videos
+        widget: list
+        required: false
+        label_singular: Video
+        summary: '{{caption}}'
+        hint: Reels, cápsulas, otros cortes. Se muestran en la página del trabajo, en este orden.
+        fields:
+          - { label: Video, name: src, widget: file, choose_url: true, accept: video/* }
+          - { label: "Texto debajo del video (opcional)", name: caption, widget: string, required: false }
+      - label: "5 · Clip corto para el slideshow del inicio"
+        name: video
+        widget: file
+        required: false
+        choose_url: true
+        accept: video/*
+        hint: Solo hace falta si el trabajo está en el slideshow de la **Pantalla principal**. Unos 10 segundos, sin sonido, horizontal.
+
+      # ── Opcionales ────────────────────────────────────────
+      - label: Créditos (opcional)
         name: credits
         widget: list
-        label_singular: Credito
+        required: false
+        label_singular: Crédito
         fields:
           - { label: Rol, name: role, widget: string }
           - { label: Nombre, name: name, widget: string }
-      - label: Stats
+      - label: Estadísticas (opcional)
         name: stats
         widget: list
-        label_singular: Stat
+        required: false
+        label_singular: Estadística
+        hint: Solo datos reales, por ejemplo Año o Edición.
         fields:
           - { label: Etiqueta, name: label, widget: string }
           - { label: Valor, name: value, widget: string }
-      - label: Galería (fotos y videos extra)
-        name: gallery
-        widget: list
-        required: false
-        label_singular: Archivo
-        summary: '{{kind}} · {{cloudinaryId}}'
+      - { label: "Descripción", name: body, widget: markdown, required: false }
+      - { label: Orden, name: order, widget: hidden, default: 99 }
+
+  - name: inicio
+    label: Pantalla principal
+    description: Qué trabajos aparecen en la página de inicio y en qué orden. Arrastralos para reordenar.
+    files:
+      - name: inicio
+        label: Pantalla principal
+        file: src/content/inicio.json
+        format: json
         fields:
-          - { label: Tipo, name: kind, widget: select, options: [foto, video], default: foto }
-          - { label: "Cloudinary public_id", name: cloudinaryId, widget: string }
-          - { label: "Texto (opcional)", name: caption, widget: string, required: false }
-      - { label: "Descripcion", name: body, widget: markdown }
+          - label: Slideshow (arriba de todo)
+            name: slideshow
+            widget: list
+            required: false
+            hint: Cada trabajo necesita su **clip corto para el slideshow** cargado; si no, se saltea.
+            field:
+              label: Trabajo
+              name: trabajo
+              widget: relation
+              collection: trabajos
+              value_field: '{{slug}}'
+              search_fields: [client]
+              display_fields: ['{{client}} · {{year}}']
+          - label: Proyectos destacados (debajo del slideshow)
+            name: destacados
+            widget: list
+            required: false
+            field:
+              label: Trabajo
+              name: trabajo
+              widget: relation
+              collection: trabajos
+              value_field: '{{slug}}'
+              search_fields: [client]
+              display_fields: ['{{client}} · {{year}}']

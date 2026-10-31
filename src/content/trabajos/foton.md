@@ -5,17 +5,17 @@ category: Campañas
 year: 2025
 location: Uruguay
 video: ""
-cloudinaryId: codestudio/trabajos/foton/homero-foton
+fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/foton/homero-foton.mp4
 cover: null
 tagline: Trabajo para FOTON.
 order: 37
-publish: true
-featured: false
-highlight: false
+archived: false
 credits: []
 stats:
   - label: Año
     value: '2025'
+photos: []
+videos: []
 ---
 
 Producción audiovisual para FOTON.

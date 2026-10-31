@@ -5,17 +5,17 @@ category: Campañas
 year: 2025
 location: Uruguay
 video: ""
-cloudinaryId: null
+fullVideo: ''
 cover: null
 tagline: Trabajo para Pez Globo.
 order: 44
-publish: true
-highlight: false
-featured: false
+archived: false
 credits: []
 stats:
   - label: Año
     value: '2025'
+photos: []
+videos: []
 ---
 
 Producción audiovisual para Pez Globo.

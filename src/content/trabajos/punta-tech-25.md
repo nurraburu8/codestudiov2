@@ -5,20 +5,17 @@ category: Campañas
 year: 2025
 location: Punta del Este, Uruguay
 video: ccvvvv
-cloudinaryId: ''
+fullVideo: ''
 cover: null
 tagline: La edición 17 de la cumbre tecnológica más grande de la región.
 order: 33
-publish: true
-featured: false
-highlight: false
-credits:
-  - role: code
-    name: code
+archived: false
+credits: []
 stats:
   - label: Año
     value: '2025'
-gallery: []
+photos: []
+videos: []
 ---
 
 Cobertura audiovisual integral de la edición 17 de Punta Tech Meetup, el evento más importante de networking de Latinoamérica que reúne a los líderes techies en Punta del Este.

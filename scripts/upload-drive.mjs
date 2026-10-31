@@ -1,6 +1,6 @@
 /**
  * Sube el material del Drive del cliente (fotos + videos por proyecto) a
- * Cloudinary y escribe el campo `gallery` de cada trabajo.
+ * Cloudinary y escribe `fullVideo`, `photos` y `videos` de cada trabajo.
  *
  * - Lee el mapeo archivo → trabajo de scripts/drive-manifest.mjs.
  * - Los archivos viven en fotos_videos/drive/ (ignorado por git), con la
@@ -136,7 +136,11 @@ async function upload(file, publicId) {
   }
 }
 
-/** Reemplaza (o agrega) `cloudinaryId` y `gallery` en el frontmatter del trabajo. */
+const CLD = `https://res.cloudinary.com/${PUBLIC_CLOUDINARY_CLOUD_NAME}`;
+const cldUrl = (kind, id) =>
+  kind === 'video' ? `${CLD}/video/upload/${id}.mp4` : `${CLD}/image/upload/${id}.jpg`;
+
+/** Reemplaza (o agrega) `fullVideo`, `photos` y `videos` en el frontmatter del trabajo. */
 function writeFrontmatter(slug, mainId, gallery) {
   const path = join('src/content/trabajos', `${slug}.md`);
   const src = readFileSync(path, 'utf8');
@@ -144,18 +148,21 @@ function writeFrontmatter(slug, mainId, gallery) {
   let fm = src.slice(0, end);
   const body = src.slice(end);
 
-  // Saca un bloque `gallery:` previo (la key + sus líneas indentadas).
-  fm = fm.replace(/\ngallery:(?: \[\])?\n?(?:(?: {2}|- ).*\n?)*/, '\n').replace(/\n+$/, '');
+  // Saca los bloques `photos:` / `videos:` previos (la key + sus líneas indentadas).
+  fm = fm.replace(/\n(?:photos|videos):(?: \[\])?(?:\n(?: {2}|- ).*)*/g, '').replace(/\n+$/, '');
   if (mainId) {
-    fm = /\ncloudinaryId:.*/.test(fm)
-      ? fm.replace(/\ncloudinaryId:.*/, `\ncloudinaryId: ${mainId}`)
-      : `${fm}\ncloudinaryId: ${mainId}`;
+    const line = `\nfullVideo: ${cldUrl('video', mainId)}`;
+    fm = /\nfullVideo:.*/.test(fm) ? fm.replace(/\nfullVideo:.*/, line) : fm + line;
   }
-  if (gallery.length) {
-    fm += '\ngallery:\n' + gallery
-      .map((g) => `  - kind: ${g.kind}\n    cloudinaryId: ${g.cloudinaryId}` + (g.caption ? `\n    caption: '${g.caption.replace(/'/g, "''")}'` : ''))
-      .join('\n');
-  }
+  const photos = gallery.filter((g) => g.kind === 'foto');
+  const videos = gallery.filter((g) => g.kind === 'video');
+  const quote = (s) => `'${(s ?? '').replace(/'/g, "''")}'`;
+  fm += '\nphotos:' + (photos.length
+    ? photos.map((g) => `\n  - ${cldUrl('foto', g.cloudinaryId)}`).join('')
+    : ' []');
+  fm += '\nvideos:' + (videos.length
+    ? videos.map((g) => `\n  - src: ${cldUrl('video', g.cloudinaryId)}\n    caption: ${quote(g.caption)}`).join('')
+    : ' []');
   writeFileSync(path, fm + body);
 }
 

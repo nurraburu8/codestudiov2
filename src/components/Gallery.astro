@@ -8,6 +8,7 @@
 import {
   getTrabajosByCategory,
   getHighlightTrabajos,
+  resolveCover,
   CATEGORY_LABELS,
   type TrabajoCategory,
 } from '@lib/trabajos';
@@ -40,12 +41,13 @@ const PALETTES = [
     works.map((w, idx) => {
       const num = String(idx + 1).padStart(2, '0');
       const palette = PALETTES[idx % PALETTES.length]!;
+      const cover = resolveCover(w.data, 900);
       return (
         <a class="cd" href={`/work/${w.id}`}>
           <div class="ci">
             <div class="cm">
-              {w.data.cover ? (
-                <img src={w.data.cover} alt={w.data.client} loading="lazy" />
+              {cover ? (
+                <img src={cover} alt={w.data.client} loading="lazy" />
               ) : (
                 <div
                   class="cm-placeholder"

@@ -5,17 +5,17 @@ category: Shows
 year: 2026
 location: Colonia, Uruguay
 video: /videos/clips/cuarteto-de-nos.mp4
-cloudinaryId: codestudio/cuarteto-de-nos-colonia-sin-placa
+fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/cuarteto-de-nos-colonia-sin-placa.mp4
 cover: /videos/posters/cuarteto-de-nos.jpg
 tagline: La banda en Colonia, sin placa.
 order: 10
-publish: true
-highlight: false
-featured: false
+archived: false
 credits: []
 stats:
   - label: Año
     value: '2026'
+photos: []
+videos: []
 ---
 
 Cobertura del show del Cuarteto de Nos en Colonia, dentro de la gira presentación del último álbum. La pieza prioriza la performance sobre la fiesta: planos cerrados de manos, mirada al público, instrumento, vuelta al frontman.

@@ -5,20 +5,17 @@ category: Shows
 year: 2026
 location: Atlántida, Canelones, Uruguay
 video: /videos/clips/canelones-suena-bien-26.mp4
-cloudinaryId: codestudio/csb-2026-v5
+fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/csb-2026-v5.mp4
 cover: /videos/posters/canelones-suena-bien-26.jpg
 tagline: 'Canelones SUENA BIEN 2026: Cobertura en vivo para la Intendencia de Canelones.'
 order: 1
-publish: true
-featured: true
-highlight: true
-credits:
-  - role: Code
-    name: Code
+archived: false
+credits: []
 stats:
   - label: Año
     value: '2026'
-gallery: []
+photos: []
+videos: []
 ---
 
 Cobertura en vivo durante dos días del festival Canelones Suena Bien 2026, encargado por la Intendencia de Canelones. Produjimos seis piezas que se publicaron en tiempo real en los canales oficiales de la Intendencia, alternando con el armado del relato del aftermovie.

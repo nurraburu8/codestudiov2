@@ -5,17 +5,17 @@ category: Campañas
 year: 2025
 location: Canelones, Uruguay
 video: ""
-cloudinaryId: null
+fullVideo: ''
 cover: null
 tagline: Trabajo para la Intendencia de Canelones.
 order: 8
-publish: true
-featured: false
-highlight: true
+archived: false
 credits: []
 stats:
   - label: Año
     value: '2025'
+photos: []
+videos: []
 ---
 
 Producción audiovisual para la Intendencia de Canelones.
