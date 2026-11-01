@@ -9,7 +9,7 @@ fullVideo: ''
 cover: null
 tagline: El desembarco de la marca en Uruguay.
 order: 35
-archived: false
+archived: true
 credits: []
 stats:
   - label: Año

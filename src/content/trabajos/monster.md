@@ -9,7 +9,7 @@ fullVideo: ''
 cover: null
 tagline: La energía de la marca traducida a cada cobertura.
 order: 41
-archived: false
+archived: true
 credits: []
 stats:
   - label: Año

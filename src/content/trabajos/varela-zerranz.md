@@ -9,7 +9,7 @@ fullVideo: ''
 cover: null
 tagline: Papas y vino — dos marcas uruguayas en tres recetas.
 order: 43
-archived: false
+archived: true
 credits: []
 stats:
   - label: Año

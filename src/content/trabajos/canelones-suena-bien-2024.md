@@ -9,7 +9,7 @@ fullVideo: ''
 cover: null
 tagline: El inicio de la gira de los 30 años, en el marco del CSB.
 order: 31
-archived: false
+archived: true
 credits: []
 stats:
   - label: Año
