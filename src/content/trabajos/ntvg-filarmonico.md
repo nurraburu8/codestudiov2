@@ -5,7 +5,7 @@ type: REGISTRO DE SHOW
 category: Shows
 year: '2025'
 location: Montevideo, Uruguay
-tagline: Cobertura Notevagustar Filarmónico.
+tagline: Cobertura para Notevagustar en sus shows con la filarmónica del Sodre.
 archived: false
 cover: null
 fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/ntvg-filarmonico/ntvg-filarmonico-v4.mp4
