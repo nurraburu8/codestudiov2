@@ -1,11 +1,11 @@
 ---
 order: 16
-client: NO TE VA GUSTAR - Filarmónico
+client: NTVG - Filarmónico
 type: REGISTRO DE SHOW
 category: Shows
 year: '2025'
 location: Montevideo, Uruguay
-tagline: Rock y orquesta sinfónica en un mismo escenario.
+tagline: Cobertura Notevagustar Filarmónico.
 archived: false
 cover: null
 fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/ntvg-filarmonico/ntvg-filarmonico-v4.mp4
