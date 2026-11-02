@@ -24,7 +24,9 @@ stats:
     value: '2024'
 ---
 
-Acompañar a Fito en sus giras _El Amor Después del Amor_ y _Páez4030_ fue uno de los desafíos más emocionantes que vivimos. Registramos y editamos material de múltiples fechas, desde los shows de Montevideo y La Plata en 2023 hasta las siete funciones del Movistar Arena en 2024.
+Acompañamos a Fito en sus giras _El Amor Después del Amor_ y _Páez4030._
+
+Fue uno de los desafíos más emocionantes que vivimos. Registramos y editamos material de múltiples fechas, desde los shows de Montevideo y La Plata en 2023 hasta las siete funciones del Movistar Arena en 2024.
 
 Vivimos la energía de cada concierto, los ensayos y el detrás de escena, creando aftermovies que reflejan la emoción y la potencia de un artista tan icónico.
 
