@@ -1,19 +1,14 @@
 ---
-client: LA PLANTA
+order: 15
+client: The La Planta
 type: COBERTURA DE SHOW
 category: Shows
-year: 2025
+year: '2025'
 location: Uruguay
-video: ""
-fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/la-planta/the-la-planta-v2.mp4
-cover: null
 tagline: Trabajo para La Planta.
-order: 15
 archived: false
-credits: []
-stats:
-  - label: Año
-    value: '2025'
+cover: null
+fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/la-planta/the-la-planta-v2.mp4
 photos:
   - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/la-planta/023a3451.jpg
   - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/la-planta/023a3527.jpg
@@ -25,9 +20,14 @@ photos:
   - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/la-planta/086a9731.jpg
 videos:
   - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/la-planta/planta-colonial-2.mp4
-    caption: 'La Planta Colonial'
+    caption: La Planta Colonial
+video: ''
+credits: []
+stats:
+  - label: Año
+    value: '2025'
 ---
 
-Producción audiovisual para La Planta.
+Desde 2023 acompañamos a The La Planta en cada uno de sus shows desde la producción audiovisual, fotografiando cada instante y contando una nueva historia con cada video. 
 
-*Pendiente de completar descripción y material audiovisual.*
+Estos son algunos de los trabajos que hemos hecho juntos.
