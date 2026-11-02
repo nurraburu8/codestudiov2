@@ -9,7 +9,7 @@ fullVideo: ''
 cover: null
 tagline: La segunda edición de Bares, en un bar de 114 años.
 order: 23
-archived: false
+archived: true
 credits: []
 stats:
   - label: Año

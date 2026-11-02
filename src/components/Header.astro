@@ -3,7 +3,7 @@
  * Header navegacional compartido por todas las páginas, incluido el home.
  */
 import { SITE } from '@/consts';
-import { CATEGORY_LABELS } from '@lib/trabajos';
+import { CATEGORY_LABELS, CATEGORY_SLUGS, isCategoryActive, type TrabajoCategory } from '@lib/trabajos';
 
 interface Props {
   /** Path actual para resaltar el link activo (ej: "/contacto") */
@@ -19,10 +19,13 @@ interface Props {
 
 const { current = '', light = false, overlay = false } = Astro.props;
 
+// Secciones de trabajos, sin las archivadas (ver ARCHIVED_CATEGORIES).
+const sections = (['Shows', 'Campañas', 'Fotografía'] as TrabajoCategory[])
+  .filter(isCategoryActive)
+  .map((c) => ({ href: `/${CATEGORY_SLUGS[c]}`, label: CATEGORY_LABELS[c] }));
+
 const links = [
-  { href: '/shows', label: CATEGORY_LABELS.Shows },
-  { href: '/campanas', label: CATEGORY_LABELS.Campañas },
-  { href: '/fotografia', label: CATEGORY_LABELS.Fotografía },
+  ...sections,
   { href: '/nosotros', label: 'Sobre nosotros' },
   { href: '/contacto', label: 'Contacto' },
 ];

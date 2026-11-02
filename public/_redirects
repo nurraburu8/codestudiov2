@@ -34,3 +34,9 @@
 # ── Trabajos fusionados (duplicados) ─────────────────────────
 /work/copa-toyota    /work/copa-rdlp-2026   301
 /work/copa-toyota/   /work/copa-rdlp-2026   301
+
+# ── Secciones archivadas ─────────────────────────────────────
+# Fotografía Producto está archivada (ver ARCHIVED_CATEGORIES en
+# src/lib/trabajos.ts). 302: temporal, por si se reactiva.
+/fotografia          /                      302
+/fotografia/         /                      302
