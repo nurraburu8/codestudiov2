@@ -18,6 +18,8 @@ stats:
     value: '2025'
 ---
 
-No Te Va Gustar cerró su colaboración con la Orquesta Sinfónica del Sodre con dos shows únicos en Montevideo. Dos noches donde el rock y la música clásica se encontraron en un mismo escenario, dando vida a un espectáculo lleno de emoción y energía.
+No Te Va Gustar con la Orquesta Sinfónica del Sodre.
 
-Desde Code tuvimos el placer de registrar este cierre, capturando la fuerza, la sensibilidad y la conexión de un momento que quedará en la historia, y poder revivirlo con este aftermovie.
+Dos noches donde el rock y la música clásica se encontraron en un mismo escenario, dando vida a un espectáculo lleno de emoción y energía.
+
+Desde Code tuvimos el placer de registrar este encuentro, capturando la fuerza, la sensibilidad y la conexión de un momento que quedará en la historia, y poder revivirlo con este aftermovie.
