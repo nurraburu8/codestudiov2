@@ -5,7 +5,7 @@ type: GIRA — AFTERMOVIES
 category: Shows
 year: '2024'
 location: Buenos Aires, Montevideo y La Plata
-tagline: Dos años acompañando a Fito en las giras El Amor Después del Amor y Páez4030.
+tagline: Coberturas para Fito en las giras El Amor Después del Amor y Páez4030.
 archived: false
 cover: /videos/posters/gira-fito-paez.jpg
 fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/fito-estadio-uno-la-plata.mp4
