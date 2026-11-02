@@ -1,19 +1,14 @@
 ---
+order: 2
 client: ANTEL SUMMIT
 type: COBERTURA DE EVENTO
 category: Campañas
-year: 2026
+year: '2026'
 location: Montevideo, Uruguay
-video: /videos/clips/antel-summit.mp4
-fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/antel-summit/resumen-summit-16-9-final.mp4
-cover: https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/antel-summit/antel-summit-portada.jpg
-tagline: Cobertura integral para ANTEL
-order: 2
+tagline: Cobertura integral y Producción audiovisual para ANTEL
 archived: false
-credits: []
-stats:
-  - label: Año
-    value: '2026'
+cover: https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/antel-summit/antel-summit-portada.jpg
+fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/antel-summit/resumen-summit-16-9-final.mp4
 photos:
   - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/antel-summit/codestudio-0040.jpg
   - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/antel-summit/codestudio-0191.jpg
@@ -32,23 +27,28 @@ photos:
   - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/antel-summit/codestudio-uy-2.jpg
 videos:
   - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/antel-summit/historia-hernan-casciari.mp4
-    caption: 'Hernán Casciari'
+    caption: Hernán Casciari
   - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/antel-summit/roberto-musso.mp4
-    caption: 'Roberto Musso'
+    caption: Roberto Musso
   - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/antel-summit/irene-solaiman.mp4
-    caption: 'Irene Solaiman'
+    caption: Irene Solaiman
   - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/antel-summit/helena-rovner-1.mp4
-    caption: 'Helena Rovner'
+    caption: Helena Rovner
   - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/antel-summit/laura-maccio-1.mp4
-    caption: 'Laura Maccio'
+    caption: Laura Maccio
   - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/antel-summit/paco-martin.mp4
-    caption: 'Paco Martín'
+    caption: Paco Martín
   - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/antel-summit/networking.mp4
-    caption: 'Networking'
+    caption: Networking
   - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/antel-summit/reel-stands-0.mp4
-    caption: 'Stands'
+    caption: Stands
   - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/antel-summit/01.mp4
-    caption: 'Historia en vivo'
+    caption: Historia en vivo
+video: /videos/clips/antel-summit.mp4
+credits: []
+stats:
+  - label: Año
+    value: '2026'
 ---
 
 Producción audiovisual para Antel Summit.
