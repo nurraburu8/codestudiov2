@@ -18,4 +18,6 @@ stats:
     value: '2026'
 ---
 
-Cobertura del show del Cuarteto de Nos en la Plaza de Toros de Colonia, dentro de la gira presentación del último álbum "Puertas". Realizamos la cobertura fotográfica y video.
+Cobertura del show del Cuarteto de Nos en la Plaza de Toros de Colonia. 
+
+Realizamos la cobertura fotográfica y video dentro de la gira presentación del último álbum "Puertas".
