@@ -30,6 +30,6 @@ stats:
 
 Desde 2023 acompañamos a The La Planta en cada uno de sus shows desde la producción audiovisual, fotografiando cada instante y contando una nueva historia con cada video. 
 
-Hemos realizado multicamaras de canciones para Instagram y Youtube, fotografías de shows y estudio, y aftermovies como estos.
+Hemos realizado multicamaras de canciones para Instagram y Youtube, fotografías de shows y estudio, ademas de aftermovies como estos.
 
 Estos son algunos de los trabajos que hemos hecho juntos.
