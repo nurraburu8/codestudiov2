@@ -1,6 +1,6 @@
 ---
 order: 3
-client: VANS × PAULO LONDRA
+client: VANS × PAULO
 type: BRANDED CONTENT
 category: Campañas
 year: '2025'
@@ -28,7 +28,7 @@ stats:
     value: '2025'
 ---
 
-Campaña Expectativa y Backstage para Vans x Paulo Londra
+Campaña Expectativa y Backstage para Vans x Paulo Londra.
 
 Durante el shooting de campaña estuvimos encargados de generar 7 cápsulas, 2 reels y un bts para la marca.
 
