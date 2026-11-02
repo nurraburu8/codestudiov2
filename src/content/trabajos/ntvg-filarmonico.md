@@ -1,7 +1,7 @@
 ---
 order: 16
 client: NTVG - Filarmónico
-type: REGISTRO DE SHOW
+type: DOCUMENTAL
 category: Shows
 year: '2025'
 location: Montevideo, Uruguay
