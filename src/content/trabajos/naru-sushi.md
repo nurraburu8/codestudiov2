@@ -9,7 +9,7 @@ fullVideo: ''
 cover: null
 tagline: Fotografía de producto para Naru Sushi.
 order: 25
-archived: false
+archived: true
 credits: []
 stats:
   - label: Año

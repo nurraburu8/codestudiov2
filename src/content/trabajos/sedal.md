@@ -9,7 +9,7 @@ fullVideo: ''
 cover: null
 tagline: Cinco cápsulas pensadas como nativas de TikTok.
 order: 42
-archived: false
+archived: true
 credits: []
 stats:
   - label: Año

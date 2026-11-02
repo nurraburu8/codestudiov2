@@ -9,7 +9,7 @@ fullVideo: ''
 cover: null
 tagline: Trabajo para Panda Bar.
 order: 22
-archived: false
+archived: true
 credits: []
 stats:
   - label: Año

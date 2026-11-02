@@ -67,11 +67,11 @@ collections:
       - label: Sección
         name: category
         widget: select
-        hint: Página de la web donde aparece el trabajo.
+        hint: Página de la web donde aparece el trabajo. La sección Fotografía Producto está **archivada**, así que sus trabajos no se muestran en la web.
         options:
           - { label: "Shows & Fiestas", value: Shows }
           - { label: "Eventos & Campañas", value: Campañas }
-          - { label: "Fotografía Producto", value: Fotografía }
+          - { label: "Fotografía Producto (sección archivada)", value: Fotografía }
       # Texto y no número: Sveltia muestra los números con separador de miles ("2,025").
       - label: "Año"
         name: year

@@ -30,6 +30,18 @@ export const CATEGORY_SLUGS: Record<TrabajoCategory, string> = {
   Fotografía: 'fotografia',
 };
 
+/**
+ * Secciones archivadas: no aparecen en el menú y sus trabajos no se publican
+ * aunque no estén marcados como archivados.
+ * Para reactivar Fotografía: sacarla de esta lista, renombrar
+ * src/pages/_fotografia.astro → fotografia.astro y quitar su redirect en
+ * public/_redirects.
+ */
+export const ARCHIVED_CATEGORIES: TrabajoCategory[] = ['Fotografía'];
+
+export const isCategoryActive = (category: TrabajoCategory) =>
+  !ARCHIVED_CATEGORIES.includes(category);
+
 const FALLBACK_POSTER = '/hero-poster.jpg';
 
 /**
@@ -132,7 +144,10 @@ function sortTrabajos(a: TrabajoEntry, b: TrabajoEntry): number {
 
 /** Todos los trabajos no archivados, ordenados. */
 export async function getAllTrabajos(): Promise<TrabajoEntry[]> {
-  const all = await getCollection('trabajos', ({ data }) => !data.archived);
+  const all = await getCollection(
+    'trabajos',
+    ({ data }) => !data.archived && isCategoryActive(data.category)
+  );
   return all.sort(sortTrabajos);
 }
 
