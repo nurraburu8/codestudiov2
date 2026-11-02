@@ -22,6 +22,6 @@ stats:
 
 Cobertura audiovisual para Punta Tech Meetup, edición número 18.
 
-Fue nuestra 2da vez formando parte del evento más importante de networking de Latinoamérica que reúne a los líderes techies en Punta del Este.
+Fue nuestra 2da vez formando parte del evento más importante de networking de Latinoamérica que reúne a los líderes techies en Punta del Este, donde realizamos la cobertura del evento y las marcas participantes.
 
 El dispositivo combinó cobertura de las charlas y paneles principales, con el registro del costado humano del encuentro, junto a las diferentes entidades internacionales de empresas que asistieron.
