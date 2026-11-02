@@ -30,6 +30,6 @@ stats:
 
 Campaña Expectativa y Backstage para Vans x Paulo Londra.
 
-Durante el shooting de campaña estuvimos encargados de generar 7 cápsulas, 2 reels y un bts para la marca.
+Durante el shooting de campaña estuvimos encargados de generar 7 cápsulas, 2 reels, y una pieza bts para la marca.
 
 Un contenido dinámico y variado, aprovechando al máximo una jornada de rodaje ajustada.
