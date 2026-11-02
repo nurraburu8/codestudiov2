@@ -5,7 +5,7 @@ type: COBERTURA DE SHOW
 category: Shows
 year: '2025'
 location: Uruguay
-tagline: Trabajo para La Planta.
+tagline: Producción audiovisual y coberturas para The La Planta
 archived: false
 cover: null
 fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/la-planta/the-la-planta-v2.mp4
