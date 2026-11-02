@@ -9,7 +9,7 @@ fullVideo: ''
 cover: null
 tagline: La banda argentina llenando el Antel Arena.
 order: 13
-archived: false
+archived: true
 credits: []
 stats:
   - label: Año

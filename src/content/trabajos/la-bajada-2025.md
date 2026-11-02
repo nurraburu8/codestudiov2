@@ -9,7 +9,7 @@ fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/aftermov
 cover: /videos/posters/la-bajada-2025.jpg
 tagline: La fiesta que abre la temporada.
 order: 12
-archived: false
+archived: true
 credits: []
 stats:
   - label: Año

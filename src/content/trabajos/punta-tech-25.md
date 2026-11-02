@@ -9,7 +9,7 @@ fullVideo: ''
 cover: null
 tagline: La edición 17 de la cumbre tecnológica más grande de la región.
 order: 33
-archived: false
+archived: true
 credits: []
 stats:
   - label: Año

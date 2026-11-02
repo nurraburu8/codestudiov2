@@ -69,7 +69,7 @@ export const PAGES_SEO = {
   home: {
     title: 'Code Studio · Productora audiovisual en Uruguay',
     description:
-      'Productora audiovisual uruguaya. Filmamos shows, marcas y eventos desde la historia. Trabajamos con Mercado Libre, Vans, Itaú, Monster y más.',
+      'Productora audiovisual uruguaya. Filmamos shows, marcas y eventos desde la historia. Trabajamos con Antel, Mercado Libre, Vans, Fito Páez y más.',
     keywords: ['productora audiovisual uruguay', 'video uruguay', 'comerciales', 'aftermovies'],
   },
   shows: {
@@ -81,7 +81,7 @@ export const PAGES_SEO = {
   campanas: {
     title: 'Eventos & Campañas · Producción audiovisual · Code Studio',
     description:
-      'Comerciales, branded content y cobertura de eventos para marcas en Uruguay. Vans, CIF, Intendencia de Canelones, Speed, OFI y más.',
+      'Comerciales, branded content y cobertura de eventos para marcas en Uruguay. Antel, Vans, CIF, Intendencia de Canelones, Speed y más.',
     keywords: ['comerciales uruguay', 'branded content', 'cobertura de eventos', 'publicidad audiovisual'],
   },
   fotografia: {
