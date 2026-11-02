@@ -1,11 +1,11 @@
 ---
 order: 6
-client: PUNTA TECH MEETUP 26
+client: PUNTA TECH 2026
 type: EVENTO
 category: Campañas
 year: '2026'
 location: Punta del Este, Uruguay
-tagline: La cumbre de los techies de Latinoamérica, edición 18.
+tagline: Cobertura audiovisual para Punta Tech Meetup.
 archived: false
 cover: https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/punta-tech-26/pt26-portada.jpg
 fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/aftermoviepuntatech26-final.mp4
