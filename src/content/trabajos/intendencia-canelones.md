@@ -5,7 +5,7 @@ type: EVENTO
 category: Campañas
 year: '2025'
 location: Canelones, Uruguay
-tagline: Trabajo para la Intendencia de Canelones x AUF.
+tagline: Trabajo para Intendencia de Canelones x AUF.
 archived: false
 cover: null
 fullVideo: ''
@@ -18,6 +18,6 @@ stats:
     value: '2025'
 ---
 
-Cobertura 
+**Cobertura y producción audiovisual: la despedida celeste rumbo al Mundial 2026.**
 
-_Pendiente de completar descripción y material audiovisual._
+Durante dos jornadas históricas en Canelones, registramos la emoción de más de 1.000 niños y niñas de las ligas de fútbol infantil que cumplieron el sueño de compartir cancha con el plantel de la Selección Uruguaya en su despedida previa a la Copa del Mundo 2026, rodeados del aliento de sus familias en las tribunas.
