@@ -3,7 +3,7 @@ order: 8
 client: Abrazo de despedida Celeste
 type: EVENTO
 category: Campañas
-year: '2025'
+year: '2026'
 location: Canelones, Uruguay
 tagline: Trabajo para Intendencia de Canelones x AUF.
 archived: false
