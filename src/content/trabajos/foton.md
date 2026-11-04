@@ -1,6 +1,6 @@
 ---
 order: 37
-client: FOTON
+client: 'FOTON: 30 años'
 type: EVENTO
 category: Campañas
 year: '2026'
