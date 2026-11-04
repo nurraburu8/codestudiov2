@@ -15,7 +15,7 @@ video: ''
 credits: []
 stats:
   - label: Año
-    value: '2025'
+    value: '2026'
 ---
 
 **Cobertura y producción audiovisual: la despedida celeste rumbo al Mundial 2026.**
