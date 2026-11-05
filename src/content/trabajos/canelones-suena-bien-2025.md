@@ -7,7 +7,7 @@ year: '2025'
 location: Atlántida, Canelones, Uruguay
 tagline: Canelones SUENA BIEN 2025. Branding, campaña y cobertura en vivo para la Intendencia de Canelones.
 archived: false
-cover: null
+cover: https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/canelones-suena-bien-2025/suena-bien-25-portada.jpg
 fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/canelones-suena-bien-2025/suena-bien-2025.mp4
 photos: []
 videos: []

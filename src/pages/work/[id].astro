@@ -72,7 +72,8 @@ const videoJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'VideoObject',
   name: `${work.data.client} — ${work.data.type}`,
-  description: work.body ?? '',
+  // Texto plano: el cuerpo trae marcas de formato (negrita, títulos, listas).
+  description: (work.body ?? '').replace(/[*_#]|^\s*-\s+/gm, '').trim(),
   thumbnailUrl: video.poster.startsWith('http') ? video.poster : `${base}${video.poster}`,
   uploadDate: `${work.data.year}-01-01`,
   contentUrl: video.src.startsWith('http') ? video.src : `${base}${video.src}`,
@@ -554,10 +555,44 @@ const videoJsonLd = {
     margin-bottom: 22px;
   }
 
-  .work-desc :global(p:first-of-type::first-line) {
-    font-weight: 600;
-    /* Negro bold (contraste WCAG) en lugar de naranja chico */
+  /* Se ve exactamente lo que se marca en el CMS: nada se destaca solo. */
+  .work-desc :global(strong) {
+    font-weight: 700;
+  }
+
+  .work-desc :global(h2) {
+    font-family: var(--ff-body);
+    font-size: clamp(19px, 1.6vw, 24px);
+    font-weight: 700;
+    line-height: 1.3;
     color: var(--black);
+    margin: 34px 0 12px;
+  }
+
+  .work-desc :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  .work-desc :global(ul),
+  .work-desc :global(ol) {
+    font-size: clamp(16px, 1.25vw, 19px);
+    line-height: 1.65;
+    color: var(--black);
+    opacity: 0.78;
+    margin: 0 0 22px 1.2em;
+  }
+
+  .work-desc :global(ul) {
+    list-style: disc;
+  }
+
+  .work-desc :global(ol) {
+    list-style: decimal;
+  }
+
+  .work-desc :global(a) {
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
   .sidebar {

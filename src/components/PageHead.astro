@@ -1,26 +1,23 @@
 ---
 /**
  * Header de páginas internas (shows, marcas, eventos):
- * título grande + contador de proyectos.
+ * título grande.
  */
 interface Props {
   title: string;
-  count: number;
 }
-const { title, count } = Astro.props;
-const countStr = `${String(count).padStart(2, '0')} proyectos`;
+const { title } = Astro.props;
 ---
 
 <div class="pg-head">
   <h1 class="pg-title">{title}</h1>
-  <span class="pg-count">{countStr}</span>
 </div>
 
 <style>
   .pg-head {
     position: relative;
     z-index: 1;
-    padding: 110px 5vw 36px;
+    padding: 110px 5vw 56px;
     text-align: center;
   }
 
@@ -29,15 +26,5 @@ const countStr = `${String(count).padStart(2, '0')} proyectos`;
     font-size: clamp(52px, 8.5vw, 108px);
     line-height: 0.9;
     color: var(--black);
-  }
-
-  .pg-count {
-    display: inline-block;
-    margin-top: 16px;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.26em;
-    color: var(--light);
-    text-transform: uppercase;
   }
 </style>

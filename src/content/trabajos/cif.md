@@ -7,7 +7,7 @@ year: '2025'
 location: Uruguay
 tagline: Campaña de Redes para CIF.
 archived: false
-cover: null
+cover: https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/cif/cif-portada.jpg
 fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/cif/copia-de-mi-hogar-mi-templo-v2.mp4
 photos: []
 videos:

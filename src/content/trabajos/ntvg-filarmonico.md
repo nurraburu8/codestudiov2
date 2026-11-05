@@ -7,7 +7,7 @@ year: '2025'
 location: Montevideo, Uruguay
 tagline: Cobertura para Notevagustar en sus shows con la Orquesta del Sodre.
 archived: false
-cover: null
+cover: https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/ntvg-filarmonico/filarmonco-ntvg-portada.jpg
 fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/ntvg-filarmonico/ntvg-filarmonico-v4.mp4
 photos: []
 videos: []

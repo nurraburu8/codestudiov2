@@ -5,17 +5,16 @@ import Footer from '@components/Footer.astro';
 import PageHead from '@components/PageHead.astro';
 import Gallery from '@components/Gallery.astro';
 import { PAGES_SEO } from '@/consts';
-import { getTrabajosByCategory, CATEGORY_LABELS } from '@lib/trabajos';
+import { CATEGORY_LABELS } from '@lib/trabajos';
 
 const seo = PAGES_SEO.shows;
-const works = await getTrabajosByCategory('Shows');
 ---
 
 <Layout title={seo.title} description={seo.description}>
   <Header current="/shows" />
-  <main>
-    <PageHead title={CATEGORY_LABELS.Shows} count={works.length} />
-    <Gallery filter="Shows" />
+  <main class="spray-bg">
+    <PageHead title={CATEGORY_LABELS.Shows} />
+    <Gallery filter="Shows" section />
   </main>
   <Footer />
 </Layout>

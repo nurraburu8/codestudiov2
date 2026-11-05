@@ -5,8 +5,8 @@ category: Campañas
 year: 2025
 location: Uruguay
 video: ""
-fullVideo: ''
-cover: null
+fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/speed/energiadecampeones-1.mp4
+cover: https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/speed/speed-portada.jpg
 tagline: Trabajo para Speed.
 order: 19
 archived: false
@@ -19,5 +19,3 @@ videos: []
 ---
 
 Producción audiovisual para Speed.
-
-*Pendiente de completar descripción y material audiovisual.*

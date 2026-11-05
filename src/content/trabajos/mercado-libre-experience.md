@@ -7,7 +7,7 @@ year: '2025'
 location: Antel Arena, Montevideo
 tagline: Cobertura audiovisual para Lucero
 archived: false
-cover: null
+cover: https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/mercado-libre-experience/meli-exp24-portada.jpg
 fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/mercado-libre-experience/copia-de-mercado-libre-x-lucero-final.mp4
 photos: []
 videos: []

@@ -7,7 +7,7 @@ year: '2026'
 location: Canelones, Uruguay
 tagline: Producción y cobertura audiovisual para la Intendencia de Canelones.
 archived: false
-cover: /videos/posters/sueno-celeste-code.jpg
+cover: https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/sueno-celeste/sueno-celeste-portada.jpg
 fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/sueno-celeste/sueno-celeste-yt.mp4
 photos: []
 videos:

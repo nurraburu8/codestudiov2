@@ -7,7 +7,7 @@ year: '2025'
 location: Santa Fe, Argentina
 tagline: Cobertura integral en vivo para Vans Argentina.
 archived: false
-cover: /videos/posters/vans-x-harlem-2025.jpg
+cover: https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/vans-x-harlem-2025/vans-x-harlem-portada.jpg
 fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/vans-x-harlem-v2.mp4
 photos:
   - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/vans-x-harlem-2025/086a0244.jpg
@@ -30,7 +30,7 @@ stats:
     value: '2025'
 ---
 
-Nuestro primer hito internacional: 
+**Nuestro primer hito internacional:**
 
 Producción audiovisual integral para Vans durante las dos jornadas del Festival Harlem en Santa Fe, Argentina.
 

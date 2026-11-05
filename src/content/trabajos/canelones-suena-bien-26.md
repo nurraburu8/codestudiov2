@@ -7,7 +7,7 @@ year: '2026'
 location: Atlántida, Canelones, Uruguay
 tagline: 'Canelones SUENA BIEN 2026: Cobertura en vivo para la Intendencia de Canelones.'
 archived: false
-cover: https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/canelones-suena-bien-26/suena-bien-portada.jpg
+cover: https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/canelones-suena-bien-26/suenabien-26-portada.jpg
 fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/csb-2026-v5.mp4
 photos: []
 videos: []

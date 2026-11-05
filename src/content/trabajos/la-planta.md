@@ -7,7 +7,7 @@ year: '2025'
 location: Uruguay
 tagline: Producción audiovisual y coberturas para The La Planta
 archived: false
-cover: null
+cover: https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/la-planta/tlplanta-portada.jpg
 fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/la-planta/the-la-planta-v2.mp4
 photos:
   - https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/la-planta/023a3451.jpg
