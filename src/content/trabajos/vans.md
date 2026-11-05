@@ -7,7 +7,7 @@ year: '2025'
 location: Punta Carretas Shopping, Montevideo
 tagline: Campaña BTS para Vans.
 archived: false
-cover: null
+cover: https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/vans/vans-x-paulo-portada.jpg
 fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/vans/vlog-paulo-x-vans-2.mp4
 photos: []
 videos:

@@ -7,7 +7,7 @@ year: '2026'
 location: Colonia, Uruguay
 tagline: Cobertura integral para Cuarteto de Nos.
 archived: false
-cover: /videos/posters/cuarteto-de-nos.jpg
+cover: https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/cuarteto-de-nos/cuarteto-portada.jpg
 fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/cuarteto-de-nos-colonia-sin-placa.mp4
 photos: []
 videos: []

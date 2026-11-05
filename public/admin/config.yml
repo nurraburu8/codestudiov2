@@ -78,7 +78,7 @@ collections:
         widget: string
         pattern: ['^(19|20)[0-9]{2}$', 'Año con 4 cifras, por ejemplo 2026']
       - { label: "Ubicación", name: location, widget: string, default: "Montevideo, Uruguay", required: false }
-      - { label: "Frase destacada", name: tagline, widget: string, required: false, hint: Aparece debajo del título en la página del trabajo. }
+      - { label: "Frase destacada", name: tagline, widget: string, required: false, hint: "Una sola frase corta, debajo del nombre del trabajo. La descripción va en su campo, más abajo." }
       - label: Archivado
         name: archived
         widget: boolean
@@ -142,7 +142,18 @@ collections:
         fields:
           - { label: Etiqueta, name: label, widget: string }
           - { label: Valor, name: value, widget: string }
-      - { label: "Descripción", name: body, widget: markdown, required: false }
+      - label: "Descripción"
+        name: body
+        widget: markdown
+        required: false
+        modes: [rich_text]
+        buttons: [bold, italic, link, heading-two, bulleted-list, numbered-list]
+        editor_components: []
+        hint: >-
+          En la web se ve igual que acá. Texto normal: escribí y usá Enter para separar párrafos.
+          **Negrita**: seleccioná el texto y tocá **B**. Título: en el menú **Paragraph** elegí
+          **Heading 2** (ocupa todo el renglón). Nada se destaca solo: si no lo marcás, queda
+          como texto normal.
       - { label: Orden, name: order, widget: hidden, default: 99 }
 
   - name: inicio

@@ -5,16 +5,15 @@ import Footer from '@components/Footer.astro';
 import PageHead from '@components/PageHead.astro';
 import Gallery from '@components/Gallery.astro';
 import { PAGES_SEO } from '@/consts';
-import { getTrabajosByCategory, CATEGORY_LABELS } from '@lib/trabajos';
+import { CATEGORY_LABELS } from '@lib/trabajos';
 
 const seo = PAGES_SEO.campanas;
-const works = await getTrabajosByCategory('Campañas');
 ---
 
 <Layout title={seo.title} description={seo.description}>
   <Header current="/campanas" />
   <main>
-    <PageHead title={CATEGORY_LABELS.Campañas} count={works.length} />
+    <PageHead title={CATEGORY_LABELS.Campañas} />
     <Gallery filter="Campañas" />
   </main>
   <Footer />

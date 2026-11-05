@@ -7,7 +7,7 @@ year: '2026'
 location: Punta del Este, Uruguay
 tagline: Cobertura audiovisual para Punta Tech Meetup.
 archived: false
-cover: https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/punta-tech-26/pt26-portada.jpg
+cover: https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/punta-tech-26/portada-pt26.jpg
 fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/aftermoviepuntatech26-final.mp4
 photos: []
 videos: []

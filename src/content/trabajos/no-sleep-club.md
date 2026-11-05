@@ -7,7 +7,7 @@ year: '2025'
 location: Montevideo, Uruguay
 tagline: Cobertura e identidad visual para No Sleep Club.
 archived: false
-cover: null
+cover: https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/no-sleep-club/nosleep-portada.jpg
 fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/no-sleep-club/aftermovie-sara-landry-v2.mp4
 photos: []
 videos:

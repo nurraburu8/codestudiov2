@@ -45,6 +45,7 @@ export const MANIFEST = {
   },
 
   cif: {
+    cover: 'PORTADAS/CIF Portada.jpg',
     main: 'Proyecto CIF/Copia de Mi hogar mi templo v2.mp4',
     videos: [
       { file: 'Proyecto CIF/Copia de Clean Tok v3.mp4', caption: 'Clean Tok' },
@@ -54,7 +55,7 @@ export const MANIFEST = {
   },
 
   'copa-rdlp-2026': {
-    cover: 'PORTADAS/CTRP 26 Portada.jpg',
+    cover: 'PORTADAS/COPA TOYOTA PORTADA .tif',
     main: 'Proyecto Copa ToYota/AftermovieCopaRdlP26.mp4',
     mainPublicId: 'codestudio/aftermoviecopardlp26',
     videos: [
@@ -81,6 +82,7 @@ export const MANIFEST = {
   },
 
   vans: {
+    cover: 'PORTADAS/vans x paulo Portada.jpg',
     main: 'Proyecto Paulo VANS/VLOG PAULO X VANS_2.mp4',
     videos: [
       { file: 'Proyecto Paulo VANS/backstage vans x paulo_2.mp4', caption: 'Backstage' },
@@ -92,6 +94,7 @@ export const MANIFEST = {
   },
 
   'vans-x-harlem-2025': {
+    cover: 'PORTADAS/Vans x Harlem Portada.jpg',
     main: 'Proyecto Vans Harlem/VANS X HARLEM v2.mp4',
     mainPublicId: 'codestudio/vans-x-harlem-v2',
     photos: range('Proyecto Vans Harlem/Fotografia Harlem', [
@@ -102,6 +105,7 @@ export const MANIFEST = {
   },
 
   'gira-fito-paez': {
+    cover: 'PORTADAS/portada fito 2.jpg',
     main: 'Proyectos con Fito Paez/Fito - Estadio Uno La Plata.mp4',
     mainPublicId: 'codestudio/fito-estadio-uno-la-plata',
     videos: [
@@ -112,16 +116,18 @@ export const MANIFEST = {
   },
 
   'canelones-suena-bien-26': {
-    cover: 'PORTADAS/Suena bien Portada.jpg',
+    cover: 'PORTADAS/SuenaBien 26  Portada.jpg',
     main: 'ProyectoS CSB/CSB 2026 - V5.mp4',
     mainPublicId: 'codestudio/csb-2026-v5',
   },
 
   'canelones-suena-bien-2025': {
+    cover: 'PORTADAS/suena bien 25 Portada.jpg',
     main: 'ProyectoS CSB/Suena Bien 2025.mp4',
   },
 
   'no-sleep-club': {
+    cover: 'PORTADAS/Nosleep Portada.jpg',
     main: 'Proyectos No Sleep/Aftermovie Sara Landry v2.mp4',
     videos: [
       { file: 'Proyectos No Sleep/Aftermovie Danny Avila', caption: 'Danny Ávila' },
@@ -132,6 +138,7 @@ export const MANIFEST = {
   },
 
   'la-planta': {
+    cover: 'PORTADAS/TLPlanta Portada.jpg',
     main: 'Proyectos TLP/The la Planta V2.mp4',
     videos: [{ file: 'Proyectos TLP/planta colonial 2.mp4', caption: 'La Planta Colonial' }],
     photos: range('Proyectos TLP/FOTOS', [
@@ -140,28 +147,45 @@ export const MANIFEST = {
     ]),
   },
 
+  // Trabajos nuevos o que solo tienen portada.
+  speed: {
+    cover: 'PORTADAS/Speed Portada.jpg',
+    main: 'Proyecto Speed/EnergíaDeCampeones (1).mp4',
+  },
+
+  'cuarteto-de-nos': {
+    cover: 'PORTADAS/Cuarteto Portada.jpg',
+  },
+
+  'intendencia-canelones': {
+    cover: 'PORTADAS/Despedida celeste Portada.jpg',
+  },
+
   'fdlc-2026': {
-    cover: 'PORTADAS/fdlc 26 Portada.jpg',
+    cover: 'PORTADAS/fdlc 26 Portada-2.jpg',
   },
 
   'punta-tech-26': {
-    cover: 'PORTADAS/pt26 Portada.jpg',
+    cover: 'PORTADAS/portada PT26.tif',
   },
 
   // "Mercado Libre x Lucero Final.mp4" tiene la descarga bloqueada; la copia es el mismo video.
   'mercado-libre-experience': {
+    cover: 'PORTADAS/Meli exp24 Portada.jpg',
     main: 'Copia de Mercado Libre x Lucero Final.mp4',
   },
 
   // Estos dos tenían la descarga bloqueada en el Drive; los bajó el cliente
   // a mano y se copiaron a la raíz de fotos_videos/drive/.
   'ntvg-filarmonico': {
+    cover: 'PORTADAS/filarmonco NTVG  Portada.jpg',
     main: 'NTVG Filarmonico v4.MP4',
   },
 
   // _YT es la pieza completa (74s); la "Vcode" de 14s que ya estaba subida
   // queda como video adicional.
   'sueno-celeste': {
+    cover: 'PORTADAS/Sueño celeste Portada.jpg',
     main: 'SUEÑO CELESTE_YT.mp4',
     videos: [
       {

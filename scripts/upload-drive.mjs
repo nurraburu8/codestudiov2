@@ -18,6 +18,8 @@
  *   node scripts/upload-drive.mjs              <- todo el manifest
  *   node scripts/upload-drive.mjs antel,cif    <- solo esos slugs (match parcial)
  *   node scripts/upload-drive.mjs --dry-run    <- muestra qué haría, sin subir ni escribir
+ *   node scripts/upload-drive.mjs --covers-only <- solo portadas: no toca videos ni galerías,
+ *                                                  que el cliente puede haber editado en el CMS
  */
 import { readFileSync, writeFileSync, statSync, unlinkSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
@@ -48,6 +50,7 @@ cloudinary.config({
 });
 
 const DRY = process.argv.includes('--dry-run');
+const COVERS_ONLY = process.argv.includes('--covers-only');
 const filterTerms = (process.argv.slice(2).find((a) => !a.startsWith('--')) ?? '')
   .split(',')
   .map((s) => s.trim())
@@ -203,9 +206,11 @@ for (const [slug, cfg] of entries) {
   console.log(`\n■ ${slug}`);
   const items = [
     ...(cfg.cover ? [{ file: cfg.cover, cover: true }] : []),
-    ...(cfg.main ? [{ file: cfg.main, main: true, publicId: cfg.mainPublicId }] : []),
-    ...(cfg.videos ?? []).map((v) => (typeof v === 'string' ? { file: v } : v)),
-    ...(cfg.photos ?? []).map((f) => ({ file: f })),
+    ...(COVERS_ONLY ? [] : [
+      ...(cfg.main ? [{ file: cfg.main, main: true, publicId: cfg.mainPublicId }] : []),
+      ...(cfg.videos ?? []).map((v) => (typeof v === 'string' ? { file: v } : v)),
+      ...(cfg.photos ?? []).map((f) => ({ file: f })),
+    ]),
   ];
 
   let mainId = null;
@@ -245,7 +250,7 @@ for (const [slug, cfg] of entries) {
       gallery.push({ kind, cloudinaryId: publicId, caption: item.caption });
   }
 
-  const lists = Boolean(cfg.photos || cfg.videos);
+  const lists = !COVERS_ONLY && Boolean(cfg.photos || cfg.videos);
   if (!DRY) writeFrontmatter(slug, { coverId, mainId, gallery, lists });
 }
 

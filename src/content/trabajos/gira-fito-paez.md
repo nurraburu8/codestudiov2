@@ -7,7 +7,7 @@ year: '2024'
 location: Buenos Aires, Montevideo y La Plata
 tagline: Coberturas para Fito en las giras El Amor Después del Amor y Páez4030.
 archived: false
-cover: /videos/posters/gira-fito-paez.jpg
+cover: https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/gira-fito-paez/portada-fito-2.jpg
 fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/fito-estadio-uno-la-plata.mp4
 photos: []
 videos:
