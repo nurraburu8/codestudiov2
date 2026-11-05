@@ -56,14 +56,32 @@ collections:
         name: type
         widget: select
         options:
-          - AFTERMOVIE
-          - COMERCIAL
-          - VIDEOCLIP
-          - DOCUMENTAL
-          - EVENTO
-          - GIRA
-          - BRANDED CONTENT
-          - OTRO
+          - "AFTERMOVIE"
+          - "AFTERMOVIE & COBERTURA EN VIVO"
+          - "AFTERMOVIE + COBERTURA INTEGRAL"
+          - "AFTERMOVIE + FOTOGRAFÍA"
+          - "AFTERMOVIES — MÚLTIPLES EDICIONES"
+          - "BRANDED CONTENT"
+          - "BRANDING + COBERTURA EN VIVO"
+          - "CAMPAÑA INSTITUCIONAL"
+          - "COBERTURA DE EVENTO"
+          - "COBERTURA DE EVENTOS + CONTENIDO PROMO"
+          - "COBERTURA DE FESTIVAL"
+          - "COBERTURA DE LANZAMIENTO"
+          - "COBERTURA DE SHOW"
+          - "COBERTURA DEPORTIVA"
+          - "COMERCIAL"
+          - "CONTENIDO DE MARCA"
+          - "CONTENIDO DE MARCA + COBERTURA"
+          - "CONTENIDO SOCIAL FIRST"
+          - "DOCUMENTAL"
+          - "EVENTO"
+          - "FOTOGRAFÍA DE PRODUCTO"
+          - "GIRA"
+          - "GIRA — AFTERMOVIES"
+          - "SHOW EN VIVO"
+          - "VIDEOCLIP"
+          - "OTRO"
       - label: Sección
         name: category
         widget: select
