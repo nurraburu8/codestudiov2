@@ -21,9 +21,11 @@ interface Props {
   limit?: number;
   /** Slug a dejar afuera (ej: el trabajo que se está viendo). */
   exclude?: string;
+  /** Página de sección: más margen para que se vea el fondo, y brillo al pasar el mouse. */
+  section?: boolean;
 }
 
-const { filter = 'all', limit, exclude } = Astro.props;
+const { filter = 'all', limit, exclude, section = false } = Astro.props;
 
 const allWorks = (
   filter === 'highlight' ? await getHighlightTrabajos() : await getTrabajosByCategory(filter)
@@ -31,7 +33,7 @@ const allWorks = (
 const works = limit ? allWorks.slice(0, limit) : allWorks;
 ---
 
-<div class="card-grid">
+<div class:list={['card-grid', { 'card-grid-section': section }]}>
   {
     works.map((w, idx) => {
       const image = resolveCardImage(w.data);
@@ -92,6 +94,25 @@ const works = limit ? allWorks.slice(0, limit) : allWorks;
     background: var(--black);
     color: var(--milk);
     isolation: isolate;
+  }
+
+  .card-grid-section {
+    gap: 26px;
+    padding: 0 7vw 110px;
+    max-width: 1560px;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .card-grid-section .cd {
+      transition: box-shadow 0.45s var(--ease-out);
+    }
+    .card-grid-section .cd:hover,
+    .card-grid-section .cd:focus-visible {
+      box-shadow:
+        0 0 0 1px rgba(253, 117, 43, 0.9),
+        0 0 34px 6px rgba(253, 117, 43, 0.6),
+        0 0 110px 34px rgba(253, 117, 43, 0.35);
+    }
   }
 
   /* Con dos por fila, si la cantidad es impar la última tarjeta ocupa todo
@@ -249,6 +270,7 @@ const works = limit ? allWorks.slice(0, limit) : allWorks;
       gap: 14px;
       padding: 0 16px 60px;
     }
+    .card-grid-section { gap: 14px; padding: 0 16px 60px; }
     .cd:last-child:nth-child(odd) { aspect-ratio: 16 / 10; }
   }
 </style>
