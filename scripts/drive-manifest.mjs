@@ -153,12 +153,17 @@ export const MANIFEST = {
     main: 'Proyecto Speed/EnergíaDeCampeones (1).mp4',
   },
 
+  // "Proyecto Cuarteto/Cuarteto de Nos - Colonia.mp4" es el mismo corte que ya está en `fullVideo`.
   'cuarteto-de-nos': {
     cover: 'PORTADAS/Cuarteto Portada.jpg',
   },
 
   'intendencia-canelones': {
     cover: 'PORTADAS/Despedida celeste Portada.jpg',
+    main: 'Proyecto Despedida Celeste/Despedida Celeste dia 1 - Horizontal.mp4',
+    videos: [
+      { file: 'Proyecto Despedida Celeste/Dspedida Celeste dia 2 - Horizontal.mp4', caption: 'Día 2' },
+    ],
   },
 
   'fdlc-2026': {

@@ -8,14 +8,16 @@ location: Canelones, Uruguay
 tagline: Trabajo para Intendencia de Canelones x AUF.
 archived: false
 cover: https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/intendencia-canelones/despedida-celeste-portada.jpg
-fullVideo: ''
-photos: []
-videos: []
+fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/intendencia-canelones/despedida-celeste-dia-1-horizontal.mp4
 video: ''
 credits: []
 stats:
   - label: Año
     value: '2026'
+photos: []
+videos:
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/intendencia-canelones/dspedida-celeste-dia-2-horizontal.mp4
+    caption: 'Día 2'
 ---
 
 **Cobertura y producción audiovisual: la despedida celeste rumbo al Mundial 2026.**
