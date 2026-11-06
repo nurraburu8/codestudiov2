@@ -107,7 +107,7 @@ const videoJsonLd = {
       <span class="type">{work.data.type}</span>
       <span class="client">{work.data.client}</span>
     </h1>
-    {work.data.tagline && <p class="work-tagline">"{work.data.tagline}"</p>}
+    {work.data.tagline && <p class="work-tagline">{work.data.tagline}</p>}
     {
       hasVideo && (
         <div class="video-wrap">
@@ -225,6 +225,19 @@ const videoJsonLd = {
   // a reproducir (botón "Ver de nuevo" o los controles del video).
   const mainVideo = document.querySelector<HTMLVideoElement>('.video-wrap video');
   const videoEnd = document.querySelector<HTMLElement>('.video-end');
+
+  // Video principal vertical: el reproductor toma su forma. La portada es
+  // horizontal, así que se deja ver el primer cuadro del video.
+  if (mainVideo) {
+    const fitVertical = () => {
+      if (mainVideo.videoHeight <= mainVideo.videoWidth) return;
+      mainVideo.closest('.video-wrap')?.classList.add('is-vertical');
+      mainVideo.removeAttribute('poster');
+    };
+    if (mainVideo.readyState >= 1) fitVertical();
+    else mainVideo.addEventListener('loadedmetadata', fitVertical);
+  }
+
   if (mainVideo && videoEnd) {
     mainVideo.addEventListener('ended', () => {
       if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
@@ -476,6 +489,12 @@ const videoJsonLd = {
     overflow: hidden;
     background: var(--black);
     border: 1px solid rgba(0, 0, 0, 0.15);
+  }
+
+  .video-wrap.is-vertical {
+    aspect-ratio: 9 / 16;
+    max-height: 86vh;
+    margin: 0 auto;
   }
 
   .video-wrap video {

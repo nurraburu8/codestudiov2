@@ -70,18 +70,6 @@ button {
   cursor: pointer;
 }
 
-/* ── Fondo naranja de las secciones de trabajos (scripts/gen-spray.mjs) ── */
-.spray-bg {
-  background: url('/textures/spray-mobile.webp') top center / 100% auto no-repeat;
-}
-
-@media (min-width: 821px) {
-  .spray-bg {
-    background-image: url('/textures/spray.webp');
-    background-size: max(100%, 1280px) auto;
-  }
-}
-
 /* ── Film grain overlay sutil ─────────────────────────── */
 body::after {
   content: '';
