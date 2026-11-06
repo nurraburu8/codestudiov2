@@ -33,7 +33,7 @@ const links = [
 
 <nav class:list={['nav', { 'nav-light': light, 'nav-overlay': overlay }]} aria-label="Navegación principal">
   <a href="/" class="nav-b" aria-label={`${SITE.name} - Inicio`}>
-    <img src="/logo.png" alt={SITE.name} width="36" height="36" />
+    <img src="/logo.png" alt={SITE.name} width="137" height="64" />
   </a>
 
   <ul class="nav-l">
@@ -69,7 +69,7 @@ const links = [
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 5vw;
+    padding: 12px 5vw;
     transition: transform 0.45s var(--ease-out);
   }
 
@@ -96,7 +96,7 @@ const links = [
 
   .nav-b { display: flex; align-items: center; }
   .nav-b img {
-    height: 44px;
+    height: 64px;
     width: auto;
     filter: brightness(0) invert(1);
   }
@@ -206,8 +206,8 @@ const links = [
 
   /* ── Mobile: logo chico a la izquierda, hamburguesa a la derecha ── */
   @media (max-width: 820px) {
-    .nav { padding: 10px 16px 10px 20px; }
-    .nav-b img { height: 28px; }
+    .nav { padding: 8px 16px 8px 20px; }
+    .nav-b img { height: 40px; }
     .nav-l { display: none; }
     .ham { display: flex; }
   }

@@ -8,19 +8,19 @@ location: Punta Carretas Shopping, Montevideo
 tagline: Campaña BTS para Vans.
 archived: false
 cover: https://res.cloudinary.com/dvdrfqhpy/image/upload/codestudio/trabajos/vans/vans-x-paulo-portada.jpg
-fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/vans/vlog-paulo-x-vans-2.mp4
+fullVideo: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/vans/knu-vans-camp1-qt.mp4
 photos: []
 videos:
-  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/vans/backstage-vans-x-paulo-2.mp4
-    caption: Backstage
-  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/vans/knu-vans-camp1-qt.mp4
-    caption: Campaña · 1
   - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/vans/vans-camp2.mp4
     caption: Campaña · 2
   - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/vans/capsulas-camuflado-2.mp4
     caption: Cápsula Camuflado · 1
   - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/vans/capsulas-camuflado-2-2.mp4
     caption: Cápsula Camuflado · 2
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/vans/backstage-vans-x-paulo-2.mp4
+    caption: Backstage
+  - src: https://res.cloudinary.com/dvdrfqhpy/video/upload/codestudio/trabajos/vans/vlog-paulo-x-vans-2.mp4
+    caption: Vlog
 video: ''
 credits: []
 stats:
