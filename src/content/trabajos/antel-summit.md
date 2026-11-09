@@ -1,7 +1,7 @@
 ---
 order: 2
 client: ANTEL SUMMIT
-type: COBERTURA DE EVENTO
+type: EVENTO
 category: Campañas
 year: '2026'
 location: Montevideo, Uruguay
