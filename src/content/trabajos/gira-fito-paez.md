@@ -1,7 +1,7 @@
 ---
 order: 5
 client: FITO PÁEZ
-type: GIRA — AFTERMOVIES
+type: GIRA
 category: Shows
 year: '2024'
 location: Buenos Aires, Montevideo y La Plata
